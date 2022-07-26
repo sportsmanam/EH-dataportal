@@ -319,7 +319,7 @@
                 })
                 .select(aq.not("value"))
                 .unroll("IndicatorID");
-                arqTable.print(20);
+                
                 
                 var subtopicIndicatorsTable = arqTable.objects();
                 
@@ -335,8 +335,8 @@
 
                 
                 <script>
-                    console.log("$si_json_output_path", "/IndicatorData/subtopic_indicators.json")
-                    console.log("$si_resource.Permalink", "https://nychealth.github.io/EH-dataportal/IndicatorData/subtopic_indicators.json")
+                    
+                    
                 </script>
                 
                 <table id="indicators" class="display fs-sm my-1" style="font-size:12px; width:100%">
@@ -391,9 +391,29 @@
                 
                 for (let i = 0; i < indicators.length; i++) {  
                     
+                    
+                    let subtopics = subtopicIndicatorsTable.filter(element => element.IndicatorID == indicators[i].IndicatorID);
+
+                    
+                    
+                    
+                    
+                    
                     let row_i = document.createElement('tr'); 
                     let cell_1 = document.createElement('td') 
-                    cell_1.innerHTML = indicators[i].IndicatorName 
+                    
+                    
+                    
+                    if (subtopics.length > 0) {
+
+                        cell_1.innerHTML = "<a href='" + "https://nychealth.github.io/EH-dataportal/" + "data-explorer/" + subtopics[0].subtopic + "/" + "?id=" + indicators[i].IndicatorID + "'>" + indicators[i].IndicatorName + "</a>"
+
+                    } else {
+
+                        cell_1.innerHTML = indicators[i].IndicatorName 
+
+                    }
+                    
                     row_i.appendChild(cell_1); 
                     
                     let measurements = [];
@@ -406,10 +426,6 @@
                     
                     
                     let cell_2 = document.createElement('td')
-                    
-                    
-                    
-                    let subtopics = subtopicIndicatorsTable.filter(element => element.IndicatorID == indicators[i].IndicatorID);
                     
                     let st_li = document.createElement('ul');
                     st_li.classList.add('no-bullets')
@@ -521,7 +537,7 @@
                                         
                     
                     let unique_sources = [...new Set(sources)];
-                    console.log("unique_sources", unique_sources);
+                    
                     let usrc = document.createElement('ul')
                     usrc.classList.add('no-bullets')
                     cell_6.appendChild(usrc);
