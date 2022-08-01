@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -48,19 +48,20 @@
 <meta name="twitter:creator" content="@nycHealthy">
 
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" 
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" 
+    crossorigin="anonymous"></script>
 
 
 <link rel="stylesheet" href="../../../fontawesome/css/all.min.css">
+
+
 <link rel="stylesheet" href="https://nychealth.github.io/EH-dataportal/scss/theme.css" />
 
-
-  </head>
-  <body>
-
-    
-
-    
+</head>
+<body>
+  
+  
 <a class="sr-only sr-only-focusable skip-menu" href="#skip-header-target">Skip Header</a>
 
 <header id="global-header" role="banner">
@@ -271,12 +272,7 @@
     </div>
 
 </header>
-
-
-
-    
-
-    <main id="skip-header-target" role="main">
+<main id="skip-header-target" role="main">
 
 <article class="container" id="skip-header-target">
 
@@ -637,9 +633,34 @@ If you’re a regular to the Environment &amp; Health Data Portal, then you may 
 
 </article>
 
+<ul id="results"></ul>
+  </main>
+  
+  <div class="modal" tabindex="-1" role="dialog" id="prototypeModal">
+    <div class='modal-dialog modal-lg modal-dialog-centered' role='document'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <h5 class='modal-title'>Welcome to the new Environment & Health Data Portal. </h5>
+            </div>
+            <div class='modal-body'>
+                <p>This prototype is a work in progress. That means that not all of the data or information is final.
+                    But, feel free to click around and explore.
+                </p>
+                <p><strong>Please sign up for our email list</strong>. We will email you every few months with updates,
+                    or opportunities to participate in user research. 
+                    <a href='https://docs.google.com/forms/d/e/1FAIpQLSfUg3JE5ODNc6aqBPJwM8mZ80TYtK6ISw-OM7PBwKuoN3M--g/viewform'>Click here to sign up</a>.
+                </p>
+            </div>
+            <hr>
+            <button type="button" class="btn btn-outline-primary close-dialog" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+</div>
 
-      <ul id="results"></ul>
-    </main><footer class="bg-black" id="global-footer" role="contentinfo">
+
+
+<script src="../../../js/conditional-modal.js"></script>
+<footer class="bg-black" id="global-footer" role="contentinfo">
 
   <h2 class="sr-only">
       Page Footer
@@ -852,6 +873,5 @@ If you’re a regular to the Environment &amp; Health Data Portal, then you may 
 <script src="https://unpkg.com/lunr/lunr.js"></script>
 <script src="https://unpkg.com/lunr/lunr.js"></script>
 
-<script type="text/javascript" src="https://nychealth.github.io/EH-dataportal/js/search.js" integrity=""></script>
-  </body>
+<script type="text/javascript" src="https://nychealth.github.io/EH-dataportal/js/search.js" integrity=""></script></body>
 </html>

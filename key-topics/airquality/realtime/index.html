@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -42,16 +42,22 @@
 <meta name="twitter:creator" content="@nycHealthy">
 
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" 
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" 
+    crossorigin="anonymous"></script>
 
 
 <link rel="stylesheet" href="../../../fontawesome/css/all.min.css">
+
+
 <link rel="stylesheet" href="https://nychealth.github.io/EH-dataportal/scss/theme.css" />
 
 <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script><script src="https://cdn.jsdelivr.net/npm/arquero@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script><script src="https://cdn.jsdelivr.net/npm/arquero@5.0.0/dist/arquero.min.js" 
+        integrity="sha256-/zlNWswLuC4RosePYPfLgXO2UB9ZnEFd5yERf44WeMU=" 
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         crossorigin="" />
@@ -62,19 +68,20 @@
         crossorigin=""></script>
 
     
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
-    <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2.4.0/src/easy-button.css" 
+        integrity="sha256-ceeoylCL0ld4NwOaXf4vG0Z8pEknXXuzJ5ZV0Ir6ft4=" 
+        crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2.4.0/src/easy-button.js" 
+        integrity="sha256-46nnM+JNAhwyXw6N+fnaZzFa9R20dVa8v0mdBgE9Nn8=" 
+        crossorigin="anonymous"></script>
 
     
     
      
-    <script src="https://nychealth.github.io/EH-dataportal/js/L.colorIcon.js"></script>
-  </head>
-  <body>
-
-    
-
-    
+    <script src="https://nychealth.github.io/EH-dataportal/js/L.colorIcon.js"></script></head>
+<body>
+  
+  
 <a class="sr-only sr-only-focusable skip-menu" href="#skip-header-target">Skip Header</a>
 
 <header id="global-header" role="banner">
@@ -285,12 +292,7 @@
     </div>
 
 </header>
-
-
-
-    
-
-    <main id="skip-header-target" role="main">
+<main id="skip-header-target" role="main">
 
 
 <style>
@@ -538,9 +540,34 @@
 
 <script type="text/javascript" src="js/realtime.js"></script>
 
+<ul id="results"></ul>
+  </main>
+  
+  <div class="modal" tabindex="-1" role="dialog" id="prototypeModal">
+    <div class='modal-dialog modal-lg modal-dialog-centered' role='document'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <h5 class='modal-title'>Welcome to the new Environment & Health Data Portal. </h5>
+            </div>
+            <div class='modal-body'>
+                <p>This prototype is a work in progress. That means that not all of the data or information is final.
+                    But, feel free to click around and explore.
+                </p>
+                <p><strong>Please sign up for our email list</strong>. We will email you every few months with updates,
+                    or opportunities to participate in user research. 
+                    <a href='https://docs.google.com/forms/d/e/1FAIpQLSfUg3JE5ODNc6aqBPJwM8mZ80TYtK6ISw-OM7PBwKuoN3M--g/viewform'>Click here to sign up</a>.
+                </p>
+            </div>
+            <hr>
+            <button type="button" class="btn btn-outline-primary close-dialog" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+</div>
 
-      <ul id="results"></ul>
-    </main><footer class="bg-black" id="global-footer" role="contentinfo">
+
+
+<script src="../../../js/conditional-modal.js"></script>
+<footer class="bg-black" id="global-footer" role="contentinfo">
 
   <h2 class="sr-only">
       Page Footer
@@ -753,6 +780,5 @@
 <script src="https://unpkg.com/lunr/lunr.js"></script>
 <script src="https://unpkg.com/lunr/lunr.js"></script>
 
-<script type="text/javascript" src="https://nychealth.github.io/EH-dataportal/js/search.js" integrity=""></script>
-  </body>
+<script type="text/javascript" src="https://nychealth.github.io/EH-dataportal/js/search.js" integrity=""></script></body>
 </html>
