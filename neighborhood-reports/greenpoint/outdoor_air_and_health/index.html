@@ -55,7 +55,12 @@
 <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script><script src="https://cdn.jsdelivr.net/npm/arquero@5.0.0/dist/arquero.min.js" 
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@2.3.10/dist/purify.min.js" 
+    integrity="sha256-keaR/uWEpEmmUnoJ6BemH9gp9Ng8u/YplhVwdmmquNY=" 
+    crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/arquero@5.0.0/dist/arquero.min.js" 
         integrity="sha256-/zlNWswLuC4RosePYPfLgXO2UB9ZnEFd5yERf44WeMU=" 
         crossorigin="anonymous"></script></head>
 <body>
@@ -5593,9 +5598,9 @@
   
   var searchForm = document.getElementById('last-neighborhood-select') 
   document.querySelector('form.autocomplete-form').addEventListener("submit", function (e) {
-  e.preventDefault(); 
-  var locVal = searchForm.options[searchForm.selectedIndex].value;
-  window.location = '\/EH-dataportal/neighborhood-reports/'+ locVal + "/" + reportExt;
+    e.preventDefault(); 
+    var locVal = searchForm.options[searchForm.selectedIndex].value;
+    window.location = '\/EH-dataportal/neighborhood-reports/'+ locVal + "/" + reportExt;
   });
 
 
