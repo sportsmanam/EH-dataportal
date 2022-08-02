@@ -3346,7 +3346,7 @@
   document.querySelector('form.autocomplete-form').addEventListener("submit", function (e) {
     e.preventDefault(); 
     var locVal = searchForm.options[searchForm.selectedIndex].value;
-    window.location = '\/EH-dataportal/neighborhood-reports/'+ locVal + "/" + reportExt;
+    window.location = '\/EH-dataportal/neighborhood-reports/'+ DOMPurify.sanitize(locVal) + "/" + reportExt;
   });
 
 

@@ -2366,7 +2366,7 @@
     var dataSearchForm = document.getElementById('all-data-select') 
     document.querySelector('form.autocomplete-form').addEventListener("submit", function (e) {
         e.preventDefault(); 
-        window.location.assign(dataSearchForm.options[dataSearchForm.selectedIndex].value)
+        window.location.assign(DOMPurify.sanitize(dataSearchForm.options[dataSearchForm.selectedIndex].value))
       });
 
 
