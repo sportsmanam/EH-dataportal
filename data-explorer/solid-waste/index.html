@@ -251,7 +251,9 @@
     </div>
 
 </header>
-<main id="skip-header-target" role="main"><article class="container-fluid" id="skip-header-target">
+<main id="skip-header-target" role="main">
+
+<article class="container-fluid" id="skip-header-target">
     <div class="row">
         <div class="col-md-11 mx-auto mt-4 mx-1">
             <nav aria-label="breadcrumb" class="mb-2">
@@ -482,7 +484,10 @@
                             const renderIndicatorDropdown = () => {
                                 const indicatorDropdown = document.getElementById("indicator-dropdown");
                                 let indicatorId;
-                                let header;}
+                                let header;
+                                
+                                
+                            }
 
 
                             renderIndicatorDropdown()
@@ -1751,13 +1756,17 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="card fs-sm mb-2 topic-text d-none d-md-block">
+                        
                         <p><a href="http://www.nyc.gov/html/planyc2030/html/home/home.shtml" title="PlaNYC Home Page">PlaNYC</a> is a comprehensive sustainability plan for New York City&rsquo;s future.</p>
 <p>Goal: Divert 75% of solid waste from landfills.</p>
 <h3 id="divert-solid-waste">Divert Solid Waste</h3>
 <p>Of the city&rsquo;s 13.6 million tons of waste per year, we currently recycle 51% of solid waste (including fill) and send 43% to landfills. The remainder is composted or converted to energy.</p>
 <p>We are working to increase the amount diverted to recycling, composting, and conversion to 75%. Diverting solid waste from landfills to recycling and conversion facilities make use of our waste, creating new materials, nutrient sources, and energy out of our waste products. And while we no longer operate landfills in New York City, the waste we send to distant landfills contributes to environmental problems such as greenhouse gas emissions and potential water contamination. Closer to home, reduced truck trips bound for landfills will improve air quality.</p>
 <p>We have characterized the types of solid waste generated from residential sources, which account for 29% of the waste stream, and determined that 35% of that waste is recyclable while 40% of it is compostable. However of the materials that can be recycled, New Yorkers are only recycling 47% of metal, plastic, and glass and 38% of paper, and less than 1% is composted. We are working to characterize the types of solid waste generated from commercial sources, which account for 24% of the waste stream, less easily quantified because it is handled by private waste haulers. Overall, efforts to recycle paper, cardboard, metal, glass, plastic, tires and asphalt millings, and derelict vehicles; and to dispose of or reuse fill or dirt from excavation sites, construction and demolition materials, household hazardous waste, and textiles and furniture should enable us to reach our target of diverting 75% of solid waste from landfills by 2030.</p>
-</div>
+
+
+
+                    </div>
                 </div>
 
                 <div class="col-md-8">
@@ -1909,12 +1918,17 @@
 
 
 
-</article><script type="text/javascript" src="https://nychealth.github.io/EH-dataportal/js/accessible-autocomplete.min.js" integrity=""></script>
+</article>
+
+
+
+<script type="text/javascript" src="https://nychealth.github.io/EH-dataportal/js/accessible-autocomplete.min.js" integrity=""></script>
 
 <script type="text/javascript"> 
     
     function populateDropDownList() {          
            var ddlData = document.getElementById("all-data");
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Data Explorer"
@@ -1922,6 +1936,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Active Design"
@@ -1929,6 +1944,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/active-design\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Air Quality"
@@ -1936,6 +1952,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/air-quality\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Alcohol Access and Use"
@@ -1943,6 +1960,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/alcohol-use\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "All Data Sets"
@@ -1950,6 +1968,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/all-data\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Asthma"
@@ -1957,6 +1976,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/asthma\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Asthma triggers at home"
@@ -1964,6 +1984,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/asthma-triggers\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Bed Bugs"
@@ -1971,6 +1992,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/bed-bugs\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Birth Defects"
@@ -1978,6 +2000,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/birth-defects\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Birth Outcomes"
@@ -1985,6 +2008,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/birth-outcomes\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Cancer"
@@ -1992,6 +2016,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/cancer\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Cancers in Children"
@@ -1999,6 +2024,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/cancers-in-children\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Carbon monoxide"
@@ -2006,6 +2032,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/carbon-monoxide-incidents\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Cigarette Smoke"
@@ -2013,6 +2040,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/cigarette-smoke\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Climate"
@@ -2020,6 +2048,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/climate\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Cockroaches"
@@ -2027,6 +2056,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/cockroaches\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Drinking Water Quality"
@@ -2034,6 +2064,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/drinking-water-quality\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Falls Among Older Adults"
@@ -2041,6 +2072,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/falls-among-older-adults\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Health Care"
@@ -2048,6 +2080,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/health-care\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Health Impacts of Air Pollution"
@@ -2055,6 +2088,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/health-impacts-of-air-pollution\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Housing maintenance"
@@ -2062,6 +2096,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/housing-maintenance\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Housing safety"
@@ -2069,6 +2104,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/housing-safety\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Housing stability"
@@ -2076,6 +2112,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/housing-stability\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Lead poisoning"
@@ -2083,6 +2120,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/lead\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Mice and Rats"
@@ -2090,6 +2128,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/mice-and-rats\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Mortality"
@@ -2097,6 +2136,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/mortality\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Noise"
@@ -2104,6 +2144,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/noise\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Overweight"
@@ -2111,6 +2152,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/overweight\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Pesticides"
@@ -2118,6 +2160,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/pesticides\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Physical Activity"
@@ -2125,6 +2168,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/physical-activity\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Restaurant Food Safety"
@@ -2132,6 +2176,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/restaurant-food-safety\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Social and Economic Conditions"
@@ -2139,6 +2184,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/social-and-economic-conditions\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Solid Waste"
@@ -2146,6 +2192,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/solid-waste\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Sugary Drink Consumption"
@@ -2153,6 +2200,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/sugary-drink-consumption\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Transportation-related Injuries"
@@ -2160,6 +2208,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/transportation-related-injuries\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Vector-borne Disease"
@@ -2167,6 +2216,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/vector-borne-disease\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Violence"
@@ -2174,6 +2224,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/violence\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Walking, Driving, and Cycling"
@@ -2181,6 +2232,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/walking-driving-and-cycling\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Weather-Related Illness"
@@ -2188,13 +2240,16 @@
             option.value = '\/EH-dataportal/\/data-explorer\/weather-related-illness\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Worker Health"
             
             option.value = '\/EH-dataportal/\/data-explorer\/worker-health\/'
             
-            ddlData.options.add(option);};
+            ddlData.options.add(option);
+          
+       };
 
        populateDropDownList(); 
 
@@ -2218,7 +2273,9 @@
 
 
 
-   </script><ul id="results"></ul>
+   </script>
+
+<ul id="results"></ul>
   </main>
   
   <div class="modal" tabindex="-1" role="dialog" id="prototypeModal">
