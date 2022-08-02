@@ -7,13 +7,7 @@
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>
-    Carbon monoxide incident data for NYC. &#x7c; Environment &amp; Health Data Portal
-</title>
-
-
-
-
+<title>Carbon monoxide incident data for NYC.&#x7c; Environment &amp; Health Data Portal</title>
 
 
 <meta name="description" content="Here is the site global SEO description">
@@ -27,28 +21,21 @@
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="en_us" />
 <meta property="og:url" content="https://nychealth.github.io/EH-dataportal/data-explorer/carbon-monoxide-incidents/" />
-<meta property="og:title" content="Carbon monoxide incident data for NYC. &ndash; Environment &amp; Health Data Portal" />
+<meta property="og:title" content="Carbon monoxide incident data for NYC.&ndash; Environment &amp; Health Data Portal" />
 <meta property="og:description" content="Explore data, visualizations, and more." />
 <meta property="og:site_name" content="Environment &amp; Health Data Portal" />
-<meta property="og:image" content="https://nychealth.github.io/EH-dataportal/images/report_bottom_background_hu55023dbc37de342337a21cf33dcc5889_222582_2400x1260_fill_q75_box_smart1.jpg">
-
-<meta property="og:see_also" content="https://twitter.com/nycHealthy" />
-
-
-<meta name="twitter:title" content="Carbon monoxide incident data for NYC. &ndash; Environment &amp; Health Data Portal">
+<meta property="og:image" content="https://nychealth.github.io/EH-dataportal/images/report_bottom_background_hu55023dbc37de342337a21cf33dcc5889_222582_2400x1260_fill_q75_box_smart1.jpg"><meta property="og:see_also" content="https://twitter.com/nycHealthy" />
+<meta name="twitter:title" content="Carbon monoxide incident data for NYC.&ndash; Environment &amp; Health Data Portal">
 <meta name="twitter:description" content="Explore data, visualizations, and more.">
 <meta name="twitter:image" content="/images/report_bottom_background.jpg">
 <meta name="twitter:site" content="@nycHealthy">
 <meta name="twitter:creator" content="@nycHealthy">
-
-
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" 
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" 
     crossorigin="anonymous"></script>
 
 
 <link rel="stylesheet" href="../../fontawesome/css/all.min.css">
-
 
 <link rel="stylesheet" href="https://nychealth.github.io/EH-dataportal/scss/theme.css" />
 
@@ -221,17 +208,13 @@
 
         <div class="wide"> 
 
-            <nav class="nav nav-pills border-bottom" role="navigation">
-                
-                
-                <div class="nav-item">
+            <nav class="nav nav-pills border-bottom" role="navigation"><div class="nav-item">
 
                     <a class="nav-link" href="../../" id="nav-item-01">
                         <span class='text-primary'><i class='fa fa-home' aria-hidden='true'></i></span> Home
                     </a>
 
                 </div>
-                
                 <div class="nav-item">
 
                     <a class="nav-link" href="../../data-stories/" id="nav-item-02">
@@ -239,7 +222,6 @@
                     </a>
 
                 </div>
-                
                 <div class="nav-item">
 
                     <a class="nav-link" href="../../neighborhood-reports/" id="nav-item-04">
@@ -247,7 +229,6 @@
                     </a>
 
                 </div>
-                
                 <div class="nav-item">
 
                     <a class="nav-link" href="../../key-topics/" id="nav-item-05">
@@ -255,7 +236,6 @@
                     </a>
 
                 </div>
-                
                 <div class="nav-item active">
 
                     <a class="nav-link" href="../../data-explorer/" id="nav-item-03">
@@ -502,47 +482,19 @@
                             const renderIndicatorDropdown = () => {
                                 const indicatorDropdown = document.getElementById("indicator-dropdown");
                                 let indicatorId;
-                                let header;
-                                
-                                
-                                        header = ``;
+                                let header;header = ``;
                                         // console.log('Header: ', header)
-                                        indicatorDropdown.innerHTML += header.length ? `<div class="dropdown-title"><strong>${header}</strong></div>`: '';
-                                        
-                                            
-                                                defaultIndicatorId = 38
-                                            
-                                            indicatorId = 38
-                                            indicator = indicators.find(indicator => indicator.IndicatorID === indicatorId);
+                                        indicatorDropdown.innerHTML += header.length ? `<div class="dropdown-title"><strong>${header}</strong></div>`: '';defaultIndicatorId =38indicatorId =38indicator = indicators.find(indicator => indicator.IndicatorID === indicatorId);
                                             indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                                            indicatorDropdown.innerHTML += `<button class="dropdown-item" onclick="loadIndicator(${indicatorId})" data-internal-id="${indicatorId}">${indicatorName}</button>`
-                                        
-                                            
-                                            indicatorId = 2168
-                                            indicator = indicators.find(indicator => indicator.IndicatorID === indicatorId);
+                                            indicatorDropdown.innerHTML += `<button class="dropdown-item" onclick="loadIndicator(${indicatorId})" data-internal-id="${indicatorId}">${indicatorName}</button>`indicatorId =2168indicator = indicators.find(indicator => indicator.IndicatorID === indicatorId);
                                             indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                                            indicatorDropdown.innerHTML += `<button class="dropdown-item" onclick="loadIndicator(${indicatorId})" data-internal-id="${indicatorId}">${indicatorName}</button>`
-                                        
-                                            
-                                            indicatorId = 2398
-                                            indicator = indicators.find(indicator => indicator.IndicatorID === indicatorId);
+                                            indicatorDropdown.innerHTML += `<button class="dropdown-item" onclick="loadIndicator(${indicatorId})" data-internal-id="${indicatorId}">${indicatorName}</button>`indicatorId =2398indicator = indicators.find(indicator => indicator.IndicatorID === indicatorId);
                                             indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                                            indicatorDropdown.innerHTML += `<button class="dropdown-item" onclick="loadIndicator(${indicatorId})" data-internal-id="${indicatorId}">${indicatorName}</button>`
-                                        
-                                            
-                                            indicatorId = 2405
-                                            indicator = indicators.find(indicator => indicator.IndicatorID === indicatorId);
+                                            indicatorDropdown.innerHTML += `<button class="dropdown-item" onclick="loadIndicator(${indicatorId})" data-internal-id="${indicatorId}">${indicatorName}</button>`indicatorId =2405indicator = indicators.find(indicator => indicator.IndicatorID === indicatorId);
                                             indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                                            indicatorDropdown.innerHTML += `<button class="dropdown-item" onclick="loadIndicator(${indicatorId})" data-internal-id="${indicatorId}">${indicatorName}</button>`
-                                        
-                                            
-                                            indicatorId = 2406
-                                            indicator = indicators.find(indicator => indicator.IndicatorID === indicatorId);
+                                            indicatorDropdown.innerHTML += `<button class="dropdown-item" onclick="loadIndicator(${indicatorId})" data-internal-id="${indicatorId}">${indicatorName}</button>`indicatorId =2406indicator = indicators.find(indicator => indicator.IndicatorID === indicatorId);
                                             indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                                            indicatorDropdown.innerHTML += `<button class="dropdown-item" onclick="loadIndicator(${indicatorId})" data-internal-id="${indicatorId}">${indicatorName}</button>`
-                                        
-                                
-                            }
+                                            indicatorDropdown.innerHTML += `<button class="dropdown-item" onclick="loadIndicator(${indicatorId})" data-internal-id="${indicatorId}">${indicatorName}</button>`}
 
 
                             renderIndicatorDropdown()
@@ -1811,7 +1763,6 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="card fs-sm mb-2 topic-text d-none d-md-block">
-                        
                         <p>Carbon monoxide (CO) is a poisonous gas that forms when fuel or other materials are burned.  It is invisible and has no odor. </p>
 <p>Even short-term exposure to high levels of carbon monoxide can be fatal. Carbon monoxide blocks oxygen transport in the body.  Symptoms of mild carbon monoxide poisoning include headache, nausea, fatigue, dizziness and disorientation. Breathing high concentrations of carbon monoxide can cause somebody to lose consciousness and have permanent neurological injury - or even death.</p>
 <p>Rates of unintentional carbon monoxide poisoning have declined over the past three decades.  However, carbon monoxide remains a common cause of life-threatening and fatal poisonings.</p>
@@ -1836,10 +1787,7 @@
 <li>Never use a gas stove, oven or other cooking appliance to heat your home.  And never use unvented gas space heaters - they&rsquo;re illegal. </li>
 <li>Never run an emergency generator indoors or near any enclosed space, even if your power goes out. Keep it outside, far away from doors and windows.</li>
 </ul>
-
-
-
-                    </div>
+</div>
                 </div>
 
                 <div class="col-md-8">
@@ -1991,17 +1939,12 @@
 
 
 
-</article>
-
-
-
-<script type="text/javascript" src="https://nychealth.github.io/EH-dataportal/js/accessible-autocomplete.min.js" integrity=""></script>
+</article><script type="text/javascript" src="https://nychealth.github.io/EH-dataportal/js/accessible-autocomplete.min.js" integrity=""></script>
 
 <script type="text/javascript"> 
     
     function populateDropDownList() {          
            var ddlData = document.getElementById("all-data");
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Data Explorer"
@@ -2009,7 +1952,6 @@
             option.value = '\/EH-dataportal/\/data-explorer\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Active Design"
@@ -2017,7 +1959,6 @@
             option.value = '\/EH-dataportal/\/data-explorer\/active-design\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Air Quality"
@@ -2025,7 +1966,6 @@
             option.value = '\/EH-dataportal/\/data-explorer\/air-quality\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Alcohol Access and Use"
@@ -2033,7 +1973,6 @@
             option.value = '\/EH-dataportal/\/data-explorer\/alcohol-use\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "All Data Sets"
@@ -2041,7 +1980,6 @@
             option.value = '\/EH-dataportal/\/data-explorer\/all-data\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Asthma"
@@ -2049,7 +1987,6 @@
             option.value = '\/EH-dataportal/\/data-explorer\/asthma\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Asthma triggers at home"
@@ -2057,7 +1994,6 @@
             option.value = '\/EH-dataportal/\/data-explorer\/asthma-triggers\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Bed Bugs"
@@ -2065,7 +2001,6 @@
             option.value = '\/EH-dataportal/\/data-explorer\/bed-bugs\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Birth Defects"
@@ -2073,7 +2008,6 @@
             option.value = '\/EH-dataportal/\/data-explorer\/birth-defects\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Birth Outcomes"
@@ -2081,7 +2015,6 @@
             option.value = '\/EH-dataportal/\/data-explorer\/birth-outcomes\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Cancer"
@@ -2089,7 +2022,6 @@
             option.value = '\/EH-dataportal/\/data-explorer\/cancer\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Cancers in Children"
@@ -2097,7 +2029,6 @@
             option.value = '\/EH-dataportal/\/data-explorer\/cancers-in-children\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Carbon monoxide"
@@ -2105,7 +2036,6 @@
             option.value = '\/EH-dataportal/\/data-explorer\/carbon-monoxide-incidents\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Cigarette Smoke"
@@ -2113,7 +2043,6 @@
             option.value = '\/EH-dataportal/\/data-explorer\/cigarette-smoke\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Climate"
@@ -2121,7 +2050,6 @@
             option.value = '\/EH-dataportal/\/data-explorer\/climate\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Cockroaches"
@@ -2129,7 +2057,6 @@
             option.value = '\/EH-dataportal/\/data-explorer\/cockroaches\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Drinking Water Quality"
@@ -2137,7 +2064,6 @@
             option.value = '\/EH-dataportal/\/data-explorer\/drinking-water-quality\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Falls Among Older Adults"
@@ -2145,7 +2071,6 @@
             option.value = '\/EH-dataportal/\/data-explorer\/falls-among-older-adults\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Health Care"
@@ -2153,7 +2078,6 @@
             option.value = '\/EH-dataportal/\/data-explorer\/health-care\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Health Impacts of Air Pollution"
@@ -2161,7 +2085,6 @@
             option.value = '\/EH-dataportal/\/data-explorer\/health-impacts-of-air-pollution\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Housing maintenance"
@@ -2169,7 +2092,6 @@
             option.value = '\/EH-dataportal/\/data-explorer\/housing-maintenance\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Housing safety"
@@ -2177,7 +2099,6 @@
             option.value = '\/EH-dataportal/\/data-explorer\/housing-safety\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Housing stability"
@@ -2185,7 +2106,6 @@
             option.value = '\/EH-dataportal/\/data-explorer\/housing-stability\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Lead poisoning"
@@ -2193,7 +2113,6 @@
             option.value = '\/EH-dataportal/\/data-explorer\/lead\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Mice and Rats"
@@ -2201,7 +2120,6 @@
             option.value = '\/EH-dataportal/\/data-explorer\/mice-and-rats\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Mortality"
@@ -2209,7 +2127,6 @@
             option.value = '\/EH-dataportal/\/data-explorer\/mortality\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Noise"
@@ -2217,7 +2134,6 @@
             option.value = '\/EH-dataportal/\/data-explorer\/noise\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Overweight"
@@ -2225,7 +2141,6 @@
             option.value = '\/EH-dataportal/\/data-explorer\/overweight\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Pesticides"
@@ -2233,7 +2148,6 @@
             option.value = '\/EH-dataportal/\/data-explorer\/pesticides\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Physical Activity"
@@ -2241,7 +2155,6 @@
             option.value = '\/EH-dataportal/\/data-explorer\/physical-activity\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Restaurant Food Safety"
@@ -2249,7 +2162,6 @@
             option.value = '\/EH-dataportal/\/data-explorer\/restaurant-food-safety\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Social and Economic Conditions"
@@ -2257,7 +2169,6 @@
             option.value = '\/EH-dataportal/\/data-explorer\/social-and-economic-conditions\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Solid Waste"
@@ -2265,7 +2176,6 @@
             option.value = '\/EH-dataportal/\/data-explorer\/solid-waste\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Sugary Drink Consumption"
@@ -2273,7 +2183,6 @@
             option.value = '\/EH-dataportal/\/data-explorer\/sugary-drink-consumption\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Transportation-related Injuries"
@@ -2281,7 +2190,6 @@
             option.value = '\/EH-dataportal/\/data-explorer\/transportation-related-injuries\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Vector-borne Disease"
@@ -2289,7 +2197,6 @@
             option.value = '\/EH-dataportal/\/data-explorer\/vector-borne-disease\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Violence"
@@ -2297,7 +2204,6 @@
             option.value = '\/EH-dataportal/\/data-explorer\/violence\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Walking, Driving, and Cycling"
@@ -2305,7 +2211,6 @@
             option.value = '\/EH-dataportal/\/data-explorer\/walking-driving-and-cycling\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Weather-Related Illness"
@@ -2313,16 +2218,13 @@
             option.value = '\/EH-dataportal/\/data-explorer\/weather-related-illness\/'
             
             ddlData.options.add(option);
-           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Worker Health"
             
             option.value = '\/EH-dataportal/\/data-explorer\/worker-health\/'
             
-            ddlData.options.add(option);
-          
-       };
+            ddlData.options.add(option);};
 
        populateDropDownList(); 
 
@@ -2346,9 +2248,7 @@
 
 
 
-   </script>
-
-<ul id="results"></ul>
+   </script><ul id="results"></ul>
   </main>
   
   <div class="modal" tabindex="-1" role="dialog" id="prototypeModal">
@@ -2443,15 +2343,10 @@
       <hr class="opacity-10" aria-hidden="true">
 
       <div class="container py-3">
-
           <div class="row">
-
               <div class="col-md-6 col-lg-8 mb-3 mb-lg-0">
-
                   <nav class="row fs-md" role="navigation">
-
                       <div class="col-lg mb-3 mb-lg-0">
-
                           <ul class="extensible-list">
                               <li>
                                   <a class="text-reset" href="https://www1.nyc.gov/nyc-resources/agencies.page">
@@ -2517,12 +2412,10 @@
                                   </a>
                               </li>
                           </ul>
-
                       </div>
                       
 
                   </nav>
-
               </div>
               
 
@@ -2587,6 +2480,5 @@
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script src="https://unpkg.com/lunr/lunr.js"></script>
 <script src="https://unpkg.com/lunr/lunr.js"></script>
-
 <script type="text/javascript" src="https://nychealth.github.io/EH-dataportal/js/search.js" integrity=""></script></body>
 </html>
