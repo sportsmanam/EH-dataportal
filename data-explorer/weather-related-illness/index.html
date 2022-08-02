@@ -251,7 +251,9 @@
     </div>
 
 </header>
-<main id="skip-header-target" role="main"><article class="container-fluid" id="skip-header-target">
+<main id="skip-header-target" role="main">
+
+<article class="container-fluid" id="skip-header-target">
     <div class="row">
         <div class="col-md-11 mx-auto mt-4 mx-1">
             <nav aria-label="breadcrumb" class="mb-2">
@@ -482,31 +484,84 @@
                             const renderIndicatorDropdown = () => {
                                 const indicatorDropdown = document.getElementById("indicator-dropdown");
                                 let indicatorId;
-                                let header;header = `Cold Stress`;
+                                let header;
+                                
+                                
+                                        header = `Cold Stress`;
                                         // console.log('Header: ', header)
-                                        indicatorDropdown.innerHTML += header.length ? `<div class="dropdown-title"><strong>${header}</strong></div>`: '';defaultIndicatorId =2376indicatorId =2376indicator = indicators.find(indicator => indicator.IndicatorID === indicatorId);
+                                        indicatorDropdown.innerHTML += header.length ? `<div class="dropdown-title"><strong>${header}</strong></div>`: '';
+                                        
+                                            
+                                                defaultIndicatorId = 2376
+                                            
+                                            indicatorId = 2376
+                                            indicator = indicators.find(indicator => indicator.IndicatorID === indicatorId);
                                             indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                                            indicatorDropdown.innerHTML += `<button class="dropdown-item" onclick="loadIndicator(${indicatorId})" data-internal-id="${indicatorId}">${indicatorName}</button>`indicatorId =2175indicator = indicators.find(indicator => indicator.IndicatorID === indicatorId);
+                                            indicatorDropdown.innerHTML += `<button class="dropdown-item" onclick="loadIndicator(${indicatorId})" data-internal-id="${indicatorId}">${indicatorName}</button>`
+                                        
+                                            
+                                            indicatorId = 2175
+                                            indicator = indicators.find(indicator => indicator.IndicatorID === indicatorId);
                                             indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                                            indicatorDropdown.innerHTML += `<button class="dropdown-item" onclick="loadIndicator(${indicatorId})" data-internal-id="${indicatorId}">${indicatorName}</button>`indicatorId =2174indicator = indicators.find(indicator => indicator.IndicatorID === indicatorId);
+                                            indicatorDropdown.innerHTML += `<button class="dropdown-item" onclick="loadIndicator(${indicatorId})" data-internal-id="${indicatorId}">${indicatorName}</button>`
+                                        
+                                            
+                                            indicatorId = 2174
+                                            indicator = indicators.find(indicator => indicator.IndicatorID === indicatorId);
                                             indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                                            indicatorDropdown.innerHTML += `<button class="dropdown-item" onclick="loadIndicator(${indicatorId})" data-internal-id="${indicatorId}">${indicatorName}</button>`header = `Heat Stress`;
+                                            indicatorDropdown.innerHTML += `<button class="dropdown-item" onclick="loadIndicator(${indicatorId})" data-internal-id="${indicatorId}">${indicatorName}</button>`
+                                        
+                                
+                                        header = `Heat Stress`;
                                         // console.log('Header: ', header)
-                                        indicatorDropdown.innerHTML += header.length ? `<div class="dropdown-title"><strong>${header}</strong></div>`: '';defaultIndicatorId =2410indicatorId =2410indicator = indicators.find(indicator => indicator.IndicatorID === indicatorId);
+                                        indicatorDropdown.innerHTML += header.length ? `<div class="dropdown-title"><strong>${header}</strong></div>`: '';
+                                        
+                                            
+                                                defaultIndicatorId = 2410
+                                            
+                                            indicatorId = 2410
+                                            indicator = indicators.find(indicator => indicator.IndicatorID === indicatorId);
                                             indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                                            indicatorDropdown.innerHTML += `<button class="dropdown-item" onclick="loadIndicator(${indicatorId})" data-internal-id="${indicatorId}">${indicatorName}</button>`indicatorId =2084indicator = indicators.find(indicator => indicator.IndicatorID === indicatorId);
+                                            indicatorDropdown.innerHTML += `<button class="dropdown-item" onclick="loadIndicator(${indicatorId})" data-internal-id="${indicatorId}">${indicatorName}</button>`
+                                        
+                                            
+                                            indicatorId = 2084
+                                            indicator = indicators.find(indicator => indicator.IndicatorID === indicatorId);
                                             indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                                            indicatorDropdown.innerHTML += `<button class="dropdown-item" onclick="loadIndicator(${indicatorId})" data-internal-id="${indicatorId}">${indicatorName}</button>`indicatorId =2074indicator = indicators.find(indicator => indicator.IndicatorID === indicatorId);
+                                            indicatorDropdown.innerHTML += `<button class="dropdown-item" onclick="loadIndicator(${indicatorId})" data-internal-id="${indicatorId}">${indicatorName}</button>`
+                                        
+                                            
+                                            indicatorId = 2074
+                                            indicator = indicators.find(indicator => indicator.IndicatorID === indicatorId);
                                             indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                                            indicatorDropdown.innerHTML += `<button class="dropdown-item" onclick="loadIndicator(${indicatorId})" data-internal-id="${indicatorId}">${indicatorName}</button>`indicatorId =2075indicator = indicators.find(indicator => indicator.IndicatorID === indicatorId);
+                                            indicatorDropdown.innerHTML += `<button class="dropdown-item" onclick="loadIndicator(${indicatorId})" data-internal-id="${indicatorId}">${indicatorName}</button>`
+                                        
+                                            
+                                            indicatorId = 2075
+                                            indicator = indicators.find(indicator => indicator.IndicatorID === indicatorId);
                                             indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                                            indicatorDropdown.innerHTML += `<button class="dropdown-item" onclick="loadIndicator(${indicatorId})" data-internal-id="${indicatorId}">${indicatorName}</button>`indicatorId =2076indicator = indicators.find(indicator => indicator.IndicatorID === indicatorId);
+                                            indicatorDropdown.innerHTML += `<button class="dropdown-item" onclick="loadIndicator(${indicatorId})" data-internal-id="${indicatorId}">${indicatorName}</button>`
+                                        
+                                            
+                                            indicatorId = 2076
+                                            indicator = indicators.find(indicator => indicator.IndicatorID === indicatorId);
                                             indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                                            indicatorDropdown.innerHTML += `<button class="dropdown-item" onclick="loadIndicator(${indicatorId})" data-internal-id="${indicatorId}">${indicatorName}</button>`indicatorId =2191indicator = indicators.find(indicator => indicator.IndicatorID === indicatorId);
+                                            indicatorDropdown.innerHTML += `<button class="dropdown-item" onclick="loadIndicator(${indicatorId})" data-internal-id="${indicatorId}">${indicatorName}</button>`
+                                        
+                                            
+                                            indicatorId = 2191
+                                            indicator = indicators.find(indicator => indicator.IndicatorID === indicatorId);
                                             indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                                            indicatorDropdown.innerHTML += `<button class="dropdown-item" onclick="loadIndicator(${indicatorId})" data-internal-id="${indicatorId}">${indicatorName}</button>`indicatorId =2411indicator = indicators.find(indicator => indicator.IndicatorID === indicatorId);
+                                            indicatorDropdown.innerHTML += `<button class="dropdown-item" onclick="loadIndicator(${indicatorId})" data-internal-id="${indicatorId}">${indicatorName}</button>`
+                                        
+                                            
+                                            indicatorId = 2411
+                                            indicator = indicators.find(indicator => indicator.IndicatorID === indicatorId);
                                             indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                                            indicatorDropdown.innerHTML += `<button class="dropdown-item" onclick="loadIndicator(${indicatorId})" data-internal-id="${indicatorId}">${indicatorName}</button>`}
+                                            indicatorDropdown.innerHTML += `<button class="dropdown-item" onclick="loadIndicator(${indicatorId})" data-internal-id="${indicatorId}">${indicatorName}</button>`
+                                        
+                                
+                            }
 
 
                             renderIndicatorDropdown()
@@ -1775,6 +1830,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="card fs-sm mb-2 topic-text d-none d-md-block">
+                        
                         <p>A region&rsquo;s climate is characterized by its usual weather conditions, seasons, and patterns in extreme weather events such as heat waves, droughts, and hurricanes. New York City (NYC) faces public health risks from extreme weather events such as heat waves and coastal storms. With climate change, the severity of some of these risks will increase. A 2013 New York City Panel on Climate Change (NPCC) report predicts that by the 2020s, average summer temperatures in New York City will increase by 2.0°F to 3.0°F compared to a 1971-2000 baseline. Heat waves will become more frequent, intense, and longer in duration. Rainfall and precipitation are expected to increase, together with another 4-8 inches of sea level rise and increased probability of coastal storms with flooding (NPCC, Climate Risk Information, 2013).</p>
 <h3 id="weather-and-health">Weather and Health</h3>
 <p>Even without long-term changes in climate, New Yorkers face weather-related risks today. Heat and humidity cause serious illness and death every summer. In fact, more Americans die from heat waves in a typical year than all other natural disasters combined, both in direct mortality from heat stress (hyperthermia, also known as heat stroke) and by way of increases in the rates of deaths from natural causes due to the exacerbation of other medical conditions. While far less common, coastal storms can also have serious consequences, including long-term mental health impacts. In 2012, Hurricane Sandy caused extensive flooding and damage in New York City, and resulted in at least 44 deaths.</p>
@@ -1808,7 +1864,10 @@
 <h3 id="key-messages">Key Messages</h3>
 <p>About 80% of heat stroke victims in New York City are overcome by excessively hot conditions in their own homes, as indoor temperatures in the urban environment may be even hotter than outdoor temperatures when an air conditioner is not available or not in use. Although heat-related mortality rates are lower than in historical periods before electricity and air conditioning, it is possible that rates may rise as a result of climate change, depending on the extent of adaptation. In 2011, a Health Department survey estimated that 25% of New York City adults still do not have or rarely use air conditioning during hot summer weather, many of whom may be at increased risk of heat stress due to age or poor health.</p>
 <p>People most likely to be exposed to dangerous cold include those who lack shelter, work outdoors and/or live in homes with malfunctioning or inadequate heat. Seniors, infants, people with chronic cardiovascular or lung conditions, people using alcohol or drugs and people with cognitive impairments or mental health conditions are at increased risk.</p>
-</div>
+
+
+
+                    </div>
                 </div>
 
                 <div class="col-md-8">
@@ -1960,12 +2019,17 @@
 
 
 
-</article><script type="text/javascript" src="https://nychealth.github.io/EH-dataportal/js/accessible-autocomplete.min.js" integrity=""></script>
+</article>
+
+
+
+<script type="text/javascript" src="https://nychealth.github.io/EH-dataportal/js/accessible-autocomplete.min.js" integrity=""></script>
 
 <script type="text/javascript"> 
     
     function populateDropDownList() {          
            var ddlData = document.getElementById("all-data");
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Data Explorer"
@@ -1973,6 +2037,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Active Design"
@@ -1980,6 +2045,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/active-design\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Air Quality"
@@ -1987,6 +2053,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/air-quality\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Alcohol Access and Use"
@@ -1994,6 +2061,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/alcohol-use\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "All Data Sets"
@@ -2001,6 +2069,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/all-data\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Asthma"
@@ -2008,6 +2077,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/asthma\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Asthma triggers at home"
@@ -2015,6 +2085,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/asthma-triggers\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Bed Bugs"
@@ -2022,6 +2093,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/bed-bugs\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Birth Defects"
@@ -2029,6 +2101,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/birth-defects\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Birth Outcomes"
@@ -2036,6 +2109,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/birth-outcomes\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Cancer"
@@ -2043,6 +2117,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/cancer\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Cancers in Children"
@@ -2050,6 +2125,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/cancers-in-children\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Carbon monoxide"
@@ -2057,6 +2133,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/carbon-monoxide-incidents\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Cigarette Smoke"
@@ -2064,6 +2141,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/cigarette-smoke\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Climate"
@@ -2071,6 +2149,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/climate\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Cockroaches"
@@ -2078,6 +2157,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/cockroaches\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Drinking Water Quality"
@@ -2085,6 +2165,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/drinking-water-quality\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Falls Among Older Adults"
@@ -2092,6 +2173,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/falls-among-older-adults\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Health Care"
@@ -2099,6 +2181,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/health-care\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Health Impacts of Air Pollution"
@@ -2106,6 +2189,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/health-impacts-of-air-pollution\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Housing maintenance"
@@ -2113,6 +2197,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/housing-maintenance\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Housing safety"
@@ -2120,6 +2205,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/housing-safety\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Housing stability"
@@ -2127,6 +2213,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/housing-stability\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Lead poisoning"
@@ -2134,6 +2221,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/lead\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Mice and Rats"
@@ -2141,6 +2229,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/mice-and-rats\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Mortality"
@@ -2148,6 +2237,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/mortality\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Noise"
@@ -2155,6 +2245,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/noise\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Overweight"
@@ -2162,6 +2253,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/overweight\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Pesticides"
@@ -2169,6 +2261,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/pesticides\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Physical Activity"
@@ -2176,6 +2269,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/physical-activity\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Restaurant Food Safety"
@@ -2183,6 +2277,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/restaurant-food-safety\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Social and Economic Conditions"
@@ -2190,6 +2285,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/social-and-economic-conditions\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Solid Waste"
@@ -2197,6 +2293,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/solid-waste\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Sugary Drink Consumption"
@@ -2204,6 +2301,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/sugary-drink-consumption\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Transportation-related Injuries"
@@ -2211,6 +2309,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/transportation-related-injuries\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Vector-borne Disease"
@@ -2218,6 +2317,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/vector-borne-disease\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Violence"
@@ -2225,6 +2325,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/violence\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Walking, Driving, and Cycling"
@@ -2232,6 +2333,7 @@
             option.value = '\/EH-dataportal/\/data-explorer\/walking-driving-and-cycling\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Weather-Related Illness"
@@ -2239,13 +2341,16 @@
             option.value = '\/EH-dataportal/\/data-explorer\/weather-related-illness\/'
             
             ddlData.options.add(option);
+           
             var option = document.createElement("OPTION");
             
             option.innerHTML = "Worker Health"
             
             option.value = '\/EH-dataportal/\/data-explorer\/worker-health\/'
             
-            ddlData.options.add(option);};
+            ddlData.options.add(option);
+          
+       };
 
        populateDropDownList(); 
 
@@ -2269,7 +2374,9 @@
 
 
 
-   </script><ul id="results"></ul>
+   </script>
+
+<ul id="results"></ul>
   </main>
   
   <div class="modal" tabindex="-1" role="dialog" id="prototypeModal">
