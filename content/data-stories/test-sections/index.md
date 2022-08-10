@@ -15,7 +15,7 @@ datalibraries: true
 
 <div id="block1">
 
-This is block 1
+**This is block 1**
 
 ## Browse all data sets on the Environment and Health Data Portal.
 
@@ -24,7 +24,7 @@ This is block 1
 
 <div id="block2">
 
-This is block 2
+***This is block 2***
 
 <br>
 
@@ -34,7 +34,14 @@ This is block 2
 
 some stuff under the heading
 
-</div> <!-- id="block2" -->
+<br>
 
+And now a partial w/ shortcode
+
+
+{{< partial "test-partial" >}}
+
+
+</div> <!-- id="block2" -->
 
 {{% /rawhtml %}}
