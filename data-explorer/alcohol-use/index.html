@@ -474,7 +474,7 @@
                     }
                     
 
-                    fetch('https://raw.githubusercontent.com/nychealth/EHDP-data/main/indicators/indicators.json')
+                    fetch('https://raw.githubusercontent.com/nychealth/EHDP-data/"staging"/indicators/indicators.json')
                         .then(response => response.json())
                         .then(data => {
                             indicators = data;
@@ -629,7 +629,7 @@
                     }
 
                     const loadGeo = () => {
-                        const geoUrl = `https://raw.githubusercontent.com/nychealth/EHDP-data/main/geography/GeoLookup_2.csv`; // col named "GeoType"
+                        const geoUrl = `https://raw.githubusercontent.com/nychealth/EHDP-data/staging/geography/GeoLookup_2.csv`; // col named "GeoType"
                         
 
                         aq.loadCSV(geoUrl)
@@ -652,7 +652,7 @@
 
                     const loadData = (indicatorId) => {
                         // Loads data as an arquero table
-                        fetch(`https://raw.githubusercontent.com/nychealth/EHDP-data/main/indicators/data/${indicatorId}.json`)
+                        fetch(`https://raw.githubusercontent.com/nychealth/EHDP-data/staging/indicators/data/${indicatorId}.json`)
                             .then(response => response.json())
                             .then(data => {
 
@@ -921,7 +921,7 @@
                         aqSecondaryMeasureTimes.print({limit: 100})
                         console.log(aqSecondaryMeasureTimes);
 
-                        fetch(`https://raw.githubusercontent.com/nychealth/EHDP-data/main/indicators/data/${disparityIndicatorId}.json`)
+                        fetch(`https://raw.githubusercontent.com/nychealth/EHDP-data/staging/indicators/data/${disparityIndicatorId}.json`)
                             .then(response => response.json())
                             .then(data => {
                                 const povertyData = data.filter(d => d.MeasureID === 221)
@@ -1087,7 +1087,7 @@
                         const filteredSecondaryIndicatorId = filteredSecondaryIndicator[0].IndicatorID;
                             const sortedPrimaryT = aq.from(sortedPrimaryMeasureTimes)
 
-                        fetch(`https://raw.githubusercontent.com/nychealth/EHDP-data/main/indicators/data/${filteredSecondaryIndicatorId}.json`)
+                        fetch(`https://raw.githubusercontent.com/nychealth/EHDP-data/staging/indicators/data/${filteredSecondaryIndicatorId}.json`)
                             .then(response => response.json())
                             .then(data => {
                                 

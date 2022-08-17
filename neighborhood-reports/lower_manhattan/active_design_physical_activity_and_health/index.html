@@ -256,9 +256,7 @@
     </div>
 
 </header>
-<main id="skip-header-target" role="main">
-
-<div class="d-flex flex-column report-header">
+<main id="skip-header-target" role="main"><div class="d-flex flex-column report-header">
 
   
   <div class="container-fluid p-0 d-lg-none">
@@ -360,9 +358,9 @@
             <span class="indicator-short-name">Overweight</span>
         </div>
         <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/main/neighborhoodreports/images/obesityP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/obesityP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
         <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/main/neighborhoodreports/images/obesityP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/obesityP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
         </div>
     </div>
 </button>
@@ -433,7 +431,7 @@
 
             
             
-            "https://raw.githubusercontent.com/nychealth/EHDP-data/main/neighborhoodreports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + report_name + "_data.csv"
         
         ).then(data => {
             
@@ -457,9 +455,9 @@
                 .select(aq.not("end_date"))
                 .objects()
                 
-            console.log("summaryData", summaryData);
             
-            d3.json("https:\/\/nychealth.github.io\/EH-dataportal\/visualizations/spec/summarySpec.json").then(data => {
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
                 
                 summarySpec = data;
 
@@ -488,7 +486,7 @@
 
             var mapData = summaryData;
             
-            d3.json("https:\/\/nychealth.github.io\/EH-dataportal\/visualizations/spec/mapSpec.json").then(data => {
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
                 
                 mapSpec = data;
                 
@@ -523,7 +521,7 @@
                 .dedupe()
                 .objects()
             
-            d3.json("https:\/\/nychealth.github.io\/EH-dataportal\/visualizations/spec/trendSpec.json").then(data => {
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/trendSpec.json").then(data => {
                 
                 
                 
@@ -558,9 +556,9 @@
             <span class="indicator-short-name">Death before 65</span>
         </div>
         <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/main/neighborhoodreports/images/preMorAA_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/preMorAA_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
         <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/main/neighborhoodreports/images/preMorAA_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/preMorAA_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
         </div>
     </div>
 </button>
@@ -631,7 +629,7 @@
 
             
             
-            "https://raw.githubusercontent.com/nychealth/EHDP-data/main/neighborhoodreports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + report_name + "_data.csv"
         
         ).then(data => {
             
@@ -655,9 +653,9 @@
                 .select(aq.not("end_date"))
                 .objects()
                 
-            console.log("summaryData", summaryData);
             
-            d3.json("https:\/\/nychealth.github.io\/EH-dataportal\/visualizations/spec/summarySpec.json").then(data => {
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
                 
                 summarySpec = data;
 
@@ -686,7 +684,7 @@
 
             var mapData = summaryData;
             
-            d3.json("https:\/\/nychealth.github.io\/EH-dataportal\/visualizations/spec/mapSpec.json").then(data => {
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
                 
                 mapSpec = data;
                 
@@ -721,7 +719,7 @@
                 .dedupe()
                 .objects()
             
-            d3.json("https:\/\/nychealth.github.io\/EH-dataportal\/visualizations/spec/trendSpec.json").then(data => {
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/trendSpec.json").then(data => {
                 
                 
                 
@@ -785,9 +783,9 @@
             <span class="indicator-short-name">Park access</span>
         </div>
         <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/main/neighborhoodreports/images/parkDisP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/parkDisP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
         <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/main/neighborhoodreports/images/parkDisP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/parkDisP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
         </div>
     </div>
 </button>
@@ -858,7 +856,7 @@
 
             
             
-            "https://raw.githubusercontent.com/nychealth/EHDP-data/main/neighborhoodreports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + report_name + "_data.csv"
         
         ).then(data => {
             
@@ -882,9 +880,9 @@
                 .select(aq.not("end_date"))
                 .objects()
                 
-            console.log("summaryData", summaryData);
             
-            d3.json("https:\/\/nychealth.github.io\/EH-dataportal\/visualizations/spec/summarySpec.json").then(data => {
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
                 
                 summarySpec = data;
 
@@ -913,7 +911,7 @@
 
             var mapData = summaryData;
             
-            d3.json("https:\/\/nychealth.github.io\/EH-dataportal\/visualizations/spec/mapSpec.json").then(data => {
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
                 
                 mapSpec = data;
                 
@@ -948,7 +946,7 @@
                 .dedupe()
                 .objects()
             
-            d3.json("https:\/\/nychealth.github.io\/EH-dataportal\/visualizations/spec/trendSpec.json").then(data => {
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/trendSpec.json").then(data => {
                 
                 
                 
@@ -983,9 +981,9 @@
             <span class="indicator-short-name">Subway access</span>
         </div>
         <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/main/neighborhoodreports/images/subDistP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/subDistP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
         <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/main/neighborhoodreports/images/subDistP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/subDistP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
         </div>
     </div>
 </button>
@@ -1056,7 +1054,7 @@
 
             
             
-            "https://raw.githubusercontent.com/nychealth/EHDP-data/main/neighborhoodreports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + report_name + "_data.csv"
         
         ).then(data => {
             
@@ -1080,9 +1078,9 @@
                 .select(aq.not("end_date"))
                 .objects()
                 
-            console.log("summaryData", summaryData);
             
-            d3.json("https:\/\/nychealth.github.io\/EH-dataportal\/visualizations/spec/summarySpec.json").then(data => {
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
                 
                 summarySpec = data;
 
@@ -1111,7 +1109,7 @@
 
             var mapData = summaryData;
             
-            d3.json("https:\/\/nychealth.github.io\/EH-dataportal\/visualizations/spec/mapSpec.json").then(data => {
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
                 
                 mapSpec = data;
                 
@@ -1146,7 +1144,7 @@
                 .dedupe()
                 .objects()
             
-            d3.json("https:\/\/nychealth.github.io\/EH-dataportal\/visualizations/spec/trendSpec.json").then(data => {
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/trendSpec.json").then(data => {
                 
                 
                 
@@ -1181,9 +1179,9 @@
             <span class="indicator-short-name">Bike lanes</span>
         </div>
         <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/main/neighborhoodreports/images/bikeLanP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/bikeLanP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
         <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/main/neighborhoodreports/images/bikeLanP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/bikeLanP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
         </div>
     </div>
 </button>
@@ -1254,7 +1252,7 @@
 
             
             
-            "https://raw.githubusercontent.com/nychealth/EHDP-data/main/neighborhoodreports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + report_name + "_data.csv"
         
         ).then(data => {
             
@@ -1278,9 +1276,9 @@
                 .select(aq.not("end_date"))
                 .objects()
                 
-            console.log("summaryData", summaryData);
             
-            d3.json("https:\/\/nychealth.github.io\/EH-dataportal\/visualizations/spec/summarySpec.json").then(data => {
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
                 
                 summarySpec = data;
 
@@ -1309,7 +1307,7 @@
 
             var mapData = summaryData;
             
-            d3.json("https:\/\/nychealth.github.io\/EH-dataportal\/visualizations/spec/mapSpec.json").then(data => {
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
                 
                 mapSpec = data;
                 
@@ -1344,7 +1342,7 @@
                 .dedupe()
                 .objects()
             
-            d3.json("https:\/\/nychealth.github.io\/EH-dataportal\/visualizations/spec/trendSpec.json").then(data => {
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/trendSpec.json").then(data => {
                 
                 
                 
@@ -1379,9 +1377,9 @@
             <span class="indicator-short-name">Sidewalk area</span>
         </div>
         <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/main/neighborhoodreports/images/sidwalkP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/sidwalkP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
         <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/main/neighborhoodreports/images/sidwalkP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/sidwalkP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
         </div>
     </div>
 </button>
@@ -1452,7 +1450,7 @@
 
             
             
-            "https://raw.githubusercontent.com/nychealth/EHDP-data/main/neighborhoodreports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + report_name + "_data.csv"
         
         ).then(data => {
             
@@ -1476,9 +1474,9 @@
                 .select(aq.not("end_date"))
                 .objects()
                 
-            console.log("summaryData", summaryData);
             
-            d3.json("https:\/\/nychealth.github.io\/EH-dataportal\/visualizations/spec/summarySpec.json").then(data => {
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
                 
                 summarySpec = data;
 
@@ -1507,7 +1505,7 @@
 
             var mapData = summaryData;
             
-            d3.json("https:\/\/nychealth.github.io\/EH-dataportal\/visualizations/spec/mapSpec.json").then(data => {
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
                 
                 mapSpec = data;
                 
@@ -1542,7 +1540,7 @@
                 .dedupe()
                 .objects()
             
-            d3.json("https:\/\/nychealth.github.io\/EH-dataportal\/visualizations/spec/trendSpec.json").then(data => {
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/trendSpec.json").then(data => {
                 
                 
                 
@@ -1577,9 +1575,9 @@
             <span class="indicator-short-name">Tree shade</span>
         </div>
         <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/main/neighborhoodreports/images/treeCovP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="worse">Worse</span></div>
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/treeCovP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="worse">Worse</span></div>
         <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/main/neighborhoodreports/images/treeCovP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/treeCovP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
         </div>
     </div>
 </button>
@@ -1650,7 +1648,7 @@
 
             
             
-            "https://raw.githubusercontent.com/nychealth/EHDP-data/main/neighborhoodreports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + report_name + "_data.csv"
         
         ).then(data => {
             
@@ -1674,9 +1672,9 @@
                 .select(aq.not("end_date"))
                 .objects()
                 
-            console.log("summaryData", summaryData);
             
-            d3.json("https:\/\/nychealth.github.io\/EH-dataportal\/visualizations/spec/summarySpec.json").then(data => {
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
                 
                 summarySpec = data;
 
@@ -1705,7 +1703,7 @@
 
             var mapData = summaryData;
             
-            d3.json("https:\/\/nychealth.github.io\/EH-dataportal\/visualizations/spec/mapSpec.json").then(data => {
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
                 
                 mapSpec = data;
                 
@@ -1740,7 +1738,7 @@
                 .dedupe()
                 .objects()
             
-            d3.json("https:\/\/nychealth.github.io\/EH-dataportal\/visualizations/spec/trendSpec.json").then(data => {
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/trendSpec.json").then(data => {
                 
                 
                 
@@ -1804,9 +1802,9 @@
             <span class="indicator-short-name">Poverty</span>
         </div>
         <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/main/neighborhoodreports/images/poveACSP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/poveACSP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
         <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/main/neighborhoodreports/images/poveACSP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/poveACSP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
         </div>
     </div>
 </button>
@@ -1877,7 +1875,7 @@
 
             
             
-            "https://raw.githubusercontent.com/nychealth/EHDP-data/main/neighborhoodreports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + report_name + "_data.csv"
         
         ).then(data => {
             
@@ -1901,9 +1899,9 @@
                 .select(aq.not("end_date"))
                 .objects()
                 
-            console.log("summaryData", summaryData);
             
-            d3.json("https:\/\/nychealth.github.io\/EH-dataportal\/visualizations/spec/summarySpec.json").then(data => {
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
                 
                 summarySpec = data;
 
@@ -1932,7 +1930,7 @@
 
             var mapData = summaryData;
             
-            d3.json("https:\/\/nychealth.github.io\/EH-dataportal\/visualizations/spec/mapSpec.json").then(data => {
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
                 
                 mapSpec = data;
                 
@@ -1967,7 +1965,7 @@
                 .dedupe()
                 .objects()
             
-            d3.json("https:\/\/nychealth.github.io\/EH-dataportal\/visualizations/spec/trendSpec.json").then(data => {
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/trendSpec.json").then(data => {
                 
                 
                 
@@ -2002,9 +2000,9 @@
             <span class="indicator-short-name">Neighborhood safety</span>
         </div>
         <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/main/neighborhoodreports/images/nabSafeP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="worse">Worse</span></div>
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/nabSafeP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="worse">Worse</span></div>
         <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/main/neighborhoodreports/images/nabSafeP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/nabSafeP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
         </div>
     </div>
 </button>
@@ -2075,7 +2073,7 @@
 
             
             
-            "https://raw.githubusercontent.com/nychealth/EHDP-data/main/neighborhoodreports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + report_name + "_data.csv"
         
         ).then(data => {
             
@@ -2099,9 +2097,9 @@
                 .select(aq.not("end_date"))
                 .objects()
                 
-            console.log("summaryData", summaryData);
             
-            d3.json("https:\/\/nychealth.github.io\/EH-dataportal\/visualizations/spec/summarySpec.json").then(data => {
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
                 
                 summarySpec = data;
 
@@ -2130,7 +2128,7 @@
 
             var mapData = summaryData;
             
-            d3.json("https:\/\/nychealth.github.io\/EH-dataportal\/visualizations/spec/mapSpec.json").then(data => {
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
                 
                 mapSpec = data;
                 
@@ -2165,7 +2163,7 @@
                 .dedupe()
                 .objects()
             
-            d3.json("https:\/\/nychealth.github.io\/EH-dataportal\/visualizations/spec/trendSpec.json").then(data => {
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/trendSpec.json").then(data => {
                 
                 
                 
@@ -2200,9 +2198,9 @@
             <span class="indicator-short-name">Mice or rats (outside)</span>
         </div>
         <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/main/neighborhoodreports/images/ratRepoP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="worse">Worse</span></div>
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/ratRepoP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="worse">Worse</span></div>
         <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/main/neighborhoodreports/images/ratRepoP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/ratRepoP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
         </div>
     </div>
 </button>
@@ -2273,7 +2271,7 @@
 
             
             
-            "https://raw.githubusercontent.com/nychealth/EHDP-data/main/neighborhoodreports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + report_name + "_data.csv"
         
         ).then(data => {
             
@@ -2297,9 +2295,9 @@
                 .select(aq.not("end_date"))
                 .objects()
                 
-            console.log("summaryData", summaryData);
             
-            d3.json("https:\/\/nychealth.github.io\/EH-dataportal\/visualizations/spec/summarySpec.json").then(data => {
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
                 
                 summarySpec = data;
 
@@ -2328,7 +2326,7 @@
 
             var mapData = summaryData;
             
-            d3.json("https:\/\/nychealth.github.io\/EH-dataportal\/visualizations/spec/mapSpec.json").then(data => {
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
                 
                 mapSpec = data;
                 
@@ -2363,7 +2361,7 @@
                 .dedupe()
                 .objects()
             
-            d3.json("https:\/\/nychealth.github.io\/EH-dataportal\/visualizations/spec/trendSpec.json").then(data => {
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/trendSpec.json").then(data => {
                 
                 
                 
@@ -2427,9 +2425,9 @@
             <span class="indicator-short-name">Exercise</span>
         </div>
         <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/main/neighborhoodreports/images/recExerP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/recExerP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
         <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/main/neighborhoodreports/images/recExerP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/recExerP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
         </div>
     </div>
 </button>
@@ -2500,7 +2498,7 @@
 
             
             
-            "https://raw.githubusercontent.com/nychealth/EHDP-data/main/neighborhoodreports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + report_name + "_data.csv"
         
         ).then(data => {
             
@@ -2524,9 +2522,9 @@
                 .select(aq.not("end_date"))
                 .objects()
                 
-            console.log("summaryData", summaryData);
             
-            d3.json("https:\/\/nychealth.github.io\/EH-dataportal\/visualizations/spec/summarySpec.json").then(data => {
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
                 
                 summarySpec = data;
 
@@ -2555,7 +2553,7 @@
 
             var mapData = summaryData;
             
-            d3.json("https:\/\/nychealth.github.io\/EH-dataportal\/visualizations/spec/mapSpec.json").then(data => {
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
                 
                 mapSpec = data;
                 
@@ -2590,7 +2588,7 @@
                 .dedupe()
                 .objects()
             
-            d3.json("https:\/\/nychealth.github.io\/EH-dataportal\/visualizations/spec/trendSpec.json").then(data => {
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/trendSpec.json").then(data => {
                 
                 
                 
@@ -2625,9 +2623,9 @@
             <span class="indicator-short-name">Bicycling</span>
         </div>
         <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/main/neighborhoodreports/images/recBikeP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/recBikeP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
         <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/main/neighborhoodreports/images/recBikeP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/recBikeP_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
         </div>
     </div>
 </button>
@@ -2698,7 +2696,7 @@
 
             
             
-            "https://raw.githubusercontent.com/nychealth/EHDP-data/main/neighborhoodreports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + report_name + "_data.csv"
         
         ).then(data => {
             
@@ -2722,9 +2720,9 @@
                 .select(aq.not("end_date"))
                 .objects()
                 
-            console.log("summaryData", summaryData);
             
-            d3.json("https:\/\/nychealth.github.io\/EH-dataportal\/visualizations/spec/summarySpec.json").then(data => {
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
                 
                 summarySpec = data;
 
@@ -2753,7 +2751,7 @@
 
             var mapData = summaryData;
             
-            d3.json("https:\/\/nychealth.github.io\/EH-dataportal\/visualizations/spec/mapSpec.json").then(data => {
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
                 
                 mapSpec = data;
                 
@@ -2788,7 +2786,7 @@
                 .dedupe()
                 .objects()
             
-            d3.json("https:\/\/nychealth.github.io\/EH-dataportal\/visualizations/spec/trendSpec.json").then(data => {
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/trendSpec.json").then(data => {
                 
                 
                 

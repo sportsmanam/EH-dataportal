@@ -322,46 +322,90 @@ href="https://www.worstevictorsnyc.org/evictors-list/">Coalición de Derecho a u
   </div>
 </div>
 
-<script>
-function changeMap(x) {
-    var spec;
-    if (x==0) {
-        spec = "https://raw.githubusercontent.com/nychealth/EHDP-data/main/datastories/housing/mapspec-es/none.vl.json";
-    } else if (x==3) {
-        spec = "https://raw.githubusercontent.com/nychealth/EHDP-data/main/datastories/housing/mapspec-es/three.vl.json"
-    } else if (x==4) {
-        spec = "https://raw.githubusercontent.com/nychealth/EHDP-data/main/datastories/housing/mapspec-es/cockroaches.vl.json"
-    } else if (x==5) {
-        spec = "https://raw.githubusercontent.com/nychealth/EHDP-data/main/datastories/housing/mapspec-es/micerats.vl.json"
-    } else if (x==6) {
-        spec = "https://raw.githubusercontent.com/nychealth/EHDP-data/main/datastories/housing/mapspec-es/cracks.vl.json"
-    } else if (x==7) {
-        spec = "https://raw.githubusercontent.com/nychealth/EHDP-data/main/datastories/housing/mapspec-es/water.vl.json"
-    } else if (x==8) {
-        spec = "https://raw.githubusercontent.com/nychealth/EHDP-data/main/datastories/housing/mapspec-es/broken.vl.json"
-    } else if (x==9) {
-        spec = "https://raw.githubusercontent.com/nychealth/EHDP-data/main/datastories/housing/mapspec-es/breakdown.vl.json"
-    } else if (x==10) {
-        spec = "https://raw.githubusercontent.com/nychealth/EHDP-data/main/datastories/housing/mapspec-es/supplemental.vl.json"
-    } else if (x==11) {
-        spec = "https://raw.githubusercontent.com/nychealth/EHDP-data/main/datastories/housing/mapspec-es/noac.vl.json"
-    } else if (x==12) {
-        spec = "https://raw.githubusercontent.com/nychealth/EHDP-data/main/datastories/housing/mapspec-es/toilet.vl.json"
-    } else {};
+<div id = 'housingmap' style = "width:100%; height: 550px"></div>
 
-    vegaEmbed("#housingmap",spec)
-}
+<script>
+
+    // basic path
+    const repo_branch = "https://raw.githubusercontent.com/nychealth/EHDP-data/staging"
+    const path = "data-stories/housing" // hard-coded for now, but could Hugo paramaterize
+    const trans = "mapspec-es"
+
+    // specific path
+    const csv_path = repo_branch + "/" + path + "/" + "housing-data-story-data.csv"
+    const topo_path = repo_branch + "/geography/PUMA_or_Subborough.topo.json"
+
+    function changeMap(x) {
+
+        var spec;
+
+        if (x == 0) {
+            spec = "none.vl.json"
+
+        } else if (x == 3) {
+            spec = "three.vl.json"
+
+        } else if (x == 4) {
+            spec = "cockroaches.vl.json"
+
+        } else if (x == 5) {
+            spec = "micerats.vl.json"
+
+        } else if (x == 6) {
+            spec = "cracks.vl.json"
+
+        } else if (x == 7) {
+            spec = "water.vl.json"
+
+        } else if (x == 8) {
+            spec = "broken.vl.json"
+
+        } else if (x == 9) {
+            spec = "breakdown.vl.json"
+
+        } else if (x == 10) {
+            spec = "supplemental.vl.json"
+
+        } else if (x == 11) {
+            spec = "noac.vl.json"
+
+        } else if (x == 12) {
+            spec = "toilet.vl.json"
+
+        } else { };
+
+        var spec_path = repo_branch + "/" + path + "/" + trans + "/" + spec;
+
+        buildMap("#housingmap", spec_path, csv_path, topo_path);
+
+    }
+            
+    function buildMap(div, spec, csv, topo) {
+
+        d3.json(spec).then(spec => {
+
+            spec.layer[0].data.url = topo;
+            spec.layer[1].data.url = topo;
+            
+            d3.csv(csv, d3.autoType).then(csv => {
+                
+                vegaEmbed(div, spec).then((res) => {
+
+                    resview = res.view.insert("csv", csv).run();
+                });
+            });
+        });
+    };
+
+    // initialize the map 
+
+    buildMap("#housingmap", repo_branch + "/" + path + "/" + trans + "/" + "three.vl.json", csv_path, topo_path);
+
+
 </script>
 
 
 </p>
-<div id='housingmap' style="width:100%; height: 550px"></div>
-<script type="text/javascript">
-  var spec = 'https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/main\/datastories\/housing\/mapspec-es\/three.vl.json';
-  vegaEmbed('#housingmap', spec).then(function(result) {
-    
-  }).catch(console.error);
-</script>
 <h3 id="quiénes-asumen-la-carga-del-mal-estado-de-la-vivienda">¿Quiénes asumen la carga del mal estado de la vivienda?</h3>
 <p>Estos problemas van más allá de la incomodidad o el desastre. 
 <a href="#disrepaircollapse"
