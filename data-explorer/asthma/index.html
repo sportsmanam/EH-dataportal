@@ -352,6 +352,8 @@
             <script src="../../js/data-explorer/links.js"></script>
 
             <script>
+                    let data_branch = "staging";
+                    let data_repo = "https://raw.githubusercontent.com/nychealth/EHDP-data";
                     let indicators = []; 
                     let defaultIndicatorId;
                     let selectedSummaryYears = [];
@@ -474,7 +476,7 @@
                     }
                     
 
-                    fetch('https://raw.githubusercontent.com/nychealth/EHDP-data/"staging"/indicators/indicators.json')
+                    fetch(data_repo + "/" + data_branch + '/indicators/indicators.json')
                         .then(response => response.json())
                         .then(data => {
                             indicators = data;
