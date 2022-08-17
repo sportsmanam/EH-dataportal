@@ -352,6 +352,8 @@
             <script src="../../js/data-explorer/links.js"></script>
 
             <script>
+                    let data_branch = "prod";
+                    let data_repo = "https://raw.githubusercontent.com/nychealth/EHDP-data";
                     let indicators = []; 
                     let defaultIndicatorId;
                     let selectedSummaryYears = [];
@@ -474,7 +476,7 @@
                     }
                     
 
-                    fetch('https://raw.githubusercontent.com/nychealth/EHDP-data/"prod"/indicators/indicators.json')
+                    fetch(data_repo + "/" + data_branch + '/indicators/indicators.json')
                         .then(response => response.json())
                         .then(data => {
                             indicators = data;
@@ -1800,7 +1802,7 @@
 <h3 id="about-the-data-and-indicators">About the Data and Indicators</h3>
 <p>The <a href="http://www.nyc.gov/html/dep/html/home/home.shtml">New York City Department of Environmental Protection (DEP)</a> regularly samples, analyzes and reports contaminant levels at the source, and in the drinking water distribution system. The data presented here provide summary measures of contaminants in drinking water sampled at many points in the distribution system.</p>
 <p>DBPs are divided into two families: total trihalomethanes (chloroform, bromodichloromethane, dibromochloromethane, and bromoform) and five haloacetic acids (trichloroacetic acid, dichloroacetic acid, monochloroacetic acid, dibromoacetic acid, and monobromoacetic acid). </p>
-<p>| The <a href="http://a816-dohbesp.nyc.gov/IndicatorPublic/Glossary.aspx#MCL">maximum contaminant levels (MCLs)</a> set by EPA are: |  |
+<p>| The maximum contaminant levels (MCLs) set by EPA are: |  |
 | o Arsenic | 10 µg/L |
 | o Nitrate | 10 mg/L |
 | o DBP: Total Trihalomethanes (TTHM) | 80 µg/L |
@@ -2334,11 +2336,10 @@
     <div class='modal-dialog modal-lg modal-dialog-centered' role='document'>
         <div class='modal-content'>
             <div class='modal-header'>
-                <h5 class='modal-title'>Welcome to the new Environment & Health Data Portal. </h5>
+                <h5 class='modal-title'>Welcome to the new Environment & Health Data Portal site. </h5>
             </div>
             <div class='modal-body'>
-                <p>This prototype is a work in progress. That means that not all of the data or information is final.
-                    But, feel free to click around and explore.
+                <p>The site may look different, but a lot of the content is the same on the old site. We hope we've made it easier to find and understand information on the site.
                 </p>
                 <p><strong>Please sign up for our email list</strong>. We will email you every few months with updates,
                     or opportunities to participate in user research. 
@@ -2350,8 +2351,6 @@
         </div>
     </div>
 </div>
-
-
 
 <script src="../../js/conditional-modal.js"></script>
 <footer class="bg-black" id="global-footer" role="contentinfo">

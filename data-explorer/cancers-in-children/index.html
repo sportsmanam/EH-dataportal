@@ -352,6 +352,8 @@
             <script src="../../js/data-explorer/links.js"></script>
 
             <script>
+                    let data_branch = "prod";
+                    let data_repo = "https://raw.githubusercontent.com/nychealth/EHDP-data";
                     let indicators = []; 
                     let defaultIndicatorId;
                     let selectedSummaryYears = [];
@@ -474,7 +476,7 @@
                     }
                     
 
-                    fetch('https://raw.githubusercontent.com/nychealth/EHDP-data/"prod"/indicators/indicators.json')
+                    fetch(data_repo + "/" + data_branch + '/indicators/indicators.json')
                         .then(response => response.json())
                         .then(data => {
                             indicators = data;
@@ -1794,8 +1796,8 @@
                 <div class="col-md-4">
                     <div class="card fs-sm mb-2 topic-text d-none d-md-block">
                         
-                        <p>Cancer begins when cells in a part of the body start to grow out of control. There are many kinds of cancer, but they all start because of out-of-control growth of abnormal cells. Leukemia (cancer of the blood-forming cells) is the most common form of childhood cancer. There are different kinds of childhood leukemia. The most common kinds are <a href="http://a816-dohbesp.nyc.gov/IndicatorPublic/Glossary.aspx#Leukemia">acute lymphocytic leukemia (ALL)</a> and <a href="http://a816-dohbesp.nyc.gov/IndicatorPublic/Glossary.aspx#Leukemia">acute myeloid leukemia (AML)</a>. Brain and other nervous system cancers are the second most common types of childhood cancers. Of all childhood cancer, leukemias and brain and other nervous system cancers account for about 50% of cases among children less than 15 years old.</p>
-<p>This site contains data on total cancers, total leukemias, ALL and AML separately, and brain and other nervous system cancers in children. The data comes from the <a href="http://a816-dohbesp.nyc.gov/IndicatorPublic/Glossary.aspx#NYS_Cancer_Registry">NYS Cancer Registry</a>.</p>
+                        <p>Cancer begins when cells in a part of the body start to grow out of control. There are many kinds of cancer, but they all start because of out-of-control growth of abnormal cells. Leukemia (cancer of the blood-forming cells) is the most common form of childhood cancer. There are different kinds of childhood leukemia. The most common kinds are acute lymphocytic leukemia and acute myeloid leukemia . Brain and other nervous system cancers are the second most common types of childhood cancers. Of all childhood cancer, leukemias and brain and other nervous system cancers account for about 50% of cases among children less than 15 years old.</p>
+<p>This site contains data on total cancers, total leukemias, ALL and AML separately, and brain and other nervous system cancers in children. The data comes from the <a href="https://www.health.ny.gov/statistics/cancer/registry/">NYS Cancer Registry</a>.</p>
 <h3 id="childhood-cancer-and-the-environment">Childhood Cancer and the Environment</h3>
 <p>The causes of most childhood cancer are unknown. It is especially difficult to identify environmental factors related to childhood cancers because - like adult cancer - they are likely to be the result of a mix of genetic, environmental, and behavioral causes, and not just one factor by itself. Exposures to the parent, the fetus in the womb, or the child after birth may all play a role. Some risk factors that explain a small percentage of cases include:</p>
 <ul>
@@ -2333,11 +2335,10 @@
     <div class='modal-dialog modal-lg modal-dialog-centered' role='document'>
         <div class='modal-content'>
             <div class='modal-header'>
-                <h5 class='modal-title'>Welcome to the new Environment & Health Data Portal. </h5>
+                <h5 class='modal-title'>Welcome to the new Environment & Health Data Portal site. </h5>
             </div>
             <div class='modal-body'>
-                <p>This prototype is a work in progress. That means that not all of the data or information is final.
-                    But, feel free to click around and explore.
+                <p>The site may look different, but a lot of the content is the same on the old site. We hope we've made it easier to find and understand information on the site.
                 </p>
                 <p><strong>Please sign up for our email list</strong>. We will email you every few months with updates,
                     or opportunities to participate in user research. 
@@ -2349,8 +2350,6 @@
         </div>
     </div>
 </div>
-
-
 
 <script src="../../js/conditional-modal.js"></script>
 <footer class="bg-black" id="global-footer" role="contentinfo">
