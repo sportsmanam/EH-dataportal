@@ -9717,6 +9717,15 @@ th.tablehead {
   padding-left: 0px;
   list-style-type: none; }
 
+.cardshadow {
+  box-shadow: 2px 5px 3px #bebebe;
+  margin-bottom: 5px; }
+
+.home-label {
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #484848; }
+
 table .group td {
   background-color: #F0F0F0;
   color: #669DB1;

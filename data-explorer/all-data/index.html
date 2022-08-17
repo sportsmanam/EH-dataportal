@@ -309,7 +309,6 @@
                 .select(aq.not("value"))
                 .unroll("IndicatorID");
                 
-                
                 var subtopicIndicatorsTable = arqTable.objects();
                 
                 
@@ -361,7 +360,7 @@
             
             
             
-            d3.json('https://raw.githubusercontent.com/nychealth/EHDP-data/main/indicators/indicators.json').then(function (data) {
+            d3.json('https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/indicators/indicators.json').then(function (data) {
                 indicators = data;
                 loopThroughIndicators() 
                 

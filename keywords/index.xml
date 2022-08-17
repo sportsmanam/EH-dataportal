@@ -6,22 +6,76 @@
     <description>Recent content in Keywords on Environment &amp; Health Data Portal</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 20 Apr 2022 08:33:22 -0400</lastBuildDate><atom:link href="https://nychealth.github.io/EH-dataportal/keywords/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 20 Apr 2022 11:14:56 -0400</lastBuildDate><atom:link href="https://nychealth.github.io/EH-dataportal/keywords/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>air quality</title>
+      <link>https://nychealth.github.io/EH-dataportal/keywords/air-quality/</link>
+      <pubDate>Wed, 20 Apr 2022 11:14:56 -0400</pubDate>
+      
+      <guid>https://nychealth.github.io/EH-dataportal/keywords/air-quality/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>emissions</title>
+      <link>https://nychealth.github.io/EH-dataportal/keywords/emissions/</link>
+      <pubDate>Wed, 20 Apr 2022 11:14:56 -0400</pubDate>
+      
+      <guid>https://nychealth.github.io/EH-dataportal/keywords/emissions/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>exhaust</title>
+      <link>https://nychealth.github.io/EH-dataportal/keywords/exhaust/</link>
+      <pubDate>Wed, 20 Apr 2022 11:14:56 -0400</pubDate>
+      
+      <guid>https://nychealth.github.io/EH-dataportal/keywords/exhaust/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>monitoring</title>
+      <link>https://nychealth.github.io/EH-dataportal/keywords/monitoring/</link>
+      <pubDate>Wed, 20 Apr 2022 11:14:56 -0400</pubDate>
+      
+      <guid>https://nychealth.github.io/EH-dataportal/keywords/monitoring/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pm2.5</title>
+      <link>https://nychealth.github.io/EH-dataportal/keywords/pm2.5/</link>
+      <pubDate>Wed, 20 Apr 2022 11:14:56 -0400</pubDate>
+      
+      <guid>https://nychealth.github.io/EH-dataportal/keywords/pm2.5/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pollutants</title>
+      <link>https://nychealth.github.io/EH-dataportal/keywords/pollutants/</link>
+      <pubDate>Wed, 20 Apr 2022 11:14:56 -0400</pubDate>
+      
+      <guid>https://nychealth.github.io/EH-dataportal/keywords/pollutants/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>report</title>
+      <link>https://nychealth.github.io/EH-dataportal/keywords/report/</link>
+      <pubDate>Wed, 20 Apr 2022 11:14:56 -0400</pubDate>
+      
+      <guid>https://nychealth.github.io/EH-dataportal/keywords/report/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>air pollution</title>
       <link>https://nychealth.github.io/EH-dataportal/keywords/air-pollution/</link>
       <pubDate>Wed, 20 Apr 2022 08:33:22 -0400</pubDate>
       
       <guid>https://nychealth.github.io/EH-dataportal/keywords/air-pollution/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>air quality</title>
-      <link>https://nychealth.github.io/EH-dataportal/keywords/air-quality/</link>
-      <pubDate>Wed, 20 Apr 2022 08:33:22 -0400</pubDate>
-      
-      <guid>https://nychealth.github.io/EH-dataportal/keywords/air-quality/</guid>
       <description></description>
     </item>
     
@@ -125,24 +179,6 @@
     </item>
     
     <item>
-      <title>emissions</title>
-      <link>https://nychealth.github.io/EH-dataportal/keywords/emissions/</link>
-      <pubDate>Tue, 22 Mar 2022 19:30:55 -0400</pubDate>
-      
-      <guid>https://nychealth.github.io/EH-dataportal/keywords/emissions/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>exhaust</title>
-      <link>https://nychealth.github.io/EH-dataportal/keywords/exhaust/</link>
-      <pubDate>Tue, 22 Mar 2022 19:30:55 -0400</pubDate>
-      
-      <guid>https://nychealth.github.io/EH-dataportal/keywords/exhaust/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>interactive</title>
       <link>https://nychealth.github.io/EH-dataportal/keywords/interactive/</link>
       <pubDate>Tue, 22 Mar 2022 19:30:55 -0400</pubDate>
@@ -220,15 +256,6 @@
       <pubDate>Mon, 10 Jan 2022 12:34:38 -0400</pubDate>
       
       <guid>https://nychealth.github.io/EH-dataportal/keywords/weather/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>pm2.5</title>
-      <link>https://nychealth.github.io/EH-dataportal/keywords/pm2.5/</link>
-      <pubDate>Mon, 04 Oct 2021 12:32:15 -0400</pubDate>
-      
-      <guid>https://nychealth.github.io/EH-dataportal/keywords/pm2.5/</guid>
       <description></description>
     </item>
     
@@ -584,6 +611,33 @@
     </item>
     
     <item>
+      <title>disparities</title>
+      <link>https://nychealth.github.io/EH-dataportal/keywords/disparities/</link>
+      <pubDate>Wed, 08 Sep 2021 11:14:56 -0400</pubDate>
+      
+      <guid>https://nychealth.github.io/EH-dataportal/keywords/disparities/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>summer</title>
+      <link>https://nychealth.github.io/EH-dataportal/keywords/summer/</link>
+      <pubDate>Wed, 08 Sep 2021 11:14:56 -0400</pubDate>
+      
+      <guid>https://nychealth.github.io/EH-dataportal/keywords/summer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>temperature</title>
+      <link>https://nychealth.github.io/EH-dataportal/keywords/temperature/</link>
+      <pubDate>Wed, 08 Sep 2021 11:14:56 -0400</pubDate>
+      
+      <guid>https://nychealth.github.io/EH-dataportal/keywords/temperature/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>ED visit</title>
       <link>https://nychealth.github.io/EH-dataportal/keywords/ed-visit/</link>
       <pubDate>Mon, 30 Aug 2021 11:51:01 -0400</pubDate>
@@ -634,15 +688,6 @@
       <pubDate>Mon, 30 Aug 2021 11:51:01 -0400</pubDate>
       
       <guid>https://nychealth.github.io/EH-dataportal/keywords/hot-weather/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>disparities</title>
-      <link>https://nychealth.github.io/EH-dataportal/keywords/disparities/</link>
-      <pubDate>Wed, 25 Aug 2021 10:49:05 -0400</pubDate>
-      
-      <guid>https://nychealth.github.io/EH-dataportal/keywords/disparities/</guid>
       <description></description>
     </item>
     
@@ -733,24 +778,6 @@
       <pubDate>Fri, 20 Aug 2021 12:52:43 -0400</pubDate>
       
       <guid>https://nychealth.github.io/EH-dataportal/keywords/parks/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>summer</title>
-      <link>https://nychealth.github.io/EH-dataportal/keywords/summer/</link>
-      <pubDate>Fri, 20 Aug 2021 12:52:43 -0400</pubDate>
-      
-      <guid>https://nychealth.github.io/EH-dataportal/keywords/summer/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>temperature</title>
-      <link>https://nychealth.github.io/EH-dataportal/keywords/temperature/</link>
-      <pubDate>Fri, 20 Aug 2021 12:52:43 -0400</pubDate>
-      
-      <guid>https://nychealth.github.io/EH-dataportal/keywords/temperature/</guid>
       <description></description>
     </item>
     
@@ -1264,15 +1291,6 @@
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
       <guid>https://nychealth.github.io/EH-dataportal/keywords/poisoning/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>pollutants</title>
-      <link>https://nychealth.github.io/EH-dataportal/keywords/pollutants/</link>
-      <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
-      
-      <guid>https://nychealth.github.io/EH-dataportal/keywords/pollutants/</guid>
       <description></description>
     </item>
     

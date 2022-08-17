@@ -219,98 +219,132 @@
 <p>四个PUMA区域是由两个CD区域合二为一。请注意South Bronx区的两个CD区域是如何合并成一个 PUMA区域。</p>
 <p>每个PUMA都细分为社区制表区（NTA），每个NTA进一步细分为人口普查区。</p>
 
-<input type="radio" name="mainRadioGroup" value="CD" id="ucd" checked> <label for="ucd">社区单元</label> &nbsp;&nbsp;
-<input type="radio" name="mainRadioGroup" value="PUMA" id="upuma"/> <label for="upuma">PUMA</label> &nbsp;&nbsp;
+
+<input type="radio" name="mainRadioGroup" value="cd" id="ucd" checked> <label for="ucd">社区单元</label> &nbsp;&nbsp;
+<input type="radio" name="mainRadioGroup" value="puma" id="upuma"/> <label for="upuma">PUMA</label> &nbsp;&nbsp;
 <input type="radio" name="mainRadioGroup" value="nta" id="unta"> <label for="unta">NTA</label>
 
+<div id = 'map1' style = "width:100%; height: 550px"></div>
+
 <script>
-let cdSpec = "mapcd.vl.json";
-let pumaSpec = "mappuma.vl.json";
-let ntaSpec = "mapnta.vl.json";
 
-// this code listens to the form with map chooser; must run after DOM loads
-window.onload =listenRadios;
+    var repo_branch = "https://raw.githubusercontent.com/nychealth/EHDP-data/prod"
+    var path = "data-stories/geographies" // hard-coded for now, but could Hugo paramaterize
+    var trans = "mapspec-en"
+        
+    let cd_spec   = repo_branch + "/" + path + "/" + trans + "/" + "mapcd.vl.json";
+    let puma_spec = repo_branch + "/" + path + "/" + trans + "/" + "mappuma.vl.json";
+    let nta_spec  = repo_branch + "/" + path + "/" + trans + "/" + "mapnta.vl.json";
 
-function listenRadios() {
-  radios = document.querySelectorAll('input[type=radio][name="mainRadioGroup"]');
-  radios.forEach(radio => radio.addEventListener('change', () => {
-    if (radio.value==='CD') {
-        buildMap(cdSpec);
-        console.log('cd chosen')
-        }
-    else if (radio.value==='nta') {
-        buildMap(ntaSpec);
-        console.log('nta chosen')
-        }
-    else {
-        buildMap(pumaSpec);
-        console.log('puma chosen!')
-        }  // for if chosenField is PUMA
-    ;
-  }));
-};
+    let cd_csv   = repo_branch + "/" + path + "/" + "CD_DATA.csv"
+    let puma_csv = repo_branch + "/" + path + "/" + "PUMA_DATA.csv"
+    let nta_csv  = repo_branch + "/" + path + "/" + "NTA_DATA.csv"    
 
-function buildMap(spec) {
-    vegaEmbed("#map1",spec);
-}
+    let cd_topo   = repo_branch + "/" + "geography" + "/" + "CD.topo.json"
+    let puma_topo = repo_branch + "/" + "geography" + "/" + "PUMA_or_Subborough.topo.json"
+    let nta_topo  = repo_branch + "/" + "geography" + "/" + "NTA.topo.json"    
+
+    // this code listens to the form with map chooser; must run after DOM loads
+    window.onload = main_radio_listener;
+
+    function main_radio_listener() {
+        
+        radios = document.querySelectorAll('input[type=radio][name="mainRadioGroup"]');
+        radios.forEach(radio => radio.addEventListener('change', () => {
+
+            if (radio.value === 'cd') {
+                buildMap("#map1", cd_spec, cd_csv, cd_topo);
+            }
+            else if (radio.value === 'nta') {
+                buildMap("#map1", nta_spec, nta_csv, nta_topo);
+            }
+            else {
+                buildMap("#map1", puma_spec, puma_csv, puma_topo);
+            };
+            
+        }));
+    };
+
+    // function for building the map
+
+    function buildMap(div, spec, csv, topo) {
+
+        d3.json(spec).then(spec => {
+
+            spec.layer[0].data.url = topo;
+            spec.layer[1].data.url = topo;
+            
+            d3.csv(csv, d3.autoType).then(csv => {
+                
+                vegaEmbed(div, spec).then((res) => {
+
+                    resview = res.view.insert("csv", csv).run();
+
+                });
+            });
+        });
+    };
+
+    // initialize the map
+
+    buildMap("#map1", cd_spec, cd_csv, cd_topo);
+
 
 </script>
 
 
-<div id='map1' style="width:100%; height: 550px"></div>
-<script type="text/javascript">
-  var spec = 'mapcd.vl.json';
-  vegaEmbed('#map1', spec).then(function(result) {
-    
-  }).catch(console.error);
-</script>
 <h4 id="联合医院基金社区">联合医院基金社区</h4>
 <p>联合医院基金社区（United Hospital Fund neighborhoods，UHF）的边界基于邮编。这个地理单位是由卫生局、联合医院基金社区和其他市政机构在20世纪80年代创建的。它们设计用于健康研究，类似于纽约市的社区单元。</p>
 <p>健康数据（例如某人的住院记录或对一项调查的回复）通常包括一个人的邮编。它是行政管理数据中最容易获得的地理信息。这也是大多数人在回答调查时都知道并可以提供的社区指代</p>
 <p>为了保护隐私，我们经常捆绑（或汇总）来自一个更大区域的数据，因此我们需要一组由邮编组成的社区方案：UHF。通过邮编收集数据，然后“汇总”到UHF社区，几十年来这种方案一直用于健康研究。我们的调查方法（如社区健康调查）旨在包括来自每个UHF社区的足够多的人口，以便所有纽约人都有一个“代表性样本”，这样我们就能够以统计可信度高的方式对比社区。通常，我们使用UHF42社区方案，将纽约市分为42个社区。不过，有时我们会使用UHF34社区方案——通过将一些社区组合在一起，我们可以提高调查的统计效力。</p>
 <p>在下面的地图中，请注意位于South Bronx区的三个UHF42社区如何合并为一个UHF34社区，以及UHF社区如何将邮编（或更准确地说，邮编制表区域）作为其基础单位.</p>
 
-  <input type="radio" name="uhfRadioGroup" value="42" id="42" checked> <label for="42">UHF42</label> &nbsp;&nbsp;
-  <input type="radio" name="uhfRadioGroup" value="34" id="34"/> <label for="34">UHF34</label> &nbsp;&nbsp;
-  <input type="radio" name="uhfRadioGroup" value="zip" id="zip"> <label for="zip">邮编</label>
+
+<input type="radio" name="uhfRadioGroup" value="42" id="42" checked> <label for="42">UHF42</label> &nbsp;&nbsp;
+<input type="radio" name="uhfRadioGroup" value="34" id="34"/> <label for="34">UHF34</label> &nbsp;&nbsp;
+<input type="radio" name="uhfRadioGroup" value="zip" id="zip"> <label for="zip">邮编</label>
+
+<div id = 'map2' style = "width:100%; height: 550px"></div>
 
 <script>
-let uhf42Spec = "map42.vl.json";
-let uhf34Spec = "map34.vl.json";
-let zipSpec = "mapZIP.vl.json";
 
-function listenButtons() {
-  buttons = document.querySelectorAll('input[type=radio][name="uhfRadioGroup"]');
-  buttons.forEach(button => button.addEventListener('change', () => {
-    if (button.value==='42') {
-        buildMap2(uhf42Spec);
-        }
-    else if (button.value==='34') {
-        buildMap2(uhf34Spec);
-        }
-    else {
-        buildMap2(zipSpec);
-        }  // for if chosenField is PUMA
-    ;
-  }));
-};
+    // function for changing map
 
-listenButtons();
+    let uhf42_spec = repo_branch + "/" + path + "/" + trans + "/" + "map42.vl.json";
+    let uhf34_spec = repo_branch + "/" + path + "/" + trans + "/" + "map34.vl.json";
+    let zip_spec   = repo_branch + "/" + path + "/" + trans + "/" + "mapmodzcta.vl.json";
 
-function buildMap2(spec) {
-    vegaEmbed("#map2",spec);
-}
+    let uhf42_csv = repo_branch + "/" + path + "/" + "42_DATA.csv"
+    let uhf34_csv = repo_branch + "/" + path + "/" + "34_DATA.csv"
+    let zip_csv   = repo_branch + "/" + path + "/" + "MODZCTA_DATA.csv"
+
+    let uhf42_topo = repo_branch + "/" + "geography" + "/" + "UHF42.topo.json"
+    let uhf34_topo = repo_branch + "/" + "geography" + "/" + "UHF34.topo.json"
+    let zip_topo   = repo_branch + "/" + "geography" + "/" + "MODZCTA.topo.json"    
+
+    function uhf_radio_listener() {
+
+        buttons = document.querySelectorAll('input[type=radio][name="uhfRadioGroup"]');
+        buttons.forEach(button => button.addEventListener('change', () => {
+
+            if (button.value === '42') {
+                buildMap("#map2", uhf42_spec, uhf42_csv, uhf42_topo);
+            }
+            else if (button.value === '34') {
+                buildMap("#map2", uhf34_spec, uhf34_csv, uhf34_topo);
+            }
+            else {
+                buildMap("#map2", zip_spec, zip_csv, zip_topo);
+            };
+        }));
+    };
+
+    uhf_radio_listener();
+    buildMap("#map2", uhf42_spec, uhf42_csv, uhf42_topo);
 
 </script>
 
 
-<div id='map2' style="width:100%; height: 550px"></div>
-<script type="text/javascript">
-  var spec = 'map42.vl.json';
-  vegaEmbed('#map2', spec).then(function(result) {
-    
-  }).catch(console.error);
-</script>
 <h3 id="当边界重叠时如何选择">当边界重叠时如何选择？</h3>
 <p>这些不同的社区边界会使事情变得令人困惑。例如，假设您住在Ditmas Park，并且您想将一些健康数据带到您的社区委员会的一场会议上。Ditmas Park是位于Flatbush/Midwood的社区单元14的一部分。但CD14跨越两个不同的UHF社区。</p>
 <p><a href="https://a816-dohbesp.nyc.gov/IndicatorPublic/CommunityDistrict.aspx">我们有一个工具可以帮助您查看重叠和差异</a>，以便您可以选择使用哪种社区方案进行报告，但它仍然提出了一个难题：您会带哪些社区的数据参加您的社区委员会会议？</p>
