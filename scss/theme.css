@@ -9726,6 +9726,11 @@ th.tablehead {
   text-transform: uppercase;
   color: #484848; }
 
+.borderbox {
+  box-shadow: 2px 5px 3px #bebebe;
+  border: 1px solid #bebebe;
+  border-radius: 5px; }
+
 table .group td {
   background-color: #F0F0F0;
   color: #669DB1;
