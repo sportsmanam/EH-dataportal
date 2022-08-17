@@ -1,22 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml"><url>
-    <loc>https://nychealth.github.io/EH-dataportal/keywords/air-pollution/</loc>
-    <lastmod>2022-04-20T08:33:22-04:00</lastmod><xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https://nychealth.github.io/EH-dataportal/es/keywords/air-pollution/"
-                /><xhtml:link
-                rel="alternate"
-                hreflang="cn"
-                href="https://nychealth.github.io/EH-dataportal/cn/keywords/air-pollution/"
-                /><xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://nychealth.github.io/EH-dataportal/keywords/air-pollution/"
-                /></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/keywords/air-quality/</loc>
-    <lastmod>2022-04-20T08:33:22-04:00</lastmod><xhtml:link
+    <lastmod>2022-04-20T11:14:56-04:00</lastmod><xhtml:link
                 rel="alternate"
                 hreflang="es"
                 href="https://nychealth.github.io/EH-dataportal/es/keywords/air-quality/"
@@ -30,7 +16,7 @@
                 href="https://nychealth.github.io/EH-dataportal/keywords/air-quality/"
                 /></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/categories/airquality/</loc>
-    <lastmod>2022-04-20T08:33:22-04:00</lastmod><xhtml:link
+    <lastmod>2022-04-20T11:14:56-04:00</lastmod><xhtml:link
                 rel="alternate"
                 hreflang="es"
                 href="https://nychealth.github.io/EH-dataportal/es/categories/airquality/"
@@ -42,6 +28,76 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://nychealth.github.io/EH-dataportal/categories/airquality/"
+                /></url><url>
+    <loc>https://nychealth.github.io/EH-dataportal/categories/</loc>
+    <lastmod>2022-04-20T11:14:56-04:00</lastmod><xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://nychealth.github.io/EH-dataportal/es/categories/"
+                /><xhtml:link
+                rel="alternate"
+                hreflang="cn"
+                href="https://nychealth.github.io/EH-dataportal/cn/categories/"
+                /><xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://nychealth.github.io/EH-dataportal/categories/"
+                /></url><url>
+    <loc>https://nychealth.github.io/EH-dataportal/keywords/emissions/</loc>
+    <lastmod>2022-04-20T11:14:56-04:00</lastmod></url><url>
+    <loc>https://nychealth.github.io/EH-dataportal/</loc>
+    <lastmod>2022-04-20T11:14:56-04:00</lastmod><xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://nychealth.github.io/EH-dataportal/es/"
+                /><xhtml:link
+                rel="alternate"
+                hreflang="cn"
+                href="https://nychealth.github.io/EH-dataportal/cn/"
+                /><xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://nychealth.github.io/EH-dataportal/"
+                /></url><url>
+    <loc>https://nychealth.github.io/EH-dataportal/keywords/exhaust/</loc>
+    <lastmod>2022-04-20T11:14:56-04:00</lastmod></url><url>
+    <loc>https://nychealth.github.io/EH-dataportal/keywords/</loc>
+    <lastmod>2022-04-20T11:14:56-04:00</lastmod><xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://nychealth.github.io/EH-dataportal/es/keywords/"
+                /><xhtml:link
+                rel="alternate"
+                hreflang="cn"
+                href="https://nychealth.github.io/EH-dataportal/cn/keywords/"
+                /><xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://nychealth.github.io/EH-dataportal/keywords/"
+                /></url><url>
+    <loc>https://nychealth.github.io/EH-dataportal/keywords/monitoring/</loc>
+    <lastmod>2022-04-20T11:14:56-04:00</lastmod></url><url>
+    <loc>https://nychealth.github.io/EH-dataportal/keywords/pm2.5/</loc>
+    <lastmod>2022-04-20T11:14:56-04:00</lastmod></url><url>
+    <loc>https://nychealth.github.io/EH-dataportal/keywords/pollutants/</loc>
+    <lastmod>2022-04-20T11:14:56-04:00</lastmod></url><url>
+    <loc>https://nychealth.github.io/EH-dataportal/keywords/report/</loc>
+    <lastmod>2022-04-20T11:14:56-04:00</lastmod></url><url>
+    <loc>https://nychealth.github.io/EH-dataportal/key-topics/airquality/nyccas/</loc>
+    <lastmod>2022-04-20T11:14:56-04:00</lastmod></url><url>
+    <loc>https://nychealth.github.io/EH-dataportal/keywords/air-pollution/</loc>
+    <lastmod>2022-04-20T08:33:22-04:00</lastmod><xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://nychealth.github.io/EH-dataportal/es/keywords/air-pollution/"
+                /><xhtml:link
+                rel="alternate"
+                hreflang="cn"
+                href="https://nychealth.github.io/EH-dataportal/cn/keywords/air-pollution/"
+                /><xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://nychealth.github.io/EH-dataportal/keywords/air-pollution/"
                 /></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/data-stories/aqcovid2/</loc>
     <lastmod>2022-04-20T08:33:22-04:00</lastmod></url><url>
@@ -58,20 +114,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://nychealth.github.io/EH-dataportal/keywords/breathing/"
-                /></url><url>
-    <loc>https://nychealth.github.io/EH-dataportal/categories/</loc>
-    <lastmod>2022-04-20T08:33:22-04:00</lastmod><xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https://nychealth.github.io/EH-dataportal/es/categories/"
-                /><xhtml:link
-                rel="alternate"
-                hreflang="cn"
-                href="https://nychealth.github.io/EH-dataportal/cn/categories/"
-                /><xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://nychealth.github.io/EH-dataportal/categories/"
                 /></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/keywords/coronavirus/</loc>
     <lastmod>2022-04-20T08:33:22-04:00</lastmod><xhtml:link
@@ -115,36 +157,8 @@
                 hreflang="en"
                 href="https://nychealth.github.io/EH-dataportal/keywords/covid-19/"
                 /></url><url>
-    <loc>https://nychealth.github.io/EH-dataportal/</loc>
-    <lastmod>2022-04-20T08:33:22-04:00</lastmod><xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https://nychealth.github.io/EH-dataportal/es/"
-                /><xhtml:link
-                rel="alternate"
-                hreflang="cn"
-                href="https://nychealth.github.io/EH-dataportal/cn/"
-                /><xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://nychealth.github.io/EH-dataportal/"
-                /></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/categories/foodanddrink/</loc>
     <lastmod>2022-04-20T08:33:22-04:00</lastmod></url><url>
-    <loc>https://nychealth.github.io/EH-dataportal/keywords/</loc>
-    <lastmod>2022-04-20T08:33:22-04:00</lastmod><xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https://nychealth.github.io/EH-dataportal/es/keywords/"
-                /><xhtml:link
-                rel="alternate"
-                hreflang="cn"
-                href="https://nychealth.github.io/EH-dataportal/cn/keywords/"
-                /><xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://nychealth.github.io/EH-dataportal/keywords/"
-                /></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/keywords/lungs/</loc>
     <lastmod>2022-04-20T08:33:22-04:00</lastmod><xhtml:link
                 rel="alternate"
@@ -208,10 +222,6 @@
     <loc>https://nychealth.github.io/EH-dataportal/keywords/cars/</loc>
     <lastmod>2022-03-22T19:30:55-04:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/keywords/data/</loc>
-    <lastmod>2022-03-22T19:30:55-04:00</lastmod></url><url>
-    <loc>https://nychealth.github.io/EH-dataportal/keywords/emissions/</loc>
-    <lastmod>2022-03-22T19:30:55-04:00</lastmod></url><url>
-    <loc>https://nychealth.github.io/EH-dataportal/keywords/exhaust/</loc>
     <lastmod>2022-03-22T19:30:55-04:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/keywords/interactive/</loc>
     <lastmod>2022-03-22T19:30:55-04:00</lastmod></url><url>
@@ -298,8 +308,6 @@
     <loc>https://nychealth.github.io/EH-dataportal/data-explorer/</loc>
     <lastmod>2021-10-07T09:34:04-04:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/key-topics/airquality/</loc>
-    <lastmod>2021-10-04T12:32:15-04:00</lastmod></url><url>
-    <loc>https://nychealth.github.io/EH-dataportal/keywords/pm2.5/</loc>
     <lastmod>2021-10-04T12:32:15-04:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/keywords/pollution/</loc>
     <lastmod>2021-10-04T12:32:15-04:00</lastmod></url><url>
@@ -499,6 +507,16 @@
     <lastmod>2021-09-30T07:58:01-04:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/key-topics/</loc>
     <lastmod>2021-09-10T13:58:59-04:00</lastmod></url><url>
+    <loc>https://nychealth.github.io/EH-dataportal/key-topics/climatehealth/heat-report/</loc>
+    <lastmod>2021-09-08T11:14:56-04:00</lastmod></url><url>
+    <loc>https://nychealth.github.io/EH-dataportal/keywords/disparities/</loc>
+    <lastmod>2021-09-08T11:14:56-04:00</lastmod></url><url>
+    <loc>https://nychealth.github.io/EH-dataportal/categories/outcomes/</loc>
+    <lastmod>2021-09-08T11:14:56-04:00</lastmod></url><url>
+    <loc>https://nychealth.github.io/EH-dataportal/keywords/summer/</loc>
+    <lastmod>2021-09-08T11:14:56-04:00</lastmod></url><url>
+    <loc>https://nychealth.github.io/EH-dataportal/keywords/temperature/</loc>
+    <lastmod>2021-09-08T11:14:56-04:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/data-stories/</loc>
     <lastmod>2021-09-02T08:49:22-04:00</lastmod><xhtml:link
                 rel="alternate"
@@ -539,8 +557,6 @@
     <lastmod>2021-08-30T11:51:01-04:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/key-topics/climatehealth/syndromic/</loc>
     <lastmod>2021-08-30T11:51:01-04:00</lastmod></url><url>
-    <loc>https://nychealth.github.io/EH-dataportal/keywords/disparities/</loc>
-    <lastmod>2021-08-25T10:49:05-04:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/keywords/disparity/</loc>
     <lastmod>2021-08-25T10:49:05-04:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/keywords/health-disparities/</loc>
@@ -578,10 +594,6 @@
                 href="https://nychealth.github.io/EH-dataportal/categories/neighborhoods/"
                 /></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/keywords/parks/</loc>
-    <lastmod>2021-08-20T12:52:43-04:00</lastmod></url><url>
-    <loc>https://nychealth.github.io/EH-dataportal/keywords/summer/</loc>
-    <lastmod>2021-08-20T12:52:43-04:00</lastmod></url><url>
-    <loc>https://nychealth.github.io/EH-dataportal/keywords/temperature/</loc>
     <lastmod>2021-08-20T12:52:43-04:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/data-stories/localtemp/</loc>
     <lastmod>2021-08-20T12:52:43-04:00</lastmod></url><url>
@@ -800,8 +812,6 @@
     <loc>https://nychealth.github.io/EH-dataportal/data-explorer/physical-activity/</loc>
     <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/keywords/poisoning/</loc>
-    <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>
-    <loc>https://nychealth.github.io/EH-dataportal/keywords/pollutants/</loc>
     <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/keywords/pregnancy/</loc>
     <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>

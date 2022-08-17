@@ -3216,6 +3216,26 @@
         "seo_title": "NYC Community Air Survey Annual Report.",
         "seo_description": "Data, findings, and more.",
         "href": "/eh-dataportal/key-topics/airquality/nyccas",
+        "content": "Neighborhood Air Quality 20082020 In 2007 the Health Department established the New York City Community Air Survey NYCCAS the largest ongoing urban air monitoring program of any US city NYCCAS which began collecting data in December 2008 is a collaboration between the Health Department and Queens College of the City University of New York It provides data to Help inform OneNYC the Citys sustainability plan Track changes in air quality over time Estimate exposures for health research Inform the public about local topics Read the NYCCAS annual report herehttpsnyccascityofnewyorkusnyccas2022report3 "
+    },
+    {
+        "title": "The New York City Community Air Survey",
+        "tags": null,
+        "categories": [
+            "airquality"
+        ],
+        "keywords": [
+            "air quality",
+            "report",
+            "monitoring",
+            "emissions",
+            "exhaust",
+            "pm2.5",
+            "pollutants"
+        ],
+        "seo_title": "NYC Community Air Survey Annual Report.",
+        "seo_description": "Data, findings, and more.",
+        "href": "/eh-dataportal/key-topics/airquality/nyccas/report",
         "content": " Neighborhood Air Quality 20082020 In 2007 the New York City Department of Health and Mental Hygiene Health Department established the New York City Community Air Survey NYCCAS the largest ongoing urban air monitoring program of any US City NYCCAS which began collecting data in December 2008 is a collaboration between the Health Department and Queens College of the City University of New York and provides data to Help inform OneNYC the Citys sustainability plan Track changes in air quality over time Estimate exposures for health research Inform the public about local topics such as air quality in the time of COVID19 recent air quality improvements carfree zones changes in the sources of air pollution unique studies conducted in New York City and differences in air quality and health impacts across NYC neighborhoods This report Provides a summary of key findings the air monitoring program monitoring site selection and descriptions of the pollutants measured Describes the trends in air pollutant levels from more than a decade of data between winter 20082009 through fall 2020 for fine particulate matter PM25 nitrogen dioxide NO2 nitric oxide NO black carbon BC wintertime sulfur dioxide SO2 and summertime ozone O3 Presents maps of neighborhood air pollution levels by year Identifies the local sources that contribute to high levels of these pollutants in New York City neighborhoods"
     },
     {
@@ -3287,7 +3307,9 @@
         "title": "2022 NYC Heat-Related Mortality Report",
         "tags": null,
         "categories": [
-            "climatehealth"
+            "climatehealth",
+            "social",
+            "outcomes"
         ],
         "keywords": [
             "heat",
@@ -3299,6 +3321,24 @@
             "mortality"
         ],
         "href": "/eh-dataportal/key-topics/climatehealth/heat-report",
+        "content": "Each summer an estimated 370 New Yorkers die prematurely because of hot weather in New York City NYC These heatrelated deaths account for about 2 of all deaths over the warm season months of May September Every year the Health Department publishes a report on heatrelated mortality Click here to read the 2022 New York City HeatRelated Mortality Reporthttpsnyccascityofnewyorkusnyccas2022report1"
+    },
+    {
+        "title": "2022 NYC Heat-Related Mortality Report",
+        "tags": null,
+        "categories": [
+            "climatehealth"
+        ],
+        "keywords": [
+            "heat",
+            "report",
+            "climate",
+            "temperature",
+            "summer",
+            "disparities",
+            "mortality"
+        ],
+        "href": "/eh-dataportal/key-topics/climatehealth/heat-report/report",
         "content": " Summary Each summer an estimated 370 New Yorkers die prematurely because of hot weather in New York City NYC These heatrelated deaths account for about 2 of all deaths over the warm season months of May September Of the 370 deaths From 20112020 there was an average of 10 heatstress deaths caused directly by heat From 20112019 there was an average of about 360 heatexacerbated deaths caused indirectly by heat aggravating an underlying illness Black New Yorkers are more likely to die from heat stress with death rates two times higher than among White New Yorkers This inequity is due to past and current structural racism that creates economic health care housing energy and other systems that benefit white people and disadvantage people of color Lack of access to home air conditioning AC is an important risk factor for heatstress death Among those who died from heat stress the place of death was most often an unairconditioned home NYC summers are getting hotter More warm season days now reach hotter temperatures 90F and higher compared to a few decades ago Emergency response to extreme heat must be coupled with equitable investments in structural interventions and heat mitigation measures for example energy efficient home cooling that New Yorkers can afford to run and tree planting and greening to protect residents throughout the increasingly hot warm season weather"
     },
     {
