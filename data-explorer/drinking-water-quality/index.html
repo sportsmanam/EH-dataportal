@@ -273,7 +273,7 @@
             </nav>
 
             <div class="row mb-2">
-                <div class="col border-bottom mx-2 ml-0 pl-0 pb-2 mb-2">
+                <div class="col border-top mx-2 ml-0 pl-0 py-2">
                     <h2>Drinking Water Quality</h2>
                 </div>
             </div>
@@ -1244,7 +1244,7 @@
                         const indicatorTitle = document.querySelector('.indicator-title');
                         const indicatorDescription = document.querySelector('.indicator-description');
                         indicatorTitle.innerHTML = title;
-                        indicatorDescription.innerHTML = `<strong>Indicator description: </strong> ${desc}`;
+                        indicatorDescription.innerHTML = `${desc}`;
                     }
 
                     // Renders copy for the About the measures and the Data sources sections
@@ -1465,6 +1465,15 @@
                         indicatorShortName = indicator?.IndicatorShortname ? indicator.IndicatorShortname : indicatorName;
                         indicatorMeasurses = indicator?.Measures;
                         indicatorId = indicator?.IndicatorID;     
+
+                        //create Citation
+                        createCitation(); // re-runs on updating Indicator
+
+                        // send Indicator Title to vis headers
+                        document.getElementById('summaryTitle').innerHTML = indicatorName;
+                        document.getElementById('mapTitle').innerHTML = indicatorName;
+                        document.getElementById('trendTitle').innerHTML = indicatorName;
+                        document.getElementById('linksTitle').innerHTML = indicatorName;
                         
                         // console.log('==========================================================================')
                         // console.log('Load Indicator - IndicatorId: ', indicatorId)
@@ -1785,7 +1794,9 @@
 
             <div class="row">
                 <div class="col-md-4">
-                    <div class="card fs-sm mb-2 topic-text d-none d-md-block">
+                    <span class='home-label d-none d-md-block'>About this topic</span>
+
+                    <div class="card fs-sm mb-2 topic-text d-none d-md-block cardshadow">
                         
                         <p>All NYC residences receive drinking water from a public water system. Most water is gravity fed from a network of reservoirs and lakes in protected watersheds, up to 125 miles from the city (<a href="http://www.nyc.gov/html/dep/html/drinking_water/wsmaps_wide.shtml">view map</a>).</p>
 <p>The NYC water system consists of two surface water systems (Croton and Catskill/Delaware) and a Southwestern Queens ground water system. Since 1999, the Croton system has served as a supplemental water system, and the Catskill/Delaware reservoir system has supplied almost all NYC drinking water.</p>
@@ -1822,7 +1833,14 @@
 
                 <div class="col-md-8">
                     
+                    <button class="btn btn-sm btn-outline-light text-primary btn-block d-block d-md-none mt-0 mb-2" type="button" data-toggle="modal" data-target="#aboutModal">
+                        About Drinking Water Quality
+                      </button>
+
+                    
                     <div class="dropdown float-right">
+                        <span class='home-label d-block'>Change dataset</span>
+
                         <button class="btn btn-outline-primary float-right dropdown-toggle" type="button" id="dropdownTableYear" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="text-align:right!important">
                           More Drinking Water Quality data
                         </button>
@@ -1830,11 +1848,14 @@
                             
                         </div>
                     </div>
+                    <span class="home-label d-block">Dataset</span>
                     <h3 class="indicator-title"></h3>
 
 
-                    <div style="clear:both" class="my-3">
-                        <p class="fs-sm indicator-description"><strong>Indicator description:</strong></p>
+                    <div style="clear:both" class="my-2">
+                        <span class="home-label d-block">Description</span>
+
+                        <p class="fs-sm indicator-description"></p>
                     </div>
 
                     <div class="nav nav-pills bg-white device-xs" role="tablist">
@@ -1882,8 +1903,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="summary-table" class="border mt-4">
-                                
+                            <div class="mt-4">
+                                <span id="summaryTitle" class="home-label"></span>
+                                <div id="summary-table">
+                                    
+                            </div>
+
                             </div>
                         </div> 
                         
@@ -1897,7 +1922,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="border mt-4">
+                            <div class="mt-4">
+                                <span id="mapTitle" class="home-label"></span>
                                 <div id="map" width=600 height=500 style="width: 100%; min-height: 450px; margin-bottom: 50px;"></div>
                             </div>                        
                         </div>
@@ -1910,7 +1936,8 @@
                                   
                                 </div>
                             </div>
-                            <div class="border mt-4">
+                            <div class="mt-4">
+                                <span id="trendTitle" class="home-label"></span>
                                 
                                 <div id="trend" style="width: 100%"></div>
                             </div>
@@ -1924,7 +1951,8 @@
                                     
                                 </div>
                             </div>
-                            <div class="border mt-4" style="height: 550px; clear: both">
+                            <div class="mt-4" style="height: 550px; clear: both">
+                                <span id="linksTitle" class="home-label"></span>
                                 
                                 <div id="links" style="width: 100%"></div>
                             </div>
@@ -2684,6 +2712,54 @@
   </div>
 
 
+<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="aboutModalLabel">About Drinking Water Quality</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <p>All NYC residences receive drinking water from a public water system. Most water is gravity fed from a network of reservoirs and lakes in protected watersheds, up to 125 miles from the city (<a href="http://www.nyc.gov/html/dep/html/drinking_water/wsmaps_wide.shtml">view map</a>).</p>
+<p>The NYC water system consists of two surface water systems (Croton and Catskill/Delaware) and a Southwestern Queens ground water system. Since 1999, the Croton system has served as a supplemental water system, and the Catskill/Delaware reservoir system has supplied almost all NYC drinking water.</p>
+<p>We display data on disinfection by-products, nitrates, and arsenic in NYC drinking water because these contaminants occur most frequently at levels that may be of public health significance in drinking water nationwide. Additional contaminants of emerging concern nationwide have either not been detected or detected at very low levels in the NYC drinking water system. These include atrazine, di(2-ethylhexyl)phthalate (DEHP), tetrachloroethylene (PCE), trichloroethylene (TCE), radium, and uranium.</p>
+<p>According to the <a href="http://www.nyc.gov/html/dep/html/drinking_water/lead_index.shtml">NYC DEP</a> drinking water enters the NYC water system “virtually lead-free”.The DEP then uses anti-corrosion methods to reduce the leaching of any lead that may be present in plumbing fixtures, solder, or pipes that connect the water system to the thousands of buildings in NYC. Federal regulations require that lead testing of water is done at the tap of a sample NYC buildings each year.  In 2015, 90% of those samples tested below the action level of 15 μg/L. More detailed data on NYC drinking water quality and lead testing procedures and results can be found <a href="http://www.nyc.gov/html/dep/html/drinking_water/wsstate.shtml">here.</a></p>
+<h3 id="drinking-water-quality-and-health">Drinking Water Quality and Health</h3>
+<p>Drinking water in NYC is monitored regularly for biological and chemical contaminants, for the purpose of protecting public health and checking compliance with state and federal rules. Monitoring drinking water is important because contamination in a single system could expose many people at once. People can be exposed to contaminants in drinking water not only by drinking the water, but also by eating foods prepared with the water, breathing water droplets or chemicals released from the water while showering, or by absorbing chemicals through their skin while bathing.</p>
+<p>Drinking water is disinfected to reduce the possibility of illness from microorganisms. Disinfection by-products (DBPs) are chemicals that can form when a disinfectant such as chlorine reacts with naturally occurring organic matter and other substances in the source water. Current research is investigating whether there are health effects from chronic exposure to the by-products of water disinfection.</p>
+<p>Nitrates are nitrogen-oxygen molecules commonly found in water where nitrogen-based fertilizers are used nearby.  Decades ago, it was discovered that infants who were fed formula made with water containing nitrates over 10 mg/L sometimes became seriously ill, due to the interference of nitrate with the oxygen-carrying capacity of blood.</p>
+<p>Arsenic is naturally-occurring in groundwater systems in some parts of the US. It may also enter drinking water systems as a result of past use of arsenic-containing pesticides and wood preservatives. Chronic exposure may increase risk of certain cancers.</p>
+<h3 id="about-the-data-and-indicators">About the Data and Indicators</h3>
+<p>The <a href="http://www.nyc.gov/html/dep/html/home/home.shtml">New York City Department of Environmental Protection (DEP)</a> regularly samples, analyzes and reports contaminant levels at the source, and in the drinking water distribution system. The data presented here provide summary measures of contaminants in drinking water sampled at many points in the distribution system.</p>
+<p>DBPs are divided into two families: total trihalomethanes (chloroform, bromodichloromethane, dibromochloromethane, and bromoform) and five haloacetic acids (trichloroacetic acid, dichloroacetic acid, monochloroacetic acid, dibromoacetic acid, and monobromoacetic acid). </p>
+<p>| The maximum contaminant levels (MCLs) set by EPA are: |  |
+| o Arsenic | 10 µg/L |
+| o Nitrate | 10 mg/L |
+| o DBP: Total Trihalomethanes (TTHM) | 80 µg/L |
+| o DBP: Haloacetic Acids (HAA5) | 60 µg/L |</p>
+<h3 id="prevention">Prevention</h3>
+<ul>
+<li>Most people do not need to take any actions to prevent water-related illnesses or health effects from drinking NYC water.</li>
+<li>Though levels of contaminants are consistently very low in water that arrives to a building, lead or lead-soldered plumbing in some older buildings may raise lead levels in water at the tap. Reducing the possibility of exposure to lead in drinking water is simple and inexpensive: Run your tap for at least 30 seconds, until the water is noticeably colder, before drinking, cooking or making baby formula. Free tap water quality tests are available by calling 311.</li>
+<li>Ultimately, maintaining the highest quality drinking water depends on protecting our lakes, rivers and aquifers from contamination.</li>
+</ul>
+<h3 id="key-messages">Key Messages</h3>
+<p>The quality of the drinking water in the NYC system is excellent. The water systems serving NYC are consistently in compliance with EPA guidelines.</p>
+<p>DBP concentrations show a seasonal effect with higher concentrations during the warm and rainy months when more organic material is in the water systems. Arsenic levels are consistently very low in NYC.  Nitrate levels are also consistently low, owing to the protection of upstate watersheds from farm runoff. </p>
+<p>NYC drinking water has many advantages over bottled water or processed beverages: its sources are known, its purity is checked, it is not stored in plastics, it does not get shipped into the City using trucks that pollute our air, it costs little or nothing, and it is calorie-free.</p>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
 
 </article>
 
@@ -3038,9 +3114,7 @@
         window.location.assign(DOMPurify.sanitize(dataSearchForm.options[dataSearchForm.selectedIndex].value))
       });
 
-
-function copyCitation(){
-    
+function createCitation() {
     
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
@@ -3056,6 +3130,12 @@ function copyCitation(){
 
     console.log('CITATION CREATED')
 
+    var btn = document.getElementById('citeButton')
+    btn.innerHTML = `<i class="fas fa-copy mr-1"></i>Copy citation`
+
+}
+
+function copyCitation(){
     var citeText = document.getElementById('citeText')
     citeText.select()
     citeText.setSelectionRange(0,99999);
@@ -3065,14 +3145,14 @@ function copyCitation(){
     console.log('citation copied!')
 }
 
-
+createCitation();
 
 var downloadTable;
 var dataURL; 
 var downloadTableCSV
 var csvData
 
-// download data function
+
 function runDataDownload() {
 console.log('Downloading data for indicator ' + indicatorId)
 dataURL = 'https://raw.githubusercontent.com/nychealth/EHDP-data/main/indicators/data/' + indicatorId + '.json'

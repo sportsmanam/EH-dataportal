@@ -273,7 +273,7 @@
             </nav>
 
             <div class="row mb-2">
-                <div class="col border-bottom mx-2 ml-0 pl-0 pb-2 mb-2">
+                <div class="col border-top mx-2 ml-0 pl-0 py-2">
                     <h2>Cancer</h2>
                 </div>
             </div>
@@ -1322,7 +1322,7 @@
                         const indicatorTitle = document.querySelector('.indicator-title');
                         const indicatorDescription = document.querySelector('.indicator-description');
                         indicatorTitle.innerHTML = title;
-                        indicatorDescription.innerHTML = `<strong>Indicator description: </strong> ${desc}`;
+                        indicatorDescription.innerHTML = `${desc}`;
                     }
 
                     // Renders copy for the About the measures and the Data sources sections
@@ -1543,6 +1543,15 @@
                         indicatorShortName = indicator?.IndicatorShortname ? indicator.IndicatorShortname : indicatorName;
                         indicatorMeasurses = indicator?.Measures;
                         indicatorId = indicator?.IndicatorID;     
+
+                        //create Citation
+                        createCitation(); // re-runs on updating Indicator
+
+                        // send Indicator Title to vis headers
+                        document.getElementById('summaryTitle').innerHTML = indicatorName;
+                        document.getElementById('mapTitle').innerHTML = indicatorName;
+                        document.getElementById('trendTitle').innerHTML = indicatorName;
+                        document.getElementById('linksTitle').innerHTML = indicatorName;
                         
                         // console.log('==========================================================================')
                         // console.log('Load Indicator - IndicatorId: ', indicatorId)
@@ -1863,7 +1872,9 @@
 
             <div class="row">
                 <div class="col-md-4">
-                    <div class="card fs-sm mb-2 topic-text d-none d-md-block">
+                    <span class='home-label d-none d-md-block'>About this topic</span>
+
+                    <div class="card fs-sm mb-2 topic-text d-none d-md-block cardshadow">
                         
                         <p>Cancer is the general name for a group of more than 100 diseases in which cells in a part of the body begin to grow out of control.</p>
 <p>In New York City cancer kills nearly 13,000 residents every year, with smoking as the leading cause. One of every two men, and one of every three women, will be diagnosed with cancer at some time in their life. In women, breast is the most common type of cancer diagnosed. In men, prostate is the most common type of cancer diagnosed. For both men and women, lung cancers are the leading causes of death from cancer.</p>
@@ -1888,7 +1899,14 @@
 
                 <div class="col-md-8">
                     
+                    <button class="btn btn-sm btn-outline-light text-primary btn-block d-block d-md-none mt-0 mb-2" type="button" data-toggle="modal" data-target="#aboutModal">
+                        About Cancer
+                      </button>
+
+                    
                     <div class="dropdown float-right">
+                        <span class='home-label d-block'>Change dataset</span>
+
                         <button class="btn btn-outline-primary float-right dropdown-toggle" type="button" id="dropdownTableYear" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="text-align:right!important">
                           More Cancer data
                         </button>
@@ -1896,11 +1914,14 @@
                             
                         </div>
                     </div>
+                    <span class="home-label d-block">Dataset</span>
                     <h3 class="indicator-title"></h3>
 
 
-                    <div style="clear:both" class="my-3">
-                        <p class="fs-sm indicator-description"><strong>Indicator description:</strong></p>
+                    <div style="clear:both" class="my-2">
+                        <span class="home-label d-block">Description</span>
+
+                        <p class="fs-sm indicator-description"></p>
                     </div>
 
                     <div class="nav nav-pills bg-white device-xs" role="tablist">
@@ -1948,8 +1969,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="summary-table" class="border mt-4">
-                                
+                            <div class="mt-4">
+                                <span id="summaryTitle" class="home-label"></span>
+                                <div id="summary-table">
+                                    
+                            </div>
+
                             </div>
                         </div> 
                         
@@ -1963,7 +1988,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="border mt-4">
+                            <div class="mt-4">
+                                <span id="mapTitle" class="home-label"></span>
                                 <div id="map" width=600 height=500 style="width: 100%; min-height: 450px; margin-bottom: 50px;"></div>
                             </div>                        
                         </div>
@@ -1976,7 +2002,8 @@
                                   
                                 </div>
                             </div>
-                            <div class="border mt-4">
+                            <div class="mt-4">
+                                <span id="trendTitle" class="home-label"></span>
                                 
                                 <div id="trend" style="width: 100%"></div>
                             </div>
@@ -1990,7 +2017,8 @@
                                     
                                 </div>
                             </div>
-                            <div class="border mt-4" style="height: 550px; clear: both">
+                            <div class="mt-4" style="height: 550px; clear: both">
+                                <span id="linksTitle" class="home-label"></span>
                                 
                                 <div id="links" style="width: 100%"></div>
                             </div>
@@ -2750,6 +2778,42 @@
   </div>
 
 
+<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="aboutModalLabel">About Cancer</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <p>Cancer is the general name for a group of more than 100 diseases in which cells in a part of the body begin to grow out of control.</p>
+<p>In New York City cancer kills nearly 13,000 residents every year, with smoking as the leading cause. One of every two men, and one of every three women, will be diagnosed with cancer at some time in their life. In women, breast is the most common type of cancer diagnosed. In men, prostate is the most common type of cancer diagnosed. For both men and women, lung cancers are the leading causes of death from cancer.</p>
+<p>Cancer occurs at all ages, but the risk increases with age. Most cancers develop slowly in people. Cancers with known environmental causes usually appear five to 40 years after exposure to a carcinogen. This long latency period is one of the reasons it is difficult to determine what causes cancer.</p>
+<h3 id="cancer-and-the-environment">Cancer and the Environment</h3>
+<p>Cancers have different causes and risk factors. Factors related to the occurrence of many types of cancer include age, sex, race, family history, smoking, diet, exercise and exposure to certain chemicals. Cancers often take a long time (decades) to develop, so it can be hard to single out a particular exposure as having a definite link to cancer.</p>
+<p>Environmental exposures that may increase the risk of cancer include asbestos and other inhalable fibers; ionizing radiation and chemicals found in the home, workplace, water, food and air.</p>
+<h3 id="about-the-data-and-indicators">About the Data and Indicators</h3>
+<p>All cancers diagnosed among NYS residents are required by law to be reported to the NYS Cancer Registry. The registry is considered to have 95% or higher case ascertainment. This site contains data on cancers that were selected based on concern that environmental exposures could play a role in their development.</p>
+<h3 id="prevention">Prevention</h3>
+<p>To reduce the risk of developing cancer or to detect cancer early:</p>
+<ul>
+<li>Quit smoking, encourage others to quit, and avoid exposure to secondhand smoke. <a href="https://portal.311.nyc.gov/article/?kanumber=KA-02946">Call 311 for resources to help you quit</a>.</li>
+<li>Use sun protection consistently to prevent skin cancers.</li>
+<li>Get screened at appropriate ages for cervical, breast and colon and rectal cancer.</li>
+</ul>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
 
 </article>
 
@@ -3104,9 +3168,7 @@
         window.location.assign(DOMPurify.sanitize(dataSearchForm.options[dataSearchForm.selectedIndex].value))
       });
 
-
-function copyCitation(){
-    
+function createCitation() {
     
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
@@ -3122,6 +3184,12 @@ function copyCitation(){
 
     console.log('CITATION CREATED')
 
+    var btn = document.getElementById('citeButton')
+    btn.innerHTML = `<i class="fas fa-copy mr-1"></i>Copy citation`
+
+}
+
+function copyCitation(){
     var citeText = document.getElementById('citeText')
     citeText.select()
     citeText.setSelectionRange(0,99999);
@@ -3131,14 +3199,14 @@ function copyCitation(){
     console.log('citation copied!')
 }
 
-
+createCitation();
 
 var downloadTable;
 var dataURL; 
 var downloadTableCSV
 var csvData
 
-// download data function
+
 function runDataDownload() {
 console.log('Downloading data for indicator ' + indicatorId)
 dataURL = 'https://raw.githubusercontent.com/nychealth/EHDP-data/main/indicators/data/' + indicatorId + '.json'

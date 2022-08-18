@@ -273,7 +273,7 @@
             </nav>
 
             <div class="row mb-2">
-                <div class="col border-bottom mx-2 ml-0 pl-0 pb-2 mb-2">
+                <div class="col border-top mx-2 ml-0 pl-0 py-2">
                     <h2>Violence</h2>
                 </div>
             </div>
@@ -1232,7 +1232,7 @@
                         const indicatorTitle = document.querySelector('.indicator-title');
                         const indicatorDescription = document.querySelector('.indicator-description');
                         indicatorTitle.innerHTML = title;
-                        indicatorDescription.innerHTML = `<strong>Indicator description: </strong> ${desc}`;
+                        indicatorDescription.innerHTML = `${desc}`;
                     }
 
                     // Renders copy for the About the measures and the Data sources sections
@@ -1453,6 +1453,15 @@
                         indicatorShortName = indicator?.IndicatorShortname ? indicator.IndicatorShortname : indicatorName;
                         indicatorMeasurses = indicator?.Measures;
                         indicatorId = indicator?.IndicatorID;     
+
+                        //create Citation
+                        createCitation(); // re-runs on updating Indicator
+
+                        // send Indicator Title to vis headers
+                        document.getElementById('summaryTitle').innerHTML = indicatorName;
+                        document.getElementById('mapTitle').innerHTML = indicatorName;
+                        document.getElementById('trendTitle').innerHTML = indicatorName;
+                        document.getElementById('linksTitle').innerHTML = indicatorName;
                         
                         // console.log('==========================================================================')
                         // console.log('Load Indicator - IndicatorId: ', indicatorId)
@@ -1773,7 +1782,9 @@
 
             <div class="row">
                 <div class="col-md-4">
-                    <div class="card fs-sm mb-2 topic-text d-none d-md-block">
+                    <span class='home-label d-none d-md-block'>About this topic</span>
+
+                    <div class="card fs-sm mb-2 topic-text d-none d-md-block cardshadow">
                         
                         <p>Violence is the use of physical, verbal, and/or emotional force to injure, harm, abuse, damage, or destroy. Interpersonal violence includes child abuse and neglect, youth violence, intimate partner violence, sexual violence, and elder abuse. Violence can involve injury to self, including self-harm, suicide attempts, and death by suicide. Violence can also take the form of power against a group or community.</p>
 <p>Violence is a public health issue because it is a cause of morbidity and mortality, leading to physical and emotional harm, an increase in negative health outcomes, premature death, psychological trauma and persistent fear to individuals and communities.</p>
@@ -1805,7 +1816,14 @@
 
                 <div class="col-md-8">
                     
+                    <button class="btn btn-sm btn-outline-light text-primary btn-block d-block d-md-none mt-0 mb-2" type="button" data-toggle="modal" data-target="#aboutModal">
+                        About Violence
+                      </button>
+
+                    
                     <div class="dropdown float-right">
+                        <span class='home-label d-block'>Change dataset</span>
+
                         <button class="btn btn-outline-primary float-right dropdown-toggle" type="button" id="dropdownTableYear" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="text-align:right!important">
                           More Violence data
                         </button>
@@ -1813,11 +1831,14 @@
                             
                         </div>
                     </div>
+                    <span class="home-label d-block">Dataset</span>
                     <h3 class="indicator-title"></h3>
 
 
-                    <div style="clear:both" class="my-3">
-                        <p class="fs-sm indicator-description"><strong>Indicator description:</strong></p>
+                    <div style="clear:both" class="my-2">
+                        <span class="home-label d-block">Description</span>
+
+                        <p class="fs-sm indicator-description"></p>
                     </div>
 
                     <div class="nav nav-pills bg-white device-xs" role="tablist">
@@ -1865,8 +1886,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="summary-table" class="border mt-4">
-                                
+                            <div class="mt-4">
+                                <span id="summaryTitle" class="home-label"></span>
+                                <div id="summary-table">
+                                    
+                            </div>
+
                             </div>
                         </div> 
                         
@@ -1880,7 +1905,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="border mt-4">
+                            <div class="mt-4">
+                                <span id="mapTitle" class="home-label"></span>
                                 <div id="map" width=600 height=500 style="width: 100%; min-height: 450px; margin-bottom: 50px;"></div>
                             </div>                        
                         </div>
@@ -1893,7 +1919,8 @@
                                   
                                 </div>
                             </div>
-                            <div class="border mt-4">
+                            <div class="mt-4">
+                                <span id="trendTitle" class="home-label"></span>
                                 
                                 <div id="trend" style="width: 100%"></div>
                             </div>
@@ -1907,7 +1934,8 @@
                                     
                                 </div>
                             </div>
-                            <div class="border mt-4" style="height: 550px; clear: both">
+                            <div class="mt-4" style="height: 550px; clear: both">
+                                <span id="linksTitle" class="home-label"></span>
                                 
                                 <div id="links" style="width: 100%"></div>
                             </div>
@@ -2667,6 +2695,49 @@
   </div>
 
 
+<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="aboutModalLabel">About Violence</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <p>Violence is the use of physical, verbal, and/or emotional force to injure, harm, abuse, damage, or destroy. Interpersonal violence includes child abuse and neglect, youth violence, intimate partner violence, sexual violence, and elder abuse. Violence can involve injury to self, including self-harm, suicide attempts, and death by suicide. Violence can also take the form of power against a group or community.</p>
+<p>Violence is a public health issue because it is a cause of morbidity and mortality, leading to physical and emotional harm, an increase in negative health outcomes, premature death, psychological trauma and persistent fear to individuals and communities.</p>
+<p>Violence is also an equity issue because it disproportionately affects groups that have been oppressed due to their socioeconomic status, race/ethnicity, sexual orientation, gender identity, geographic location, or some combination of these factors. Data from multiple sources illustrate tremendous disparities in the distribution and burden of violence throughout NYC. For instance, rates of firearm-related violence are at least two times higher in high poverty neighborhoods when compared to lower poverty neighborhoods. And, violence persists as a leading cause of premature death among NYC’s men of color. </p>
+<h3 id="factors-that-contribute-to-violence">Factors that Contribute to Violence</h3>
+<p>Restricting the explanation of disparities in violence to differences in individuals and group characteristics most affected by the violence only initiates bias and constrains problem-solving*.* To understand what drives violence, it is important to look at the context and systems within which it occurs and consider the negative impact that historic practices (e.g., redlining) and ongoing social structures (e.g., institutional racism) have on particular groups and communities.</p>
+<p>For example, <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5004736/">racialized systems have created and upheld stereotypes that link Black men and criminality</a>, while ignoring the imbalanced distribution of power and resources experienced by Black men and Black communities. A myriad of  social, political, economic, historical, and environmental factors contribute to violence. These factors convey messages about which populations and communities are deprived of society’s resources and which are privileged by them. Some of these factors include:</p>
+<ul>
+<li>Poverty and neighborhood disinvestment</li>
+<li>Housing and historic redlining practices</li>
+<li>Education and employment opportunities</li>
+<li>Policing and incarceration practices</li>
+<li>Chronic stress and intergenerational trauma Community and social norms</li>
+<li>Access to health and health care</li>
+<li>Built environment</li>
+<li>Racism and other forms of oppression</li>
+</ul>
+<p>Examining factors like these that disproportionately marginalize certain populations illuminate opportunities for prevention.</p>
+<h3 id="about-the-data-and-indicators">About the Data and Indicators</h3>
+<p>Violence is frequently described through homicide statistics. While it is a leading cause of death and captures the most severe form of violence, non-fatal violence-related injuries are much more common and help paint the larger picture on the burden of violence and its impact on the health and future of individuals, families, and communities.</p>
+<h3 id="interpreting-the-data-and-informing-solutions">Interpreting the Data and Informing Solutions</h3>
+<p>Violence-related data must be interpreted in ways where we move beyond demonizing those causing the harm and instead look at the context and systems that gives rise to violence. Interpreting data this way illuminates ways to mitigate the social, political, economic, historical, and environmental factors that contribute to violence.</p>
+<p>With any public health epidemic, be it influenza, obesity, opioid addiction or gun violence, prevention is key.  Prevention is achievable in ways that are similar to multi-pronged approaches that have been used to address the risk and resilient factors for health outcomes like asthma, motor vehicle crashes, and opioid overdoses. Indeed, multi-faceted approaches to health promotion that empower individuals, families, communities, and systems equitably are where sustainable solutions for violence reduction and prevention reside.</p>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
 
 </article>
 
@@ -3021,9 +3092,7 @@
         window.location.assign(DOMPurify.sanitize(dataSearchForm.options[dataSearchForm.selectedIndex].value))
       });
 
-
-function copyCitation(){
-    
+function createCitation() {
     
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
@@ -3039,6 +3108,12 @@ function copyCitation(){
 
     console.log('CITATION CREATED')
 
+    var btn = document.getElementById('citeButton')
+    btn.innerHTML = `<i class="fas fa-copy mr-1"></i>Copy citation`
+
+}
+
+function copyCitation(){
     var citeText = document.getElementById('citeText')
     citeText.select()
     citeText.setSelectionRange(0,99999);
@@ -3048,14 +3123,14 @@ function copyCitation(){
     console.log('citation copied!')
 }
 
-
+createCitation();
 
 var downloadTable;
 var dataURL; 
 var downloadTableCSV
 var csvData
 
-// download data function
+
 function runDataDownload() {
 console.log('Downloading data for indicator ' + indicatorId)
 dataURL = 'https://raw.githubusercontent.com/nychealth/EHDP-data/main/indicators/data/' + indicatorId + '.json'

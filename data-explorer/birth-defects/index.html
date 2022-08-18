@@ -273,7 +273,7 @@
             </nav>
 
             <div class="row mb-2">
-                <div class="col border-bottom mx-2 ml-0 pl-0 pb-2 mb-2">
+                <div class="col border-top mx-2 ml-0 pl-0 py-2">
                     <h2>Birth Defects</h2>
                 </div>
             </div>
@@ -1298,7 +1298,7 @@
                         const indicatorTitle = document.querySelector('.indicator-title');
                         const indicatorDescription = document.querySelector('.indicator-description');
                         indicatorTitle.innerHTML = title;
-                        indicatorDescription.innerHTML = `<strong>Indicator description: </strong> ${desc}`;
+                        indicatorDescription.innerHTML = `${desc}`;
                     }
 
                     // Renders copy for the About the measures and the Data sources sections
@@ -1519,6 +1519,15 @@
                         indicatorShortName = indicator?.IndicatorShortname ? indicator.IndicatorShortname : indicatorName;
                         indicatorMeasurses = indicator?.Measures;
                         indicatorId = indicator?.IndicatorID;     
+
+                        //create Citation
+                        createCitation(); // re-runs on updating Indicator
+
+                        // send Indicator Title to vis headers
+                        document.getElementById('summaryTitle').innerHTML = indicatorName;
+                        document.getElementById('mapTitle').innerHTML = indicatorName;
+                        document.getElementById('trendTitle').innerHTML = indicatorName;
+                        document.getElementById('linksTitle').innerHTML = indicatorName;
                         
                         // console.log('==========================================================================')
                         // console.log('Load Indicator - IndicatorId: ', indicatorId)
@@ -1839,7 +1848,9 @@
 
             <div class="row">
                 <div class="col-md-4">
-                    <div class="card fs-sm mb-2 topic-text d-none d-md-block">
+                    <span class='home-label d-none d-md-block'>About this topic</span>
+
+                    <div class="card fs-sm mb-2 topic-text d-none d-md-block cardshadow">
                         
                         <p><strong>Note:</strong> We are no longer updating birth defects data on the EH Data Portal. <a href="https://apps.health.ny.gov/statistics/environmental/public_health_tracking/tracker/index.html#/bdcounty">For more recent data, visit the New York State Environmental Public Health Tracker</a>.</p>
 <hr>
@@ -1878,7 +1889,14 @@
 
                 <div class="col-md-8">
                     
+                    <button class="btn btn-sm btn-outline-light text-primary btn-block d-block d-md-none mt-0 mb-2" type="button" data-toggle="modal" data-target="#aboutModal">
+                        About Birth Defects
+                      </button>
+
+                    
                     <div class="dropdown float-right">
+                        <span class='home-label d-block'>Change dataset</span>
+
                         <button class="btn btn-outline-primary float-right dropdown-toggle" type="button" id="dropdownTableYear" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="text-align:right!important">
                           More Birth Defects data
                         </button>
@@ -1886,11 +1904,14 @@
                             
                         </div>
                     </div>
+                    <span class="home-label d-block">Dataset</span>
                     <h3 class="indicator-title"></h3>
 
 
-                    <div style="clear:both" class="my-3">
-                        <p class="fs-sm indicator-description"><strong>Indicator description:</strong></p>
+                    <div style="clear:both" class="my-2">
+                        <span class="home-label d-block">Description</span>
+
+                        <p class="fs-sm indicator-description"></p>
                     </div>
 
                     <div class="nav nav-pills bg-white device-xs" role="tablist">
@@ -1938,8 +1959,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="summary-table" class="border mt-4">
-                                
+                            <div class="mt-4">
+                                <span id="summaryTitle" class="home-label"></span>
+                                <div id="summary-table">
+                                    
+                            </div>
+
                             </div>
                         </div> 
                         
@@ -1953,7 +1978,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="border mt-4">
+                            <div class="mt-4">
+                                <span id="mapTitle" class="home-label"></span>
                                 <div id="map" width=600 height=500 style="width: 100%; min-height: 450px; margin-bottom: 50px;"></div>
                             </div>                        
                         </div>
@@ -1966,7 +1992,8 @@
                                   
                                 </div>
                             </div>
-                            <div class="border mt-4">
+                            <div class="mt-4">
+                                <span id="trendTitle" class="home-label"></span>
                                 
                                 <div id="trend" style="width: 100%"></div>
                             </div>
@@ -1980,7 +2007,8 @@
                                     
                                 </div>
                             </div>
-                            <div class="border mt-4" style="height: 550px; clear: both">
+                            <div class="mt-4" style="height: 550px; clear: both">
+                                <span id="linksTitle" class="home-label"></span>
                                 
                                 <div id="links" style="width: 100%"></div>
                             </div>
@@ -2740,6 +2768,56 @@
   </div>
 
 
+<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="aboutModalLabel">About Birth Defects</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <p><strong>Note:</strong> We are no longer updating birth defects data on the EH Data Portal. <a href="https://apps.health.ny.gov/statistics/environmental/public_health_tracking/tracker/index.html#/bdcounty">For more recent data, visit the New York State Environmental Public Health Tracker</a>.</p>
+<hr>
+<br>
+<p>Birth defects (also called congenital malformations) are conditions that happen when a baby does not develop normally during pregnancy. Structural defects may include missing limbs, malformed hearts, spina bifida and genetic conditions like Down Syndrome. Most birth defects happen during the first three months of pregnancy and are detected within the first year of life. Some birth defects (such as cleft lip or clubfoot) are easy to see, but others (such as heart defects or hearing loss) are found using special tests (such as x-rays, CT scans, or hearing tests). Birth defects can vary from mild to severe.</p>
+<p>This site provides data on NYC children born with one or more of 12 major birth defects. Each of the 12 birth defects is defined in the glossary on this site. The data comes from the <a href="http://www.health.state.ny.us/diseases/congenital_malformations/cmrhome.htm">NYS Department of Health Congenital Malformations Registry</a>.</p>
+<h3 id="birth-defects-and-the-environment">Birth Defects and the Environment</h3>
+<p>Scientists believe most birth defects are caused by a complex mix of factors including our genes, behaviors and environment. However, the causes of most birth defects are unknown. The fetus is more sensitive to exposures than an adult and if exposures happen during important periods of development, birth defects may result. Although there has been some research into how environmental exposures might cause birth defects, there is still much more work that needs to be done to understand the relationship of these exposures to birth defects.</p>
+<p>Known and probable risk factors for birth defects include the following: smoking, use of alcohol and other drugs, poor nutrition and/or health (such as low levels of folic acid, obesity and poorly controlled diabetes), some medicines (prescription &amp; over-the-counter), toxic chemicals (such as lead, paint and paint thinner, gasoline, pesticides, and secondhand smoke), infectious agents (such as rubella and toxoplasmosis) and ionizing radiation (x-rays).</p>
+<h3 id="about-the-data-and-indicators">About the Data and Indicators</h3>
+<p>Collecting and sharing good data about the occurrence of birth defects is a first step in understanding how they might be related to the environment. Looking at patterns of birth defect rates can help health officials plan services and create ideas for research into environmental causes of birth defects.</p>
+<p>All birth defects in any child less than two years old are reportable under New York State law to the State Congenital Malformations Registry.</p>
+<p>Most birth defect reports are abstracted from inpatient hospital records, since birth defects diagnosed on an outpatient basis are not well reported.</p>
+<p>Accurate hospital clinical recognition of birth defects depends on clinical expertise and interest. This is particularly true of conditions more difficult to diagnose. As a result, identification of birth defects may vary by area and by time. Areas with hospitals that provide higher levels of care may have more thorough diagnoses and, thus, apparently higher rates. Similarly, areas with hospitals that report cases more completely will also appear to have higher rates.</p>
+<h3 id="prevention">Prevention</h3>
+<p>Not all birth defects can be prevented, but actions that increase the chance of having a healthy baby include:</p>
+<ul>
+<li>Have regular medical checkups and check with a provider before taking any medications.</li>
+<li>Eat healthy foods and maintain a healthy weight; avoid alcohol and don&rsquo;t use street drugs.</li>
+<li>Make sure that medical conditions like diabetes are under control.</li>
+<li>Take a vitamin with folic acid before and during pregnancy.</li>
+<li>Quit smoking and avoid exposure to secondhand smoke.</li>
+<li>Damaged lead-containing paint in homes should be safely addressed by properly trained workers, ideally prior to pregnancy.  Pregnant women and small children should stay out of the home until lead paint projects are completed.</li>
+<li>Employers should provide workplaces free from unsafe chemical exposures and provide protective gear to workers when necessary. To learn more about the chemicals at work, employees can ask their employer for the Material Safety Data Sheets for the products used.</li>
+</ul>
+<h3 id="key-messages">Key Messages</h3>
+<p>About one out of every 33 babies is born with a birth defect. A birth defect can affect almost any part of the body. The well being of the child who is born with a birth defect depends mostly on which organ or body part is involved, how much it is affected and the quality of rehabilitative support received in early childhood.</p>
+<p>Heart defects make up about one-third to one-fourth of all birth defects, affecting about one in every 100 to 200 births. Some of these heart defects can be serious, and a few are very severe.</p>
+<p>Other common birth defects are &ldquo;neural tube defects,&rdquo; which are defects of the spine (spina bifida) and brain (anencephaly). They affect about one of every 1,000 pregnancies. These defects can be serious and are often life threatening.</p>
+<p>Birth defects of the lip and roof of the mouth, known as &ldquo;orofacial clefts,&rdquo; include cleft lip, cleft palate, and combined cleft lip and cleft palate. These defects are also common and occur in about one in 700 to 1,000 babies.</p>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
 
 </article>
 
@@ -3094,9 +3172,7 @@
         window.location.assign(DOMPurify.sanitize(dataSearchForm.options[dataSearchForm.selectedIndex].value))
       });
 
-
-function copyCitation(){
-    
+function createCitation() {
     
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
@@ -3112,6 +3188,12 @@ function copyCitation(){
 
     console.log('CITATION CREATED')
 
+    var btn = document.getElementById('citeButton')
+    btn.innerHTML = `<i class="fas fa-copy mr-1"></i>Copy citation`
+
+}
+
+function copyCitation(){
     var citeText = document.getElementById('citeText')
     citeText.select()
     citeText.setSelectionRange(0,99999);
@@ -3121,14 +3203,14 @@ function copyCitation(){
     console.log('citation copied!')
 }
 
-
+createCitation();
 
 var downloadTable;
 var dataURL; 
 var downloadTableCSV
 var csvData
 
-// download data function
+
 function runDataDownload() {
 console.log('Downloading data for indicator ' + indicatorId)
 dataURL = 'https://raw.githubusercontent.com/nychealth/EHDP-data/main/indicators/data/' + indicatorId + '.json'

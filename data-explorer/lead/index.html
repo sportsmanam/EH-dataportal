@@ -273,7 +273,7 @@
             </nav>
 
             <div class="row mb-2">
-                <div class="col border-bottom mx-2 ml-0 pl-0 pb-2 mb-2">
+                <div class="col border-top mx-2 ml-0 pl-0 py-2">
                     <h2>Lead poisoning</h2>
                 </div>
             </div>
@@ -1269,7 +1269,7 @@
                         const indicatorTitle = document.querySelector('.indicator-title');
                         const indicatorDescription = document.querySelector('.indicator-description');
                         indicatorTitle.innerHTML = title;
-                        indicatorDescription.innerHTML = `<strong>Indicator description: </strong> ${desc}`;
+                        indicatorDescription.innerHTML = `${desc}`;
                     }
 
                     // Renders copy for the About the measures and the Data sources sections
@@ -1490,6 +1490,15 @@
                         indicatorShortName = indicator?.IndicatorShortname ? indicator.IndicatorShortname : indicatorName;
                         indicatorMeasurses = indicator?.Measures;
                         indicatorId = indicator?.IndicatorID;     
+
+                        //create Citation
+                        createCitation(); // re-runs on updating Indicator
+
+                        // send Indicator Title to vis headers
+                        document.getElementById('summaryTitle').innerHTML = indicatorName;
+                        document.getElementById('mapTitle').innerHTML = indicatorName;
+                        document.getElementById('trendTitle').innerHTML = indicatorName;
+                        document.getElementById('linksTitle').innerHTML = indicatorName;
                         
                         // console.log('==========================================================================')
                         // console.log('Load Indicator - IndicatorId: ', indicatorId)
@@ -1810,7 +1819,9 @@
 
             <div class="row">
                 <div class="col-md-4">
-                    <div class="card fs-sm mb-2 topic-text d-none d-md-block">
+                    <span class='home-label d-none d-md-block'>About this topic</span>
+
+                    <div class="card fs-sm mb-2 topic-text d-none d-md-block cardshadow">
                         
                         <p>Lead is a metal that is toxic to people. There is no safe level of lead in your body. It can cause learning and behavior problems, and delay physical growth and mental development.</p>
 <p>In the past, it was used in gasoline, paint, ceramics, caulking, pipes and solder. In 1960, NYC banned the use of lead-based paint in homes. A national ban came into effect in 1978. Leaded gasoline was phased out beginning in the 1970&rsquo;s. However, lead can still be found in some products and in our environment.  Layers of lead paint may still be present in older buildings and can become dangerous when the paint chips or peels or is abraded, or when renovations or repairs are conducted without properly controlling dust. Families living in older, poorly maintained housing are at higher risk for lead poisoning.</p>
@@ -1846,7 +1857,14 @@
 
                 <div class="col-md-8">
                     
+                    <button class="btn btn-sm btn-outline-light text-primary btn-block d-block d-md-none mt-0 mb-2" type="button" data-toggle="modal" data-target="#aboutModal">
+                        About Lead poisoning
+                      </button>
+
+                    
                     <div class="dropdown float-right">
+                        <span class='home-label d-block'>Change dataset</span>
+
                         <button class="btn btn-outline-primary float-right dropdown-toggle" type="button" id="dropdownTableYear" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="text-align:right!important">
                           More Lead poisoning data
                         </button>
@@ -1854,11 +1872,14 @@
                             
                         </div>
                     </div>
+                    <span class="home-label d-block">Dataset</span>
                     <h3 class="indicator-title"></h3>
 
 
-                    <div style="clear:both" class="my-3">
-                        <p class="fs-sm indicator-description"><strong>Indicator description:</strong></p>
+                    <div style="clear:both" class="my-2">
+                        <span class="home-label d-block">Description</span>
+
+                        <p class="fs-sm indicator-description"></p>
                     </div>
 
                     <div class="nav nav-pills bg-white device-xs" role="tablist">
@@ -1906,8 +1927,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="summary-table" class="border mt-4">
-                                
+                            <div class="mt-4">
+                                <span id="summaryTitle" class="home-label"></span>
+                                <div id="summary-table">
+                                    
+                            </div>
+
                             </div>
                         </div> 
                         
@@ -1921,7 +1946,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="border mt-4">
+                            <div class="mt-4">
+                                <span id="mapTitle" class="home-label"></span>
                                 <div id="map" width=600 height=500 style="width: 100%; min-height: 450px; margin-bottom: 50px;"></div>
                             </div>                        
                         </div>
@@ -1934,7 +1960,8 @@
                                   
                                 </div>
                             </div>
-                            <div class="border mt-4">
+                            <div class="mt-4">
+                                <span id="trendTitle" class="home-label"></span>
                                 
                                 <div id="trend" style="width: 100%"></div>
                             </div>
@@ -1948,7 +1975,8 @@
                                     
                                 </div>
                             </div>
-                            <div class="border mt-4" style="height: 550px; clear: both">
+                            <div class="mt-4" style="height: 550px; clear: both">
+                                <span id="linksTitle" class="home-label"></span>
                                 
                                 <div id="links" style="width: 100%"></div>
                             </div>
@@ -2708,6 +2736,53 @@
   </div>
 
 
+<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="aboutModalLabel">About Lead poisoning</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <p>Lead is a metal that is toxic to people. There is no safe level of lead in your body. It can cause learning and behavior problems, and delay physical growth and mental development.</p>
+<p>In the past, it was used in gasoline, paint, ceramics, caulking, pipes and solder. In 1960, NYC banned the use of lead-based paint in homes. A national ban came into effect in 1978. Leaded gasoline was phased out beginning in the 1970&rsquo;s. However, lead can still be found in some products and in our environment.  Layers of lead paint may still be present in older buildings and can become dangerous when the paint chips or peels or is abraded, or when renovations or repairs are conducted without properly controlling dust. Families living in older, poorly maintained housing are at higher risk for lead poisoning.</p>
+<h3 id="lead-hazards">Lead Hazards</h3>
+<p>People may be exposed to lead by absorbing, breathing or swallowing lead or lead dust.</p>
+<p>The main source of <strong>childhood lead poisoning</strong> is lead-based paint in older, deteriorated housing. Children with lead poisoning may develop health, learning and behavioral problems. These effects can persist long after the exposure has stopped and a child&rsquo;s blood lead level has declined. Fetal exposure to lead may also result in cognitive and developmental problems.</p>
+<p>For <strong>adults</strong>, the main sources of lead poisoning are:</p>
+<ul>
+<li><a href="https://www1.nyc.gov/site/doh/health/health-topics/lead-poisoning-hazardous-consumer-products.page">Consumer products that contain lead</a></li>
+<li>Exposure at work - especially for people in construction, who may breath lead dust during work that disturbs old lead paint.</li>
+</ul>
+<h3 id="childhood-lead-testing">Childhood lead testing</h3>
+<p>All children should be tested for lead poisoning at ages one and two. Health care providers should also test other children found to be at risk and annually assess children from six months to six years of age for lead exposure risk.</p>
+<p>In 2012, CDC established that a blood lead level of 5 mcg/dL is the reference level for exposure to lead in children. This level is used to identify children who have blood lead levels higher than most children&rsquo;s levels.</p>
+<h3 id="prevention">Prevention</h3>
+<p>To prevent exposure to lead hazards:</p>
+<ul>
+<li>Call 311 if you live in a one- or two-family house with peeling paint and have a child under six years old. Ask for the Health Department&rsquo;s Healthy Homes Program (HHP).</li>
+<li>Call 311 if your landlord does not fix peeling paint, or if you think repair work is being done unsafely.</li>
+<li>Wash floors, window sills, hands, toys and pacifiers often.</li>
+<li>Do not use imported foods, spices, clay pots and dishes, medicines, toys and cosmetics that have been found to contain lead.</li>
+</ul>
+<h3 id="more-information">More information</h3>
+<ul>
+<li><a href="http://www1.nyc.gov/site/doh/health/health-topics/lead-poisoning-children-and-lead-poisoning.page">Lead Poisoning</a></li>
+<li><a href="https://www1.nyc.gov/site/doh/data/data-sets/lead-pubs.page">Annual Report</a></li>
+</ul>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
 
 </article>
 
@@ -3062,9 +3137,7 @@
         window.location.assign(DOMPurify.sanitize(dataSearchForm.options[dataSearchForm.selectedIndex].value))
       });
 
-
-function copyCitation(){
-    
+function createCitation() {
     
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
@@ -3080,6 +3153,12 @@ function copyCitation(){
 
     console.log('CITATION CREATED')
 
+    var btn = document.getElementById('citeButton')
+    btn.innerHTML = `<i class="fas fa-copy mr-1"></i>Copy citation`
+
+}
+
+function copyCitation(){
     var citeText = document.getElementById('citeText')
     citeText.select()
     citeText.setSelectionRange(0,99999);
@@ -3089,14 +3168,14 @@ function copyCitation(){
     console.log('citation copied!')
 }
 
-
+createCitation();
 
 var downloadTable;
 var dataURL; 
 var downloadTableCSV
 var csvData
 
-// download data function
+
 function runDataDownload() {
 console.log('Downloading data for indicator ' + indicatorId)
 dataURL = 'https://raw.githubusercontent.com/nychealth/EHDP-data/main/indicators/data/' + indicatorId + '.json'

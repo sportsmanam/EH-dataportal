@@ -273,7 +273,7 @@
             </nav>
 
             <div class="row mb-2">
-                <div class="col border-bottom mx-2 ml-0 pl-0 pb-2 mb-2">
+                <div class="col border-top mx-2 ml-0 pl-0 py-2">
                     <h2>Birth Outcomes</h2>
                 </div>
             </div>
@@ -1274,7 +1274,7 @@
                         const indicatorTitle = document.querySelector('.indicator-title');
                         const indicatorDescription = document.querySelector('.indicator-description');
                         indicatorTitle.innerHTML = title;
-                        indicatorDescription.innerHTML = `<strong>Indicator description: </strong> ${desc}`;
+                        indicatorDescription.innerHTML = `${desc}`;
                     }
 
                     // Renders copy for the About the measures and the Data sources sections
@@ -1495,6 +1495,15 @@
                         indicatorShortName = indicator?.IndicatorShortname ? indicator.IndicatorShortname : indicatorName;
                         indicatorMeasurses = indicator?.Measures;
                         indicatorId = indicator?.IndicatorID;     
+
+                        //create Citation
+                        createCitation(); // re-runs on updating Indicator
+
+                        // send Indicator Title to vis headers
+                        document.getElementById('summaryTitle').innerHTML = indicatorName;
+                        document.getElementById('mapTitle').innerHTML = indicatorName;
+                        document.getElementById('trendTitle').innerHTML = indicatorName;
+                        document.getElementById('linksTitle').innerHTML = indicatorName;
                         
                         // console.log('==========================================================================')
                         // console.log('Load Indicator - IndicatorId: ', indicatorId)
@@ -1815,7 +1824,9 @@
 
             <div class="row">
                 <div class="col-md-4">
-                    <div class="card fs-sm mb-2 topic-text d-none d-md-block">
+                    <span class='home-label d-none d-md-block'>About this topic</span>
+
+                    <div class="card fs-sm mb-2 topic-text d-none d-md-block cardshadow">
                         
                         <p>Close to 125,000 live births occur in New York City (NYC) each year. Most babies are born healthy, but those born prematurely or with low birth weight are at greater risk of disability or death. This site tracks indicators of fetal growth and development, infant and perinatal mortality, fertility and sex ratio at birth.</p>
 <h3 id="birth-outcomes-and-the-environment">Birth Outcomes and the Environment</h3>
@@ -1850,7 +1861,14 @@
 
                 <div class="col-md-8">
                     
+                    <button class="btn btn-sm btn-outline-light text-primary btn-block d-block d-md-none mt-0 mb-2" type="button" data-toggle="modal" data-target="#aboutModal">
+                        About Birth Outcomes
+                      </button>
+
+                    
                     <div class="dropdown float-right">
+                        <span class='home-label d-block'>Change dataset</span>
+
                         <button class="btn btn-outline-primary float-right dropdown-toggle" type="button" id="dropdownTableYear" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="text-align:right!important">
                           More Birth Outcomes data
                         </button>
@@ -1858,11 +1876,14 @@
                             
                         </div>
                     </div>
+                    <span class="home-label d-block">Dataset</span>
                     <h3 class="indicator-title"></h3>
 
 
-                    <div style="clear:both" class="my-3">
-                        <p class="fs-sm indicator-description"><strong>Indicator description:</strong></p>
+                    <div style="clear:both" class="my-2">
+                        <span class="home-label d-block">Description</span>
+
+                        <p class="fs-sm indicator-description"></p>
                     </div>
 
                     <div class="nav nav-pills bg-white device-xs" role="tablist">
@@ -1910,8 +1931,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="summary-table" class="border mt-4">
-                                
+                            <div class="mt-4">
+                                <span id="summaryTitle" class="home-label"></span>
+                                <div id="summary-table">
+                                    
+                            </div>
+
                             </div>
                         </div> 
                         
@@ -1925,7 +1950,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="border mt-4">
+                            <div class="mt-4">
+                                <span id="mapTitle" class="home-label"></span>
                                 <div id="map" width=600 height=500 style="width: 100%; min-height: 450px; margin-bottom: 50px;"></div>
                             </div>                        
                         </div>
@@ -1938,7 +1964,8 @@
                                   
                                 </div>
                             </div>
-                            <div class="border mt-4">
+                            <div class="mt-4">
+                                <span id="trendTitle" class="home-label"></span>
                                 
                                 <div id="trend" style="width: 100%"></div>
                             </div>
@@ -1952,7 +1979,8 @@
                                     
                                 </div>
                             </div>
-                            <div class="border mt-4" style="height: 550px; clear: both">
+                            <div class="mt-4" style="height: 550px; clear: both">
+                                <span id="linksTitle" class="home-label"></span>
                                 
                                 <div id="links" style="width: 100%"></div>
                             </div>
@@ -2712,6 +2740,52 @@
   </div>
 
 
+<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="aboutModalLabel">About Birth Outcomes</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <p>Close to 125,000 live births occur in New York City (NYC) each year. Most babies are born healthy, but those born prematurely or with low birth weight are at greater risk of disability or death. This site tracks indicators of fetal growth and development, infant and perinatal mortality, fertility and sex ratio at birth.</p>
+<h3 id="birth-outcomes-and-the-environment">Birth Outcomes and the Environment</h3>
+<p>Because many genetic and lifestyle factors influence growth and development of fetuses and babies, it can be difficult for researchers to study the effects of environmental exposures on birth outcomes. Smoking cigarettes during pregnancy, however, is known to result in exposure to many chemicals that can slow the growth of the fetus. Exposure to second-hand smoke can also be harmful. There is some evidence that  prenatal exposure to air pollution (particulate matter and other pollutants), lead, pesticides and solvents increases the likelihood that a pregnancy results in an adverse outcome.</p>
+<h3 id="about-the-data-and-indicators">About the Data and Indicators</h3>
+<p>We restricted our data to births (and infant deaths) occurring in NYC to mothers whose usual residence is NYC. The mother&rsquo;s usual residence is recorded on the baby&rsquo;s birth certificate.</p>
+<p>We use the physician&rsquo;s clinical estimate of gestation to identify preterm births.</p>
+<p>We use very low birth weight (&lt; 3 lbs, 5 oz) as an indicator of preterm birth, because most very low birth weight babies are born preterm.</p>
+<p>We use low birth weight (&lt; 5 lbs, 8 oz) among pregnancies that reach term (at least 37 weeks) as an indicator of &ldquo;growth retardation&rdquo;. Restricting to term pregnancies removes the majority of low birth weight babies who are small because they were born preterm and did not have time to finish growing before birth.</p>
+<p>Historically, the ratio of male to female births has been about 1.05. Some have hypothesized that exposure to certain chemicals in the environment can reduce the number of male births, so sex ratio may be a useful environmental public health indicator.</p>
+<p>Total (lifetime) fertility rate is the expected number of births to a hypothetical cohort of 1,000 women experiencing the current age-specific birth rates among NYC women. Measures of childbirth are only crude indicators of fertility since the decision to have children is dependent on many behavioral and social customs.</p>
+<p>Our tracking indicators differ from those presented by the NYC Bureau of Vital Statistics. For more information, <a href="http://www1.nyc.gov/assets/doh/downloads/pdf/tracking/vital-stats-definitions.pdf">click here</a>. For a definition of terms, click on the glossary link below.</p>
+<h3 id="having-a-healthy-pregnancy">Having a Healthy Pregnancy</h3>
+<p>The following may increase the likelihood of a healthy pregnancy outcome:</p>
+<ul>
+<li>Pregnant women should seek prenatal care in the first trimester of pregnancy, eat a nutritious and balanced diet and take folic acid beginning before conception, avoid being over or underweight and work with their doctors to control diabetes, high-blood pressure and sexually transmitted infections.</li>
+<li>Health care providers should advise their patients about factors that affect birth outcomes, such as maternal smoking, drug and alcohol abuse, poor nutrition, stress, insufficient prenatal care, chronic illness or other medical problems.</li>
+<li>Damaged lead-containing paint in homes should be safely addressed by properly trained workers, ideally prior to pregnancy.  Pregnant women and small children should stay out of the home until lead-paint projects are completed.</li>
+<li>Employers should provide workplaces free from unsafe chemical exposures and provide protective gear to workers when necessary. To learn more about the chemicals at work, employees can ask their employers for the  Material Safety Data Sheets for the products used.</li>
+</ul>
+<h3 id="key-messages">Key Messages</h3>
+<p>New York City has made considerable progress in reducing infant deaths. In the early 1990s, the rate was double what it is today, but the rate of decline has slowed in recent years. In lower income neighborhoods, infant mortality rates are almost double the citywide average rate.</p>
+<p>The majority of infant deaths occur in the neonatal period (less than 28 days old).</p>
+<p>Leading causes of infant death are birth defects, prematurity, low birth weight, cardiovascular disorders, and injury (including sudden infant death syndrome).</p>
+<p>Over the past 10 years, about 8% of singleton births to NYC resident mothers have been preterm (less than 37 weeks of pregnancy); about 1.4% of singletons have been very preterm (less than 32 weeks of pregnancy).</p>
+<p>Historically, the sex ratio of male to female births has been relatively constant at about 1.05, or 5% more males than females are born each year.</p>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
 
 </article>
 
@@ -3066,9 +3140,7 @@
         window.location.assign(DOMPurify.sanitize(dataSearchForm.options[dataSearchForm.selectedIndex].value))
       });
 
-
-function copyCitation(){
-    
+function createCitation() {
     
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
@@ -3084,6 +3156,12 @@ function copyCitation(){
 
     console.log('CITATION CREATED')
 
+    var btn = document.getElementById('citeButton')
+    btn.innerHTML = `<i class="fas fa-copy mr-1"></i>Copy citation`
+
+}
+
+function copyCitation(){
     var citeText = document.getElementById('citeText')
     citeText.select()
     citeText.setSelectionRange(0,99999);
@@ -3093,14 +3171,14 @@ function copyCitation(){
     console.log('citation copied!')
 }
 
-
+createCitation();
 
 var downloadTable;
 var dataURL; 
 var downloadTableCSV
 var csvData
 
-// download data function
+
 function runDataDownload() {
 console.log('Downloading data for indicator ' + indicatorId)
 dataURL = 'https://raw.githubusercontent.com/nychealth/EHDP-data/main/indicators/data/' + indicatorId + '.json'

@@ -273,7 +273,7 @@
             </nav>
 
             <div class="row mb-2">
-                <div class="col border-bottom mx-2 ml-0 pl-0 pb-2 mb-2">
+                <div class="col border-top mx-2 ml-0 pl-0 py-2">
                     <h2>Worker Health</h2>
                 </div>
             </div>
@@ -1262,7 +1262,7 @@
                         const indicatorTitle = document.querySelector('.indicator-title');
                         const indicatorDescription = document.querySelector('.indicator-description');
                         indicatorTitle.innerHTML = title;
-                        indicatorDescription.innerHTML = `<strong>Indicator description: </strong> ${desc}`;
+                        indicatorDescription.innerHTML = `${desc}`;
                     }
 
                     // Renders copy for the About the measures and the Data sources sections
@@ -1483,6 +1483,15 @@
                         indicatorShortName = indicator?.IndicatorShortname ? indicator.IndicatorShortname : indicatorName;
                         indicatorMeasurses = indicator?.Measures;
                         indicatorId = indicator?.IndicatorID;     
+
+                        //create Citation
+                        createCitation(); // re-runs on updating Indicator
+
+                        // send Indicator Title to vis headers
+                        document.getElementById('summaryTitle').innerHTML = indicatorName;
+                        document.getElementById('mapTitle').innerHTML = indicatorName;
+                        document.getElementById('trendTitle').innerHTML = indicatorName;
+                        document.getElementById('linksTitle').innerHTML = indicatorName;
                         
                         // console.log('==========================================================================')
                         // console.log('Load Indicator - IndicatorId: ', indicatorId)
@@ -1803,7 +1812,9 @@
 
             <div class="row">
                 <div class="col-md-4">
-                    <div class="card fs-sm mb-2 topic-text d-none d-md-block">
+                    <span class='home-label d-none d-md-block'>About this topic</span>
+
+                    <div class="card fs-sm mb-2 topic-text d-none d-md-block cardshadow">
                         
                         <p>Every year in New York City, workers are injured on the job or become ill as a result of exposure to health hazards at work. However, <strong>most work-related illnesses and injuries are preventable</strong> –  safer work environments can be achieved when workplace hazards are understood and appropriate prevention measures are put in place.</p>
 <p>Data on work-related injuries and illness are used to show how often these preventable events occur and to identify  factors that place workers at risk. These data are also used to design, target and evaluate prevention strategies and regulations that aim to keep workers safe and healthy.</p>
@@ -1832,7 +1843,14 @@
 
                 <div class="col-md-8">
                     
+                    <button class="btn btn-sm btn-outline-light text-primary btn-block d-block d-md-none mt-0 mb-2" type="button" data-toggle="modal" data-target="#aboutModal">
+                        About Worker Health
+                      </button>
+
+                    
                     <div class="dropdown float-right">
+                        <span class='home-label d-block'>Change dataset</span>
+
                         <button class="btn btn-outline-primary float-right dropdown-toggle" type="button" id="dropdownTableYear" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="text-align:right!important">
                           More Worker Health data
                         </button>
@@ -1840,11 +1858,14 @@
                             
                         </div>
                     </div>
+                    <span class="home-label d-block">Dataset</span>
                     <h3 class="indicator-title"></h3>
 
 
-                    <div style="clear:both" class="my-3">
-                        <p class="fs-sm indicator-description"><strong>Indicator description:</strong></p>
+                    <div style="clear:both" class="my-2">
+                        <span class="home-label d-block">Description</span>
+
+                        <p class="fs-sm indicator-description"></p>
                     </div>
 
                     <div class="nav nav-pills bg-white device-xs" role="tablist">
@@ -1892,8 +1913,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="summary-table" class="border mt-4">
-                                
+                            <div class="mt-4">
+                                <span id="summaryTitle" class="home-label"></span>
+                                <div id="summary-table">
+                                    
+                            </div>
+
                             </div>
                         </div> 
                         
@@ -1907,7 +1932,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="border mt-4">
+                            <div class="mt-4">
+                                <span id="mapTitle" class="home-label"></span>
                                 <div id="map" width=600 height=500 style="width: 100%; min-height: 450px; margin-bottom: 50px;"></div>
                             </div>                        
                         </div>
@@ -1920,7 +1946,8 @@
                                   
                                 </div>
                             </div>
-                            <div class="border mt-4">
+                            <div class="mt-4">
+                                <span id="trendTitle" class="home-label"></span>
                                 
                                 <div id="trend" style="width: 100%"></div>
                             </div>
@@ -1934,7 +1961,8 @@
                                     
                                 </div>
                             </div>
-                            <div class="border mt-4" style="height: 550px; clear: both">
+                            <div class="mt-4" style="height: 550px; clear: both">
+                                <span id="linksTitle" class="home-label"></span>
                                 
                                 <div id="links" style="width: 100%"></div>
                             </div>
@@ -2694,6 +2722,46 @@
   </div>
 
 
+<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="aboutModalLabel">About Worker Health</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <p>Every year in New York City, workers are injured on the job or become ill as a result of exposure to health hazards at work. However, <strong>most work-related illnesses and injuries are preventable</strong> –  safer work environments can be achieved when workplace hazards are understood and appropriate prevention measures are put in place.</p>
+<p>Data on work-related injuries and illness are used to show how often these preventable events occur and to identify  factors that place workers at risk. These data are also used to design, target and evaluate prevention strategies and regulations that aim to keep workers safe and healthy.</p>
+<h3 id="work-workplaces-and-health">Work, Workplaces and Health</h3>
+<p>High-quality work benefits physical and mental health in a variety of ways. In addition to economic benefits, work can be a source of identity and pride, an avenue for social participation and a way to learn new skills. Individuals who work have lower rates of illness and live longer than those who are unemployed. On the other hand, unfavorable work environments expose workers to serious health hazards which regularly result in injury, illness, disability and death.</p>
+<p>Although many factors contribute to worker health, such as workplace design, organization, worker characteristics and culture, it is the employer’s responsibility to provide safe and healthful workplaces for their workers.</p>
+<h3 id="preventing-workplace-injury-and-disease">Preventing Workplace Injury and Disease</h3>
+<p>Both workers and employers play important roles in keeping workplaces safe and healthy.</p>
+<p><strong>Employers should:</strong></p>
+<ul>
+<li>Demonstrate and communicate an ongoing commitment to safety and wellbeing.</li>
+<li>Eliminate known hazards if possible and design work processes and environments to minimize exposure.</li>
+<li>Ask workers or their representatives what safety and health issues are most important to them and act on their concerns.</li>
+<li>Provide safety and health education and resources to all workers.</li>
+</ul>
+<p><strong>Workers should:</strong></p>
+<ul>
+<li>Communicate concerns about potential hazards to their employer in a timely manner.</li>
+<li>Follow established work safety practices, such as wearing recommended personal protective equipment and following safety protocols.</li>
+</ul>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
 
 </article>
 
@@ -3048,9 +3116,7 @@
         window.location.assign(DOMPurify.sanitize(dataSearchForm.options[dataSearchForm.selectedIndex].value))
       });
 
-
-function copyCitation(){
-    
+function createCitation() {
     
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
@@ -3066,6 +3132,12 @@ function copyCitation(){
 
     console.log('CITATION CREATED')
 
+    var btn = document.getElementById('citeButton')
+    btn.innerHTML = `<i class="fas fa-copy mr-1"></i>Copy citation`
+
+}
+
+function copyCitation(){
     var citeText = document.getElementById('citeText')
     citeText.select()
     citeText.setSelectionRange(0,99999);
@@ -3075,14 +3147,14 @@ function copyCitation(){
     console.log('citation copied!')
 }
 
-
+createCitation();
 
 var downloadTable;
 var dataURL; 
 var downloadTableCSV
 var csvData
 
-// download data function
+
 function runDataDownload() {
 console.log('Downloading data for indicator ' + indicatorId)
 dataURL = 'https://raw.githubusercontent.com/nychealth/EHDP-data/main/indicators/data/' + indicatorId + '.json'

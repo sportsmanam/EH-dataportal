@@ -273,7 +273,7 @@
             </nav>
 
             <div class="row mb-2">
-                <div class="col border-bottom mx-2 ml-0 pl-0 pb-2 mb-2">
+                <div class="col border-top mx-2 ml-0 pl-0 py-2">
                     <h2>Air Quality</h2>
                 </div>
             </div>
@@ -1288,7 +1288,7 @@
                         const indicatorTitle = document.querySelector('.indicator-title');
                         const indicatorDescription = document.querySelector('.indicator-description');
                         indicatorTitle.innerHTML = title;
-                        indicatorDescription.innerHTML = `<strong>Indicator description: </strong> ${desc}`;
+                        indicatorDescription.innerHTML = `${desc}`;
                     }
 
                     // Renders copy for the About the measures and the Data sources sections
@@ -1509,6 +1509,15 @@
                         indicatorShortName = indicator?.IndicatorShortname ? indicator.IndicatorShortname : indicatorName;
                         indicatorMeasurses = indicator?.Measures;
                         indicatorId = indicator?.IndicatorID;     
+
+                        //create Citation
+                        createCitation(); // re-runs on updating Indicator
+
+                        // send Indicator Title to vis headers
+                        document.getElementById('summaryTitle').innerHTML = indicatorName;
+                        document.getElementById('mapTitle').innerHTML = indicatorName;
+                        document.getElementById('trendTitle').innerHTML = indicatorName;
+                        document.getElementById('linksTitle').innerHTML = indicatorName;
                         
                         // console.log('==========================================================================')
                         // console.log('Load Indicator - IndicatorId: ', indicatorId)
@@ -1829,7 +1838,9 @@
 
             <div class="row">
                 <div class="col-md-4">
-                    <div class="card fs-sm mb-2 topic-text d-none d-md-block">
+                    <span class='home-label d-none d-md-block'>About this topic</span>
+
+                    <div class="card fs-sm mb-2 topic-text d-none d-md-block cardshadow">
                         
                         <p>Air quality is a <strong>measure of the condition of the air around us</strong>. The less air pollution there is, the better the air quality.</p>
 <p>Like many cities, New York City&rsquo;s air contains particles, liquid droplets, gases, and other contaminants that could impact health. Two pollutants, particulate matter and ground-level ozone, are of particular health concern.</p>
@@ -1867,7 +1878,14 @@
 
                 <div class="col-md-8">
                     
+                    <button class="btn btn-sm btn-outline-light text-primary btn-block d-block d-md-none mt-0 mb-2" type="button" data-toggle="modal" data-target="#aboutModal">
+                        About Air Quality
+                      </button>
+
+                    
                     <div class="dropdown float-right">
+                        <span class='home-label d-block'>Change dataset</span>
+
                         <button class="btn btn-outline-primary float-right dropdown-toggle" type="button" id="dropdownTableYear" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="text-align:right!important">
                           More Air Quality data
                         </button>
@@ -1875,11 +1893,14 @@
                             
                         </div>
                     </div>
+                    <span class="home-label d-block">Dataset</span>
                     <h3 class="indicator-title"></h3>
 
 
-                    <div style="clear:both" class="my-3">
-                        <p class="fs-sm indicator-description"><strong>Indicator description:</strong></p>
+                    <div style="clear:both" class="my-2">
+                        <span class="home-label d-block">Description</span>
+
+                        <p class="fs-sm indicator-description"></p>
                     </div>
 
                     <div class="nav nav-pills bg-white device-xs" role="tablist">
@@ -1927,8 +1948,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="summary-table" class="border mt-4">
-                                
+                            <div class="mt-4">
+                                <span id="summaryTitle" class="home-label"></span>
+                                <div id="summary-table">
+                                    
+                            </div>
+
                             </div>
                         </div> 
                         
@@ -1942,7 +1967,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="border mt-4">
+                            <div class="mt-4">
+                                <span id="mapTitle" class="home-label"></span>
                                 <div id="map" width=600 height=500 style="width: 100%; min-height: 450px; margin-bottom: 50px;"></div>
                             </div>                        
                         </div>
@@ -1955,7 +1981,8 @@
                                   
                                 </div>
                             </div>
-                            <div class="border mt-4">
+                            <div class="mt-4">
+                                <span id="trendTitle" class="home-label"></span>
                                 
                                 <div id="trend" style="width: 100%"></div>
                             </div>
@@ -1969,7 +1996,8 @@
                                     
                                 </div>
                             </div>
-                            <div class="border mt-4" style="height: 550px; clear: both">
+                            <div class="mt-4" style="height: 550px; clear: both">
+                                <span id="linksTitle" class="home-label"></span>
                                 
                                 <div id="links" style="width: 100%"></div>
                             </div>
@@ -2729,6 +2757,55 @@
   </div>
 
 
+<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="aboutModalLabel">About Air Quality</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <p>Air quality is a <strong>measure of the condition of the air around us</strong>. The less air pollution there is, the better the air quality.</p>
+<p>Like many cities, New York City&rsquo;s air contains particles, liquid droplets, gases, and other contaminants that could impact health. Two pollutants, particulate matter and ground-level ozone, are of particular health concern.</p>
+<p>Although New York City&rsquo;s air does not currently meet federal air quality standards, <strong>it has improved significantly over the past two decades</strong>.</p>
+<h3 id="air-pollution-and-health">Air Pollution and Health</h3>
+<p>Pollutants may affect human health negatively in a variety of ways. People may experience symptoms and health issues such as: </p>
+<ul>
+<li>Coughing</li>
+<li>Tightness in the chest</li>
+<li>Worsening of <a href="http://www1.nyc.gov/site/doh/health/health-topics/asthma.page" title="asthma">asthma</a></li>
+<li>Reduced lung function</li>
+<li>Increased risk of heart attack and stroke</li>
+<li>Low birthweight in newborns</li>
+</ul>
+<p>Air pollution may affect anyone. <strong>Certain groups may be more vulnerable</strong> to health risks from poor air quality, such as:</p>
+<ul>
+<li>Older adults (above 65 years)</li>
+<li>Children</li>
+<li>People with heart or lung conditions</li>
+</ul>
+<h3 id="to-reduce-health-risks">To Reduce Health Risks</h3>
+<ul>
+<li><strong>Keep track of your local <a href="http://www.dec.ny.gov/cfmx/extapps/aqi/aqi_forecast.cfm">Air Quality Index</a></strong> (AQI) if you or your child is sensitive to air pollution. Avoid strenuous activity or going outside on poor air quality days.</li>
+<li>Reduce air pollutants by <strong>walking, biking, or using mass transit</strong> instead of a car, especially during rush hour.</li>
+<li><strong>Support policies</strong> that promote public transportation and energy conservation.</li>
+</ul>
+<h3 id="about-neighborhood-air-quality">About Neighborhood Air Quality</h3>
+<p><strong>Air quality can vary</strong> <strong>from neighborhood to neighborhood</strong>. That is why the New York City Community Air Survey (NYCCAS) keeps track of street-level air pollution from about 100 locations throughout New York City every season. NYCCAS is part of <a href="http://www1.nyc.gov/html/onenyc/index.html" title="OneNYC">OneNYC</a>, New York City&rsquo;s long-term plan for sustainability.</p>
+<p>In NYC, health impacts from fine particulate matter, black carbon, and sulfur dioxide are higher in high-poverty neighborhoods.</p>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
 
 </article>
 
@@ -3083,9 +3160,7 @@
         window.location.assign(DOMPurify.sanitize(dataSearchForm.options[dataSearchForm.selectedIndex].value))
       });
 
-
-function copyCitation(){
-    
+function createCitation() {
     
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
@@ -3101,6 +3176,12 @@ function copyCitation(){
 
     console.log('CITATION CREATED')
 
+    var btn = document.getElementById('citeButton')
+    btn.innerHTML = `<i class="fas fa-copy mr-1"></i>Copy citation`
+
+}
+
+function copyCitation(){
     var citeText = document.getElementById('citeText')
     citeText.select()
     citeText.setSelectionRange(0,99999);
@@ -3110,14 +3191,14 @@ function copyCitation(){
     console.log('citation copied!')
 }
 
-
+createCitation();
 
 var downloadTable;
 var dataURL; 
 var downloadTableCSV
 var csvData
 
-// download data function
+
 function runDataDownload() {
 console.log('Downloading data for indicator ' + indicatorId)
 dataURL = 'https://raw.githubusercontent.com/nychealth/EHDP-data/main/indicators/data/' + indicatorId + '.json'

@@ -273,7 +273,7 @@
             </nav>
 
             <div class="row mb-2">
-                <div class="col border-bottom mx-2 ml-0 pl-0 pb-2 mb-2">
+                <div class="col border-top mx-2 ml-0 pl-0 py-2">
                     <h2>Weather-Related Illness</h2>
                 </div>
             </div>
@@ -1287,7 +1287,7 @@
                         const indicatorTitle = document.querySelector('.indicator-title');
                         const indicatorDescription = document.querySelector('.indicator-description');
                         indicatorTitle.innerHTML = title;
-                        indicatorDescription.innerHTML = `<strong>Indicator description: </strong> ${desc}`;
+                        indicatorDescription.innerHTML = `${desc}`;
                     }
 
                     // Renders copy for the About the measures and the Data sources sections
@@ -1508,6 +1508,15 @@
                         indicatorShortName = indicator?.IndicatorShortname ? indicator.IndicatorShortname : indicatorName;
                         indicatorMeasurses = indicator?.Measures;
                         indicatorId = indicator?.IndicatorID;     
+
+                        //create Citation
+                        createCitation(); // re-runs on updating Indicator
+
+                        // send Indicator Title to vis headers
+                        document.getElementById('summaryTitle').innerHTML = indicatorName;
+                        document.getElementById('mapTitle').innerHTML = indicatorName;
+                        document.getElementById('trendTitle').innerHTML = indicatorName;
+                        document.getElementById('linksTitle').innerHTML = indicatorName;
                         
                         // console.log('==========================================================================')
                         // console.log('Load Indicator - IndicatorId: ', indicatorId)
@@ -1828,7 +1837,9 @@
 
             <div class="row">
                 <div class="col-md-4">
-                    <div class="card fs-sm mb-2 topic-text d-none d-md-block">
+                    <span class='home-label d-none d-md-block'>About this topic</span>
+
+                    <div class="card fs-sm mb-2 topic-text d-none d-md-block cardshadow">
                         
                         <p>A region&rsquo;s climate is characterized by its usual weather conditions, seasons, and patterns in extreme weather events such as heat waves, droughts, and hurricanes. New York City (NYC) faces public health risks from extreme weather events such as heat waves and coastal storms. With climate change, the severity of some of these risks will increase. A 2013 New York City Panel on Climate Change (NPCC) report predicts that by the 2020s, average summer temperatures in New York City will increase by 2.0°F to 3.0°F compared to a 1971-2000 baseline. Heat waves will become more frequent, intense, and longer in duration. Rainfall and precipitation are expected to increase, together with another 4-8 inches of sea level rise and increased probability of coastal storms with flooding (NPCC, Climate Risk Information, 2013).</p>
 <h3 id="weather-and-health">Weather and Health</h3>
@@ -1871,7 +1882,14 @@
 
                 <div class="col-md-8">
                     
+                    <button class="btn btn-sm btn-outline-light text-primary btn-block d-block d-md-none mt-0 mb-2" type="button" data-toggle="modal" data-target="#aboutModal">
+                        About Weather-Related Illness
+                      </button>
+
+                    
                     <div class="dropdown float-right">
+                        <span class='home-label d-block'>Change dataset</span>
+
                         <button class="btn btn-outline-primary float-right dropdown-toggle" type="button" id="dropdownTableYear" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="text-align:right!important">
                           More Weather-Related Illness data
                         </button>
@@ -1879,11 +1897,14 @@
                             
                         </div>
                     </div>
+                    <span class="home-label d-block">Dataset</span>
                     <h3 class="indicator-title"></h3>
 
 
-                    <div style="clear:both" class="my-3">
-                        <p class="fs-sm indicator-description"><strong>Indicator description:</strong></p>
+                    <div style="clear:both" class="my-2">
+                        <span class="home-label d-block">Description</span>
+
+                        <p class="fs-sm indicator-description"></p>
                     </div>
 
                     <div class="nav nav-pills bg-white device-xs" role="tablist">
@@ -1931,8 +1952,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="summary-table" class="border mt-4">
-                                
+                            <div class="mt-4">
+                                <span id="summaryTitle" class="home-label"></span>
+                                <div id="summary-table">
+                                    
+                            </div>
+
                             </div>
                         </div> 
                         
@@ -1946,7 +1971,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="border mt-4">
+                            <div class="mt-4">
+                                <span id="mapTitle" class="home-label"></span>
                                 <div id="map" width=600 height=500 style="width: 100%; min-height: 450px; margin-bottom: 50px;"></div>
                             </div>                        
                         </div>
@@ -1959,7 +1985,8 @@
                                   
                                 </div>
                             </div>
-                            <div class="border mt-4">
+                            <div class="mt-4">
+                                <span id="trendTitle" class="home-label"></span>
                                 
                                 <div id="trend" style="width: 100%"></div>
                             </div>
@@ -1973,7 +2000,8 @@
                                     
                                 </div>
                             </div>
-                            <div class="border mt-4" style="height: 550px; clear: both">
+                            <div class="mt-4" style="height: 550px; clear: both">
+                                <span id="linksTitle" class="home-label"></span>
                                 
                                 <div id="links" style="width: 100%"></div>
                             </div>
@@ -2733,6 +2761,60 @@
   </div>
 
 
+<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="aboutModalLabel">About Weather-Related Illness</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <p>A region&rsquo;s climate is characterized by its usual weather conditions, seasons, and patterns in extreme weather events such as heat waves, droughts, and hurricanes. New York City (NYC) faces public health risks from extreme weather events such as heat waves and coastal storms. With climate change, the severity of some of these risks will increase. A 2013 New York City Panel on Climate Change (NPCC) report predicts that by the 2020s, average summer temperatures in New York City will increase by 2.0°F to 3.0°F compared to a 1971-2000 baseline. Heat waves will become more frequent, intense, and longer in duration. Rainfall and precipitation are expected to increase, together with another 4-8 inches of sea level rise and increased probability of coastal storms with flooding (NPCC, Climate Risk Information, 2013).</p>
+<h3 id="weather-and-health">Weather and Health</h3>
+<p>Even without long-term changes in climate, New Yorkers face weather-related risks today. Heat and humidity cause serious illness and death every summer. In fact, more Americans die from heat waves in a typical year than all other natural disasters combined, both in direct mortality from heat stress (hyperthermia, also known as heat stroke) and by way of increases in the rates of deaths from natural causes due to the exacerbation of other medical conditions. While far less common, coastal storms can also have serious consequences, including long-term mental health impacts. In 2012, Hurricane Sandy caused extensive flooding and damage in New York City, and resulted in at least 44 deaths.</p>
+<p>Power outages can also occur during heat waves and coastal storms. Potential health impacts include gastrointestinal illness due to food spoilage, carbon monoxide poisoning from the use of generators, and illness and death among the medically frail due to mechanical equipment failure, and inability to obtain medical care, or extreme exertion (such as having to climb many flights of stairs in high-rise buildings due to elevator outages). Lack of air conditioning or home heat may also result in heat- and cold-related illnesses.</p>
+<h3 id="about-the-data-and-indicators">About the Data and Indicators</h3>
+<p>The Tracking Portal provides data on counts and rates of death, hospital admission, and treatment in an emergency department for heat stress. While these cases can be readily identified with hyperthermia listed as a diagnosis or cause of death, it is important to note that they reflect only a portion of the overall health impact of extreme heat. Increases in natural-cause hospitalization and death rates during heat waves (from cardiovascular disease, diabetes, and renal disease for example) may be estimated using statistical methods.</p>
+<p>The Tracking Portal also provides counts and rates of hospital admission and treatment in an emergency department for cold stress. As with heat stress data, is important to note that cold stress data reflect only a portion of the overall health impact, and does not account for potential increases in hospital visits for other conditions that can be exacerbated by cold exposure (such as cardiovascular and respiratory disease for example).</p>
+<h3 id="prevention">Prevention</h3>
+<p><em>Air conditioning is the most important way to prevent heat stress and death on hot days.</em></p>
+<ul>
+<li>Those most vulnerable to heat stress include older adults and people with health conditions including cardiovascular disease, diabetes, mental illness, or cognitive impairments.</li>
+<li>Set air conditioners to 78°F or low-cool to provide comfort while not wasting energy.</li>
+<li>Check on family, friends, and neighbors at-risk and assist them in staying cool and well hydrated.</li>
+</ul>
+<p><em>Living without heat or being outdoors in cold weather for a prolonged time can be dangerous.</em></p>
+<ul>
+<li>Stay indoors as much as possible. When outdoors, wear layers of warm clothing and cover exposed skin.</li>
+<li>If your home lacks heat, get to a warm place if you can and wear warm clothes. Report loss of heat or hot water to property managers immediately, and call 311.</li>
+<li>Seniors should take extra care outdoors to avoid slips and falls from icy conditions.</li>
+<li><a href="http://www1.nyc.gov/assets/doh/downloads/pdf/public/dohmhnews10-01.pdf">Protect yourself and your family from carbon monoxide (CO) poisoning:</a></li>
+</ul>
+<ul>
+<li>Make sure your home has a working smoke alarm and CO detector.</li>
+<li>If a CO detector goes off in your home, immediately open a nearby window, go outside for fresh air and call 911.</li>
+<li>NEVER run a vehicle inside a garage or against a snowbank. Clear snow from your car’s tailpipe before running the engine.</li>
+</ul>
+<ul>
+<li>Check on neighbors, friends, and relatives.</li>
+</ul>
+<p>For more information on preparing for weather hazards– including heat, cold, coastal storms and power outages – visit the <a href="http://www1.nyc.gov/site/doh/health/emergency-preparedness/threats.page">DOHMH extreme weather website</a>.</p>
+<h3 id="key-messages">Key Messages</h3>
+<p>About 80% of heat stroke victims in New York City are overcome by excessively hot conditions in their own homes, as indoor temperatures in the urban environment may be even hotter than outdoor temperatures when an air conditioner is not available or not in use. Although heat-related mortality rates are lower than in historical periods before electricity and air conditioning, it is possible that rates may rise as a result of climate change, depending on the extent of adaptation. In 2011, a Health Department survey estimated that 25% of New York City adults still do not have or rarely use air conditioning during hot summer weather, many of whom may be at increased risk of heat stress due to age or poor health.</p>
+<p>People most likely to be exposed to dangerous cold include those who lack shelter, work outdoors and/or live in homes with malfunctioning or inadequate heat. Seniors, infants, people with chronic cardiovascular or lung conditions, people using alcohol or drugs and people with cognitive impairments or mental health conditions are at increased risk.</p>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
 
 </article>
 
@@ -3087,9 +3169,7 @@
         window.location.assign(DOMPurify.sanitize(dataSearchForm.options[dataSearchForm.selectedIndex].value))
       });
 
-
-function copyCitation(){
-    
+function createCitation() {
     
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
@@ -3105,6 +3185,12 @@ function copyCitation(){
 
     console.log('CITATION CREATED')
 
+    var btn = document.getElementById('citeButton')
+    btn.innerHTML = `<i class="fas fa-copy mr-1"></i>Copy citation`
+
+}
+
+function copyCitation(){
     var citeText = document.getElementById('citeText')
     citeText.select()
     citeText.setSelectionRange(0,99999);
@@ -3114,14 +3200,14 @@ function copyCitation(){
     console.log('citation copied!')
 }
 
-
+createCitation();
 
 var downloadTable;
 var dataURL; 
 var downloadTableCSV
 var csvData
 
-// download data function
+
 function runDataDownload() {
 console.log('Downloading data for indicator ' + indicatorId)
 dataURL = 'https://raw.githubusercontent.com/nychealth/EHDP-data/main/indicators/data/' + indicatorId + '.json'
