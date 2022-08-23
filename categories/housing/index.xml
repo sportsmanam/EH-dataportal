@@ -47,7 +47,7 @@ No family should have to choose between affordable and healthy housing. All tena
     </item>
     
     <item>
-      <title>Bed Bugs</title>
+      <title>Bed bugs</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/bed-bugs/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
@@ -75,7 +75,7 @@ In New York City cancer kills nearly 13,000 residents every year, with smoking a
     </item>
     
     <item>
-      <title>Cigarette Smoke</title>
+      <title>Cigarette smoke</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/cigarette-smoke/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
@@ -95,7 +95,18 @@ Cockroaches like warm, dark places such as toasters, clocks, microwave ovens, wa
     </item>
     
     <item>
-      <title>Falls Among Older Adults</title>
+      <title>Economic conditions</title>
+      <link>https://nychealth.github.io/EH-dataportal/data-explorer/economic-conditions/</link>
+      <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
+      
+      <guid>https://nychealth.github.io/EH-dataportal/data-explorer/economic-conditions/</guid>
+      <description>Social and economic conditions affect people’s health. These conditions (also called “social determinants of health”) are conditions that people may be born into or fall into over the course of their lives.
+People tend to be healthier when they have access to:
+ Economic and financial stability Higher education Adequate health care Healthy neighborhoods and safe, strong communities  Access to these are shaped by local, national and global distribution of resources and power.</description>
+    </item>
+    
+    <item>
+      <title>Falls among older adults</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/falls-among-older-adults/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
@@ -146,7 +157,7 @@ In the past, it was used in gasoline, paint, ceramics, caulking, pipes and solde
     </item>
     
     <item>
-      <title>Mice and Rats</title>
+      <title>Mice and rats</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/mice-and-rats/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
@@ -157,12 +168,12 @@ This site provides survey data on the prevalence of mice or rats inside and outs
     </item>
     
     <item>
-      <title>Social and Economic Conditions</title>
-      <link>https://nychealth.github.io/EH-dataportal/data-explorer/social-and-economic-conditions/</link>
+      <title>Social conditions</title>
+      <link>https://nychealth.github.io/EH-dataportal/data-explorer/social-conditions/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
-      <guid>https://nychealth.github.io/EH-dataportal/data-explorer/social-and-economic-conditions/</guid>
-      <description>Social and economic conditions affect people’s health. These conditions (also called “social determinants of health”) are conditions that people may be born into or fall into over the course of their lives. They are shaped by local, national and global distribution of resources and power.
+      <guid>https://nychealth.github.io/EH-dataportal/data-explorer/social-conditions/</guid>
+      <description>Social and economic conditions affect people’s health. These conditions (also called “social determinants of health”) are conditions that people may be born into or fall into over the course of their lives.
 People tend to be healthier when they have access to:
  Economic and financial stability Higher education Adequate health care Healthy neighborhoods and safe, strong communities  But when people don’t have access to these conditions, they experience worse health outcomes.</description>
     </item>

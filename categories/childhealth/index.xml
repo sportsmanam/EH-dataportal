@@ -8,7 +8,7 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 28 May 2021 18:02:58 +0000</lastBuildDate><atom:link href="https://nychealth.github.io/EH-dataportal/categories/childhealth/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Air Quality</title>
+      <title>Air quality</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/air-quality/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
@@ -29,7 +29,7 @@ Asthma is a leading cause of emergency room visits, hospitalizations and missed 
     </item>
     
     <item>
-      <title>Birth Defects</title>
+      <title>Birth defects</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/birth-defects/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
@@ -39,7 +39,7 @@ Asthma is a leading cause of emergency room visits, hospitalizations and missed 
     </item>
     
     <item>
-      <title>Birth Outcomes</title>
+      <title>Birth outcomes</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/birth-outcomes/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
@@ -49,17 +49,7 @@ Birth Outcomes and the Environment Because many genetic and lifestyle factors in
     </item>
     
     <item>
-      <title>Cancer</title>
-      <link>https://nychealth.github.io/EH-dataportal/data-explorer/cancer/</link>
-      <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
-      
-      <guid>https://nychealth.github.io/EH-dataportal/data-explorer/cancer/</guid>
-      <description>Cancer is the general name for a group of more than 100 diseases in which cells in a part of the body begin to grow out of control.
-In New York City cancer kills nearly 13,000 residents every year, with smoking as the leading cause. One of every two men, and one of every three women, will be diagnosed with cancer at some time in their life. In women, breast is the most common type of cancer diagnosed.</description>
-    </item>
-    
-    <item>
-      <title>Cancers in Children</title>
+      <title>Cancers in children</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/cancers-in-children/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
@@ -77,7 +67,7 @@ In New York City cancer kills nearly 13,000 residents every year, with smoking a
     </item>
     
     <item>
-      <title>Cigarette Smoke</title>
+      <title>Cigarette smoke</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/cigarette-smoke/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       

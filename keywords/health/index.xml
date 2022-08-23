@@ -19,7 +19,7 @@ But while specific health outcomes may have stronger or weaker links to the envi
     </item>
     
     <item>
-      <title>Active Design</title>
+      <title>Active design</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/active-design/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
@@ -41,6 +41,17 @@ The world’s climate is shifting, becoming warmer with more precipitation and w
     </item>
     
     <item>
+      <title>Economic conditions</title>
+      <link>https://nychealth.github.io/EH-dataportal/data-explorer/economic-conditions/</link>
+      <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
+      
+      <guid>https://nychealth.github.io/EH-dataportal/data-explorer/economic-conditions/</guid>
+      <description>Social and economic conditions affect people’s health. These conditions (also called “social determinants of health”) are conditions that people may be born into or fall into over the course of their lives.
+People tend to be healthier when they have access to:
+ Economic and financial stability Higher education Adequate health care Healthy neighborhoods and safe, strong communities  Access to these are shaped by local, national and global distribution of resources and power.</description>
+    </item>
+    
+    <item>
       <title>Mortality</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/mortality/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
@@ -52,7 +63,7 @@ Neonatal deaths, postneonatal deaths, and infant deaths let us look at deaths am
     </item>
     
     <item>
-      <title>Physical Activity</title>
+      <title>Physical activity</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/physical-activity/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
@@ -62,12 +73,12 @@ Physical Activity and the Environment Neighborhood conditions and resources can 
     </item>
     
     <item>
-      <title>Social and Economic Conditions</title>
-      <link>https://nychealth.github.io/EH-dataportal/data-explorer/social-and-economic-conditions/</link>
+      <title>Social conditions</title>
+      <link>https://nychealth.github.io/EH-dataportal/data-explorer/social-conditions/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
-      <guid>https://nychealth.github.io/EH-dataportal/data-explorer/social-and-economic-conditions/</guid>
-      <description>Social and economic conditions affect people’s health. These conditions (also called “social determinants of health”) are conditions that people may be born into or fall into over the course of their lives. They are shaped by local, national and global distribution of resources and power.
+      <guid>https://nychealth.github.io/EH-dataportal/data-explorer/social-conditions/</guid>
+      <description>Social and economic conditions affect people’s health. These conditions (also called “social determinants of health”) are conditions that people may be born into or fall into over the course of their lives.
 People tend to be healthier when they have access to:
  Economic and financial stability Higher education Adequate health care Healthy neighborhoods and safe, strong communities  But when people don’t have access to these conditions, they experience worse health outcomes.</description>
     </item>

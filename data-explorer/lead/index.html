@@ -486,7 +486,7 @@
                                 let header;
                                 
                                 
-                                        header = ``;
+                                        header = `Children`;
                                         // console.log('Header: ', header)
                                         indicatorDropdown.innerHTML += header.length ? `<div class="dropdown-title"><strong>${header}</strong></div>`: '';
                                         
@@ -516,12 +516,13 @@
                                             indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
                                             indicatorDropdown.innerHTML += `<button class="dropdown-item" onclick="loadIndicator(${indicatorId})" data-internal-id="${indicatorId}">${indicatorName}</button>`
                                         
-                                            
-                                            indicatorId = 16
-                                            indicator = indicators.find(indicator => indicator.IndicatorID === indicatorId);
-                                            indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                                            indicatorDropdown.innerHTML += `<button class="dropdown-item" onclick="loadIndicator(${indicatorId})" data-internal-id="${indicatorId}">${indicatorName}</button>`
+                                
+                                        header = `Adults`;
+                                        // console.log('Header: ', header)
+                                        indicatorDropdown.innerHTML += header.length ? `<div class="dropdown-title"><strong>${header}</strong></div>`: '';
                                         
+                                            
+                                                defaultIndicatorId = 2209
                                             
                                             indicatorId = 2209
                                             indicator = indicators.find(indicator => indicator.IndicatorID === indicatorId);
@@ -529,7 +530,7 @@
                                             indicatorDropdown.innerHTML += `<button class="dropdown-item" onclick="loadIndicator(${indicatorId})" data-internal-id="${indicatorId}">${indicatorName}</button>`
                                         
                                 
-                                        header = `Maintenance`;
+                                        header = `Housing`;
                                         // console.log('Header: ', header)
                                         indicatorDropdown.innerHTML += header.length ? `<div class="dropdown-title"><strong>${header}</strong></div>`: '';
                                         
@@ -537,6 +538,12 @@
                                                 defaultIndicatorId = 41
                                             
                                             indicatorId = 41
+                                            indicator = indicators.find(indicator => indicator.IndicatorID === indicatorId);
+                                            indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
+                                            indicatorDropdown.innerHTML += `<button class="dropdown-item" onclick="loadIndicator(${indicatorId})" data-internal-id="${indicatorId}">${indicatorName}</button>`
+                                        
+                                            
+                                            indicatorId = 16
                                             indicator = indicators.find(indicator => indicator.IndicatorID === indicatorId);
                                             indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
                                             indicatorDropdown.innerHTML += `<button class="dropdown-item" onclick="loadIndicator(${indicatorId})" data-internal-id="${indicatorId}">${indicatorName}</button>`
@@ -2084,19 +2091,19 @@
                     <div class="card-body">
                         <ul>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/active-design/">Active Design</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/active-design/">Active design</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/air-quality/">Air Quality</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/air-quality/">Air quality</a>
                                 </li>
                             
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/asthma/">Asthma</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/health-impacts-of-air-pollution/">Health Impacts of Air Pollution</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/health-impacts-of-air-pollution/">Health impacts of air pollution</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/walking-driving-and-cycling/">Walking, Driving, and Cycling</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/walking-driving-and-cycling/">Walking, driving, and cycling</a>
                                 </li>
                             
                             </ul>
@@ -2138,10 +2145,10 @@
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/housing-stability/">Housing stability</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/vector-borne-disease/">Vector-borne Disease</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/vector-borne-disease/">Vector-borne disease</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/weather-related-illness/">Weather-Related Illness</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/weather-related-illness/">Weather-related illness</a>
                                 </li>
                             
                             </ul>
@@ -2177,7 +2184,7 @@
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/asthma-triggers/">Asthma triggers at home</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/bed-bugs/">Bed Bugs</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/bed-bugs/">Bed bugs</a>
                                 </li>
                             
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/cancer/">Cancer</a>
@@ -2186,13 +2193,16 @@
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/carbon-monoxide-incidents/">Carbon monoxide</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/cigarette-smoke/">Cigarette Smoke</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/cigarette-smoke/">Cigarette smoke</a>
                                 </li>
                             
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/cockroaches/">Cockroaches</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/falls-among-older-adults/">Falls Among Older Adults</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/economic-conditions/">Economic conditions</a>
+                                </li>
+                            
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/falls-among-older-adults/">Falls among older adults</a>
                                 </li>
                             
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/housing-maintenance/">Housing maintenance</a>
@@ -2207,10 +2217,10 @@
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/lead/">Lead poisoning</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/mice-and-rats/">Mice and Rats</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/mice-and-rats/">Mice and rats</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/social-and-economic-conditions/">Social and Economic Conditions</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/social-conditions/">Social conditions</a>
                                 </li>
                             
                             </ul>
@@ -2246,10 +2256,13 @@
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/asthma-triggers/">Asthma triggers at home</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/health-care/">Health Care</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/economic-conditions/">Economic conditions</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/health-impacts-of-air-pollution/">Health Impacts of Air Pollution</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/health-care/">Health care</a>
+                                </li>
+                            
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/health-impacts-of-air-pollution/">Health impacts of air pollution</a>
                                 </li>
                             
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/housing-maintenance/">Housing maintenance</a>
@@ -2267,16 +2280,16 @@
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/mortality/">Mortality</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/social-and-economic-conditions/">Social and Economic Conditions</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/social-conditions/">Social conditions</a>
                                 </li>
                             
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/violence/">Violence</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/weather-related-illness/">Weather-Related Illness</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/weather-related-illness/">Weather-related illness</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/worker-health/">Worker Health</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/worker-health/">Worker health</a>
                                 </li>
                             
                             </ul>
@@ -2306,28 +2319,25 @@
                     <div class="card-body">
                         <ul>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/active-design/">Active Design</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/active-design/">Active design</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/air-quality/">Air Quality</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/air-quality/">Air quality</a>
                                 </li>
                             
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/asthma/">Asthma</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/health-impacts-of-air-pollution/">Health Impacts of Air Pollution</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/health-impacts-of-air-pollution/">Health impacts of air pollution</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/noise/">Noise</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/physical-activity/">Physical activity</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/physical-activity/">Physical Activity</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/transportation-related-injuries/">Transportation-related injuries</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/transportation-related-injuries/">Transportation-related Injuries</a>
-                                </li>
-                            
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/walking-driving-and-cycling/">Walking, Driving, and Cycling</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/walking-driving-and-cycling/">Walking, driving, and cycling</a>
                                 </li>
                             
                             </ul>
@@ -2360,22 +2370,22 @@
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/asthma/">Asthma</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/birth-defects/">Birth Defects</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/birth-defects/">Birth defects</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/birth-outcomes/">Birth Outcomes</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/birth-outcomes/">Birth outcomes</a>
                                 </li>
                             
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/cancer/">Cancer</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/cancers-in-children/">Cancers in Children</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/cancers-in-children/">Cancers in children</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/falls-among-older-adults/">Falls Among Older Adults</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/falls-among-older-adults/">Falls among older adults</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/health-impacts-of-air-pollution/">Health Impacts of Air Pollution</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/health-impacts-of-air-pollution/">Health impacts of air pollution</a>
                                 </li>
                             
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/mortality/">Mortality</a>
@@ -2384,19 +2394,19 @@
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/overweight/">Overweight</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/transportation-related-injuries/">Transportation-related Injuries</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/transportation-related-injuries/">Transportation-related injuries</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/vector-borne-disease/">Vector-borne Disease</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/vector-borne-disease/">Vector-borne disease</a>
                                 </li>
                             
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/violence/">Violence</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/weather-related-illness/">Weather-Related Illness</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/weather-related-illness/">Weather-related illness</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/worker-health/">Worker Health</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/worker-health/">Worker health</a>
                                 </li>
                             
                             </ul>
@@ -2426,28 +2436,25 @@
                     <div class="card-body">
                         <ul>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/air-quality/">Air Quality</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/air-quality/">Air quality</a>
                                 </li>
                             
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/asthma/">Asthma</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/birth-defects/">Birth Defects</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/birth-defects/">Birth defects</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/birth-outcomes/">Birth Outcomes</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/birth-outcomes/">Birth outcomes</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/cancer/">Cancer</a>
-                                </li>
-                            
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/cancers-in-children/">Cancers in Children</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/cancers-in-children/">Cancers in children</a>
                                 </li>
                             
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/carbon-monoxide-incidents/">Carbon monoxide</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/cigarette-smoke/">Cigarette Smoke</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/cigarette-smoke/">Cigarette smoke</a>
                                 </li>
                             
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/lead/">Lead poisoning</a>
@@ -2483,19 +2490,19 @@
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/asthma/">Asthma</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/bed-bugs/">Bed Bugs</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/bed-bugs/">Bed bugs</a>
                                 </li>
                             
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/cockroaches/">Cockroaches</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/mice-and-rats/">Mice and Rats</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/mice-and-rats/">Mice and rats</a>
                                 </li>
                             
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/pesticides/">Pesticides</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/vector-borne-disease/">Vector-borne Disease</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/vector-borne-disease/">Vector-borne disease</a>
                                 </li>
                             
                             </ul>
@@ -2525,16 +2532,16 @@
                     <div class="card-body">
                         <ul>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/alcohol-use/">Alcohol Access and Use</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/healthy-eating/">Healthy eating</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/drinking-water-quality/">Drinking Water Quality</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/alcohol-use/">Alcohol access and use</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/restaurant-food-safety/">Restaurant Food Safety</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/drinking-water-quality/">Drinking water quality</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/sugary-drink-consumption/">Sugary Drink Consumption</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/restaurant-food-safety/">Restaurant food safety</a>
                                 </li>
                             
                             </ul>
@@ -2566,16 +2573,19 @@
                     <div class="card-body">
                         <ul>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/active-design/">Active Design</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/healthy-eating/">Healthy eating</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/air-quality/">Air Quality</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/active-design/">Active design</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/alcohol-use/">Alcohol Access and Use</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/air-quality/">Air quality</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/all-data/">All Data Sets</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/alcohol-use/">Alcohol access and use</a>
+                                </li>
+                            
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/all-data/">All data sets</a>
                                 </li>
                             
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/asthma/">Asthma</a>
@@ -2584,25 +2594,25 @@
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/asthma-triggers/">Asthma triggers at home</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/bed-bugs/">Bed Bugs</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/bed-bugs/">Bed bugs</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/birth-defects/">Birth Defects</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/birth-defects/">Birth defects</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/birth-outcomes/">Birth Outcomes</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/birth-outcomes/">Birth outcomes</a>
                                 </li>
                             
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/cancer/">Cancer</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/cancers-in-children/">Cancers in Children</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/cancers-in-children/">Cancers in children</a>
                                 </li>
                             
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/carbon-monoxide-incidents/">Carbon monoxide</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/cigarette-smoke/">Cigarette Smoke</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/cigarette-smoke/">Cigarette smoke</a>
                                 </li>
                             
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/climate/">Climate</a>
@@ -2611,16 +2621,19 @@
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/cockroaches/">Cockroaches</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/drinking-water-quality/">Drinking Water Quality</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/drinking-water-quality/">Drinking water quality</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/falls-among-older-adults/">Falls Among Older Adults</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/economic-conditions/">Economic conditions</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/health-care/">Health Care</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/falls-among-older-adults/">Falls among older adults</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/health-impacts-of-air-pollution/">Health Impacts of Air Pollution</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/health-care/">Health care</a>
+                                </li>
+                            
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/health-impacts-of-air-pollution/">Health impacts of air pollution</a>
                                 </li>
                             
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/housing-maintenance/">Housing maintenance</a>
@@ -2635,13 +2648,10 @@
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/lead/">Lead poisoning</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/mice-and-rats/">Mice and Rats</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/mice-and-rats/">Mice and rats</a>
                                 </li>
                             
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/mortality/">Mortality</a>
-                                </li>
-                            
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/noise/">Noise</a>
                                 </li>
                             
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/overweight/">Overweight</a>
@@ -2650,37 +2660,31 @@
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/pesticides/">Pesticides</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/physical-activity/">Physical Activity</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/physical-activity/">Physical activity</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/restaurant-food-safety/">Restaurant Food Safety</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/restaurant-food-safety/">Restaurant food safety</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/social-and-economic-conditions/">Social and Economic Conditions</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/social-conditions/">Social conditions</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/solid-waste/">Solid Waste</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/transportation-related-injuries/">Transportation-related injuries</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/sugary-drink-consumption/">Sugary Drink Consumption</a>
-                                </li>
-                            
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/transportation-related-injuries/">Transportation-related Injuries</a>
-                                </li>
-                            
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/vector-borne-disease/">Vector-borne Disease</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/vector-borne-disease/">Vector-borne disease</a>
                                 </li>
                             
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/violence/">Violence</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/walking-driving-and-cycling/">Walking, Driving, and Cycling</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/walking-driving-and-cycling/">Walking, driving, and cycling</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/weather-related-illness/">Weather-Related Illness</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/weather-related-illness/">Weather-related illness</a>
                                 </li>
                             
-                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/worker-health/">Worker Health</a>
+                                <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/worker-health/">Worker health</a>
                                 </li>
                             
                             </ul>
@@ -2699,7 +2703,7 @@
 
 
 <script>
-    var subtopic_indicators = {"active-design":{"IndicatorID":[2390,2181,2158,2157,2143,2388,2391,2389,2133],"subtopic_name":"Active Design"},"air-quality":{"IndicatorID":[92,57,55,2024,2023,2028,2025,2027,2026],"subtopic_name":"Air Quality"},"alcohol-use":{"IndicatorID":[2049,2057,2050,2051,2056,2055],"subtopic_name":"Alcohol Access and Use"},"asthma":{"IndicatorID":[2380,2384,2048,2378,2379,2383,2382,2387,84,2381,2386,18,2392,2147,2149,2339],"subtopic_name":"Asthma"},"asthma-triggers":{"IndicatorID":[2101,25,2393,2394,107,48],"subtopic_name":"Asthma triggers at home"},"bed-bugs":{"IndicatorID":[2030],"subtopic_name":"Bed Bugs"},"birth-defects":{"IndicatorID":[26,30,31,36,37,33,28,32,35,27,101,29,34],"subtopic_name":"Birth Defects"},"birth-outcomes":{"IndicatorID":[5,4,6,7,8,1,9,3,2],"subtopic_name":"Birth Outcomes"},"cancer":{"IndicatorID":[74,2096,66,60,770,2077,2087,2088,73,2089,63,2090,2095,71,2091,64,690],"subtopic_name":"Cancer"},"cancers-in-children":{"IndicatorID":[2037,2035,2033,2031,2039],"subtopic_name":"Cancers in Children"},"carbon-monoxide-incidents":{"IndicatorID":[38,2168,2398,2405,2406],"subtopic_name":"Carbon monoxide"},"cigarette-smoke":{"IndicatorID":[2338,2020,2017,2019,2021,25],"subtopic_name":"Cigarette Smoke"},"climate":{"IndicatorID":[2141,2143,2084,2191,2411,2155,2104,2185,2377],"subtopic_name":"Climate"},"cockroaches":{"IndicatorID":[22,2393,107],"subtopic_name":"Cockroaches"},"drinking-water-quality":{"IndicatorID":[2207,2044,2043,2041],"subtopic_name":"Drinking Water Quality"},"falls-among-older-adults":{"IndicatorID":[2135,2136,2408,2409,2403,2188],"subtopic_name":"Falls Among Older Adults"},"health-care":{"IndicatorID":[2151,2132,2401,2232],"subtopic_name":"Health Care"},"health-impacts-of-air-pollution":{"IndicatorID":[2122,2124,2121,2117,2120,2108,2119],"subtopic_name":"Health Impacts of Air Pollution"},"housing-maintenance":{"IndicatorID":[2396,2395,46,47,45,40,42,41,2399,2179],"subtopic_name":"Housing maintenance"},"housing-safety":{"IndicatorID":[2365,15,17,2188,2185,2377,2336],"subtopic_name":"Housing safety"},"housing-stability":{"IndicatorID":[2365,15,17,2188,2185,2377,2336],"subtopic_name":"Housing stability"},"lead":{"IndicatorID":[2189,2184,2216,2176,16,2209,41],"subtopic_name":"Lead poisoning"},"mice-and-rats":{"IndicatorID":[2394,2105,24,48],"subtopic_name":"Mice and Rats"},"mortality":{"IndicatorID":[5,6,8,2322],"subtopic_name":"Mortality"},"noise":{"IndicatorID":[2134],"subtopic_name":"Noise"},"overweight":{"IndicatorID":[2063,2064,2061,2062],"subtopic_name":"Overweight"},"pesticides":{"IndicatorID":[2235,91,100,2312,96,94,93,99,97,98,102,2366,2364,2367,2368,2369,2374,2370],"subtopic_name":"Pesticides"},"physical-activity":{"IndicatorID":[2060,2058,2173,2059,2172],"subtopic_name":"Physical Activity"},"restaurant-food-safety":{"IndicatorID":[2065],"subtopic_name":"Restaurant Food Safety"},"social-and-economic-conditions":{"IndicatorID":[2145,2176,14,2334,2317,2335,2146,2073,103,2325,2336,2323,2337,2389,2365,15,17],"subtopic_name":"Social and Economic Conditions"},"solid-waste":{"IndicatorID":[],"subtopic_name":"Solid Waste"},"sugary-drink-consumption":{"IndicatorID":[2097,2098],"subtopic_name":"Sugary Drink Consumption"},"transportation-related-injuries":{"IndicatorID":[2092,2086,2094,2093],"subtopic_name":"Transportation-related Injuries"},"vector-borne-disease":{"IndicatorID":[2218,2340],"subtopic_name":"Vector-borne Disease"},"violence":{"IndicatorID":[2400,2375],"subtopic_name":"Violence"},"walking-driving-and-cycling":{"IndicatorID":[2113,2236,2237,2238,2058,2173,2059,2172,2133,2114,2112],"subtopic_name":"Walking, Driving, and Cycling"},"weather-related-illness":{"IndicatorID":[2376,2175,2174,2410,2084,2074,2075,2076,2191,2411],"subtopic_name":"Weather-Related Illness"},"worker-health":{"IndicatorID":[2209,2211,2208,2210,2214,2239,2215],"subtopic_name":"Worker Health"}};
+    var subtopic_indicators = {"active-design":{"IndicatorID":[2390,2181,2158,2157,2143,2388,2391,2389,2133],"subtopic_name":"Active design"},"air-quality":{"IndicatorID":[92,57,55,2024,2023,2028,2025,2027,2026],"subtopic_name":"Air quality"},"alcohol-use":{"IndicatorID":[2049,2057,2050,2051,2056,2055],"subtopic_name":"Alcohol access and use"},"asthma":{"IndicatorID":[2380,2384,2048,2378,2379,2383,2382,2387,84,2381,2386,18,2392,2147,2149,2339],"subtopic_name":"Asthma"},"asthma-triggers":{"IndicatorID":[2101,25,2393,2394,107,48],"subtopic_name":"Asthma triggers at home"},"bed-bugs":{"IndicatorID":[2030],"subtopic_name":"Bed bugs"},"birth-defects":{"IndicatorID":[26,30,31,36,37,33,28,32,35,27,101,29,34],"subtopic_name":"Birth defects"},"birth-outcomes":{"IndicatorID":[5,4,6,7,8,1,9,3,2],"subtopic_name":"Birth outcomes"},"cancer":{"IndicatorID":[74,2096,66,60,770,2077,2087,2088,73,2089,63,2090,2095,71,2091,64,690],"subtopic_name":"Cancer"},"cancers-in-children":{"IndicatorID":[2037,2035,2033,2031,2039],"subtopic_name":"Cancers in children"},"carbon-monoxide-incidents":{"IndicatorID":[38,2168,2398,2405,2406],"subtopic_name":"Carbon monoxide"},"cigarette-smoke":{"IndicatorID":[2338,2020,2017,2019,2021,25],"subtopic_name":"Cigarette smoke"},"climate":{"IndicatorID":[2141,2143,2084,2191,2411,2155,2104,2185,2377],"subtopic_name":"Climate"},"cockroaches":{"IndicatorID":[22,2393,107],"subtopic_name":"Cockroaches"},"drinking-water-quality":{"IndicatorID":[2207,2044,2043,2041],"subtopic_name":"Drinking water quality"},"economic-conditions":{"IndicatorID":[103,2176,2337,2132,2317,2073,17,2336,15,2365],"subtopic_name":"Economic conditions"},"falls-among-older-adults":{"IndicatorID":[2135,2136,2408,2409,2403,2188],"subtopic_name":"Falls among older adults"},"health-care":{"IndicatorID":[2151,2132,2401,2232],"subtopic_name":"Health care"},"health-impacts-of-air-pollution":{"IndicatorID":[2122,2124,2121,2117,2120,2108,2119],"subtopic_name":"Health impacts of air pollution"},"healthy-eating":{"IndicatorID":[2097,2389,2098],"subtopic_name":"Healthy eating"},"housing-maintenance":{"IndicatorID":[2396,2395,46,47,45,40,42,41,2399,2179],"subtopic_name":"Housing maintenance"},"housing-safety":{"IndicatorID":[2188,2185,2377],"subtopic_name":"Housing safety"},"housing-stability":{"IndicatorID":[2365,15,17,2336],"subtopic_name":"Housing stability"},"lead":{"IndicatorID":[2189,2184,2216,2176,2209,41,16],"subtopic_name":"Lead poisoning"},"mice-and-rats":{"IndicatorID":[2394,2105,24,48],"subtopic_name":"Mice and rats"},"mortality":{"IndicatorID":[5,6,8,2322],"subtopic_name":"Mortality"},"overweight":{"IndicatorID":[2063,2064,2061,2062],"subtopic_name":"Overweight"},"pesticides":{"IndicatorID":[2235,91,100,2312,96,94,93,99,97,98,102,2366,2364,2367,2368,2369,2374,2370],"subtopic_name":"Pesticides"},"physical-activity":{"IndicatorID":[2060,2058,2173,2059,2172],"subtopic_name":"Physical activity"},"restaurant-food-safety":{"IndicatorID":[2065],"subtopic_name":"Restaurant food safety"},"social-conditions":{"IndicatorID":[2325,2145,14,2334,2317,2335,2146,2323],"subtopic_name":"Social conditions"},"transportation-related-injuries":{"IndicatorID":[2092,2086,2094,2093],"subtopic_name":"Transportation-related injuries"},"vector-borne-disease":{"IndicatorID":[2218,2340],"subtopic_name":"Vector-borne disease"},"violence":{"IndicatorID":[2400,2375],"subtopic_name":"Violence"},"walking-driving-and-cycling":{"IndicatorID":[2133,2172,2058,2173,2059,2236,2237,2238,2113,2114,2112],"subtopic_name":"Walking, driving, and cycling"},"weather-related-illness":{"IndicatorID":[2376,2175,2174,2410,2084,2074,2075,2076,2191,2411],"subtopic_name":"Weather-related illness"},"worker-health":{"IndicatorID":[2209,2211,2208,2210,2214,2239,2215],"subtopic_name":"Worker health"}};
     console.log(subtopic_indicators)
 
     var destination = document.getElementById('indicatorNames')    
@@ -2795,6 +2799,14 @@
            
             var option = document.createElement("OPTION");
             
+            option.innerHTML = "Healthy eating"
+            
+            option.value = '\/EH-dataportal/\/data-explorer\/healthy-eating\/'
+            
+            ddlData.options.add(option);
+           
+            var option = document.createElement("OPTION");
+            
             option.innerHTML = "Data Explorer"
             
             option.value = '\/EH-dataportal/\/data-explorer\/'
@@ -2803,7 +2815,7 @@
            
             var option = document.createElement("OPTION");
             
-            option.innerHTML = "Active Design"
+            option.innerHTML = "Active design"
             
             option.value = '\/EH-dataportal/\/data-explorer\/active-design\/'
             
@@ -2811,7 +2823,7 @@
            
             var option = document.createElement("OPTION");
             
-            option.innerHTML = "Air Quality"
+            option.innerHTML = "Air quality"
             
             option.value = '\/EH-dataportal/\/data-explorer\/air-quality\/'
             
@@ -2819,7 +2831,7 @@
            
             var option = document.createElement("OPTION");
             
-            option.innerHTML = "Alcohol Access and Use"
+            option.innerHTML = "Alcohol access and use"
             
             option.value = '\/EH-dataportal/\/data-explorer\/alcohol-use\/'
             
@@ -2827,7 +2839,7 @@
            
             var option = document.createElement("OPTION");
             
-            option.innerHTML = "All Data Sets"
+            option.innerHTML = "All data sets"
             
             option.value = '\/EH-dataportal/\/data-explorer\/all-data\/'
             
@@ -2851,7 +2863,7 @@
            
             var option = document.createElement("OPTION");
             
-            option.innerHTML = "Bed Bugs"
+            option.innerHTML = "Bed bugs"
             
             option.value = '\/EH-dataportal/\/data-explorer\/bed-bugs\/'
             
@@ -2859,7 +2871,7 @@
            
             var option = document.createElement("OPTION");
             
-            option.innerHTML = "Birth Defects"
+            option.innerHTML = "Birth defects"
             
             option.value = '\/EH-dataportal/\/data-explorer\/birth-defects\/'
             
@@ -2867,7 +2879,7 @@
            
             var option = document.createElement("OPTION");
             
-            option.innerHTML = "Birth Outcomes"
+            option.innerHTML = "Birth outcomes"
             
             option.value = '\/EH-dataportal/\/data-explorer\/birth-outcomes\/'
             
@@ -2883,7 +2895,7 @@
            
             var option = document.createElement("OPTION");
             
-            option.innerHTML = "Cancers in Children"
+            option.innerHTML = "Cancers in children"
             
             option.value = '\/EH-dataportal/\/data-explorer\/cancers-in-children\/'
             
@@ -2899,7 +2911,7 @@
            
             var option = document.createElement("OPTION");
             
-            option.innerHTML = "Cigarette Smoke"
+            option.innerHTML = "Cigarette smoke"
             
             option.value = '\/EH-dataportal/\/data-explorer\/cigarette-smoke\/'
             
@@ -2923,7 +2935,7 @@
            
             var option = document.createElement("OPTION");
             
-            option.innerHTML = "Drinking Water Quality"
+            option.innerHTML = "Drinking water quality"
             
             option.value = '\/EH-dataportal/\/data-explorer\/drinking-water-quality\/'
             
@@ -2931,7 +2943,15 @@
            
             var option = document.createElement("OPTION");
             
-            option.innerHTML = "Falls Among Older Adults"
+            option.innerHTML = "Economic conditions"
+            
+            option.value = '\/EH-dataportal/\/data-explorer\/economic-conditions\/'
+            
+            ddlData.options.add(option);
+           
+            var option = document.createElement("OPTION");
+            
+            option.innerHTML = "Falls among older adults"
             
             option.value = '\/EH-dataportal/\/data-explorer\/falls-among-older-adults\/'
             
@@ -2939,7 +2959,7 @@
            
             var option = document.createElement("OPTION");
             
-            option.innerHTML = "Health Care"
+            option.innerHTML = "Health care"
             
             option.value = '\/EH-dataportal/\/data-explorer\/health-care\/'
             
@@ -2947,7 +2967,7 @@
            
             var option = document.createElement("OPTION");
             
-            option.innerHTML = "Health Impacts of Air Pollution"
+            option.innerHTML = "Health impacts of air pollution"
             
             option.value = '\/EH-dataportal/\/data-explorer\/health-impacts-of-air-pollution\/'
             
@@ -2987,7 +3007,7 @@
            
             var option = document.createElement("OPTION");
             
-            option.innerHTML = "Mice and Rats"
+            option.innerHTML = "Mice and rats"
             
             option.value = '\/EH-dataportal/\/data-explorer\/mice-and-rats\/'
             
@@ -2998,14 +3018,6 @@
             option.innerHTML = "Mortality"
             
             option.value = '\/EH-dataportal/\/data-explorer\/mortality\/'
-            
-            ddlData.options.add(option);
-           
-            var option = document.createElement("OPTION");
-            
-            option.innerHTML = "Noise"
-            
-            option.value = '\/EH-dataportal/\/data-explorer\/noise\/'
             
             ddlData.options.add(option);
            
@@ -3027,7 +3039,7 @@
            
             var option = document.createElement("OPTION");
             
-            option.innerHTML = "Physical Activity"
+            option.innerHTML = "Physical activity"
             
             option.value = '\/EH-dataportal/\/data-explorer\/physical-activity\/'
             
@@ -3035,7 +3047,7 @@
            
             var option = document.createElement("OPTION");
             
-            option.innerHTML = "Restaurant Food Safety"
+            option.innerHTML = "Restaurant food safety"
             
             option.value = '\/EH-dataportal/\/data-explorer\/restaurant-food-safety\/'
             
@@ -3043,31 +3055,15 @@
            
             var option = document.createElement("OPTION");
             
-            option.innerHTML = "Social and Economic Conditions"
+            option.innerHTML = "Social conditions"
             
-            option.value = '\/EH-dataportal/\/data-explorer\/social-and-economic-conditions\/'
-            
-            ddlData.options.add(option);
-           
-            var option = document.createElement("OPTION");
-            
-            option.innerHTML = "Solid Waste"
-            
-            option.value = '\/EH-dataportal/\/data-explorer\/solid-waste\/'
+            option.value = '\/EH-dataportal/\/data-explorer\/social-conditions\/'
             
             ddlData.options.add(option);
            
             var option = document.createElement("OPTION");
             
-            option.innerHTML = "Sugary Drink Consumption"
-            
-            option.value = '\/EH-dataportal/\/data-explorer\/sugary-drink-consumption\/'
-            
-            ddlData.options.add(option);
-           
-            var option = document.createElement("OPTION");
-            
-            option.innerHTML = "Transportation-related Injuries"
+            option.innerHTML = "Transportation-related injuries"
             
             option.value = '\/EH-dataportal/\/data-explorer\/transportation-related-injuries\/'
             
@@ -3075,7 +3071,7 @@
            
             var option = document.createElement("OPTION");
             
-            option.innerHTML = "Vector-borne Disease"
+            option.innerHTML = "Vector-borne disease"
             
             option.value = '\/EH-dataportal/\/data-explorer\/vector-borne-disease\/'
             
@@ -3091,7 +3087,7 @@
            
             var option = document.createElement("OPTION");
             
-            option.innerHTML = "Walking, Driving, and Cycling"
+            option.innerHTML = "Walking, driving, and cycling"
             
             option.value = '\/EH-dataportal/\/data-explorer\/walking-driving-and-cycling\/'
             
@@ -3099,7 +3095,7 @@
            
             var option = document.createElement("OPTION");
             
-            option.innerHTML = "Weather-Related Illness"
+            option.innerHTML = "Weather-related illness"
             
             option.value = '\/EH-dataportal/\/data-explorer\/weather-related-illness\/'
             
@@ -3107,7 +3103,7 @@
            
             var option = document.createElement("OPTION");
             
-            option.innerHTML = "Worker Health"
+            option.innerHTML = "Worker health"
             
             option.value = '\/EH-dataportal/\/data-explorer\/worker-health\/'
             

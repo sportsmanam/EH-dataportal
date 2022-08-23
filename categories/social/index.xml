@@ -8,7 +8,7 @@
     <language>en-us</language>
     <lastBuildDate>Mon, 10 Jan 2022 12:34:38 -0400</lastBuildDate><atom:link href="https://nychealth.github.io/EH-dataportal/categories/social/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>How Power Outages Affect Health</title>
+      <title>How power outages affect health</title>
       <link>https://nychealth.github.io/EH-dataportal/data-stories/poweroutages/</link>
       <pubDate>Mon, 10 Jan 2022 12:34:38 -0400</pubDate>
       
@@ -69,7 +69,18 @@ No family should have to choose between affordable and healthy housing. All tena
     </item>
     
     <item>
-      <title>Health Care</title>
+      <title>Economic conditions</title>
+      <link>https://nychealth.github.io/EH-dataportal/data-explorer/economic-conditions/</link>
+      <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
+      
+      <guid>https://nychealth.github.io/EH-dataportal/data-explorer/economic-conditions/</guid>
+      <description>Social and economic conditions affect people’s health. These conditions (also called “social determinants of health”) are conditions that people may be born into or fall into over the course of their lives.
+People tend to be healthier when they have access to:
+ Economic and financial stability Higher education Adequate health care Healthy neighborhoods and safe, strong communities  Access to these are shaped by local, national and global distribution of resources and power.</description>
+    </item>
+    
+    <item>
+      <title>Health care</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/health-care/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
@@ -80,7 +91,7 @@ However, not all New Yorkers can access appropriate amounts of care. Many New Yo
     </item>
     
     <item>
-      <title>Health Impacts of Air Pollution</title>
+      <title>Health impacts of air pollution</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/health-impacts-of-air-pollution/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
@@ -141,12 +152,12 @@ Neonatal deaths, postneonatal deaths, and infant deaths let us look at deaths am
     </item>
     
     <item>
-      <title>Social and Economic Conditions</title>
-      <link>https://nychealth.github.io/EH-dataportal/data-explorer/social-and-economic-conditions/</link>
+      <title>Social conditions</title>
+      <link>https://nychealth.github.io/EH-dataportal/data-explorer/social-conditions/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
-      <guid>https://nychealth.github.io/EH-dataportal/data-explorer/social-and-economic-conditions/</guid>
-      <description>Social and economic conditions affect people’s health. These conditions (also called “social determinants of health”) are conditions that people may be born into or fall into over the course of their lives. They are shaped by local, national and global distribution of resources and power.
+      <guid>https://nychealth.github.io/EH-dataportal/data-explorer/social-conditions/</guid>
+      <description>Social and economic conditions affect people’s health. These conditions (also called “social determinants of health”) are conditions that people may be born into or fall into over the course of their lives.
 People tend to be healthier when they have access to:
  Economic and financial stability Higher education Adequate health care Healthy neighborhoods and safe, strong communities  But when people don’t have access to these conditions, they experience worse health outcomes.</description>
     </item>
@@ -162,7 +173,7 @@ Violence is a public health issue because it is a cause of morbidity and mortali
     </item>
     
     <item>
-      <title>Weather-Related Illness</title>
+      <title>Weather-related illness</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/weather-related-illness/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
@@ -171,7 +182,7 @@ Violence is a public health issue because it is a cause of morbidity and mortali
     </item>
     
     <item>
-      <title>Worker Health</title>
+      <title>Worker health</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/worker-health/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       

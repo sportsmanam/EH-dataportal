@@ -260,6 +260,69 @@
     </item>
     
     <item>
+      <title>drink</title>
+      <link>https://nychealth.github.io/EH-dataportal/keywords/drink/</link>
+      <pubDate>Wed, 17 Nov 2021 12:01:22 -0500</pubDate>
+      
+      <guid>https://nychealth.github.io/EH-dataportal/keywords/drink/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>food</title>
+      <link>https://nychealth.github.io/EH-dataportal/keywords/food/</link>
+      <pubDate>Wed, 17 Nov 2021 12:01:22 -0500</pubDate>
+      
+      <guid>https://nychealth.github.io/EH-dataportal/keywords/food/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>food desert</title>
+      <link>https://nychealth.github.io/EH-dataportal/keywords/food-desert/</link>
+      <pubDate>Wed, 17 Nov 2021 12:01:22 -0500</pubDate>
+      
+      <guid>https://nychealth.github.io/EH-dataportal/keywords/food-desert/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>food environment</title>
+      <link>https://nychealth.github.io/EH-dataportal/keywords/food-environment/</link>
+      <pubDate>Wed, 17 Nov 2021 12:01:22 -0500</pubDate>
+      
+      <guid>https://nychealth.github.io/EH-dataportal/keywords/food-environment/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nutrition</title>
+      <link>https://nychealth.github.io/EH-dataportal/keywords/nutrition/</link>
+      <pubDate>Wed, 17 Nov 2021 12:01:22 -0500</pubDate>
+      
+      <guid>https://nychealth.github.io/EH-dataportal/keywords/nutrition/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>soda</title>
+      <link>https://nychealth.github.io/EH-dataportal/keywords/soda/</link>
+      <pubDate>Wed, 17 Nov 2021 12:01:22 -0500</pubDate>
+      
+      <guid>https://nychealth.github.io/EH-dataportal/keywords/soda/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sugary drinks</title>
+      <link>https://nychealth.github.io/EH-dataportal/keywords/sugary-drinks/</link>
+      <pubDate>Wed, 17 Nov 2021 12:01:22 -0500</pubDate>
+      
+      <guid>https://nychealth.github.io/EH-dataportal/keywords/sugary-drinks/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>pollution</title>
       <link>https://nychealth.github.io/EH-dataportal/keywords/pollution/</link>
       <pubDate>Mon, 04 Oct 2021 12:32:15 -0400</pubDate>
@@ -989,15 +1052,6 @@
     </item>
     
     <item>
-      <title>construction</title>
-      <link>https://nychealth.github.io/EH-dataportal/keywords/construction/</link>
-      <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
-      
-      <guid>https://nychealth.github.io/EH-dataportal/keywords/construction/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>crowding</title>
       <link>https://nychealth.github.io/EH-dataportal/keywords/crowding/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
@@ -1021,15 +1075,6 @@
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
       <guid>https://nychealth.github.io/EH-dataportal/keywords/doctors/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>drink</title>
-      <link>https://nychealth.github.io/EH-dataportal/keywords/drink/</link>
-      <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
-      
-      <guid>https://nychealth.github.io/EH-dataportal/keywords/drink/</guid>
       <description></description>
     </item>
     
@@ -1097,29 +1142,11 @@
     </item>
     
     <item>
-      <title>food</title>
-      <link>https://nychealth.github.io/EH-dataportal/keywords/food/</link>
-      <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
-      
-      <guid>https://nychealth.github.io/EH-dataportal/keywords/food/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>food and drink</title>
       <link>https://nychealth.github.io/EH-dataportal/keywords/food-and-drink/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
       <guid>https://nychealth.github.io/EH-dataportal/keywords/food-and-drink/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>garbage</title>
-      <link>https://nychealth.github.io/EH-dataportal/keywords/garbage/</link>
-      <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
-      
-      <guid>https://nychealth.github.io/EH-dataportal/keywords/garbage/</guid>
       <description></description>
     </item>
     
@@ -1228,15 +1255,6 @@
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
       <guid>https://nychealth.github.io/EH-dataportal/keywords/monoxide/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>noise</title>
-      <link>https://nychealth.github.io/EH-dataportal/keywords/noise/</link>
-      <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
-      
-      <guid>https://nychealth.github.io/EH-dataportal/keywords/noise/</guid>
       <description></description>
     </item>
     
@@ -1394,29 +1412,11 @@
     </item>
     
     <item>
-      <title>soda</title>
-      <link>https://nychealth.github.io/EH-dataportal/keywords/soda/</link>
-      <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
-      
-      <guid>https://nychealth.github.io/EH-dataportal/keywords/soda/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>streets</title>
       <link>https://nychealth.github.io/EH-dataportal/keywords/streets/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
       <guid>https://nychealth.github.io/EH-dataportal/keywords/streets/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>sugary drinks</title>
-      <link>https://nychealth.github.io/EH-dataportal/keywords/sugary-drinks/</link>
-      <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
-      
-      <guid>https://nychealth.github.io/EH-dataportal/keywords/sugary-drinks/</guid>
       <description></description>
     </item>
     
@@ -1462,15 +1462,6 @@
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
       <guid>https://nychealth.github.io/EH-dataportal/keywords/violence/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>waste</title>
-      <link>https://nychealth.github.io/EH-dataportal/keywords/waste/</link>
-      <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
-      
-      <guid>https://nychealth.github.io/EH-dataportal/keywords/waste/</guid>
       <description></description>
     </item>
     

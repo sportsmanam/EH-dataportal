@@ -8,7 +8,18 @@
     <language>en-us</language>
     <lastBuildDate>Thu, 07 Oct 2021 09:34:04 -0400</lastBuildDate><atom:link href="https://nychealth.github.io/EH-dataportal/data-explorer/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Active Design</title>
+      <title>Healthy eating</title>
+      <link>https://nychealth.github.io/EH-dataportal/data-explorer/healthy-eating/</link>
+      <pubDate>Wed, 17 Nov 2021 12:01:22 -0500</pubDate>
+      
+      <guid>https://nychealth.github.io/EH-dataportal/data-explorer/healthy-eating/</guid>
+      <description>Healthy eating is associated with better health, including a reduced risk of cardiovascular disease. That means that having access to healthy, safe, and affordable food choices is crucial for a person to achieve healthy eating habits.
+Food access is influenced by many environmental factors, including proximity to food retail outlets and neighborhood-level resources (like neighborhood poverty, and availability of public transportation).
+Sugary drinks contribute to a higher-calorie diet, increased risk of heart disease and diabetes, and long-term weight gain.</description>
+    </item>
+    
+    <item>
+      <title>Active design</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/active-design/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
@@ -20,7 +31,7 @@ To improve health, we can:
     </item>
     
     <item>
-      <title>Air Quality</title>
+      <title>Air quality</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/air-quality/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
@@ -31,7 +42,7 @@ Although New York City&amp;rsquo;s air does not currently meet federal air quali
     </item>
     
     <item>
-      <title>Alcohol Access and Use</title>
+      <title>Alcohol access and use</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/alcohol-use/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
@@ -42,7 +53,7 @@ Alcohol and the Environment Greater alcohol outlet density has been associated w
     </item>
     
     <item>
-      <title>All Data Sets</title>
+      <title>All data sets</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/all-data/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
@@ -71,7 +82,7 @@ No family should have to choose between affordable and healthy housing. All tena
     </item>
     
     <item>
-      <title>Bed Bugs</title>
+      <title>Bed bugs</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/bed-bugs/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
@@ -80,7 +91,7 @@ No family should have to choose between affordable and healthy housing. All tena
     </item>
     
     <item>
-      <title>Birth Defects</title>
+      <title>Birth defects</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/birth-defects/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
@@ -90,7 +101,7 @@ No family should have to choose between affordable and healthy housing. All tena
     </item>
     
     <item>
-      <title>Birth Outcomes</title>
+      <title>Birth outcomes</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/birth-outcomes/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
@@ -110,7 +121,7 @@ In New York City cancer kills nearly 13,000 residents every year, with smoking a
     </item>
     
     <item>
-      <title>Cancers in Children</title>
+      <title>Cancers in children</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/cancers-in-children/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
@@ -128,7 +139,7 @@ In New York City cancer kills nearly 13,000 residents every year, with smoking a
     </item>
     
     <item>
-      <title>Cigarette Smoke</title>
+      <title>Cigarette smoke</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/cigarette-smoke/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
@@ -158,7 +169,7 @@ Cockroaches like warm, dark places such as toasters, clocks, microwave ovens, wa
     </item>
     
     <item>
-      <title>Drinking Water Quality</title>
+      <title>Drinking water quality</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/drinking-water-quality/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
@@ -168,7 +179,18 @@ The NYC water system consists of two surface water systems (Croton and Catskill/
     </item>
     
     <item>
-      <title>Falls Among Older Adults</title>
+      <title>Economic conditions</title>
+      <link>https://nychealth.github.io/EH-dataportal/data-explorer/economic-conditions/</link>
+      <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
+      
+      <guid>https://nychealth.github.io/EH-dataportal/data-explorer/economic-conditions/</guid>
+      <description>Social and economic conditions affect people’s health. These conditions (also called “social determinants of health”) are conditions that people may be born into or fall into over the course of their lives.
+People tend to be healthier when they have access to:
+ Economic and financial stability Higher education Adequate health care Healthy neighborhoods and safe, strong communities  Access to these are shaped by local, national and global distribution of resources and power.</description>
+    </item>
+    
+    <item>
+      <title>Falls among older adults</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/falls-among-older-adults/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
@@ -178,7 +200,7 @@ Falls and the environment Although falls can occur anywhere, falls among older a
     </item>
     
     <item>
-      <title>Health Care</title>
+      <title>Health care</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/health-care/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
@@ -189,7 +211,7 @@ However, not all New Yorkers can access appropriate amounts of care. Many New Yo
     </item>
     
     <item>
-      <title>Health Impacts of Air Pollution</title>
+      <title>Health impacts of air pollution</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/health-impacts-of-air-pollution/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
@@ -239,7 +261,7 @@ In the past, it was used in gasoline, paint, ceramics, caulking, pipes and solde
     </item>
     
     <item>
-      <title>Mice and Rats</title>
+      <title>Mice and rats</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/mice-and-rats/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
@@ -258,16 +280,6 @@ This site provides survey data on the prevalence of mice or rats inside and outs
       <description>Death is, of course, a severe health outcome. Many deaths are preventable.
 Premature mortality lets us look at deaths before age 65. It can be a useful way to indicate the overall health of the population.
 Neonatal deaths, postneonatal deaths, and infant deaths let us look at deaths among the the youngest members of our communities. Infants, with new, developing bodies, can be very susceptible to environmental threats - like poisonings, accidents, and injuries.</description>
-    </item>
-    
-    <item>
-      <title>Noise</title>
-      <link>https://nychealth.github.io/EH-dataportal/data-explorer/noise/</link>
-      <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
-      
-      <guid>https://nychealth.github.io/EH-dataportal/data-explorer/noise/</guid>
-      <description>Ambient noise is sound from an environmental source, such as traffic, construction, industrial or recreation activities, animals, or people’s voices, that is unwanted to the person who hears it.
-Noise and the Environment Exposure to any noise has long been recognized as an important occupational health hazard in workplaces and is increasingly viewed as a prevalent urban environmental hazard associated with adverse psychosocial and physiologic health effects such as sleep disturbance, higher blood pressure, cardiovascular disease, and impaired cognitive performance in children.</description>
     </item>
     
     <item>
@@ -291,7 +303,7 @@ Modern pesticides have been developed to have less persistence in the environmen
     </item>
     
     <item>
-      <title>Physical Activity</title>
+      <title>Physical activity</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/physical-activity/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
@@ -301,7 +313,7 @@ Physical Activity and the Environment Neighborhood conditions and resources can 
     </item>
     
     <item>
-      <title>Restaurant Food Safety</title>
+      <title>Restaurant food safety</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/restaurant-food-safety/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
@@ -311,39 +323,18 @@ Restaurant Food Safety and Health Safe food handling can protect diners from foo
     </item>
     
     <item>
-      <title>Social and Economic Conditions</title>
-      <link>https://nychealth.github.io/EH-dataportal/data-explorer/social-and-economic-conditions/</link>
+      <title>Social conditions</title>
+      <link>https://nychealth.github.io/EH-dataportal/data-explorer/social-conditions/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
-      <guid>https://nychealth.github.io/EH-dataportal/data-explorer/social-and-economic-conditions/</guid>
-      <description>Social and economic conditions affect people’s health. These conditions (also called “social determinants of health”) are conditions that people may be born into or fall into over the course of their lives. They are shaped by local, national and global distribution of resources and power.
+      <guid>https://nychealth.github.io/EH-dataportal/data-explorer/social-conditions/</guid>
+      <description>Social and economic conditions affect people’s health. These conditions (also called “social determinants of health”) are conditions that people may be born into or fall into over the course of their lives.
 People tend to be healthier when they have access to:
  Economic and financial stability Higher education Adequate health care Healthy neighborhoods and safe, strong communities  But when people don’t have access to these conditions, they experience worse health outcomes.</description>
     </item>
     
     <item>
-      <title>Solid Waste</title>
-      <link>https://nychealth.github.io/EH-dataportal/data-explorer/solid-waste/</link>
-      <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
-      
-      <guid>https://nychealth.github.io/EH-dataportal/data-explorer/solid-waste/</guid>
-      <description>PlaNYC is a comprehensive sustainability plan for New York City&amp;rsquo;s future.
-Goal: Divert 75% of solid waste from landfills.
-Divert Solid Waste Of the city&amp;rsquo;s 13.6 million tons of waste per year, we currently recycle 51% of solid waste (including fill) and send 43% to landfills. The remainder is composted or converted to energy.
-We are working to increase the amount diverted to recycling, composting, and conversion to 75%. Diverting solid waste from landfills to recycling and conversion facilities make use of our waste, creating new materials, nutrient sources, and energy out of our waste products.</description>
-    </item>
-    
-    <item>
-      <title>Sugary Drink Consumption</title>
-      <link>https://nychealth.github.io/EH-dataportal/data-explorer/sugary-drink-consumption/</link>
-      <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
-      
-      <guid>https://nychealth.github.io/EH-dataportal/data-explorer/sugary-drink-consumption/</guid>
-      <description>Sugary drinks contribute to a higher-calorie diet, long-term weight gain, and increased risk of heart disease and diabetes. Sugary drinks provide little or no nutritional value, and because they don’t fill you up the way food does, you end up consuming more calories. Also, food and beverage portion sizes have exploded over the past several decades, and studies have shown that when given larger portions, people consume more without recognizing it.</description>
-    </item>
-    
-    <item>
-      <title>Transportation-related Injuries</title>
+      <title>Transportation-related injuries</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/transportation-related-injuries/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
@@ -353,7 +344,7 @@ In February 2014, NYC launched “Vision Zero”, an action plan to reduce injur
     </item>
     
     <item>
-      <title>Vector-borne Disease</title>
+      <title>Vector-borne disease</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/vector-borne-disease/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
@@ -373,7 +364,7 @@ Violence is a public health issue because it is a cause of morbidity and mortali
     </item>
     
     <item>
-      <title>Walking, Driving, and Cycling</title>
+      <title>Walking, driving, and cycling</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/walking-driving-and-cycling/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
@@ -383,7 +374,7 @@ Our built environment influences these behaviors. The design of our streets and 
     </item>
     
     <item>
-      <title>Weather-Related Illness</title>
+      <title>Weather-related illness</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/weather-related-illness/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
@@ -392,7 +383,7 @@ Our built environment influences these behaviors. The design of our streets and 
     </item>
     
     <item>
-      <title>Worker Health</title>
+      <title>Worker health</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/worker-health/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
