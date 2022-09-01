@@ -1611,6 +1611,30 @@
         
         
         
+        const assignGeoRank = (GeoType) => {
+            switch (GeoType) {
+                case 'Citywide':
+                    return 0;
+                case 'Borough':
+                    return 1;
+                case 'NYCKIDS':
+                    return 2;
+                case 'UHF34':
+                    return 3;
+                case 'UHF42':
+                    return 4;
+                case 'Subboro':
+                    return 5;
+                case 'CD':
+                    return 6;
+                case 'NTA':
+                    return 7;
+            }
+        }        
+
+        
+        
+        
 
         fetch(data_repo + "/" + data_branch + '/indicators/indicators.json')
             .then(response => response.json())
@@ -1756,27 +1780,6 @@
                 // call the geo file loading function
 
                 loadGeo();
-                
-                const assignGeoRank = (GeoType) => {
-                    switch (GeoType) {
-                        case 'Citywide':
-                            return 0;
-                        case 'Borough':
-                            return 1;
-                        case 'NYCKIDS':
-                            return 2;
-                        case 'UHF34':
-                            return 3;
-                        case 'UHF42':
-                            return 4;
-                        case 'Subboro':
-                            return 5;
-                        case 'CD':
-                            return 6;
-                        case 'NTA':
-                            return 7;
-                    }
-                }
 
                 // console.log("data [loadData]", data);
                 
@@ -1940,11 +1943,36 @@
 
             // console.log("** filterSecondaryIndicatorMeasure");
 
-            // filter trend data to keep primary measure
+            // filter links data to keep primary measure
             
             const primaryMeasureTimesDataObjects = fullDataLinksObjects.filter(
                 d => d.MeasureID === primaryMeasureId
             );
+            
+            // get most recent time period for primary measure
+
+            const aqFilteredPrimaryMeasureTimesData = aq.from(fullDataLinksObjects)
+
+                // most recent period in the data
+                .filter(`d => d.MeasureID === ${primaryMeasureId}`)
+
+                // most recent period in the data
+                .filter(d => d.end_period === op.max(d.end_period))
+
+            // console.log("aqFilteredPrimaryMeasureTimesData", aqFilteredPrimaryMeasureTimesData);
+
+            const mostRecentPrimaryMeasureStartTime = aqFilteredPrimaryMeasureTimesData.array("start_period")[0]
+            const mostRecentPrimaryMeasureEndTime   = aqFilteredPrimaryMeasureTimesData.array("end_period")[0]
+            const mostRecentPrimaryMeasureTime      = aqFilteredPrimaryMeasureTimesData.array("Time")[0]
+            const primaryMeasureGeoRanks            = [...new Set(aqFilteredPrimaryMeasureTimesData.array("GeoRank"))]
+
+            // console.log("mostRecentPrimaryMeasureTime", mostRecentPrimaryMeasureTime);
+            // console.log("mostRecentPrimaryMeasureStartTime", mostRecentPrimaryMeasureStartTime);
+            // console.log("mostRecentPrimaryMeasureEndTime", mostRecentPrimaryMeasureEndTime);
+            // console.log("primaryMeasureGeoRanks", primaryMeasureGeoRanks);
+            
+            // const filteredPrimaryMeasureTimesDataObjects = aqFilteredPrimaryMeasureTimesData.objects()
+
             
             // get metadata for the selected primary measure, assign to global variable
             // indicatorMeasures created in loadIndicator
@@ -1978,36 +2006,10 @@
                 measure => measure.MeasureID === secondaryMeasureId
             )
             
-            // get most recent time period for primary measure
-            
-            const primaryMeasureTimes               = primaryMeasureMetadata[0].AvailableTimes;
-            const sortedPrimaryMeasureTimes         = primaryMeasureTimes.sort((a, b) => b.end_period - a.end_period)
-            const mostRecentPrimaryMeasureTime      = sortedPrimaryMeasureTimes[0].TimeDescription;
-            const mostRecentPrimaryMeasureStartTime = sortedPrimaryMeasureTimes[0].start_period;
-            const mostRecentPrimaryMeasureEndTime   = sortedPrimaryMeasureTimes[0].end_period;
-            
-            // convert to Arquero data frame
-
-            const aqSortedPrimaryMeasureTimes = aq.from(sortedPrimaryMeasureTimes);
-            
             // get most recent time period for secondary measure
             
-            const secondaryMeasureTimes               = secondaryMeasureMetadata[0].AvailableTimes;
-            const sortedSecondaryMeasureTimes         = secondaryMeasureTimes.sort((a, b) => b.end_period - a.end_period)
-            const mostRecentSecondaryMeasureTime      = sortedSecondaryMeasureTimes[0].TimeDescription;
-            const mostRecentSecondaryMeasureStartTime = sortedSecondaryMeasureTimes[0].start_period;
-            const mostRecentSecondaryMeasureEndTime   = sortedSecondaryMeasureTimes[0].end_period;
-            
-            // convert to Arquero data frame
-
-            const aqSortedSecondaryMeasureTimes = aq.from(sortedSecondaryMeasureTimes);
-            
-            // filter main trend data to be within most recent period
-            
-            const filteredPrimaryMeasureTimesDataObjects = primaryMeasureTimesDataObjects.filter(
-                    d => d.start_period == mostRecentPrimaryMeasureStartTime && 
-                        d.end_period == mostRecentPrimaryMeasureEndTime
-                )
+            const secondaryMeasureTimes = secondaryMeasureMetadata[0].AvailableTimes;
+            const aqSecondaryMeasureTimes = aq.from(secondaryMeasureTimes);
             
             
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
@@ -2021,6 +2023,8 @@
                     // get secondary measure data
                     
                     const filteredSecondaryMeasureData = data.filter(d => d.MeasureID === secondaryMeasureId)
+
+                    // console.log("filteredSecondaryMeasureData", filteredSecondaryMeasureData);
                     
                     // join with geotable and times
                     
@@ -2029,54 +2033,71 @@
                             geoTable, 
                             [["GeoID", "GeoType"], ["GeoID", "GeoType"]]
                         )
+                        .derive({ "GeoRank": aq.escape( d => assignGeoRank(d.GeoType))})
+
+                        // get same geotypes as primary data (no citywide or boro)
+                        .filter(`d => op.includes([${primaryMeasureGeoRanks}], d.GeoRank)`)
+                        .rename({'Name': 'Geography'})
                         .join(
-                            aqSortedSecondaryMeasureTimes, 
+                            aqSecondaryMeasureTimes, 
                             ["Time", "TimeDescription"]
                         )
-                        .rename({'Name': 'Geography'})
+                        .select(aq.not("TimeDescription"))
+
+                    // console.log("aqFilteredSecondaryMeasureTimesData");
+                    // aqFilteredSecondaryMeasureTimesData.print()
+
+                    // convert to JS objects
                     
-                    const aqFilteredSecondaryMeasureTimesDataObjects = aqFilteredSecondaryMeasureTimesData.objects();
+                    const filteredSecondaryMeasureTimesDataObjects = aqFilteredSecondaryMeasureTimesData.objects();
                     
                     // get the closest secondary end time 
                     
-                    const closestSecondaryTime = aqFilteredSecondaryMeasureTimesDataObjects.reduce((prev, curr) => {
-                        return (Math.abs(curr.end_period - mostRecentPrimaryMeasureEndTime) < Math.abs(prev.end_period - mostRecentPrimaryMeasureEndTime) ? curr : prev);
-                    });
-                    
-                    const closestSecondaryData = aqFilteredSecondaryMeasureTimesDataObjects.filter(
-                            d => d.end_period === closestSecondaryTime.end_period
-                    )
-                    
-                    const secondaryYears =  [...new Set(closestSecondaryData.map(item => item.Time))];
-                    const highest = Math.max(...secondaryYears);
-                    
-                    // get lowest number
+                    const closestSecondaryTime = filteredSecondaryMeasureTimesDataObjects.reduce((prev, curr) => {
 
-                    const lowest = Math.min(...secondaryYears);
+                        return (Math.abs(curr.end_period - mostRecentPrimaryMeasureEndTime) < Math.abs(prev.end_period - mostRecentPrimaryMeasureEndTime) ? curr : prev);
+
+                    });
+
+                    // console.log("closestSecondaryTime", closestSecondaryTime);
+
+                    // get closest secondary data 
+
+                    const aqClosestSecondaryData = aqFilteredSecondaryMeasureTimesData
+
+                        // data with the latest end period
+                        .filter(`d => d.end_period === ${closestSecondaryTime.end_period}`)
+
+                        // get the finest geo 
+                        .filter(d => d.GeoRank === op.max(d.GeoRank))
+
+                        // in case there are two time periods left, get the one that starts the earliest,
+                        //  which will be yearly over seasonal
+                        .filter(d => d.start_period === op.min(d.start_period))
                     
-                    if (secondaryYears.length > 1) {
-                        selectedlinksSecondaryMeasureTime = `${lowest}-${highest}`;
-                    } else {
-                        selectedlinksSecondaryMeasureTime = `${secondaryYears[0]}`
-                    }
-                    
-                    const aqClosestSecondaryData = aq.from(closestSecondaryData)
-                    
-                    // console.log("aqClosestSecondaryData:");
+                    // console.log("closestSecondaryData");
                     // aqClosestSecondaryData.print()
-                    // console.log("filteredPrimaryMeasureTimesDataObjects", filteredPrimaryMeasureTimesDataObjects);
                     
-                    const aqJoinedPrimarySecondaryData = aq.from(filteredPrimaryMeasureTimesDataObjects)
+                    
+                    // count the number of time periods with this end period (should always be 1)
+
+                    // const secondaryYears =  [...new Set(aqClosestSecondaryData.array("Time"))];
+                    // console.log("secondaryYears.length", secondaryYears.length);
+                    
+                    const aqJoinedPrimarySecondaryData = aqFilteredPrimaryMeasureTimesData
                         .join(
                             aqClosestSecondaryData, 
                             [["GeoID", "GeoType"], ["GeoID", "GeoType"]]
                         )
                     
-                    // set the value of joinedDataLinksObjects
+                    console.log("aqJoinedPrimarySecondaryData");
+                    aqJoinedPrimarySecondaryData.print()
+                    
+                    // set the value of joinedDataLinksObjects, and make sure to wait for it
                     
                     joinedDataLinksObjects = await aqJoinedPrimarySecondaryData.objects();
 
-                    // console.log("joinedDataLinksObjects [filterSecondaryIndicatorMeasure]", joinedDataLinksObjects);
+                    // console.log("joinedDataLinksObjects", joinedDataLinksObjects);
 
                 })
         }
@@ -2418,14 +2439,14 @@
 
             // get the highest GeoRank, then keep just that geo
             
-            let maxGeoRank = Math.max(joinedDataLinksObjects[0].GeoRank);
-            filteredLinksData = joinedDataLinksObjects.filter(obj => obj.GeoRank === maxGeoRank)
+            // let maxGeoRank = Math.max(joinedDataLinksObjects[0].GeoRank);
+            // filteredLinksData = joinedDataLinksObjects.filter(obj => obj.GeoRank === maxGeoRank)
             
 
             // ----- render the chart ----- //
 
             renderLinksChart(
-                filteredLinksData,
+                joinedDataLinksObjects,
                 primaryMeasureMetadata,
                 secondaryMeasureMetadata,
                 primaryIndicatorName,
@@ -2959,7 +2980,7 @@
 
             showTrend = (e) => {
             
-                console.log("** showTrend");
+                // console.log("** showTrend");
 
                 // ----- handle tab selection ----- //
 
@@ -3162,8 +3183,8 @@
                     // use joinedDataLinksObjects (created in filterSecondaryIndicatorMeasure) to get the 
                     //  highest GeoRank, then keep just that geo
                     
-                    let maxGeoRank = Math.max(joinedDataLinksObjects[0].GeoRank);
-                    filteredLinksData = joinedDataLinksObjects.filter(obj => obj.GeoRank === maxGeoRank)
+                    // let maxGeoRank = Math.max(joinedDataLinksObjects[0].GeoRank);
+                    // filteredLinksData = joinedDataLinksObjects.filter(obj => obj.GeoRank === maxGeoRank)
 
                     renderAboutSources(defaultLinksAbout, defaultLinksSources);
 
@@ -3173,7 +3194,7 @@
                     // joined data and metadata created in filterSecondaryIndicatorMeasure called fron setDefaultLinksMeasure
 
                     renderLinksChart(
-                        filteredLinksData,
+                        joinedDataLinksObjects,
                         primaryMeasureMetadata,
                         secondaryMeasureMetadata,
                         primaryIndicatorName,
@@ -3193,7 +3214,7 @@
                     // ----- render the chart ----- //
 
                     renderLinksChart(
-                        filteredLinksData,
+                        joinedDataLinksObjects,
                         primaryMeasureMetadata,
                         secondaryMeasureMetadata,
                         primaryIndicatorName,
@@ -3257,7 +3278,7 @@
 
 
             const onlyOneTime = trendMeasures.every(m => m.AvailableTimes.length <= 1)
-            console.log("onlyOneTime", onlyOneTime);
+            // console.log("onlyOneTime", onlyOneTime);
 
             if (trendMeasures.length === 0 || onlyOneTime) {
                 
@@ -3429,7 +3450,7 @@
     // ===== table ===== /
 
     $('#tab-btn-table').on('click', e => {
-        console.log("e", e);
+        
         $(e.currentTarget).tab('show');
         window.location.hash = 'display=summary'
         
@@ -3438,7 +3459,7 @@
     // ===== map ===== /
 
     $('#tab-btn-map').on('click', e => {
-        console.log("e", e);
+        
         $(e.currentTarget).tab('show');
         window.location.hash = 'display=map'
         
@@ -3447,7 +3468,7 @@
     // ===== trend ===== /
     
     $('#tab-btn-trend').on('click', e => {
-        console.log("e", e);
+        
         $(e.currentTarget).tab('show');
         window.location.hash = 'display=trend'
         
@@ -3456,7 +3477,7 @@
     // ===== links ===== /
 
     $('#tab-btn-links').on('click', e => {
-        console.log("e", e);
+        
         $(e.currentTarget).tab('show');
         window.location.hash = 'display=links'
         
