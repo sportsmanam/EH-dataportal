@@ -289,6 +289,8 @@
 <a href="https://nychealth.github.io/EH-dataportal/neighborhood-reports/fordham_bronx_pk/active_design_physical_activity_and_health/" class="list-group-item list-group-item-action" aria-current="page">Active Design Physical Activity and Health</a><a href="https://nychealth.github.io/EH-dataportal/neighborhood-reports/fordham_bronx_pk/asthma_and_the_environment/" class="list-group-item list-group-item-action active" aria-current="page">Asthma and the Environment</a><a href="https://nychealth.github.io/EH-dataportal/neighborhood-reports/fordham_bronx_pk/climate_and_health/" class="list-group-item list-group-item-action" aria-current="page">Climate and Health</a><a href="https://nychealth.github.io/EH-dataportal/neighborhood-reports/fordham_bronx_pk/housing_and_health/" class="list-group-item list-group-item-action" aria-current="page">Housing and Health </a><a href="https://nychealth.github.io/EH-dataportal/neighborhood-reports/fordham_bronx_pk/outdoor_air_and_health/" class="list-group-item list-group-item-action" aria-current="page">Outdoor Air and Health</a></div>
             </nav>
 
+            <hr class="mt-2">
+
             <h2 class="mt-4">Change Neighborhood</h2>
             <form action="../../../neighborhood-reports" method="get" class="autocomplete-form">
               <div class="row no-gutters">
@@ -304,13 +306,45 @@
                   <button type="submit" class="btn-primary btn btn-block fs-sm">Go</button> 
                 </div>
               </div>
-            </form>            
-          
+            </form> 
+            <hr class="mt-4 mb-1">
+
+            <button onclick="getData()" class="btn btn-md btn-block btn-report" target="_blank">Download Report Data <span class="sr-only">(opens in a new tab)</span></button>          
         </div>
         
 
     </div>
     
+
+    <script>
+      
+      var downloadLoc = "https://raw.githubusercontent.com/nychealth/EHDP-data" + "/" + "staging" + "/neighborhood-reports/data/" + "Asthma_and_the_Environment_data.csv"
+      var reportData;
+  
+      
+      function getData() {
+        d3.csv(downloadLoc).then(data => {
+          reportData = data;
+          reportData.filter(x => x.neighborhood = 'Fordham - Bronx Pk') 
+          console.table(reportData)
+          downloadData()
+        });
+      };
+
+      
+      function downloadData() {
+        let data = aq.from(reportData);
+        let downloadTableCSV = data.toCSV();
+        
+        let csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(downloadTableCSV);
+        let hiddenElement = document.createElement('a');
+        hiddenElement.href = csvData;
+        hiddenElement.target = '_blank';
+        hiddenElement.download = 'NYC EH Data Portal - Neighborhood Report - ' + "Fordham - Bronx Pk" + '.csv';
+        hiddenElement.click();
+      };
+  
+    </script>
 
     <div class="col-12 col-lg-9 overflow-hidden" id="primary-content">
       <div class="my-5">
@@ -320,10 +354,7 @@
           </h1>
           <p class="report-description">Asthma is a common lung disease and a leading cause of hospitalizations for children under 15 years old. This report provides a summary of asthma indicators by neighborhood. It also describes housing and neighborhood characteristics that can make asthma worse.</p>
           
-          <p class="mt-3"><a href="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/data/Asthma_and_the_Environment_data.csv" class="btn btn-md btn-report" target="_blank">Download Report Data <span class="sr-only">(opens in a new tab)</span></a></p>
-
-          <h2 class="mt-3 report-info">Neighborhood Information</h2>
-          <p><strong>Fordham - Bronx Pk</strong> includes Zip codes 10458,10467,10468,10470</p>
+          <p><strong style="color:#00923E">Fordham - Bronx Pk</strong> includes ZIP Codes: <span class="home-label">10458,10467,10468,10470</span>.</p>
           
           <hr class="mt-4">
           
