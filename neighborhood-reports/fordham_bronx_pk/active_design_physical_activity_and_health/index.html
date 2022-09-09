@@ -41,7 +41,7 @@
 
 <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 <script src="https://cdn.jsdelivr.net/npm/dompurify@2.3.10/dist/purify.min.js" 
     integrity="sha256-keaR/uWEpEmmUnoJ6BemH9gp9Ng8u/YplhVwdmmquNY=" 
@@ -455,7 +455,7 @@
 
 
 <script type="text/javascript">
-    
+
     $( "#modal-obesityP-1" ).on('shown.bs.modal', function() {
         
         var opt = {"renderer": "svg"};
@@ -471,7 +471,7 @@
         ).then(data => {
             
             arqTable = data;
-            
+
 
             
 
@@ -486,11 +486,11 @@
                 .orderby("neighborhood", aq.desc("end_date"))
                 .slice(0,1) 
                 .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
                 .orderby("data_value") 
                 .select(aq.not("end_date"))
                 .objects()
                 
-            
             
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
                 
@@ -520,27 +520,26 @@
             
 
             var mapData = summaryData;
-            
+
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
                 
                 mapSpec = data;
-                
+
                 
 
-                mapSpec.layer[1].encoding.stroke.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
                 
             }).then(() => {
                 
                 vegaEmbed(
                     "#map-obesityP-1", 
-                    mapSpec, 
+                    mapSpec,
                     opt
                 ).then((res) => {
                     
                     res.view.insert("mapData", mapData).run()
                     
-                }).catch(console.error);;
+                }).catch(console.error);
                 
             });
 
@@ -653,7 +652,7 @@
 
 
 <script type="text/javascript">
-    
+
     $( "#modal-preMorAA-1" ).on('shown.bs.modal', function() {
         
         var opt = {"renderer": "svg"};
@@ -669,7 +668,7 @@
         ).then(data => {
             
             arqTable = data;
-            
+
 
             
 
@@ -684,11 +683,11 @@
                 .orderby("neighborhood", aq.desc("end_date"))
                 .slice(0,1) 
                 .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
                 .orderby("data_value") 
                 .select(aq.not("end_date"))
                 .objects()
                 
-            
             
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
                 
@@ -718,27 +717,26 @@
             
 
             var mapData = summaryData;
-            
+
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
                 
                 mapSpec = data;
-                
+
                 
 
-                mapSpec.layer[1].encoding.stroke.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
                 
             }).then(() => {
                 
                 vegaEmbed(
                     "#map-preMorAA-1", 
-                    mapSpec, 
+                    mapSpec,
                     opt
                 ).then((res) => {
                     
                     res.view.insert("mapData", mapData).run()
                     
-                }).catch(console.error);;
+                }).catch(console.error);
                 
             });
 
@@ -880,7 +878,7 @@
 
 
 <script type="text/javascript">
-    
+
     $( "#modal-parkDisP-2" ).on('shown.bs.modal', function() {
         
         var opt = {"renderer": "svg"};
@@ -896,7 +894,7 @@
         ).then(data => {
             
             arqTable = data;
-            
+
 
             
 
@@ -911,11 +909,11 @@
                 .orderby("neighborhood", aq.desc("end_date"))
                 .slice(0,1) 
                 .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
                 .orderby("data_value") 
                 .select(aq.not("end_date"))
                 .objects()
                 
-            
             
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
                 
@@ -945,27 +943,26 @@
             
 
             var mapData = summaryData;
-            
+
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
                 
                 mapSpec = data;
-                
+
                 
 
-                mapSpec.layer[1].encoding.stroke.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
                 
             }).then(() => {
                 
                 vegaEmbed(
                     "#map-parkDisP-2", 
-                    mapSpec, 
+                    mapSpec,
                     opt
                 ).then((res) => {
                     
                     res.view.insert("mapData", mapData).run()
                     
-                }).catch(console.error);;
+                }).catch(console.error);
                 
             });
 
@@ -1078,7 +1075,7 @@
 
 
 <script type="text/javascript">
-    
+
     $( "#modal-subDistP-2" ).on('shown.bs.modal', function() {
         
         var opt = {"renderer": "svg"};
@@ -1094,7 +1091,7 @@
         ).then(data => {
             
             arqTable = data;
-            
+
 
             
 
@@ -1109,11 +1106,11 @@
                 .orderby("neighborhood", aq.desc("end_date"))
                 .slice(0,1) 
                 .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
                 .orderby("data_value") 
                 .select(aq.not("end_date"))
                 .objects()
                 
-            
             
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
                 
@@ -1143,27 +1140,26 @@
             
 
             var mapData = summaryData;
-            
+
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
                 
                 mapSpec = data;
-                
+
                 
 
-                mapSpec.layer[1].encoding.stroke.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
                 
             }).then(() => {
                 
                 vegaEmbed(
                     "#map-subDistP-2", 
-                    mapSpec, 
+                    mapSpec,
                     opt
                 ).then((res) => {
                     
                     res.view.insert("mapData", mapData).run()
                     
-                }).catch(console.error);;
+                }).catch(console.error);
                 
             });
 
@@ -1276,7 +1272,7 @@
 
 
 <script type="text/javascript">
-    
+
     $( "#modal-treeCovP-2" ).on('shown.bs.modal', function() {
         
         var opt = {"renderer": "svg"};
@@ -1292,7 +1288,7 @@
         ).then(data => {
             
             arqTable = data;
-            
+
 
             
 
@@ -1307,11 +1303,11 @@
                 .orderby("neighborhood", aq.desc("end_date"))
                 .slice(0,1) 
                 .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
                 .orderby("data_value") 
                 .select(aq.not("end_date"))
                 .objects()
                 
-            
             
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
                 
@@ -1341,27 +1337,26 @@
             
 
             var mapData = summaryData;
-            
+
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
                 
                 mapSpec = data;
-                
+
                 
 
-                mapSpec.layer[1].encoding.stroke.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
                 
             }).then(() => {
                 
                 vegaEmbed(
                     "#map-treeCovP-2", 
-                    mapSpec, 
+                    mapSpec,
                     opt
                 ).then((res) => {
                     
                     res.view.insert("mapData", mapData).run()
                     
-                }).catch(console.error);;
+                }).catch(console.error);
                 
             });
 
@@ -1474,7 +1469,7 @@
 
 
 <script type="text/javascript">
-    
+
     $( "#modal-bikeLanP-2" ).on('shown.bs.modal', function() {
         
         var opt = {"renderer": "svg"};
@@ -1490,7 +1485,7 @@
         ).then(data => {
             
             arqTable = data;
-            
+
 
             
 
@@ -1505,11 +1500,11 @@
                 .orderby("neighborhood", aq.desc("end_date"))
                 .slice(0,1) 
                 .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
                 .orderby("data_value") 
                 .select(aq.not("end_date"))
                 .objects()
                 
-            
             
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
                 
@@ -1539,27 +1534,26 @@
             
 
             var mapData = summaryData;
-            
+
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
                 
                 mapSpec = data;
-                
+
                 
 
-                mapSpec.layer[1].encoding.stroke.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
                 
             }).then(() => {
                 
                 vegaEmbed(
                     "#map-bikeLanP-2", 
-                    mapSpec, 
+                    mapSpec,
                     opt
                 ).then((res) => {
                     
                     res.view.insert("mapData", mapData).run()
                     
-                }).catch(console.error);;
+                }).catch(console.error);
                 
             });
 
@@ -1672,7 +1666,7 @@
 
 
 <script type="text/javascript">
-    
+
     $( "#modal-sidwalkP-2" ).on('shown.bs.modal', function() {
         
         var opt = {"renderer": "svg"};
@@ -1688,7 +1682,7 @@
         ).then(data => {
             
             arqTable = data;
-            
+
 
             
 
@@ -1703,11 +1697,11 @@
                 .orderby("neighborhood", aq.desc("end_date"))
                 .slice(0,1) 
                 .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
                 .orderby("data_value") 
                 .select(aq.not("end_date"))
                 .objects()
                 
-            
             
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
                 
@@ -1737,27 +1731,26 @@
             
 
             var mapData = summaryData;
-            
+
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
                 
                 mapSpec = data;
-                
+
                 
 
-                mapSpec.layer[1].encoding.stroke.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
                 
             }).then(() => {
                 
                 vegaEmbed(
                     "#map-sidwalkP-2", 
-                    mapSpec, 
+                    mapSpec,
                     opt
                 ).then((res) => {
                     
                     res.view.insert("mapData", mapData).run()
                     
-                }).catch(console.error);;
+                }).catch(console.error);
                 
             });
 
@@ -1899,7 +1892,7 @@
 
 
 <script type="text/javascript">
-    
+
     $( "#modal-nabSafeP-3" ).on('shown.bs.modal', function() {
         
         var opt = {"renderer": "svg"};
@@ -1915,7 +1908,7 @@
         ).then(data => {
             
             arqTable = data;
-            
+
 
             
 
@@ -1930,11 +1923,11 @@
                 .orderby("neighborhood", aq.desc("end_date"))
                 .slice(0,1) 
                 .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
                 .orderby("data_value") 
                 .select(aq.not("end_date"))
                 .objects()
                 
-            
             
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
                 
@@ -1964,27 +1957,26 @@
             
 
             var mapData = summaryData;
-            
+
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
                 
                 mapSpec = data;
-                
+
                 
 
-                mapSpec.layer[1].encoding.stroke.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
                 
             }).then(() => {
                 
                 vegaEmbed(
                     "#map-nabSafeP-3", 
-                    mapSpec, 
+                    mapSpec,
                     opt
                 ).then((res) => {
                     
                     res.view.insert("mapData", mapData).run()
                     
-                }).catch(console.error);;
+                }).catch(console.error);
                 
             });
 
@@ -2097,7 +2089,7 @@
 
 
 <script type="text/javascript">
-    
+
     $( "#modal-poveACSP-3" ).on('shown.bs.modal', function() {
         
         var opt = {"renderer": "svg"};
@@ -2113,7 +2105,7 @@
         ).then(data => {
             
             arqTable = data;
-            
+
 
             
 
@@ -2128,11 +2120,11 @@
                 .orderby("neighborhood", aq.desc("end_date"))
                 .slice(0,1) 
                 .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
                 .orderby("data_value") 
                 .select(aq.not("end_date"))
                 .objects()
                 
-            
             
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
                 
@@ -2162,27 +2154,26 @@
             
 
             var mapData = summaryData;
-            
+
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
                 
                 mapSpec = data;
-                
+
                 
 
-                mapSpec.layer[1].encoding.stroke.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
                 
             }).then(() => {
                 
                 vegaEmbed(
                     "#map-poveACSP-3", 
-                    mapSpec, 
+                    mapSpec,
                     opt
                 ).then((res) => {
                     
                     res.view.insert("mapData", mapData).run()
                     
-                }).catch(console.error);;
+                }).catch(console.error);
                 
             });
 
@@ -2295,7 +2286,7 @@
 
 
 <script type="text/javascript">
-    
+
     $( "#modal-ratRepoP-3" ).on('shown.bs.modal', function() {
         
         var opt = {"renderer": "svg"};
@@ -2311,7 +2302,7 @@
         ).then(data => {
             
             arqTable = data;
-            
+
 
             
 
@@ -2326,11 +2317,11 @@
                 .orderby("neighborhood", aq.desc("end_date"))
                 .slice(0,1) 
                 .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
                 .orderby("data_value") 
                 .select(aq.not("end_date"))
                 .objects()
                 
-            
             
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
                 
@@ -2360,27 +2351,26 @@
             
 
             var mapData = summaryData;
-            
+
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
                 
                 mapSpec = data;
-                
+
                 
 
-                mapSpec.layer[1].encoding.stroke.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
                 
             }).then(() => {
                 
                 vegaEmbed(
                     "#map-ratRepoP-3", 
-                    mapSpec, 
+                    mapSpec,
                     opt
                 ).then((res) => {
                     
                     res.view.insert("mapData", mapData).run()
                     
-                }).catch(console.error);;
+                }).catch(console.error);
                 
             });
 
@@ -2522,7 +2512,7 @@
 
 
 <script type="text/javascript">
-    
+
     $( "#modal-recExerP-4" ).on('shown.bs.modal', function() {
         
         var opt = {"renderer": "svg"};
@@ -2538,7 +2528,7 @@
         ).then(data => {
             
             arqTable = data;
-            
+
 
             
 
@@ -2553,11 +2543,11 @@
                 .orderby("neighborhood", aq.desc("end_date"))
                 .slice(0,1) 
                 .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
                 .orderby("data_value") 
                 .select(aq.not("end_date"))
                 .objects()
                 
-            
             
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
                 
@@ -2587,27 +2577,26 @@
             
 
             var mapData = summaryData;
-            
+
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
                 
                 mapSpec = data;
-                
+
                 
 
-                mapSpec.layer[1].encoding.stroke.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
                 
             }).then(() => {
                 
                 vegaEmbed(
                     "#map-recExerP-4", 
-                    mapSpec, 
+                    mapSpec,
                     opt
                 ).then((res) => {
                     
                     res.view.insert("mapData", mapData).run()
                     
-                }).catch(console.error);;
+                }).catch(console.error);
                 
             });
 
@@ -2720,7 +2709,7 @@
 
 
 <script type="text/javascript">
-    
+
     $( "#modal-recBikeP-4" ).on('shown.bs.modal', function() {
         
         var opt = {"renderer": "svg"};
@@ -2736,7 +2725,7 @@
         ).then(data => {
             
             arqTable = data;
-            
+
 
             
 
@@ -2751,11 +2740,11 @@
                 .orderby("neighborhood", aq.desc("end_date"))
                 .slice(0,1) 
                 .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
                 .orderby("data_value") 
                 .select(aq.not("end_date"))
                 .objects()
                 
-            
             
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
                 
@@ -2785,27 +2774,26 @@
             
 
             var mapData = summaryData;
-            
+
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
                 
                 mapSpec = data;
-                
+
                 
 
-                mapSpec.layer[1].encoding.stroke.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
                 
             }).then(() => {
                 
                 vegaEmbed(
                     "#map-recBikeP-4", 
-                    mapSpec, 
+                    mapSpec,
                     opt
                 ).then((res) => {
                     
                     res.view.insert("mapData", mapData).run()
                     
-                }).catch(console.error);;
+                }).catch(console.error);
                 
             });
 
