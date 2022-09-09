@@ -274,6 +274,7 @@
 <script>
   var NeighborhoodName = "Washington Heights"; 
   var report_name = "Outdoor Air and Health"
+  var data_download_loc = "Outdoor_Air_and_Health_data.csv"
 </script>
 
 <section class="container-fluid pl-lg-6" id="skip-header-target">
@@ -309,7 +310,7 @@
             </form> 
             <hr class="mt-4 mb-1">
 
-            <button onclick="getData()" class="btn btn-md btn-block btn-report" target="_blank">Download Report Data <span class="sr-only">(opens in a new tab)</span></button>          
+            <button onclick="getData()" class="btn btn-sm btn-block btn-report" target="_blank"><i class="fa fa-download mr-1"></i>Download Report Data <span class="sr-only">(opens in a new tab)</span></button>          
         </div>
         
 
@@ -318,31 +319,34 @@
 
     <script>
       
-      var downloadLoc = "https://raw.githubusercontent.com/nychealth/EHDP-data" + "/" + "staging" + "/neighborhood-reports/data/" + "Outdoor_Air_and_Health_data.csv"
+      var downloadLoc = "https://raw.githubusercontent.com/nychealth/EHDP-data" + "/" + "staging" + "/neighborhood-reports/data/" + data_download_loc
       var reportData;
+      var download
   
       
       function getData() {
         d3.csv(downloadLoc).then(data => {
           reportData = data;
           reportData.filter(x => x.neighborhood = 'Washington Heights') 
-          console.table(reportData)
+          
           downloadData()
         });
       };
 
       
       function downloadData() {
-        let data = aq.from(reportData);
-        let downloadTableCSV = data.toCSV();
-        
-        let csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(downloadTableCSV);
-        let hiddenElement = document.createElement('a');
-        hiddenElement.href = csvData;
-        hiddenElement.target = '_blank';
-        hiddenElement.download = 'NYC EH Data Portal - Neighborhood Report - ' + report_name + " - " + "Washington Heights" + '.csv';
-        hiddenElement.click();
-      };
+        let data = aq.from(reportData); 
+        download = data.select(aq.not('report_id','indicator_id','data_field_name','start_date','end_date',)) 
+
+          let downloadTableCSV = download.toCSV(); 
+          
+          let csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(downloadTableCSV);
+          let hiddenElement = document.createElement('a');
+          hiddenElement.href = csvData;
+          hiddenElement.target = '_blank';
+          hiddenElement.download = 'NYC EH Data Portal - Neighborhood Report - ' + report_name + " - " + "Washington Heights" + '.csv';
+          hiddenElement.click();
+        };
   
     </script>
 
@@ -462,7 +466,7 @@
 
             
             
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + data_download_loc
         
         ).then(data => {
             
@@ -660,7 +664,7 @@
 
             
             
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + data_download_loc
         
         ).then(data => {
             
@@ -858,7 +862,7 @@
 
             
             
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + data_download_loc
         
         ).then(data => {
             
@@ -1056,7 +1060,7 @@
 
             
             
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + data_download_loc
         
         ).then(data => {
             
@@ -1254,7 +1258,7 @@
 
             
             
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + data_download_loc
         
         ).then(data => {
             
@@ -1481,7 +1485,7 @@
 
             
             
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + data_download_loc
         
         ).then(data => {
             
@@ -1679,7 +1683,7 @@
 
             
             
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + data_download_loc
         
         ).then(data => {
             
@@ -1877,7 +1881,7 @@
 
             
             
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + data_download_loc
         
         ).then(data => {
             
@@ -2075,7 +2079,7 @@
 
             
             
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + data_download_loc
         
         ).then(data => {
             
@@ -2273,7 +2277,7 @@
 
             
             
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + data_download_loc
         
         ).then(data => {
             
@@ -2500,7 +2504,7 @@
 
             
             
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + data_download_loc
         
         ).then(data => {
             
@@ -2698,7 +2702,7 @@
 
             
             
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + data_download_loc
         
         ).then(data => {
             
@@ -2896,7 +2900,7 @@
 
             
             
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + data_download_loc
         
         ).then(data => {
             
@@ -3123,7 +3127,7 @@
 
             
             
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + data_download_loc
         
         ).then(data => {
             
@@ -3321,7 +3325,7 @@
 
             
             
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + data_download_loc
         
         ).then(data => {
             
@@ -3519,7 +3523,7 @@
 
             
             
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + data_download_loc
         
         ).then(data => {
             
@@ -3717,7 +3721,7 @@
 
             
             
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + data_download_loc
         
         ).then(data => {
             
@@ -3944,7 +3948,7 @@
 
             
             
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + data_download_loc
         
         ).then(data => {
             
@@ -4142,7 +4146,7 @@
 
             
             
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + data_download_loc
         
         ).then(data => {
             
@@ -4369,7 +4373,7 @@
 
             
             
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + data_download_loc
         
         ).then(data => {
             
@@ -4567,7 +4571,7 @@
 
             
             
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + data_download_loc
         
         ).then(data => {
             
@@ -4765,7 +4769,7 @@
 
             
             
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/staging/neighborhood-reports/data/" + data_download_loc
         
         ).then(data => {
             
