@@ -1751,6 +1751,11 @@
             indicatorShortName = indicator?.IndicatorShortname ? indicator.IndicatorShortname : indicatorName;
             indicatorMeasures = indicator?.Measures;
 
+            console.log("indicator", indicator);
+            console.log("indicatorName", indicatorName);
+            console.log("indicatorDesc", indicatorDesc);
+            console.log("indicatorShortName", indicatorShortName);
+
             //create Citation
 
             createCitation(); // re-runs on updating Indicator
@@ -1780,11 +1785,11 @@
 
             // call data loading function
 
-            loadData(indicatorId)
-
             const indicatorTitle = document.getElementById('dropdownIndicator')
 
             indicatorTitle.innerHTML = indicatorName
+
+            loadData(indicatorId)
         }
 
         // ----------------------------------------------------------------------- //
@@ -2945,6 +2950,7 @@
                         
                     // render measure info boxes
 
+                    renderTitleDescription(indicatorShortName, indicatorDesc);
                     renderAboutSources(defaultMapAbout, defaultMapSources);
 
 
@@ -3050,6 +3056,7 @@
                         `<h6>${indicatorName} - ${measure}</h6>
                         <p>${sources}</p>`;
 
+                    renderTitleDescription(indicatorShortName, indicatorDesc);
                     renderAboutSources(defaultTrendAbout, defaultTrendSources);
 
 
@@ -3209,6 +3216,7 @@
                     // let maxGeoRank = Math.max(joinedDataLinksObjects[0].GeoRank);
                     // filteredLinksData = joinedDataLinksObjects.filter(obj => obj.GeoRank === maxGeoRank)
 
+                    renderTitleDescription(indicatorShortName, indicatorDesc);
                     renderAboutSources(defaultLinksAbout, defaultLinksSources);
 
 
