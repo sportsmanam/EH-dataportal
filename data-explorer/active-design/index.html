@@ -384,6 +384,24 @@
                     background-color: #841972; 
                 }
 
+                 
+
+                .modal-backdrop.show {
+                    opacity: 0.70; 
+                    background-color: #424242
+                }
+
+                .de-modal-title {
+                    margin-bottom: 0;
+                    margin-top: 0;
+                    line-height: 1; 
+                }
+
+                .modal-header .close {
+                    padding: 0.5rem 0.5rem;
+                    margin: -1rem -1rem -1rem auto; 
+                }
+
             </style>
 
             <div class="row">
@@ -500,8 +518,7 @@
                                                 <div class="dropdown">
                                                     <button class="btn btn-sm mr-1 float-right btn-outline-success dropdown-toggle"
                                                             type="button" id="dropdownTableGeo" data-toggle="dropdown"
-                                                            aria-haspopup="true" aria-expanded="false">Select
-                                                        geography
+                                                            aria-haspopup="true" aria-expanded="false">Select geography
                                                     </button>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownTableGeo">
                                                         
@@ -675,17 +692,18 @@
     </div>
 
     
+
     <div class="modal fade" id="topicModal" tabindex="-1" role="dialog" aria-labelledby="topicModalLabel"
          aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content mb-2 border-light shadow">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="topicModalLabel">Change topic</h5>
+                    <h5 class="de-modal-title" id="topicModalLabel">Change topic</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body px-0">
+                <div class="modal-body p-0 ">
                     <style>
     .accordion-group .card {
         background-color: #f2f2f2;
@@ -704,7 +722,7 @@
 
             <div class="card">
 
-               <strong><a class="card-header bg-light collapse collapsed"
+               <strong><a class="btn btn-outline-light btn-block collapse collapsed"
                     id="acc-button-01" data-toggle="collapse"
                     href="#panel-acc-button-01" role="tab"
                     aria-expanded="false"
@@ -717,7 +735,7 @@
                     role="tabpanel" aria-labelledby="acc-button-01"
                     data-parent="#accordion-01">
 
-                    <div class="card-body">
+                    <div class="card-body bg-white">
                         <ul>
                             
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/active-design/">Active design</a>
@@ -746,7 +764,7 @@
 
             <div class="card">
 
-                <strong><a class="card-header bg-light collapse collapsed"
+                <strong><a class="btn btn-outline-light btn-block collapse collapsed"
                     id="acc-button-02" data-toggle="collapse"
                     href="#panel-acc-button-02" role="tab"
                     aria-expanded="false"
@@ -759,7 +777,7 @@
                     role="tabpanel" aria-labelledby="acc-button-02"
                     data-parent="#accordion-01">
 
-                    <div class="card-body">
+                    <div class="card-body bg-white">
                         <ul>
                             
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/asthma/">Asthma</a>
@@ -791,7 +809,7 @@
 
             <div class="card">
 
-               <strong> <a class="card-header bg-light collapse collapsed"
+               <strong> <a class="btn btn-outline-light btn-block collapse collapsed"
                     id="acc-button-03" data-toggle="collapse"
                     href="#panel-acc-button-03" role="tab"
                     aria-expanded="false"
@@ -804,7 +822,7 @@
                     role="tabpanel" aria-labelledby="acc-button-03"
                     data-parent="#accordion-01">
 
-                    <div class="card-body">
+                    <div class="card-body bg-white">
                         <ul>
                             
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/asthma/">Asthma</a>
@@ -863,7 +881,7 @@
 
             <div class="card">
 
-                <strong><a class="card-header bg-light collapse collapsed"
+                <strong><a class="btn btn-outline-light btn-block collapse collapsed"
                     id="acc-button-04" data-toggle="collapse"
                     href="#panel-acc-button-04" role="tab"
                     aria-expanded="false"
@@ -876,7 +894,7 @@
                     role="tabpanel" aria-labelledby="acc-button-04"
                     data-parent="#accordion-01">
 
-                    <div class="card-body">
+                    <div class="card-body bg-white">
                         <ul>
                             
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/asthma/">Asthma</a>
@@ -932,7 +950,7 @@
 
             <div class="card">
 
-                <strong><a class="card-header bg-light collapse collapsed"
+                <strong><a class="btn btn-outline-light btn-block collapse collapsed"
                     id="acc-button-05" data-toggle="collapse"
                     href="#panel-acc-button-05" role="tab"
                     aria-expanded="false"
@@ -945,7 +963,7 @@
                     role="tabpanel" aria-labelledby="acc-button-05"
                     data-parent="#accordion-01">
 
-                    <div class="card-body">
+                    <div class="card-body bg-white">
                         <ul>
                             
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/active-design/">Active design</a>
@@ -980,7 +998,7 @@
 
             <div class="card">
 
-                <strong><a class="card-header bg-light collapse collapsed"
+                <strong><a class="btn btn-outline-light btn-block collapse collapsed"
                     id="acc-button-06" data-toggle="collapse"
                     href="#panel-acc-button-06" role="tab"
                     aria-expanded="false"
@@ -993,7 +1011,7 @@
                     role="tabpanel" aria-labelledby="acc-button-06"
                     data-parent="#accordion-01">
 
-                    <div class="card-body">
+                    <div class="card-body bg-white">
                         <ul>
                             
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/asthma/">Asthma</a>
@@ -1049,7 +1067,7 @@
 
             <div class="card">
 
-                <strong><a class="card-header bg-light collapse collapsed"
+                <strong><a class="btn btn-outline-light btn-block collapse collapsed"
                     id="acc-button-07" data-toggle="collapse"
                     href="#panel-acc-button-07" role="tab"
                     aria-expanded="false"
@@ -1062,7 +1080,7 @@
                     role="tabpanel" aria-labelledby="acc-button-07"
                     data-parent="#accordion-01">
 
-                    <div class="card-body">
+                    <div class="card-body bg-white">
                         <ul>
                             
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/air-quality/">Air quality</a>
@@ -1100,7 +1118,7 @@
 
             <div class="card">
 
-                <strong><a class="card-header bg-light collapse collapsed"
+                <strong><a class="btn btn-outline-light btn-block collapse collapsed"
                     id="acc-button-08" data-toggle="collapse"
                     href="#panel-acc-button-08" role="tab"
                     aria-expanded="false"
@@ -1113,7 +1131,7 @@
                     role="tabpanel" aria-labelledby="acc-button-08"
                     data-parent="#accordion-01">
 
-                    <div class="card-body">
+                    <div class="card-body bg-white">
                         <ul>
                             
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/asthma/">Asthma</a>
@@ -1145,7 +1163,7 @@
 
             <div class="card">
 
-                <strong><a class="card-header bg-light collapse collapsed"
+                <strong><a class="btn btn-outline-light btn-block collapse collapsed"
                     id="acc-button-09" data-toggle="collapse"
                     href="#panel-acc-button-09" role="tab"
                     aria-expanded="false"
@@ -1158,7 +1176,7 @@
                     role="tabpanel" aria-labelledby="acc-button-09"
                     data-parent="#accordion-01">
 
-                    <div class="card-body">
+                    <div class="card-body bg-white">
                         <ul>
                             
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/healthy-eating/">Healthy eating</a>
@@ -1182,11 +1200,14 @@
             </div>
             
 
-            <hr class="my-2">
+            
+            <hr class="my-1">
+            
+            
 
             <div class="card">
 
-                <strong><a class="card-header bg-light collapse collapsed"
+                <strong><a class="btn btn-outline-light btn-block collapse collapsed"
                     id="acc-button-10" data-toggle="collapse"
                     href="#panel-acc-button-10" role="tab"
                     aria-expanded="false"
@@ -1199,7 +1220,7 @@
                     role="tabpanel" aria-labelledby="acc-button-10"
                     data-parent="#accordion-01">
 
-                    <div class="card-body">
+                    <div class="card-body bg-white">
                         <ul>
                             
                                 <li><a href="https://nychealth.github.io/EH-dataportal/data-explorer/healthy-eating/">Healthy eating</a>
@@ -1359,12 +1380,10 @@
 
 </script>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
             </div>
         </div>
     </div>
+
 
     
     <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel"
@@ -1818,11 +1837,6 @@
             indicatorDesc = indicator?.IndicatorDescription ? indicator.IndicatorDescription : '';
             indicatorShortName = indicator?.IndicatorShortname ? indicator.IndicatorShortname : indicatorName;
             indicatorMeasures = indicator?.Measures;
-
-            console.log("indicator", indicator);
-            console.log("indicatorName", indicatorName);
-            console.log("indicatorDesc", indicatorDesc);
-            console.log("indicatorShortName", indicatorShortName);
 
             //create Citation
 
