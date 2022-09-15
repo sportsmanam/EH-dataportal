@@ -35,6 +35,12 @@
     crossorigin="anonymous"></script>
 
 
+
+
+
+<link rel="icon" href="../../7618350_heatmap_business_analytics_statistics_icon-gp.ico">
+
+
 <link rel="stylesheet" href="../../fontawesome/css/all.min.css">
 
 <link rel="stylesheet" href="https://nychealth.github.io/EH-dataportal/scss/theme.css" />
@@ -364,6 +370,7 @@
                 }
 
                  
+
                 .topic-text {
                     font-size: 12px!important;
                 }
@@ -376,12 +383,30 @@
                 .topic-text p li {
                     font-size: 12px;
                 }
+
+                 
+
+                button.text-info, button.text-info {
+                    color: #841972 !important; 
+                }
+                button.text-info:hover, button.text-info:focus {
+                    color: #ffffff !important; 
+                }
                 
                  
-                .dropdown-item.active, .dropdown-item:active {
+
+                .btn-outline-primary ~ .dropdown-menu .dropdown-item.active, 
+                .btn-outline-primary ~ .dropdown-menu .dropdown-item:active {
                     color: #ffffff;
                     text-decoration: none;
                     background-color: #841972; 
+                }
+
+                .btn-outline-secondary ~ .dropdown-menu .dropdown-item.active, 
+                .btn-outline-secondary ~ .dropdown-menu .dropdown-item:active {
+                    color: #ffffff;
+                    text-decoration: none;
+                    background-color: #181A7B; 
                 }
 
                  
@@ -452,20 +477,26 @@
                         About Pesticides
                     </button>
 
+                    
+                    
+
                     <div class="card content-card topic-text">
                         <div class="card-content">
                             <div class="card-body">
                                 <div class="dropdown">
+
                                     <span class='home-label d-block'>Change dataset</span>
             
-                                    <button class="btn btn-outline-primary btn-lg btn-block text-wrap dropdown-toggle" type="button"
+                                    <button class="btn btn-outline-primary btn-lg btn-block text-wrap text-info dropdown-toggle" type="button"
                                             id="dropdownIndicator" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         More Pesticides data
                                     </button>
+
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownIndicator"
                                          id="indicator-dropdown">
                                         
                                     </div>
+
                                 </div>
             
             
@@ -520,7 +551,7 @@
                                              role="tabpanel">
                                             <div class="float right mr-1">
                                                 <div class="dropdown">
-                                                    <button class="btn btn-sm float-right btn-outline-success dropdown-toggle"
+                                                    <button class="btn btn-sm float-right btn-outline-secondary dropdown-toggle"
                                                             type="button" id="dropdownTableYear" data-toggle="dropdown"
                                                             aria-haspopup="true" aria-expanded="false">Select year
                                                     </button>
@@ -530,7 +561,7 @@
                                                 </div>
                 
                                                 <div class="dropdown">
-                                                    <button class="btn btn-sm mr-1 float-right btn-outline-success dropdown-toggle"
+                                                    <button class="btn btn-sm mr-1 float-right btn-outline-secondary dropdown-toggle"
                                                             type="button" id="dropdownTableGeo" data-toggle="dropdown"
                                                             aria-haspopup="true" aria-expanded="false">Select geography
                                                     </button>
@@ -551,7 +582,7 @@
                                         <div class="tab-pane fade py-2" id="tab-map" aria-labelledby="tab-btn-map" role="tabpanel">
                                             <div class="float right mr-1">
                                                 <div class="dropdown">
-                                                    <button class="btn btn-sm mr-1 float-right btn-outline-success dropdown-toggle"
+                                                    <button class="btn btn-sm mr-1 float-right btn-outline-secondary dropdown-toggle"
                                                             type="button" id="dropdownMapMeasures" data-toggle="dropdown"
                                                             aria-haspopup="true" aria-expanded="false">Select
                                                         measure
@@ -570,11 +601,11 @@
                                         
                                         <div class="tab-pane fade py-2" id="tab-trend" aria-labelledby="tab-btn-trend" role="tabpanel">
                                             <div class="dropdown float-right mr-1">
-                                                <button class="btn btn-sm float-right btn-outline-success dropdown-toggle" type="button"
+                                                <button class="btn btn-sm float-right btn-outline-secondary dropdown-toggle" type="button"
                                                         id="dropdownTrendMeasures" data-toggle="dropdown" aria-haspopup="true"
                                                         aria-expanded="false">Choose measure</button>
                                                     
-                                                    <button class="btn btn-sm mr-1 float-right btn-outline-success btn-show-disparities"
+                                                    <button class="btn btn-sm mr-1 float-right btn-outline-secondary btn-show-disparities"
                                                             style="display:inline">Show Dispartites</button>
                                                 
                                                 <div class="dropdown-menu" aria-labelledby="dropdownTrendMeasures">
@@ -590,7 +621,7 @@
                                         
                                         <div class="tab-pane fade py-2" id="tab-links" aria-labelledby="tab-btn-links" role="tabpanel">
                                             <div class="dropdown float-right">
-                                                <button class="btn btn-sm float-right btn-outline-success dropdown-toggle" type="button"
+                                                <button class="btn btn-sm float-right btn-outline-secondary dropdown-toggle" type="button"
                                                         id="dropdownLinksMeasures" data-toggle="dropdown" aria-haspopup="true"
                                                         aria-expanded="false">Select data to link
                                                 </button>
@@ -1710,199 +1741,95 @@
                 const renderIndicatorDropdown = () => {
 
                     const indicatorDropdown = document.getElementById("indicator-dropdown");
-                    let this_indicatorId;
                     let this_indicatorName;
                     let header;
-                    
-                    
 
                         header = ``;
                         indicatorDropdown.innerHTML += header.length ? `<div class="dropdown-title"><strong>${header}</strong></div>`: '';
 
-                        
+                        defaultIndicatorId = 2235
 
-                            
-                                defaultIndicatorId = 2235
-                            
-
-                            this_indicatorId = 2235
-                            indicator = indicators.find(indicator => indicator.IndicatorID === this_indicatorId);
+                            indicator = indicators.find(indicator => indicator.IndicatorID === 2235);
                             this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator(${this_indicatorId})" data-indicator-id="${this_indicatorId}">${this_indicatorName}</button>`
-                            
-                        
+                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator( 2235 )" data-indicator-id=2235>${this_indicatorName}</button>`
 
-                            
-
-                            this_indicatorId = 91
-                            indicator = indicators.find(indicator => indicator.IndicatorID === this_indicatorId);
+                            indicator = indicators.find(indicator => indicator.IndicatorID === 91);
                             this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator(${this_indicatorId})" data-indicator-id="${this_indicatorId}">${this_indicatorName}</button>`
-                            
-                        
-                    
+                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator( 91 )" data-indicator-id=91>${this_indicatorName}</button>`
 
                         header = `Commercial Use`;
                         indicatorDropdown.innerHTML += header.length ? `<div class="dropdown-title"><strong>${header}</strong></div>`: '';
 
-                        
+                        defaultIndicatorId = 100
 
-                            
-                                defaultIndicatorId = 100
-                            
-
-                            this_indicatorId = 100
-                            indicator = indicators.find(indicator => indicator.IndicatorID === this_indicatorId);
+                            indicator = indicators.find(indicator => indicator.IndicatorID === 100);
                             this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator(${this_indicatorId})" data-indicator-id="${this_indicatorId}">${this_indicatorName}</button>`
-                            
-                        
+                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator( 100 )" data-indicator-id=100>${this_indicatorName}</button>`
 
-                            
-
-                            this_indicatorId = 2312
-                            indicator = indicators.find(indicator => indicator.IndicatorID === this_indicatorId);
+                            indicator = indicators.find(indicator => indicator.IndicatorID === 2312);
                             this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator(${this_indicatorId})" data-indicator-id="${this_indicatorId}">${this_indicatorName}</button>`
-                            
-                        
+                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator( 2312 )" data-indicator-id=2312>${this_indicatorName}</button>`
 
-                            
-
-                            this_indicatorId = 96
-                            indicator = indicators.find(indicator => indicator.IndicatorID === this_indicatorId);
+                            indicator = indicators.find(indicator => indicator.IndicatorID === 96);
                             this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator(${this_indicatorId})" data-indicator-id="${this_indicatorId}">${this_indicatorName}</button>`
-                            
-                        
+                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator( 96 )" data-indicator-id=96>${this_indicatorName}</button>`
 
-                            
-
-                            this_indicatorId = 94
-                            indicator = indicators.find(indicator => indicator.IndicatorID === this_indicatorId);
+                            indicator = indicators.find(indicator => indicator.IndicatorID === 94);
                             this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator(${this_indicatorId})" data-indicator-id="${this_indicatorId}">${this_indicatorName}</button>`
-                            
-                        
+                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator( 94 )" data-indicator-id=94>${this_indicatorName}</button>`
 
-                            
-
-                            this_indicatorId = 93
-                            indicator = indicators.find(indicator => indicator.IndicatorID === this_indicatorId);
+                            indicator = indicators.find(indicator => indicator.IndicatorID === 93);
                             this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator(${this_indicatorId})" data-indicator-id="${this_indicatorId}">${this_indicatorName}</button>`
-                            
-                        
+                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator( 93 )" data-indicator-id=93>${this_indicatorName}</button>`
 
-                            
-
-                            this_indicatorId = 99
-                            indicator = indicators.find(indicator => indicator.IndicatorID === this_indicatorId);
+                            indicator = indicators.find(indicator => indicator.IndicatorID === 99);
                             this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator(${this_indicatorId})" data-indicator-id="${this_indicatorId}">${this_indicatorName}</button>`
-                            
-                        
+                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator( 99 )" data-indicator-id=99>${this_indicatorName}</button>`
 
-                            
-
-                            this_indicatorId = 97
-                            indicator = indicators.find(indicator => indicator.IndicatorID === this_indicatorId);
+                            indicator = indicators.find(indicator => indicator.IndicatorID === 97);
                             this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator(${this_indicatorId})" data-indicator-id="${this_indicatorId}">${this_indicatorName}</button>`
-                            
-                        
+                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator( 97 )" data-indicator-id=97>${this_indicatorName}</button>`
 
-                            
-
-                            this_indicatorId = 98
-                            indicator = indicators.find(indicator => indicator.IndicatorID === this_indicatorId);
+                            indicator = indicators.find(indicator => indicator.IndicatorID === 98);
                             this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator(${this_indicatorId})" data-indicator-id="${this_indicatorId}">${this_indicatorName}</button>`
-                            
-                        
+                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator( 98 )" data-indicator-id=98>${this_indicatorName}</button>`
 
-                            
-
-                            this_indicatorId = 102
-                            indicator = indicators.find(indicator => indicator.IndicatorID === this_indicatorId);
+                            indicator = indicators.find(indicator => indicator.IndicatorID === 102);
                             this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator(${this_indicatorId})" data-indicator-id="${this_indicatorId}">${this_indicatorName}</button>`
-                            
-                        
-                    
+                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator( 102 )" data-indicator-id=102>${this_indicatorName}</button>`
 
                         header = `NYC Agency Use`;
                         indicatorDropdown.innerHTML += header.length ? `<div class="dropdown-title"><strong>${header}</strong></div>`: '';
 
-                        
+                        defaultIndicatorId = 2366
 
-                            
-                                defaultIndicatorId = 2366
-                            
-
-                            this_indicatorId = 2366
-                            indicator = indicators.find(indicator => indicator.IndicatorID === this_indicatorId);
+                            indicator = indicators.find(indicator => indicator.IndicatorID === 2366);
                             this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator(${this_indicatorId})" data-indicator-id="${this_indicatorId}">${this_indicatorName}</button>`
-                            
-                        
+                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator( 2366 )" data-indicator-id=2366>${this_indicatorName}</button>`
 
-                            
-
-                            this_indicatorId = 2364
-                            indicator = indicators.find(indicator => indicator.IndicatorID === this_indicatorId);
+                            indicator = indicators.find(indicator => indicator.IndicatorID === 2364);
                             this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator(${this_indicatorId})" data-indicator-id="${this_indicatorId}">${this_indicatorName}</button>`
-                            
-                        
+                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator( 2364 )" data-indicator-id=2364>${this_indicatorName}</button>`
 
-                            
-
-                            this_indicatorId = 2367
-                            indicator = indicators.find(indicator => indicator.IndicatorID === this_indicatorId);
+                            indicator = indicators.find(indicator => indicator.IndicatorID === 2367);
                             this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator(${this_indicatorId})" data-indicator-id="${this_indicatorId}">${this_indicatorName}</button>`
-                            
-                        
+                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator( 2367 )" data-indicator-id=2367>${this_indicatorName}</button>`
 
-                            
-
-                            this_indicatorId = 2368
-                            indicator = indicators.find(indicator => indicator.IndicatorID === this_indicatorId);
+                            indicator = indicators.find(indicator => indicator.IndicatorID === 2368);
                             this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator(${this_indicatorId})" data-indicator-id="${this_indicatorId}">${this_indicatorName}</button>`
-                            
-                        
+                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator( 2368 )" data-indicator-id=2368>${this_indicatorName}</button>`
 
-                            
-
-                            this_indicatorId = 2369
-                            indicator = indicators.find(indicator => indicator.IndicatorID === this_indicatorId);
+                            indicator = indicators.find(indicator => indicator.IndicatorID === 2369);
                             this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator(${this_indicatorId})" data-indicator-id="${this_indicatorId}">${this_indicatorName}</button>`
-                            
-                        
+                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator( 2369 )" data-indicator-id=2369>${this_indicatorName}</button>`
 
-                            
-
-                            this_indicatorId = 2374
-                            indicator = indicators.find(indicator => indicator.IndicatorID === this_indicatorId);
+                            indicator = indicators.find(indicator => indicator.IndicatorID === 2374);
                             this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator(${this_indicatorId})" data-indicator-id="${this_indicatorId}">${this_indicatorName}</button>`
-                            
-                        
+                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator( 2374 )" data-indicator-id=2374>${this_indicatorName}</button>`
 
-                            
-
-                            this_indicatorId = 2370
-                            indicator = indicators.find(indicator => indicator.IndicatorID === this_indicatorId);
+                            indicator = indicators.find(indicator => indicator.IndicatorID === 2370);
                             this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator(${this_indicatorId})" data-indicator-id="${this_indicatorId}">${this_indicatorName}</button>`
-                            
-                        
-                    
-
-                }
+                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator( 2370 )" data-indicator-id=2370>${this_indicatorName}</button>`}
                 
                 renderIndicatorDropdown()
 
@@ -1978,7 +1905,7 @@
 
             selectedMapMeasure = false;
             selectedTrendMeasure = false;
-            selectedLinksMeasure = false;            
+            selectedLinksMeasure = false;
             
             // console.log("window.location.hash 2 [loadIndicator]", window.location.hash);
 
@@ -2367,6 +2294,7 @@
             
             $('body').off('click', '#summary-table tr.group td');
             $('body').on('click', '#summary-table tr.group td', (e) => {
+
                 const td = $(e.target);
                 const tr = td.parent();
                 const group = td.data('group');
@@ -2393,6 +2321,7 @@
                 }
                 
                 const handleSubGroupToggle = () => {
+
                     const subDataGroup = tr.next(`tr`).data(`group`);
                     const parentDataGroup = subDataGroup.split('-')[0];
                     const subGroupRow = $(`tr[data-group="${subDataGroup}"]`);
@@ -2463,6 +2392,16 @@
 
             const time = e.target.dataset.time;
 
+            // persistent selection
+
+            // remove active class from every list element
+            $('.mapbutton').removeClass("active");
+            $('.mapbutton').attr('aria-selected', false);
+
+            // set this element as active & selected
+            $(e.target).addClass("active");
+            $(e.target).attr('aria-selected', true);
+
 
             // ----- get metatadata for selected measure ----- //
 
@@ -2528,6 +2467,15 @@
 
             const measureId = parseInt(e.target.dataset.measureId);
 
+            // persistent selection
+
+            // remove active class from every list element
+            $('.trendbutton').removeClass("active");
+            $('.trendbutton').attr('aria-selected', false);
+
+            // set this element as active & selected
+            $(e.target).addClass("active");
+            $(e.target).attr('aria-selected', true);
 
             // ----- get metatadata for selected measure ----- //
             
@@ -2612,6 +2560,16 @@
         const updateLinksData = async (e) => {
 
             // ---- handle selection ----- //
+
+            // persistent selection
+
+            // remove active class from every list element
+            $('.linksbutton').removeClass("active");
+            $('.linksbutton').attr('aria-selected', false);
+
+            // set this element as active & selected
+            $(e.target).addClass("active");
+            $(e.target).attr('aria-selected', true);
 
             // get meaasureIds of selected dropdown element
             
@@ -3121,8 +3079,6 @@
                 tabTrend.setAttribute('aria-selected', false);
                 tabLinks.setAttribute('aria-selected', false);
 
-                
-                
 
                 // ----- allow map to persist when changing tabs ----- //
 
@@ -3136,7 +3092,7 @@
 
                     // get default measure id
                 
-                    const defaultMeasureId = defaultMapMetadata[0].MeasureID;
+                    const defaultMapMeasureId = defaultMapMetadata[0].MeasureID;
 
                     // extract metadata for info boxes
 
@@ -3166,7 +3122,7 @@
                     // filter map data using default measure
 
                     let mapMeasureData = fullDataMapObjects.filter(
-                            obj => obj.MeasureID === defaultMeasureId
+                            obj => obj.MeasureID === defaultMapMeasureId
                         );
 
                     // get the latest end_period
@@ -3176,6 +3132,8 @@
                     let mapTimeData = mapMeasureData.filter(
                             obj => obj.end_period === latest_end_period
                         );
+                    
+                    let latest_time = mapTimeData[0].Time
 
                     // get the highest GeoRank for this measure and end_period
                     
@@ -3191,6 +3149,20 @@
                     renderMap(filteredMapData, defaultMapMetadata);
 
                     updateChartPlotSize();
+
+                    // ----- persistent selection ----- //
+
+                    // remove active class from every list element
+                    $('.mapbutton').removeClass("active");
+                    $('.mapbutton').attr('aria-selected', false);
+
+                    // set this element as active & selected
+
+                    let mapMeasureEl = document.querySelector(`.mapbutton[data-measure-id='${defaultMapMeasureId}'][data-time='${latest_time}']`)
+
+                    $(mapMeasureEl).addClass("active");
+                    $(mapMeasureEl).attr('aria-selected', true);
+
 
                 } else {
 
@@ -3232,10 +3204,6 @@
                 tabTrend.setAttribute('aria-selected', true);
                 tabLinks.setAttribute('aria-selected', false);
 
-                // what's this doing?
-
-                
-                
 
                 // ----- allow chart to persist when changing tabs ----- //
 
@@ -3302,8 +3270,8 @@
 
                     // ----- create dataset ----- //
 
-                    const measureId = defaultTrendMetadata[0].MeasureID;
-                    filteredTrendData = fullDataTrendObjects.filter(m => m.MeasureID === measureId);
+                    const defaultTrendMeasureId = defaultTrendMetadata[0].MeasureID;
+                    filteredTrendData = fullDataTrendObjects.filter(m => m.MeasureID === defaultTrendMeasureId);
                 
 
                     // ----- render the chart ----- //
@@ -3311,6 +3279,21 @@
                     renderTrendChart(filteredTrendData, defaultTrendMetadata);
 
                     updateChartPlotSize();
+
+
+                    // ----- persistent selection ----- //
+
+                    // remove active class from every list element
+                    $('.trendbutton').removeClass("active");
+                    $('.trendbutton').attr('aria-selected', false);
+
+                    // set this element as active & selected
+
+                    let trendMeasureEl = document.querySelector(`.trendbutton[data-measure-id='${defaultTrendMeasureId}']`)
+
+                    $(trendMeasureEl).addClass("active");
+                    $(trendMeasureEl).attr('aria-selected', true);
+
 
                 } else {
 
@@ -3440,6 +3423,21 @@
                     );
 
                     updateChartPlotSize();
+
+
+                    // ----- persistent selection ----- //
+
+                    // remove active class from every list element
+                    $('.linksbutton').removeClass("active");
+                    $('.linksbutton').attr('aria-selected', false);
+
+                    // set this element as active & selected
+                    
+                    let linksMeasureEl = document.querySelector(`.linksbutton[data-secondary-measure-id='${secondaryMeasureId}']`)
+
+                    $(linksMeasureEl).addClass("active");
+                    $(linksMeasureEl).attr('aria-selected', true);
+
 
                 } else {
 

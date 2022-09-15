@@ -35,6 +35,12 @@
     crossorigin="anonymous"></script>
 
 
+
+
+
+<link rel="icon" href="../../../7618350_heatmap_business_analytics_statistics_icon-gp.ico">
+
+
 <link rel="stylesheet" href="../../../fontawesome/css/all.min.css">
 
 <link rel="stylesheet" href="https://nychealth.github.io/EH-dataportal/scss/theme.css" />
@@ -274,7 +280,7 @@
 <script>
   var NeighborhoodName = "Washington Heights"; 
   var report_name = "Active Design Physical Activity and Health"
-  var data_download_loc = "http:\/\/a816-dohbesp.nyc.gov\/IndicatorPublic\/EPHTCsv\/Active_Design_Physical_Activity_and_Health.csv"
+  var data_download_loc = "Active_Design_Physical_Activity_and_Health_data.csv"
 </script>
 
 <section class="container-fluid pl-lg-6" id="skip-header-target">
@@ -810,204 +816,7 @@
                     Rank<br>
                     <span class="meta"> out of the 42 neighborhoods</span>
                   </div>
-                </div><button data-toggle="modal" data-target="#modal-parkDisP-2" class="indicator-anchor">
-    <div class="row align-items-center">
-        <div class="col-6 col-md-5">
-            <span class="indicator-short-name">Park access</span>
-        </div>
-        <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/parkDisP_301.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
-        <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/parkDisP_301.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
-        </div>
-    </div>
-</button>
-
-
-<div class="modal fade report-modal" id="modal-parkDisP-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header text-left">
-                <h2 class="modal-title fs-xl" id="exampleModalLabel">Park access</h2>
-                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
-                    <span class="fas fa-times-circle"></span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h2 class="fs-xl">People living in walking distance to a park (percent), 2017</h2>
-                <p>In <strong>Washington Heights</strong>, the people living in walking distance to a park (percent), 2017 is <span class="better">Better</span>compared to the NYC average.</p><p>Walking distance to a park is defined as 1/4-mile or less to entrances of smaller sites, such as sitting areas and playgrounds, and 1/2-mile or less to entrances of larger parks. Parks and open space that are not under the NYC Parks Department jurisdiction are also included.</p></div>
-            <hr>
-            <div class="modal-body">
-                <h3>Neighborhood Comparison</h3>
-                <div class="row comparison">
-                    <div class="col-sm-4 text-primary">Washington Heights <span class="indicator-value">100.0</span></div>
-                    <div class="col-sm-4">Manhattan <span class="indicator-value">97</span></div>
-                    <div class="col-sm-4">New York City <span class="indicator-value">81</span></div>
-                </div>
-                <p><em>Percent of Population </em></p><div class="data-note"></div></div>
-            <hr>
-            <div class="modal-body">
-                <h3>People living in walking distance to a park (percent), 2017</h3>
-                <p>  <em>Percent of Population</em></p>
-                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-parkDisP-2"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>Trends Over Time</h3>
-                <p><em>Percent of Population </em></p>
-                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-parkDisP-2"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>By Neighborhood</h3>
-                <p><em>Percent of Population </em></p>
-                <div style="width:100%; height:60vmin; z-index:10000;" id="map-parkDisP-2"></div>
-                
-            </div>
-            
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-<script type="text/javascript">
-
-    $( "#modal-parkDisP-2" ).on('shown.bs.modal', function() {
-        
-        var opt = {"renderer": "svg"};
-
-        
-        
-        aq.loadCSV(
-
-            
-            
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/data/" + data_download_loc
-        
-        ).then(data => {
-            
-            arqTable = data;
-
-
-            
-
-            
-            
-            var summaryData = 
-                arqTable
-                .filter(d => d.data_field_name == "parkDisP")
-                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
-                .dedupe()
-                .groupby("neighborhood")
-                .orderby("neighborhood", aq.desc("end_date"))
-                .slice(0,1) 
-                .ungroup()
-                .derive({data_value: d => op.parse_float(d.data_value)})
-                .orderby("data_value") 
-                .select(aq.not("end_date"))
-                .objects()
-                
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/summarySpec.json").then(data => {
-                
-                summarySpec = data;
-
-                
-
-                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#summary-parkDisP-2", 
-                    summarySpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("summaryData", summaryData).run()
-
-                }).catch(console.error);;
-                
-            });
-            
-
-            
-
-            
-
-            var mapData = summaryData;
-
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/mapSpec.json").then(data => {
-                
-                mapSpec = data;
-
-                
-
-                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#map-parkDisP-2", 
-                    mapSpec,
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("mapData", mapData).run()
-                    
-                }).catch(console.error);
-                
-            });
-
-            
-            
-
-            
-            
-            var trendData = 
-                arqTable
-                .filter(d => d.data_field_name == "parkDisP")
-                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
-                .dedupe()
-                .objects()
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/trendSpec.json").then(data => {
-                
-                
-                
-                trendSpec = data;
-                
-                
-
-                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#trend-parkDisP-2", 
-                    trendSpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("trendData", trendData).run()
-                    
-                }).catch(console.error);;
-                
-            });
-            
-        });
-            
-    });
-        
-    </script>
-    <button data-toggle="modal" data-target="#modal-subDistP-2" class="indicator-anchor">
+                </div><button data-toggle="modal" data-target="#modal-subDistP-2" class="indicator-anchor">
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
             <span class="indicator-short-name">Subway access</span>
@@ -1204,62 +1013,62 @@
     });
         
     </script>
-    <button data-toggle="modal" data-target="#modal-bikeLanP-2" class="indicator-anchor">
+    <button data-toggle="modal" data-target="#modal-parkDisP-2" class="indicator-anchor">
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
-            <span class="indicator-short-name">Bike lanes</span>
+            <span class="indicator-short-name">Park access</span>
         </div>
         <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/bikeLanP_301.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/parkDisP_301.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
         <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/bikeLanP_301.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/parkDisP_301.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
         </div>
     </div>
 </button>
 
 
-<div class="modal fade report-modal" id="modal-bikeLanP-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade report-modal" id="modal-parkDisP-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header text-left">
-                <h2 class="modal-title fs-xl" id="exampleModalLabel">Bike lanes</h2>
+                <h2 class="modal-title fs-xl" id="exampleModalLabel">Park access</h2>
                 <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
                     <span class="fas fa-times-circle"></span>
                 </button>
             </div>
             <div class="modal-body">
-                <h2 class="fs-xl">Streets with bicycle lanes (percent), 2017</h2>
-                <p>In <strong>Washington Heights</strong>, the streets with bicycle lanes (percent), 2017 is <span class="better">Better</span>compared to the NYC average.</p>The percent of streets with bike lanes can affect cyclist and pedestrian safety, physical activity, and sustainable transportation use. </div>
+                <h2 class="fs-xl">People living in walking distance to a park (percent), 2017</h2>
+                <p>In <strong>Washington Heights</strong>, the people living in walking distance to a park (percent), 2017 is <span class="better">Better</span>compared to the NYC average.</p><p>Walking distance to a park is defined as 1/4-mile or less to entrances of smaller sites, such as sitting areas and playgrounds, and 1/2-mile or less to entrances of larger parks. Parks and open space that are not under the NYC Parks Department jurisdiction are also included.</p></div>
             <hr>
             <div class="modal-body">
                 <h3>Neighborhood Comparison</h3>
                 <div class="row comparison">
-                    <div class="col-sm-4 text-primary">Washington Heights <span class="indicator-value">25.0</span></div>
-                    <div class="col-sm-4">Manhattan <span class="indicator-value">29</span></div>
-                    <div class="col-sm-4">New York City <span class="indicator-value">10</span></div>
+                    <div class="col-sm-4 text-primary">Washington Heights <span class="indicator-value">100.0</span></div>
+                    <div class="col-sm-4">Manhattan <span class="indicator-value">97</span></div>
+                    <div class="col-sm-4">New York City <span class="indicator-value">81</span></div>
                 </div>
-                <p><em>Percent of Streets with Bicycle Lanes </em></p><div class="data-note"></div></div>
+                <p><em>Percent of Population </em></p><div class="data-note"></div></div>
             <hr>
             <div class="modal-body">
-                <h3>Streets with bicycle lanes (percent), 2017</h3>
-                <p>  <em>Percent of Streets with Bicycle Lanes</em></p>
-                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-bikeLanP-2"></div> 
+                <h3>People living in walking distance to a park (percent), 2017</h3>
+                <p>  <em>Percent of Population</em></p>
+                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-parkDisP-2"></div> 
                 
             </div>
             <hr>
             <div class="modal-body">
                 
                 <h3>Trends Over Time</h3>
-                <p><em>Percent of Streets with Bicycle Lanes </em></p>
-                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-bikeLanP-2"></div> 
+                <p><em>Percent of Population </em></p>
+                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-parkDisP-2"></div> 
                 
             </div>
             <hr>
             <div class="modal-body">
                 
                 <h3>By Neighborhood</h3>
-                <p><em>Percent of Streets with Bicycle Lanes </em></p>
-                <div style="width:100%; height:60vmin; z-index:10000;" id="map-bikeLanP-2"></div>
+                <p><em>Percent of Population </em></p>
+                <div style="width:100%; height:60vmin; z-index:10000;" id="map-parkDisP-2"></div>
                 
             </div>
             
@@ -1273,7 +1082,7 @@
 
 <script type="text/javascript">
 
-    $( "#modal-bikeLanP-2" ).on('shown.bs.modal', function() {
+    $( "#modal-parkDisP-2" ).on('shown.bs.modal', function() {
         
         var opt = {"renderer": "svg"};
 
@@ -1296,7 +1105,7 @@
             
             var summaryData = 
                 arqTable
-                .filter(d => d.data_field_name == "bikeLanP")
+                .filter(d => d.data_field_name == "parkDisP")
                 .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
                 .dedupe()
                 .groupby("neighborhood")
@@ -1320,7 +1129,7 @@
             }).then(() => {
                 
                 vegaEmbed(
-                    "#summary-bikeLanP-2", 
+                    "#summary-parkDisP-2", 
                     summarySpec, 
                     opt
                 ).then((res) => {
@@ -1349,7 +1158,7 @@
             }).then(() => {
                 
                 vegaEmbed(
-                    "#map-bikeLanP-2", 
+                    "#map-parkDisP-2", 
                     mapSpec,
                     opt
                 ).then((res) => {
@@ -1367,7 +1176,7 @@
             
             var trendData = 
                 arqTable
-                .filter(d => d.data_field_name == "bikeLanP")
+                .filter(d => d.data_field_name == "parkDisP")
                 .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
                 .dedupe()
                 .objects()
@@ -1385,7 +1194,7 @@
             }).then(() => {
                 
                 vegaEmbed(
-                    "#trend-bikeLanP-2", 
+                    "#trend-parkDisP-2", 
                     trendSpec, 
                     opt
                 ).then((res) => {
@@ -1583,6 +1392,203 @@
                 
                 vegaEmbed(
                     "#trend-treeCovP-2", 
+                    trendSpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("trendData", trendData).run()
+                    
+                }).catch(console.error);;
+                
+            });
+            
+        });
+            
+    });
+        
+    </script>
+    <button data-toggle="modal" data-target="#modal-bikeLanP-2" class="indicator-anchor">
+    <div class="row align-items-center">
+        <div class="col-6 col-md-5">
+            <span class="indicator-short-name">Bike lanes</span>
+        </div>
+        <div class="col-6 col-md-4 topic-list">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/bikeLanP_301.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
+        <div class="d-none d-md-inline col-md-3">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/bikeLanP_301.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+        </div>
+    </div>
+</button>
+
+
+<div class="modal fade report-modal" id="modal-bikeLanP-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-left">
+                <h2 class="modal-title fs-xl" id="exampleModalLabel">Bike lanes</h2>
+                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
+                    <span class="fas fa-times-circle"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2 class="fs-xl">Streets with bicycle lanes (percent), 2017</h2>
+                <p>In <strong>Washington Heights</strong>, the streets with bicycle lanes (percent), 2017 is <span class="better">Better</span>compared to the NYC average.</p>The percent of streets with bike lanes can affect cyclist and pedestrian safety, physical activity, and sustainable transportation use. </div>
+            <hr>
+            <div class="modal-body">
+                <h3>Neighborhood Comparison</h3>
+                <div class="row comparison">
+                    <div class="col-sm-4 text-primary">Washington Heights <span class="indicator-value">25.0</span></div>
+                    <div class="col-sm-4">Manhattan <span class="indicator-value">29</span></div>
+                    <div class="col-sm-4">New York City <span class="indicator-value">10</span></div>
+                </div>
+                <p><em>Percent of Streets with Bicycle Lanes </em></p><div class="data-note"></div></div>
+            <hr>
+            <div class="modal-body">
+                <h3>Streets with bicycle lanes (percent), 2017</h3>
+                <p>  <em>Percent of Streets with Bicycle Lanes</em></p>
+                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-bikeLanP-2"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>Trends Over Time</h3>
+                <p><em>Percent of Streets with Bicycle Lanes </em></p>
+                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-bikeLanP-2"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>By Neighborhood</h3>
+                <p><em>Percent of Streets with Bicycle Lanes </em></p>
+                <div style="width:100%; height:60vmin; z-index:10000;" id="map-bikeLanP-2"></div>
+                
+            </div>
+            
+            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    $( "#modal-bikeLanP-2" ).on('shown.bs.modal', function() {
+        
+        var opt = {"renderer": "svg"};
+
+        
+        
+        aq.loadCSV(
+
+            
+            
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/data/" + data_download_loc
+        
+        ).then(data => {
+            
+            arqTable = data;
+
+
+            
+
+            
+            
+            var summaryData = 
+                arqTable
+                .filter(d => d.data_field_name == "bikeLanP")
+                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
+                .dedupe()
+                .groupby("neighborhood")
+                .orderby("neighborhood", aq.desc("end_date"))
+                .slice(0,1) 
+                .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
+                .orderby("data_value") 
+                .select(aq.not("end_date"))
+                .objects()
+                
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/summarySpec.json").then(data => {
+                
+                summarySpec = data;
+
+                
+
+                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#summary-bikeLanP-2", 
+                    summarySpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("summaryData", summaryData).run()
+
+                }).catch(console.error);;
+                
+            });
+            
+
+            
+
+            
+
+            var mapData = summaryData;
+
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/mapSpec.json").then(data => {
+                
+                mapSpec = data;
+
+                
+
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#map-bikeLanP-2", 
+                    mapSpec,
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("mapData", mapData).run()
+                    
+                }).catch(console.error);
+                
+            });
+
+            
+            
+
+            
+            
+            var trendData = 
+                arqTable
+                .filter(d => d.data_field_name == "bikeLanP")
+                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
+                .dedupe()
+                .objects()
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/trendSpec.json").then(data => {
+                
+                
+                
+                trendSpec = data;
+                
+                
+
+                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#trend-bikeLanP-2", 
                     trendSpec, 
                     opt
                 ).then((res) => {
@@ -1824,204 +1830,7 @@
                     Rank<br>
                     <span class="meta"> out of the 42 neighborhoods</span>
                   </div>
-                </div><button data-toggle="modal" data-target="#modal-nabSafeP-3" class="indicator-anchor">
-    <div class="row align-items-center">
-        <div class="col-6 col-md-5">
-            <span class="indicator-short-name">Neighborhood safety</span>
-        </div>
-        <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/nabSafeP_301.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="middle">Middle</span></div>
-        <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/nabSafeP_301.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
-        </div>
-    </div>
-</button>
-
-
-<div class="modal fade report-modal" id="modal-nabSafeP-3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header text-left">
-                <h2 class="modal-title fs-xl" id="exampleModalLabel">Neighborhood safety</h2>
-                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
-                    <span class="fas fa-times-circle"></span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h2 class="fs-xl">Adults perceiving neighborhood as safe from crime (percent), 2016</h2>
-                <p>In <strong>Washington Heights</strong>, the adults perceiving neighborhood as safe from crime (percent), 2016 is <span class="middle">Middle</span>compared to the NYC average.</p>Whether people perceive their neighborhood as safe can affect whether they will spend time outside, use parks, and use active and sustainable forms of transportation. It can also affect mental well-being.</div>
-            <hr>
-            <div class="modal-body">
-                <h3>Neighborhood Comparison</h3>
-                <div class="row comparison">
-                    <div class="col-sm-4 text-primary">Washington Heights <span class="indicator-value">82.1</span></div>
-                    <div class="col-sm-4">Manhattan <span class="indicator-value">89.8</span></div>
-                    <div class="col-sm-4">New York City <span class="indicator-value">85.5</span></div>
-                </div>
-                <p><em>Percent Neighborhood Safe from Crime </em></p><div class="data-note"></div></div>
-            <hr>
-            <div class="modal-body">
-                <h3>Adults perceiving neighborhood as safe from crime (percent), 2016</h3>
-                <p>  <em>Percent Neighborhood Safe from Crime</em></p>
-                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-nabSafeP-3"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>Trends Over Time</h3>
-                <p><em>Percent Neighborhood Safe from Crime </em></p>
-                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-nabSafeP-3"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>By Neighborhood</h3>
-                <p><em>Percent Neighborhood Safe from Crime </em></p>
-                <div style="width:100%; height:60vmin; z-index:10000;" id="map-nabSafeP-3"></div>
-                
-            </div>
-            
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-<script type="text/javascript">
-
-    $( "#modal-nabSafeP-3" ).on('shown.bs.modal', function() {
-        
-        var opt = {"renderer": "svg"};
-
-        
-        
-        aq.loadCSV(
-
-            
-            
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/data/" + data_download_loc
-        
-        ).then(data => {
-            
-            arqTable = data;
-
-
-            
-
-            
-            
-            var summaryData = 
-                arqTable
-                .filter(d => d.data_field_name == "nabSafeP")
-                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
-                .dedupe()
-                .groupby("neighborhood")
-                .orderby("neighborhood", aq.desc("end_date"))
-                .slice(0,1) 
-                .ungroup()
-                .derive({data_value: d => op.parse_float(d.data_value)})
-                .orderby("data_value") 
-                .select(aq.not("end_date"))
-                .objects()
-                
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/summarySpec.json").then(data => {
-                
-                summarySpec = data;
-
-                
-
-                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#summary-nabSafeP-3", 
-                    summarySpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("summaryData", summaryData).run()
-
-                }).catch(console.error);;
-                
-            });
-            
-
-            
-
-            
-
-            var mapData = summaryData;
-
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/mapSpec.json").then(data => {
-                
-                mapSpec = data;
-
-                
-
-                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#map-nabSafeP-3", 
-                    mapSpec,
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("mapData", mapData).run()
-                    
-                }).catch(console.error);
-                
-            });
-
-            
-            
-
-            
-            
-            var trendData = 
-                arqTable
-                .filter(d => d.data_field_name == "nabSafeP")
-                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
-                .dedupe()
-                .objects()
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/trendSpec.json").then(data => {
-                
-                
-                
-                trendSpec = data;
-                
-                
-
-                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#trend-nabSafeP-3", 
-                    trendSpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("trendData", trendData).run()
-                    
-                }).catch(console.error);;
-                
-            });
-            
-        });
-            
-    });
-        
-    </script>
-    <button data-toggle="modal" data-target="#modal-poveACSP-3" class="indicator-anchor">
+                </div><button data-toggle="modal" data-target="#modal-poveACSP-3" class="indicator-anchor">
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
             <span class="indicator-short-name">Poverty</span>
@@ -2203,6 +2012,203 @@
                 
                 vegaEmbed(
                     "#trend-poveACSP-3", 
+                    trendSpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("trendData", trendData).run()
+                    
+                }).catch(console.error);;
+                
+            });
+            
+        });
+            
+    });
+        
+    </script>
+    <button data-toggle="modal" data-target="#modal-nabSafeP-3" class="indicator-anchor">
+    <div class="row align-items-center">
+        <div class="col-6 col-md-5">
+            <span class="indicator-short-name">Neighborhood safety</span>
+        </div>
+        <div class="col-6 col-md-4 topic-list">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/nabSafeP_301.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="middle">Middle</span></div>
+        <div class="d-none d-md-inline col-md-3">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/nabSafeP_301.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+        </div>
+    </div>
+</button>
+
+
+<div class="modal fade report-modal" id="modal-nabSafeP-3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-left">
+                <h2 class="modal-title fs-xl" id="exampleModalLabel">Neighborhood safety</h2>
+                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
+                    <span class="fas fa-times-circle"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2 class="fs-xl">Adults perceiving neighborhood as safe from crime (percent), 2016</h2>
+                <p>In <strong>Washington Heights</strong>, the adults perceiving neighborhood as safe from crime (percent), 2016 is <span class="middle">Middle</span>compared to the NYC average.</p>Whether people perceive their neighborhood as safe can affect whether they will spend time outside, use parks, and use active and sustainable forms of transportation. It can also affect mental well-being.</div>
+            <hr>
+            <div class="modal-body">
+                <h3>Neighborhood Comparison</h3>
+                <div class="row comparison">
+                    <div class="col-sm-4 text-primary">Washington Heights <span class="indicator-value">82.1</span></div>
+                    <div class="col-sm-4">Manhattan <span class="indicator-value">89.8</span></div>
+                    <div class="col-sm-4">New York City <span class="indicator-value">85.5</span></div>
+                </div>
+                <p><em>Percent Neighborhood Safe from Crime </em></p><div class="data-note"></div></div>
+            <hr>
+            <div class="modal-body">
+                <h3>Adults perceiving neighborhood as safe from crime (percent), 2016</h3>
+                <p>  <em>Percent Neighborhood Safe from Crime</em></p>
+                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-nabSafeP-3"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>Trends Over Time</h3>
+                <p><em>Percent Neighborhood Safe from Crime </em></p>
+                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-nabSafeP-3"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>By Neighborhood</h3>
+                <p><em>Percent Neighborhood Safe from Crime </em></p>
+                <div style="width:100%; height:60vmin; z-index:10000;" id="map-nabSafeP-3"></div>
+                
+            </div>
+            
+            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    $( "#modal-nabSafeP-3" ).on('shown.bs.modal', function() {
+        
+        var opt = {"renderer": "svg"};
+
+        
+        
+        aq.loadCSV(
+
+            
+            
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/data/" + data_download_loc
+        
+        ).then(data => {
+            
+            arqTable = data;
+
+
+            
+
+            
+            
+            var summaryData = 
+                arqTable
+                .filter(d => d.data_field_name == "nabSafeP")
+                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
+                .dedupe()
+                .groupby("neighborhood")
+                .orderby("neighborhood", aq.desc("end_date"))
+                .slice(0,1) 
+                .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
+                .orderby("data_value") 
+                .select(aq.not("end_date"))
+                .objects()
+                
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/summarySpec.json").then(data => {
+                
+                summarySpec = data;
+
+                
+
+                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#summary-nabSafeP-3", 
+                    summarySpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("summaryData", summaryData).run()
+
+                }).catch(console.error);;
+                
+            });
+            
+
+            
+
+            
+
+            var mapData = summaryData;
+
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/mapSpec.json").then(data => {
+                
+                mapSpec = data;
+
+                
+
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#map-nabSafeP-3", 
+                    mapSpec,
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("mapData", mapData).run()
+                    
+                }).catch(console.error);
+                
+            });
+
+            
+            
+
+            
+            
+            var trendData = 
+                arqTable
+                .filter(d => d.data_field_name == "nabSafeP")
+                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
+                .dedupe()
+                .objects()
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/trendSpec.json").then(data => {
+                
+                
+                
+                trendSpec = data;
+                
+                
+
+                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#trend-nabSafeP-3", 
                     trendSpec, 
                     opt
                 ).then((res) => {

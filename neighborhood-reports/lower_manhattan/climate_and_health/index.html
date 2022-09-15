@@ -35,6 +35,12 @@
     crossorigin="anonymous"></script>
 
 
+
+
+
+<link rel="icon" href="../../../7618350_heatmap_business_analytics_statistics_icon-gp.ico">
+
+
 <link rel="stylesheet" href="../../../fontawesome/css/all.min.css">
 
 <link rel="stylesheet" href="https://nychealth.github.io/EH-dataportal/scss/theme.css" />
@@ -274,7 +280,7 @@
 <script>
   var NeighborhoodName = "Lower Manhattan"; 
   var report_name = "Climate and Health"
-  var data_download_loc = "http:\/\/a816-dohbesp.nyc.gov\/IndicatorPublic\/EPHTCsv\/Climate_and_Health.csv"
+  var data_download_loc = "Climate_and_Health_data.csv"
 </script>
 
 <section class="container-fluid pl-lg-6" id="skip-header-target">
@@ -2050,46 +2056,46 @@
                     Rank<br>
                     <span class="meta"> out of the 42 neighborhoods</span>
                   </div>
-                </div><button data-toggle="modal" data-target="#modal-Neig689-4" class="indicator-anchor">
+                </div><button data-toggle="modal" data-target="#modal-Obes506-4" class="indicator-anchor">
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
-            <span class="indicator-short-name">Poverty</span>
+            <span class="indicator-short-name">Obesity</span>
         </div>
         <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/Neig689_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/Obes506_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
         <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/Neig689_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/Obes506_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
         </div>
     </div>
 </button>
 
 
-<div class="modal fade report-modal" id="modal-Neig689-4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade report-modal" id="modal-Obes506-4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header text-left">
-                <h2 class="modal-title fs-xl" id="exampleModalLabel">Poverty</h2>
+                <h2 class="modal-title fs-xl" id="exampleModalLabel">Obesity</h2>
                 <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
                     <span class="fas fa-times-circle"></span>
                 </button>
             </div>
             <div class="modal-body">
-                <h2 class="fs-xl">People living below federal poverty level (percent),  2008-2012</h2>
-                <p>In <strong>Lower Manhattan</strong>, the people living below federal poverty level (percent),  2008-2012 is <span class="better">Better</span>compared to the NYC average.</p>Neighborhood poverty measures residents' access to economic stability, education, adequate health care, safe housing and freedom from stress. Neighborhoods with higher poverty tend to have less access to these factors and experience worse health outcomes.</div>
+                <h2 class="fs-xl">Adults aged 18 years and older who are obese (percent), 2020</h2>
+                <p>In <strong>Lower Manhattan</strong>, the adults aged 18 years and older who are obese (percent), 2020 is <span class="better">Better</span>compared to the NYC average.</p>People who are obese are at increased risk for heart disease and diabetes. Neighborhood factors such as walkability and the types of food retail outlets available can impact residents' risk of being overweight or obese.</div>
             <hr>
             <div class="modal-body">
                 <h3>Neighborhood Comparison</h3>
                 <div class="row comparison">
-                    <div class="col-sm-4 text-primary">Lower Manhattan <span class="indicator-value">12.4</span></div>
+                    <div class="col-sm-4 text-primary">Lower Manhattan <span class="indicator-value">14.4</span></div>
                     <div class="col-sm-4">Manhattan <span class="indicator-value">17.5</span></div>
-                    <div class="col-sm-4">New York City <span class="indicator-value">19.9</span></div>
+                    <div class="col-sm-4">New York City <span class="indicator-value">25.4</span></div>
                 </div>
                 <p><em>Percent </em></p><div class="data-note"></div></div>
             <hr>
             <div class="modal-body">
-                <h3>People living below federal poverty level (percent),  2008-2012</h3>
+                <h3>Adults aged 18 years and older who are obese (percent), 2020</h3>
                 <p>  <em>Percent</em></p>
-                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Neig689-4"></div> 
+                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Obes506-4"></div> 
                 
             </div>
             <hr>
@@ -2097,7 +2103,7 @@
                 
                 <h3>Trends Over Time</h3>
                 <p><em>Percent </em></p>
-                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Neig689-4"></div> 
+                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Obes506-4"></div> 
                 
             </div>
             <hr>
@@ -2105,7 +2111,7 @@
                 
                 <h3>By Neighborhood</h3>
                 <p><em>Percent </em></p>
-                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Neig689-4"></div>
+                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Obes506-4"></div>
                 
             </div>
             
@@ -2119,7 +2125,7 @@
 
 <script type="text/javascript">
 
-    $( "#modal-Neig689-4" ).on('shown.bs.modal', function() {
+    $( "#modal-Obes506-4" ).on('shown.bs.modal', function() {
         
         var opt = {"renderer": "svg"};
 
@@ -2142,7 +2148,7 @@
             
             var summaryData = 
                 arqTable
-                .filter(d => d.data_field_name == "Neig689")
+                .filter(d => d.data_field_name == "Obes506")
                 .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
                 .dedupe()
                 .groupby("neighborhood")
@@ -2166,7 +2172,7 @@
             }).then(() => {
                 
                 vegaEmbed(
-                    "#summary-Neig689-4", 
+                    "#summary-Obes506-4", 
                     summarySpec, 
                     opt
                 ).then((res) => {
@@ -2195,7 +2201,7 @@
             }).then(() => {
                 
                 vegaEmbed(
-                    "#map-Neig689-4", 
+                    "#map-Obes506-4", 
                     mapSpec,
                     opt
                 ).then((res) => {
@@ -2213,7 +2219,7 @@
             
             var trendData = 
                 arqTable
-                .filter(d => d.data_field_name == "Neig689")
+                .filter(d => d.data_field_name == "Obes506")
                 .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
                 .dedupe()
                 .objects()
@@ -2231,7 +2237,7 @@
             }).then(() => {
                 
                 vegaEmbed(
-                    "#trend-Neig689-4", 
+                    "#trend-Obes506-4", 
                     trendSpec, 
                     opt
                 ).then((res) => {
@@ -2447,46 +2453,46 @@
     });
         
     </script>
-    <button data-toggle="modal" data-target="#modal-Obes506-4" class="indicator-anchor">
+    <button data-toggle="modal" data-target="#modal-Neig689-4" class="indicator-anchor">
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
-            <span class="indicator-short-name">Obesity</span>
+            <span class="indicator-short-name">Poverty</span>
         </div>
         <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/Obes506_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/Neig689_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
         <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/Obes506_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/Neig689_310.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
         </div>
     </div>
 </button>
 
 
-<div class="modal fade report-modal" id="modal-Obes506-4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade report-modal" id="modal-Neig689-4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header text-left">
-                <h2 class="modal-title fs-xl" id="exampleModalLabel">Obesity</h2>
+                <h2 class="modal-title fs-xl" id="exampleModalLabel">Poverty</h2>
                 <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
                     <span class="fas fa-times-circle"></span>
                 </button>
             </div>
             <div class="modal-body">
-                <h2 class="fs-xl">Adults aged 18 years and older who are obese (percent), 2020</h2>
-                <p>In <strong>Lower Manhattan</strong>, the adults aged 18 years and older who are obese (percent), 2020 is <span class="better">Better</span>compared to the NYC average.</p>People who are obese are at increased risk for heart disease and diabetes. Neighborhood factors such as walkability and the types of food retail outlets available can impact residents' risk of being overweight or obese.</div>
+                <h2 class="fs-xl">People living below federal poverty level (percent),  2008-2012</h2>
+                <p>In <strong>Lower Manhattan</strong>, the people living below federal poverty level (percent),  2008-2012 is <span class="better">Better</span>compared to the NYC average.</p>Neighborhood poverty measures residents' access to economic stability, education, adequate health care, safe housing and freedom from stress. Neighborhoods with higher poverty tend to have less access to these factors and experience worse health outcomes.</div>
             <hr>
             <div class="modal-body">
                 <h3>Neighborhood Comparison</h3>
                 <div class="row comparison">
-                    <div class="col-sm-4 text-primary">Lower Manhattan <span class="indicator-value">14.4</span></div>
+                    <div class="col-sm-4 text-primary">Lower Manhattan <span class="indicator-value">12.4</span></div>
                     <div class="col-sm-4">Manhattan <span class="indicator-value">17.5</span></div>
-                    <div class="col-sm-4">New York City <span class="indicator-value">25.4</span></div>
+                    <div class="col-sm-4">New York City <span class="indicator-value">19.9</span></div>
                 </div>
                 <p><em>Percent </em></p><div class="data-note"></div></div>
             <hr>
             <div class="modal-body">
-                <h3>Adults aged 18 years and older who are obese (percent), 2020</h3>
+                <h3>People living below federal poverty level (percent),  2008-2012</h3>
                 <p>  <em>Percent</em></p>
-                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Obes506-4"></div> 
+                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Neig689-4"></div> 
                 
             </div>
             <hr>
@@ -2494,7 +2500,7 @@
                 
                 <h3>Trends Over Time</h3>
                 <p><em>Percent </em></p>
-                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Obes506-4"></div> 
+                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Neig689-4"></div> 
                 
             </div>
             <hr>
@@ -2502,7 +2508,7 @@
                 
                 <h3>By Neighborhood</h3>
                 <p><em>Percent </em></p>
-                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Obes506-4"></div>
+                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Neig689-4"></div>
                 
             </div>
             
@@ -2516,7 +2522,7 @@
 
 <script type="text/javascript">
 
-    $( "#modal-Obes506-4" ).on('shown.bs.modal', function() {
+    $( "#modal-Neig689-4" ).on('shown.bs.modal', function() {
         
         var opt = {"renderer": "svg"};
 
@@ -2539,7 +2545,7 @@
             
             var summaryData = 
                 arqTable
-                .filter(d => d.data_field_name == "Obes506")
+                .filter(d => d.data_field_name == "Neig689")
                 .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
                 .dedupe()
                 .groupby("neighborhood")
@@ -2563,7 +2569,7 @@
             }).then(() => {
                 
                 vegaEmbed(
-                    "#summary-Obes506-4", 
+                    "#summary-Neig689-4", 
                     summarySpec, 
                     opt
                 ).then((res) => {
@@ -2592,7 +2598,7 @@
             }).then(() => {
                 
                 vegaEmbed(
-                    "#map-Obes506-4", 
+                    "#map-Neig689-4", 
                     mapSpec,
                     opt
                 ).then((res) => {
@@ -2610,7 +2616,7 @@
             
             var trendData = 
                 arqTable
-                .filter(d => d.data_field_name == "Obes506")
+                .filter(d => d.data_field_name == "Neig689")
                 .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
                 .dedupe()
                 .objects()
@@ -2628,7 +2634,7 @@
             }).then(() => {
                 
                 vegaEmbed(
-                    "#trend-Obes506-4", 
+                    "#trend-Neig689-4", 
                     trendSpec, 
                     opt
                 ).then((res) => {
