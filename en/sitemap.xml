@@ -305,6 +305,36 @@
     <lastmod>2021-11-24T13:30:21-05:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/about/jobs/</loc>
     <lastmod>2021-11-24T13:30:21-05:00</lastmod></url><url>
+    <loc>https://nychealth.github.io/EH-dataportal/keywords/drink/</loc>
+    <lastmod>2021-11-17T12:01:22-05:00</lastmod></url><url>
+    <loc>https://nychealth.github.io/EH-dataportal/keywords/food/</loc>
+    <lastmod>2021-11-17T12:01:22-05:00</lastmod></url><url>
+    <loc>https://nychealth.github.io/EH-dataportal/keywords/food-desert/</loc>
+    <lastmod>2021-11-17T12:01:22-05:00</lastmod></url><url>
+    <loc>https://nychealth.github.io/EH-dataportal/keywords/food-environment/</loc>
+    <lastmod>2021-11-17T12:01:22-05:00</lastmod></url><url>
+    <loc>https://nychealth.github.io/EH-dataportal/data-explorer/healthy-eating/</loc>
+    <lastmod>2021-11-17T12:01:22-05:00</lastmod></url><url>
+    <loc>https://nychealth.github.io/EH-dataportal/categories/neighborhoods/</loc>
+    <lastmod>2021-11-17T12:01:22-05:00</lastmod><xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://nychealth.github.io/EH-dataportal/es/categories/neighborhoods/"
+                /><xhtml:link
+                rel="alternate"
+                hreflang="cn"
+                href="https://nychealth.github.io/EH-dataportal/cn/categories/neighborhoods/"
+                /><xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://nychealth.github.io/EH-dataportal/categories/neighborhoods/"
+                /></url><url>
+    <loc>https://nychealth.github.io/EH-dataportal/keywords/nutrition/</loc>
+    <lastmod>2021-11-17T12:01:22-05:00</lastmod></url><url>
+    <loc>https://nychealth.github.io/EH-dataportal/keywords/soda/</loc>
+    <lastmod>2021-11-17T12:01:22-05:00</lastmod></url><url>
+    <loc>https://nychealth.github.io/EH-dataportal/keywords/sugary-drinks/</loc>
+    <lastmod>2021-11-17T12:01:22-05:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/data-explorer/</loc>
     <lastmod>2021-10-07T09:34:04-04:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/key-topics/airquality/</loc>
@@ -338,6 +368,14 @@
     <loc>https://nychealth.github.io/EH-dataportal/keywords/carbon-monoxide/</loc>
     <lastmod>2021-10-02T07:56:00-04:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/keywords/cockroaches/</loc>
+    <lastmod>2021-10-02T07:56:00-04:00</lastmod></url><url>
+    <loc>https://nychealth.github.io/EH-dataportal/keywords/displacement/</loc>
+    <lastmod>2021-10-02T07:56:00-04:00</lastmod></url><url>
+    <loc>https://nychealth.github.io/EH-dataportal/key-topics/housing/displacement/</loc>
+    <lastmod>2021-10-02T07:56:00-04:00</lastmod></url><url>
+    <loc>https://nychealth.github.io/EH-dataportal/keywords/equity/</loc>
+    <lastmod>2021-10-02T07:56:00-04:00</lastmod></url><url>
+    <loc>https://nychealth.github.io/EH-dataportal/keywords/gentrification/</loc>
     <lastmod>2021-10-02T07:56:00-04:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/keywords/homes/</loc>
     <lastmod>2021-10-02T07:56:00-04:00</lastmod></url><url>
@@ -385,6 +423,8 @@
                 hreflang="en"
                 href="https://nychealth.github.io/EH-dataportal/keywords/injustice/"
                 /></url><url>
+    <loc>https://nychealth.github.io/EH-dataportal/keywords/justice/</loc>
+    <lastmod>2021-10-02T07:56:00-04:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/keywords/lead/</loc>
     <lastmod>2021-10-02T07:56:00-04:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/keywords/maintenance/</loc>
@@ -452,8 +492,6 @@
     <loc>https://nychealth.github.io/EH-dataportal/keywords/inequality/</loc>
     <lastmod>2021-10-01T07:59:16-04:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/key-topics/social/</loc>
-    <lastmod>2021-10-01T07:59:16-04:00</lastmod></url><url>
-    <loc>https://nychealth.github.io/EH-dataportal/keywords/justice/</loc>
     <lastmod>2021-10-01T07:59:16-04:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/keywords/oppression/</loc>
     <lastmod>2021-10-01T07:59:16-04:00</lastmod></url><url>
@@ -579,20 +617,6 @@
     <lastmod>2021-08-20T12:52:43-04:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/keywords/heat-island/</loc>
     <lastmod>2021-08-20T12:52:43-04:00</lastmod></url><url>
-    <loc>https://nychealth.github.io/EH-dataportal/categories/neighborhoods/</loc>
-    <lastmod>2021-08-20T12:52:43-04:00</lastmod><xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https://nychealth.github.io/EH-dataportal/es/categories/neighborhoods/"
-                /><xhtml:link
-                rel="alternate"
-                hreflang="cn"
-                href="https://nychealth.github.io/EH-dataportal/cn/categories/neighborhoods/"
-                /><xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://nychealth.github.io/EH-dataportal/categories/neighborhoods/"
-                /></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/keywords/parks/</loc>
     <lastmod>2021-08-20T12:52:43-04:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/data-stories/localtemp/</loc>
@@ -703,15 +727,11 @@
     <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/keywords/cold-weather/</loc>
     <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>
-    <loc>https://nychealth.github.io/EH-dataportal/keywords/construction/</loc>
-    <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/keywords/crowding/</loc>
     <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/keywords/disease/</loc>
     <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/keywords/doctors/</loc>
-    <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>
-    <loc>https://nychealth.github.io/EH-dataportal/keywords/drink/</loc>
     <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/keywords/drinking/</loc>
     <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>
@@ -720,6 +740,8 @@
     <loc>https://nychealth.github.io/EH-dataportal/keywords/driving/</loc>
     <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/keywords/dying/</loc>
+    <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>
+    <loc>https://nychealth.github.io/EH-dataportal/data-explorer/economic-conditions/</loc>
     <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/keywords/emergency-department-visits/</loc>
     <lastmod>2021-05-28T18:02:58+00:00</lastmod><xhtml:link
@@ -743,11 +765,7 @@
     <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/data-explorer/falls-among-older-adults/</loc>
     <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>
-    <loc>https://nychealth.github.io/EH-dataportal/keywords/food/</loc>
-    <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/keywords/food-and-drink/</loc>
-    <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>
-    <loc>https://nychealth.github.io/EH-dataportal/keywords/garbage/</loc>
     <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/keywords/health-care/</loc>
     <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>
@@ -788,10 +806,6 @@
     <loc>https://nychealth.github.io/EH-dataportal/keywords/monoxide/</loc>
     <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/data-explorer/mortality/</loc>
-    <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>
-    <loc>https://nychealth.github.io/EH-dataportal/keywords/noise/</loc>
-    <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>
-    <loc>https://nychealth.github.io/EH-dataportal/data-explorer/noise/</loc>
     <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/keywords/obesity/</loc>
     <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>
@@ -835,19 +849,11 @@
     <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/keywords/social/</loc>
     <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>
-    <loc>https://nychealth.github.io/EH-dataportal/data-explorer/social-and-economic-conditions/</loc>
-    <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/keywords/social-conditions/</loc>
     <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>
-    <loc>https://nychealth.github.io/EH-dataportal/keywords/soda/</loc>
-    <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>
-    <loc>https://nychealth.github.io/EH-dataportal/data-explorer/solid-waste/</loc>
+    <loc>https://nychealth.github.io/EH-dataportal/data-explorer/social-conditions/</loc>
     <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/keywords/streets/</loc>
-    <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>
-    <loc>https://nychealth.github.io/EH-dataportal/data-explorer/sugary-drink-consumption/</loc>
-    <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>
-    <loc>https://nychealth.github.io/EH-dataportal/keywords/sugary-drinks/</loc>
     <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/keywords/testing/</loc>
     <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>
@@ -878,8 +884,6 @@
     <loc>https://nychealth.github.io/EH-dataportal/data-explorer/violence/</loc>
     <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/data-explorer/walking-driving-and-cycling/</loc>
-    <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>
-    <loc>https://nychealth.github.io/EH-dataportal/keywords/waste/</loc>
     <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>
     <loc>https://nychealth.github.io/EH-dataportal/keywords/water/</loc>
     <lastmod>2021-05-28T18:02:58+00:00</lastmod></url><url>

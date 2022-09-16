@@ -18,7 +18,18 @@ With stay-at-home orders in NY and other states, New York City&amp;rsquo;s air q
     </item>
     
     <item>
-      <title>Alcohol Access and Use</title>
+      <title>Healthy eating</title>
+      <link>https://nychealth.github.io/EH-dataportal/data-explorer/healthy-eating/</link>
+      <pubDate>Wed, 17 Nov 2021 12:01:22 -0500</pubDate>
+      
+      <guid>https://nychealth.github.io/EH-dataportal/data-explorer/healthy-eating/</guid>
+      <description>Healthy eating is associated with better health, including a reduced risk of cardiovascular disease. That means that having access to healthy, safe, and affordable food choices is crucial for a person to achieve healthy eating habits.
+Food access is influenced by many environmental factors, including proximity to food retail outlets and neighborhood-level resources (like neighborhood poverty, and availability of public transportation).
+Sugary drinks contribute to a higher-calorie diet, increased risk of heart disease and diabetes, and long-term weight gain.</description>
+    </item>
+    
+    <item>
+      <title>Alcohol access and use</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/alcohol-use/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
@@ -29,7 +40,7 @@ Alcohol and the Environment Greater alcohol outlet density has been associated w
     </item>
     
     <item>
-      <title>Drinking Water Quality</title>
+      <title>Drinking water quality</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/drinking-water-quality/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
@@ -39,7 +50,7 @@ The NYC water system consists of two surface water systems (Croton and Catskill/
     </item>
     
     <item>
-      <title>Restaurant Food Safety</title>
+      <title>Restaurant food safety</title>
       <link>https://nychealth.github.io/EH-dataportal/data-explorer/restaurant-food-safety/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
@@ -49,16 +60,7 @@ Restaurant Food Safety and Health Safe food handling can protect diners from foo
     </item>
     
     <item>
-      <title>Sugary Drink Consumption</title>
-      <link>https://nychealth.github.io/EH-dataportal/data-explorer/sugary-drink-consumption/</link>
-      <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
-      
-      <guid>https://nychealth.github.io/EH-dataportal/data-explorer/sugary-drink-consumption/</guid>
-      <description>Sugary drinks contribute to a higher-calorie diet, long-term weight gain, and increased risk of heart disease and diabetes. Sugary drinks provide little or no nutritional value, and because they don’t fill you up the way food does, you end up consuming more calories. Also, food and beverage portion sizes have exploded over the past several decades, and studies have shown that when given larger portions, people consume more without recognizing it.</description>
-    </item>
-    
-    <item>
-      <title>Food and Drink</title>
+      <title>Food and drink</title>
       <link>https://nychealth.github.io/EH-dataportal/key-topics/foodanddrink/</link>
       <pubDate>Wed, 05 May 2021 07:58:53 -0400</pubDate>
       

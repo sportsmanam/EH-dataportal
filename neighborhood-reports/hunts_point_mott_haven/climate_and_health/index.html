@@ -7,7 +7,7 @@
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>Climate and Health in Hunts Point - Mott Haven&#x7c; Environment &amp; Health Data Portal</title>
+<title>Climate and Health in Hunts Point - Mott Haven &#x7c; Environment &amp; Health Data Portal</title>
 
 
 <meta name="description" content="Here is the site global SEO description">
@@ -35,13 +35,19 @@
     crossorigin="anonymous"></script>
 
 
+
+
+
+<link rel="icon" href="../../../7618350_heatmap_business_analytics_statistics_icon-gpr.ico">
+
+
 <link rel="stylesheet" href="../../../fontawesome/css/all.min.css">
 
 <link rel="stylesheet" href="https://nychealth.github.io/EH-dataportal/scss/theme.css" />
 
 <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 <script src="https://cdn.jsdelivr.net/npm/dompurify@2.3.10/dist/purify.min.js" 
     integrity="sha256-keaR/uWEpEmmUnoJ6BemH9gp9Ng8u/YplhVwdmmquNY=" 
@@ -122,8 +128,7 @@
 
                             <p class="text-white">
                                 <span class="site-title">Environment and Health Data Portal</span>
-                                <span class="site-subtitle">Explore data on how environments shape health in New York
-                                    City</span>
+                                <span class="site-subtitle">Understand how environments shape health in New York City</span>
                             </p>
 
 
@@ -274,6 +279,7 @@
 <script>
   var NeighborhoodName = "Hunts Point - Mott Haven"; 
   var report_name = "Climate and Health"
+  var data_download_loc = "Climate_and_Health_data.csv"
 </script>
 
 <section class="container-fluid pl-lg-6" id="skip-header-target">
@@ -288,6 +294,8 @@
               <div class="list-group custom-active">
 <a href="https://nychealth.github.io/EH-dataportal/neighborhood-reports/hunts_point_mott_haven/active_design_physical_activity_and_health/" class="list-group-item list-group-item-action" aria-current="page">Active Design Physical Activity and Health</a><a href="https://nychealth.github.io/EH-dataportal/neighborhood-reports/hunts_point_mott_haven/asthma_and_the_environment/" class="list-group-item list-group-item-action" aria-current="page">Asthma and the Environment</a><a href="https://nychealth.github.io/EH-dataportal/neighborhood-reports/hunts_point_mott_haven/climate_and_health/" class="list-group-item list-group-item-action active" aria-current="page">Climate and Health</a><a href="https://nychealth.github.io/EH-dataportal/neighborhood-reports/hunts_point_mott_haven/housing_and_health/" class="list-group-item list-group-item-action" aria-current="page">Housing and Health </a><a href="https://nychealth.github.io/EH-dataportal/neighborhood-reports/hunts_point_mott_haven/outdoor_air_and_health/" class="list-group-item list-group-item-action" aria-current="page">Outdoor Air and Health</a></div>
             </nav>
+
+            <hr class="mt-2">
 
             <h2 class="mt-4">Change Neighborhood</h2>
             <form action="../../../neighborhood-reports" method="get" class="autocomplete-form">
@@ -304,13 +312,48 @@
                   <button type="submit" class="btn-primary btn btn-block fs-sm">Go</button> 
                 </div>
               </div>
-            </form>            
-          
+            </form> 
+            <hr class="mt-4 mb-1">
+
+            <button onclick="getData()" class="btn btn-sm btn-block btn-report" target="_blank"><i class="fa fa-download mr-1"></i>Download Report Data <span class="sr-only">(opens in a new tab)</span></button>          
         </div>
         
 
     </div>
     
+
+    <script>
+      
+      var downloadLoc = "https://raw.githubusercontent.com/nychealth/EHDP-data" + "/" + "prod" + "/neighborhood-reports/data/" + data_download_loc
+      var reportData;
+      var download
+  
+      
+      function getData() {
+        d3.csv(downloadLoc).then(data => {
+          reportData = data;
+          reportData.filter(x => x.neighborhood = 'Hunts Point - Mott Haven') 
+          
+          downloadData()
+        });
+      };
+
+      
+      function downloadData() {
+        let data = aq.from(reportData); 
+        download = data.select(aq.not('report_id','indicator_id','data_field_name','start_date','end_date',)) 
+
+          let downloadTableCSV = download.toCSV(); 
+          
+          let csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(downloadTableCSV);
+          let hiddenElement = document.createElement('a');
+          hiddenElement.href = csvData;
+          hiddenElement.target = '_blank';
+          hiddenElement.download = 'NYC EH Data Portal - Neighborhood Report - ' + report_name + " - " + "Hunts Point - Mott Haven" + '.csv';
+          hiddenElement.click();
+        };
+  
+    </script>
 
     <div class="col-12 col-lg-9 overflow-hidden" id="primary-content">
       <div class="my-5">
@@ -320,10 +363,7 @@
           </h1>
           <p class="report-description">Extreme heat, coastal storms, flooding and episodes of elevated ozone are climate-related hazards that may increase with climate change and have important public health impacts in New York City. Extreme weather can cause power outages, which also threaten public health. This report provides neighborhood indicators of climate-related hazards, vulnerability and health impacts.</p>
           
-          <p class="mt-3"><a href="http://a816-dohbesp.nyc.gov/IndicatorPublic/EPHTCsv/Climate_and_Health.csv" class="btn btn-md btn-report" target="_blank">Download Report Data <span class="sr-only">(opens in a new tab)</span></a></p>
-
-          <h2 class="mt-3 report-info">Neighborhood Information</h2>
-          <p><strong>Hunts Point - Mott Haven</strong> includes Zip codes 10454,10455,10459,10474</p>
+          <p><strong style="color:#00923E">Hunts Point - Mott Haven</strong> includes ZIP Codes: <span class="home-label">10454,10455,10459,10474</span>.</p>
           
           <hr class="mt-4">
           
@@ -352,205 +392,7 @@
                     Rank<br>
                     <span class="meta"> out of the 42 neighborhoods</span>
                   </div>
-                </div><button data-toggle="modal" data-target="#modal-Area687-1" class="indicator-anchor">
-    <div class="row align-items-center">
-        <div class="col-6 col-md-5">
-            <span class="indicator-short-name">Flood risk</span>
-        </div>
-        <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/Area687_107.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="worse">Worse</span></div>
-        <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/Area687_107.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
-        </div>
-    </div>
-</button>
-
-
-<div class="modal fade report-modal" id="modal-Area687-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header text-left">
-                <h2 class="modal-title fs-xl" id="exampleModalLabel">Flood risk</h2>
-                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
-                    <span class="fas fa-times-circle"></span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h2 class="fs-xl">Area located within hurricane evacuation zones 1-6 (percent),  2013</h2>
-                <p>In <strong>Hunts Point - Mott Haven</strong>, the area located within hurricane evacuation zones 1-6 (percent),  2013 is <span class="worse">Worse</span>compared to the NYC average.</p>NYC Hurricane Evacuation Zones 1-6 are areas at increased risk of flooding. They may be ordered to evacuate in the event of a hurricane or coastal flooding.</div>
-            <hr>
-            <div class="modal-body">
-                <h3>Neighborhood Comparison</h3>
-                <div class="row comparison">
-                    <div class="col-sm-4 text-primary">Hunts Point - Mott Haven <span class="indicator-value">70.5</span></div>
-                    <div class="col-sm-4">Bronx <span class="indicator-value">44.7</span></div>
-                    <div class="col-sm-4">New York City <span class="indicator-value">46.9</span></div>
-                </div>
-                <p><em>Percent </em></p><div class="data-note"></div></div>
-            <hr>
-            <div class="modal-body">
-                <h3>Area located within hurricane evacuation zones 1-6 (percent),  2013</h3>
-                <p>  <em>Percent</em></p>
-                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Area687-1"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>Trends Over Time</h3>
-                <p><em>Percent </em></p>
-                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Area687-1"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>By Neighborhood</h3>
-                <p><em>Percent </em></p>
-                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Area687-1"></div>
-                
-            </div>
-            
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-<script type="text/javascript">
-    
-    $( "#modal-Area687-1" ).on('shown.bs.modal', function() {
-        
-        var opt = {"renderer": "svg"};
-
-        
-        
-        aq.loadCSV(
-
-            
-            
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/data/" + report_name + "_data.csv"
-        
-        ).then(data => {
-            
-            arqTable = data;
-            
-
-            
-
-            
-            
-            var summaryData = 
-                arqTable
-                .filter(d => d.data_field_name == "Area687")
-                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
-                .dedupe()
-                .groupby("neighborhood")
-                .orderby("neighborhood", aq.desc("end_date"))
-                .slice(0,1) 
-                .ungroup()
-                .orderby("data_value") 
-                .select(aq.not("end_date"))
-                .objects()
-                
-            
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/summarySpec.json").then(data => {
-                
-                summarySpec = data;
-
-                
-
-                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#summary-Area687-1", 
-                    summarySpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("summaryData", summaryData).run()
-
-                }).catch(console.error);;
-                
-            });
-            
-
-            
-
-            
-
-            var mapData = summaryData;
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/mapSpec.json").then(data => {
-                
-                mapSpec = data;
-                
-                
-
-                mapSpec.layer[1].encoding.stroke.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#map-Area687-1", 
-                    mapSpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("mapData", mapData).run()
-                    
-                }).catch(console.error);;
-                
-            });
-
-            
-            
-
-            
-            
-            var trendData = 
-                arqTable
-                .filter(d => d.data_field_name == "Area687")
-                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
-                .dedupe()
-                .objects()
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/trendSpec.json").then(data => {
-                
-                
-                
-                trendSpec = data;
-                
-                
-
-                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#trend-Area687-1", 
-                    trendSpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("trendData", trendData).run()
-                    
-                }).catch(console.error);;
-                
-            });
-            
-        });
-            
-    });
-        
-    </script>
-    <button data-toggle="modal" data-target="#modal-Ozon386-1" class="indicator-anchor">
+                </div><button data-toggle="modal" data-target="#modal-Ozon386-1" class="indicator-anchor">
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
             <span class="indicator-short-name">Ozone</span>
@@ -618,7 +460,7 @@
 
 
 <script type="text/javascript">
-    
+
     $( "#modal-Ozon386-1" ).on('shown.bs.modal', function() {
         
         var opt = {"renderer": "svg"};
@@ -629,12 +471,12 @@
 
             
             
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/data/" + data_download_loc
         
         ).then(data => {
             
             arqTable = data;
-            
+
 
             
 
@@ -649,11 +491,11 @@
                 .orderby("neighborhood", aq.desc("end_date"))
                 .slice(0,1) 
                 .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
                 .orderby("data_value") 
                 .select(aq.not("end_date"))
                 .objects()
                 
-            
             
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/summarySpec.json").then(data => {
                 
@@ -683,27 +525,26 @@
             
 
             var mapData = summaryData;
-            
+
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/mapSpec.json").then(data => {
                 
                 mapSpec = data;
-                
+
                 
 
-                mapSpec.layer[1].encoding.stroke.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
                 
             }).then(() => {
                 
                 vegaEmbed(
                     "#map-Ozon386-1", 
-                    mapSpec, 
+                    mapSpec,
                     opt
                 ).then((res) => {
                     
                     res.view.insert("mapData", mapData).run()
                     
-                }).catch(console.error);;
+                }).catch(console.error);
                 
             });
 
@@ -733,6 +574,203 @@
                 
                 vegaEmbed(
                     "#trend-Ozon386-1", 
+                    trendSpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("trendData", trendData).run()
+                    
+                }).catch(console.error);;
+                
+            });
+            
+        });
+            
+    });
+        
+    </script>
+    <button data-toggle="modal" data-target="#modal-Area687-1" class="indicator-anchor">
+    <div class="row align-items-center">
+        <div class="col-6 col-md-5">
+            <span class="indicator-short-name">Flood risk</span>
+        </div>
+        <div class="col-6 col-md-4 topic-list">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/Area687_107.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="worse">Worse</span></div>
+        <div class="d-none d-md-inline col-md-3">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/Area687_107.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+        </div>
+    </div>
+</button>
+
+
+<div class="modal fade report-modal" id="modal-Area687-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-left">
+                <h2 class="modal-title fs-xl" id="exampleModalLabel">Flood risk</h2>
+                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
+                    <span class="fas fa-times-circle"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2 class="fs-xl">Area located within hurricane evacuation zones 1-6 (percent),  2013</h2>
+                <p>In <strong>Hunts Point - Mott Haven</strong>, the area located within hurricane evacuation zones 1-6 (percent),  2013 is <span class="worse">Worse</span>compared to the NYC average.</p>NYC Hurricane Evacuation Zones 1-6 are areas at increased risk of flooding. They may be ordered to evacuate in the event of a hurricane or coastal flooding.</div>
+            <hr>
+            <div class="modal-body">
+                <h3>Neighborhood Comparison</h3>
+                <div class="row comparison">
+                    <div class="col-sm-4 text-primary">Hunts Point - Mott Haven <span class="indicator-value">70.5</span></div>
+                    <div class="col-sm-4">Bronx <span class="indicator-value">44.7</span></div>
+                    <div class="col-sm-4">New York City <span class="indicator-value">46.9</span></div>
+                </div>
+                <p><em>Percent </em></p><div class="data-note"></div></div>
+            <hr>
+            <div class="modal-body">
+                <h3>Area located within hurricane evacuation zones 1-6 (percent),  2013</h3>
+                <p>  <em>Percent</em></p>
+                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Area687-1"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>Trends Over Time</h3>
+                <p><em>Percent </em></p>
+                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Area687-1"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>By Neighborhood</h3>
+                <p><em>Percent </em></p>
+                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Area687-1"></div>
+                
+            </div>
+            
+            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    $( "#modal-Area687-1" ).on('shown.bs.modal', function() {
+        
+        var opt = {"renderer": "svg"};
+
+        
+        
+        aq.loadCSV(
+
+            
+            
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/data/" + data_download_loc
+        
+        ).then(data => {
+            
+            arqTable = data;
+
+
+            
+
+            
+            
+            var summaryData = 
+                arqTable
+                .filter(d => d.data_field_name == "Area687")
+                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
+                .dedupe()
+                .groupby("neighborhood")
+                .orderby("neighborhood", aq.desc("end_date"))
+                .slice(0,1) 
+                .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
+                .orderby("data_value") 
+                .select(aq.not("end_date"))
+                .objects()
+                
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/summarySpec.json").then(data => {
+                
+                summarySpec = data;
+
+                
+
+                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#summary-Area687-1", 
+                    summarySpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("summaryData", summaryData).run()
+
+                }).catch(console.error);;
+                
+            });
+            
+
+            
+
+            
+
+            var mapData = summaryData;
+
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/mapSpec.json").then(data => {
+                
+                mapSpec = data;
+
+                
+
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#map-Area687-1", 
+                    mapSpec,
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("mapData", mapData).run()
+                    
+                }).catch(console.error);
+                
+            });
+
+            
+            
+
+            
+            
+            var trendData = 
+                arqTable
+                .filter(d => d.data_field_name == "Area687")
+                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
+                .dedupe()
+                .objects()
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/trendSpec.json").then(data => {
+                
+                
+                
+                trendSpec = data;
+                
+                
+
+                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#trend-Area687-1", 
                     trendSpec, 
                     opt
                 ).then((res) => {
@@ -816,7 +854,7 @@
 
 
 <script type="text/javascript">
-    
+
     $( "#modal-Dayt688-1" ).on('shown.bs.modal', function() {
         
         var opt = {"renderer": "svg"};
@@ -827,12 +865,12 @@
 
             
             
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/data/" + data_download_loc
         
         ).then(data => {
             
             arqTable = data;
-            
+
 
             
 
@@ -847,11 +885,11 @@
                 .orderby("neighborhood", aq.desc("end_date"))
                 .slice(0,1) 
                 .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
                 .orderby("data_value") 
                 .select(aq.not("end_date"))
                 .objects()
                 
-            
             
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/summarySpec.json").then(data => {
                 
@@ -881,27 +919,26 @@
             
 
             var mapData = summaryData;
-            
+
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/mapSpec.json").then(data => {
                 
                 mapSpec = data;
-                
+
                 
 
-                mapSpec.layer[1].encoding.stroke.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
                 
             }).then(() => {
                 
                 vegaEmbed(
                     "#map-Dayt688-1", 
-                    mapSpec, 
+                    mapSpec,
                     opt
                 ).then((res) => {
                     
                     res.view.insert("mapData", mapData).run()
                     
-                }).catch(console.error);;
+                }).catch(console.error);
                 
             });
 
@@ -1043,7 +1080,7 @@
 
 
 <script type="text/javascript">
-    
+
     $( "#modal-Heat536-2" ).on('shown.bs.modal', function() {
         
         var opt = {"renderer": "svg"};
@@ -1054,12 +1091,12 @@
 
             
             
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/data/" + data_download_loc
         
         ).then(data => {
             
             arqTable = data;
-            
+
 
             
 
@@ -1074,11 +1111,11 @@
                 .orderby("neighborhood", aq.desc("end_date"))
                 .slice(0,1) 
                 .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
                 .orderby("data_value") 
                 .select(aq.not("end_date"))
                 .objects()
                 
-            
             
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/summarySpec.json").then(data => {
                 
@@ -1108,27 +1145,26 @@
             
 
             var mapData = summaryData;
-            
+
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/mapSpec.json").then(data => {
                 
                 mapSpec = data;
-                
+
                 
 
-                mapSpec.layer[1].encoding.stroke.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
                 
             }).then(() => {
                 
                 vegaEmbed(
                     "#map-Heat536-2", 
-                    mapSpec, 
+                    mapSpec,
                     opt
                 ).then((res) => {
                     
                     res.view.insert("mapData", mapData).run()
                     
-                }).catch(console.error);;
+                }).catch(console.error);
                 
             });
 
@@ -1241,7 +1277,7 @@
 
 
 <script type="text/javascript">
-    
+
     $( "#modal-Asth1196-2" ).on('shown.bs.modal', function() {
         
         var opt = {"renderer": "svg"};
@@ -1252,12 +1288,12 @@
 
             
             
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/data/" + data_download_loc
         
         ).then(data => {
             
             arqTable = data;
-            
+
 
             
 
@@ -1272,11 +1308,11 @@
                 .orderby("neighborhood", aq.desc("end_date"))
                 .slice(0,1) 
                 .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
                 .orderby("data_value") 
                 .select(aq.not("end_date"))
                 .objects()
                 
-            
             
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/summarySpec.json").then(data => {
                 
@@ -1306,27 +1342,26 @@
             
 
             var mapData = summaryData;
-            
+
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/mapSpec.json").then(data => {
                 
                 mapSpec = data;
-                
+
                 
 
-                mapSpec.layer[1].encoding.stroke.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
                 
             }).then(() => {
                 
                 vegaEmbed(
                     "#map-Asth1196-2", 
-                    mapSpec, 
+                    mapSpec,
                     opt
                 ).then((res) => {
                     
                     res.view.insert("mapData", mapData).run()
                     
-                }).catch(console.error);;
+                }).catch(console.error);
                 
             });
 
@@ -1468,7 +1503,7 @@
 
 
 <script type="text/javascript">
-    
+
     $( "#modal-Adul706-3" ).on('shown.bs.modal', function() {
         
         var opt = {"renderer": "svg"};
@@ -1479,12 +1514,12 @@
 
             
             
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/data/" + data_download_loc
         
         ).then(data => {
             
             arqTable = data;
-            
+
 
             
 
@@ -1499,11 +1534,11 @@
                 .orderby("neighborhood", aq.desc("end_date"))
                 .slice(0,1) 
                 .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
                 .orderby("data_value") 
                 .select(aq.not("end_date"))
                 .objects()
                 
-            
             
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/summarySpec.json").then(data => {
                 
@@ -1533,27 +1568,26 @@
             
 
             var mapData = summaryData;
-            
+
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/mapSpec.json").then(data => {
                 
                 mapSpec = data;
-                
+
                 
 
-                mapSpec.layer[1].encoding.stroke.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
                 
             }).then(() => {
                 
                 vegaEmbed(
                     "#map-Adul706-3", 
-                    mapSpec, 
+                    mapSpec,
                     opt
                 ).then((res) => {
                     
                     res.view.insert("mapData", mapData).run()
                     
-                }).catch(console.error);;
+                }).catch(console.error);
                 
             });
 
@@ -1583,204 +1617,6 @@
                 
                 vegaEmbed(
                     "#trend-Adul706-3", 
-                    trendSpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("trendData", trendData).run()
-                    
-                }).catch(console.error);;
-                
-            });
-            
-        });
-            
-    });
-        
-    </script>
-    <button data-toggle="modal" data-target="#modal-Vege690-3" class="indicator-anchor">
-    <div class="row align-items-center">
-        <div class="col-6 col-md-5">
-            <span class="indicator-short-name">Grass and tree cover</span>
-        </div>
-        <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/Vege690_107.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="worse">Worse</span></div>
-        <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/Vege690_107.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
-        </div>
-    </div>
-</button>
-
-
-<div class="modal fade report-modal" id="modal-Vege690-3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header text-left">
-                <h2 class="modal-title fs-xl" id="exampleModalLabel">Grass and tree cover</h2>
-                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
-                    <span class="fas fa-times-circle"></span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h2 class="fs-xl">Area with vegetative cover including trees and grass (percent), 2017</h2>
-                <p>In <strong>Hunts Point - Mott Haven</strong>, the area with vegetative cover including trees and grass (percent), 2017 is <span class="worse">Worse</span>compared to the NYC average.</p><p>Vegetative cover is the land covered by trees, grass, or other plants. This area is not covered by a hard surface such as paved roads, sidewalks, or buildings. <a href="https://www.epa.gov/heat-islands/using-trees-and-vegetation-reduce-heat-islands">Vegetative cover tends to reduce temperatures in the immediate area</a>.</p></div>
-            <hr>
-            <div class="modal-body">
-                <h3>Neighborhood Comparison</h3>
-                <div class="row comparison">
-                    <div class="col-sm-4 text-primary">Hunts Point - Mott Haven <span class="indicator-value">18.0</span></div>
-                    <div class="col-sm-4">Bronx <span class="indicator-value">39</span></div>
-                    <div class="col-sm-4">New York City <span class="indicator-value">38</span></div>
-                </div>
-                <p><em>Percent </em></p><div class="data-note"></div></div>
-            <hr>
-            <div class="modal-body">
-                <h3>Area with vegetative cover including trees and grass (percent), 2017</h3>
-                <p>  <em>Percent</em></p>
-                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Vege690-3"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>Trends Over Time</h3>
-                <p><em>Percent </em></p>
-                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Vege690-3"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>By Neighborhood</h3>
-                <p><em>Percent </em></p>
-                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Vege690-3"></div>
-                
-            </div>
-            
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-<script type="text/javascript">
-    
-    $( "#modal-Vege690-3" ).on('shown.bs.modal', function() {
-        
-        var opt = {"renderer": "svg"};
-
-        
-        
-        aq.loadCSV(
-
-            
-            
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/data/" + report_name + "_data.csv"
-        
-        ).then(data => {
-            
-            arqTable = data;
-            
-
-            
-
-            
-            
-            var summaryData = 
-                arqTable
-                .filter(d => d.data_field_name == "Vege690")
-                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
-                .dedupe()
-                .groupby("neighborhood")
-                .orderby("neighborhood", aq.desc("end_date"))
-                .slice(0,1) 
-                .ungroup()
-                .orderby("data_value") 
-                .select(aq.not("end_date"))
-                .objects()
-                
-            
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/summarySpec.json").then(data => {
-                
-                summarySpec = data;
-
-                
-
-                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#summary-Vege690-3", 
-                    summarySpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("summaryData", summaryData).run()
-
-                }).catch(console.error);;
-                
-            });
-            
-
-            
-
-            
-
-            var mapData = summaryData;
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/mapSpec.json").then(data => {
-                
-                mapSpec = data;
-                
-                
-
-                mapSpec.layer[1].encoding.stroke.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#map-Vege690-3", 
-                    mapSpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("mapData", mapData).run()
-                    
-                }).catch(console.error);;
-                
-            });
-
-            
-            
-
-            
-            
-            var trendData = 
-                arqTable
-                .filter(d => d.data_field_name == "Vege690")
-                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
-                .dedupe()
-                .objects()
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/trendSpec.json").then(data => {
-                
-                
-                
-                trendSpec = data;
-                
-                
-
-                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#trend-Vege690-3", 
                     trendSpec, 
                     opt
                 ).then((res) => {
@@ -1864,7 +1700,7 @@
 
 
 <script type="text/javascript">
-    
+
     $( "#modal-Home88-3" ).on('shown.bs.modal', function() {
         
         var opt = {"renderer": "svg"};
@@ -1875,12 +1711,12 @@
 
             
             
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/data/" + data_download_loc
         
         ).then(data => {
             
             arqTable = data;
-            
+
 
             
 
@@ -1895,11 +1731,11 @@
                 .orderby("neighborhood", aq.desc("end_date"))
                 .slice(0,1) 
                 .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
                 .orderby("data_value") 
                 .select(aq.not("end_date"))
                 .objects()
                 
-            
             
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/summarySpec.json").then(data => {
                 
@@ -1929,27 +1765,26 @@
             
 
             var mapData = summaryData;
-            
+
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/mapSpec.json").then(data => {
                 
                 mapSpec = data;
-                
+
                 
 
-                mapSpec.layer[1].encoding.stroke.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
                 
             }).then(() => {
                 
                 vegaEmbed(
                     "#map-Home88-3", 
-                    mapSpec, 
+                    mapSpec,
                     opt
                 ).then((res) => {
                     
                     res.view.insert("mapData", mapData).run()
                     
-                }).catch(console.error);;
+                }).catch(console.error);
                 
             });
 
@@ -1994,6 +1829,203 @@
     });
         
     </script>
+    <button data-toggle="modal" data-target="#modal-Vege690-3" class="indicator-anchor">
+    <div class="row align-items-center">
+        <div class="col-6 col-md-5">
+            <span class="indicator-short-name">Grass and tree cover</span>
+        </div>
+        <div class="col-6 col-md-4 topic-list">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/Vege690_107.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="worse">Worse</span></div>
+        <div class="d-none d-md-inline col-md-3">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/Vege690_107.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+        </div>
+    </div>
+</button>
+
+
+<div class="modal fade report-modal" id="modal-Vege690-3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-left">
+                <h2 class="modal-title fs-xl" id="exampleModalLabel">Grass and tree cover</h2>
+                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
+                    <span class="fas fa-times-circle"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2 class="fs-xl">Area with vegetative cover including trees and grass (percent), 2017</h2>
+                <p>In <strong>Hunts Point - Mott Haven</strong>, the area with vegetative cover including trees and grass (percent), 2017 is <span class="worse">Worse</span>compared to the NYC average.</p><p>Vegetative cover is the land covered by trees, grass, or other plants. This area is not covered by a hard surface such as paved roads, sidewalks, or buildings. <a href="https://www.epa.gov/heat-islands/using-trees-and-vegetation-reduce-heat-islands">Vegetative cover tends to reduce temperatures in the immediate area</a>.</p></div>
+            <hr>
+            <div class="modal-body">
+                <h3>Neighborhood Comparison</h3>
+                <div class="row comparison">
+                    <div class="col-sm-4 text-primary">Hunts Point - Mott Haven <span class="indicator-value">18.0</span></div>
+                    <div class="col-sm-4">Bronx <span class="indicator-value">39</span></div>
+                    <div class="col-sm-4">New York City <span class="indicator-value">38</span></div>
+                </div>
+                <p><em>Percent </em></p><div class="data-note"></div></div>
+            <hr>
+            <div class="modal-body">
+                <h3>Area with vegetative cover including trees and grass (percent), 2017</h3>
+                <p>  <em>Percent</em></p>
+                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Vege690-3"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>Trends Over Time</h3>
+                <p><em>Percent </em></p>
+                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Vege690-3"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>By Neighborhood</h3>
+                <p><em>Percent </em></p>
+                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Vege690-3"></div>
+                
+            </div>
+            
+            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    $( "#modal-Vege690-3" ).on('shown.bs.modal', function() {
+        
+        var opt = {"renderer": "svg"};
+
+        
+        
+        aq.loadCSV(
+
+            
+            
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/data/" + data_download_loc
+        
+        ).then(data => {
+            
+            arqTable = data;
+
+
+            
+
+            
+            
+            var summaryData = 
+                arqTable
+                .filter(d => d.data_field_name == "Vege690")
+                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
+                .dedupe()
+                .groupby("neighborhood")
+                .orderby("neighborhood", aq.desc("end_date"))
+                .slice(0,1) 
+                .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
+                .orderby("data_value") 
+                .select(aq.not("end_date"))
+                .objects()
+                
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/summarySpec.json").then(data => {
+                
+                summarySpec = data;
+
+                
+
+                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#summary-Vege690-3", 
+                    summarySpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("summaryData", summaryData).run()
+
+                }).catch(console.error);;
+                
+            });
+            
+
+            
+
+            
+
+            var mapData = summaryData;
+
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/mapSpec.json").then(data => {
+                
+                mapSpec = data;
+
+                
+
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#map-Vege690-3", 
+                    mapSpec,
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("mapData", mapData).run()
+                    
+                }).catch(console.error);
+                
+            });
+
+            
+            
+
+            
+            
+            var trendData = 
+                arqTable
+                .filter(d => d.data_field_name == "Vege690")
+                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
+                .dedupe()
+                .objects()
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/trendSpec.json").then(data => {
+                
+                
+                
+                trendSpec = data;
+                
+                
+
+                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#trend-Vege690-3", 
+                    trendSpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("trendData", trendData).run()
+                    
+                }).catch(console.error);;
+                
+            });
+            
+        });
+            
+    });
+        
+    </script>
     </div>
               
 
@@ -2023,604 +2055,7 @@
                     Rank<br>
                     <span class="meta"> out of the 42 neighborhoods</span>
                   </div>
-                </div><button data-toggle="modal" data-target="#modal-Neig689-4" class="indicator-anchor">
-    <div class="row align-items-center">
-        <div class="col-6 col-md-5">
-            <span class="indicator-short-name">Poverty</span>
-        </div>
-        <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/Neig689_107.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="worse">Worse</span></div>
-        <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/Neig689_107.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
-        </div>
-    </div>
-</button>
-
-
-<div class="modal fade report-modal" id="modal-Neig689-4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header text-left">
-                <h2 class="modal-title fs-xl" id="exampleModalLabel">Poverty</h2>
-                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
-                    <span class="fas fa-times-circle"></span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h2 class="fs-xl">People living below federal poverty level (percent),  2008-2012</h2>
-                <p>In <strong>Hunts Point - Mott Haven</strong>, the people living below federal poverty level (percent),  2008-2012 is <span class="worse">Worse</span>compared to the NYC average.</p>Neighborhood poverty measures residents' access to economic stability, education, adequate health care, safe housing and freedom from stress. Neighborhoods with higher poverty tend to have less access to these factors and experience worse health outcomes.</div>
-            <hr>
-            <div class="modal-body">
-                <h3>Neighborhood Comparison</h3>
-                <div class="row comparison">
-                    <div class="col-sm-4 text-primary">Hunts Point - Mott Haven <span class="indicator-value">43.1</span></div>
-                    <div class="col-sm-4">Bronx <span class="indicator-value">29.3</span></div>
-                    <div class="col-sm-4">New York City <span class="indicator-value">19.9</span></div>
-                </div>
-                <p><em>Percent </em></p><div class="data-note"></div></div>
-            <hr>
-            <div class="modal-body">
-                <h3>People living below federal poverty level (percent),  2008-2012</h3>
-                <p>  <em>Percent</em></p>
-                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Neig689-4"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>Trends Over Time</h3>
-                <p><em>Percent </em></p>
-                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Neig689-4"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>By Neighborhood</h3>
-                <p><em>Percent </em></p>
-                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Neig689-4"></div>
-                
-            </div>
-            
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-<script type="text/javascript">
-    
-    $( "#modal-Neig689-4" ).on('shown.bs.modal', function() {
-        
-        var opt = {"renderer": "svg"};
-
-        
-        
-        aq.loadCSV(
-
-            
-            
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/data/" + report_name + "_data.csv"
-        
-        ).then(data => {
-            
-            arqTable = data;
-            
-
-            
-
-            
-            
-            var summaryData = 
-                arqTable
-                .filter(d => d.data_field_name == "Neig689")
-                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
-                .dedupe()
-                .groupby("neighborhood")
-                .orderby("neighborhood", aq.desc("end_date"))
-                .slice(0,1) 
-                .ungroup()
-                .orderby("data_value") 
-                .select(aq.not("end_date"))
-                .objects()
-                
-            
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/summarySpec.json").then(data => {
-                
-                summarySpec = data;
-
-                
-
-                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#summary-Neig689-4", 
-                    summarySpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("summaryData", summaryData).run()
-
-                }).catch(console.error);;
-                
-            });
-            
-
-            
-
-            
-
-            var mapData = summaryData;
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/mapSpec.json").then(data => {
-                
-                mapSpec = data;
-                
-                
-
-                mapSpec.layer[1].encoding.stroke.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#map-Neig689-4", 
-                    mapSpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("mapData", mapData).run()
-                    
-                }).catch(console.error);;
-                
-            });
-
-            
-            
-
-            
-            
-            var trendData = 
-                arqTable
-                .filter(d => d.data_field_name == "Neig689")
-                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
-                .dedupe()
-                .objects()
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/trendSpec.json").then(data => {
-                
-                
-                
-                trendSpec = data;
-                
-                
-
-                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#trend-Neig689-4", 
-                    trendSpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("trendData", trendData).run()
-                    
-                }).catch(console.error);;
-                
-            });
-            
-        });
-            
-    });
-        
-    </script>
-    <button data-toggle="modal" data-target="#modal-Olde693-4" class="indicator-anchor">
-    <div class="row align-items-center">
-        <div class="col-6 col-md-5">
-            <span class="indicator-short-name">Older adults living alone</span>
-        </div>
-        <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/Olde693_107.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="worse">Worse</span></div>
-        <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/Olde693_107.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
-        </div>
-    </div>
-</button>
-
-
-<div class="modal fade report-modal" id="modal-Olde693-4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header text-left">
-                <h2 class="modal-title fs-xl" id="exampleModalLabel">Older adults living alone</h2>
-                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
-                    <span class="fas fa-times-circle"></span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h2 class="fs-xl">Adults aged 65 years and older who live alone (percent), 2015-19</h2>
-                <p>In <strong>Hunts Point - Mott Haven</strong>, the adults aged 65 years and older who live alone (percent), 2015-19 is <span class="worse">Worse</span>compared to the NYC average.</p>Adults over the age of 65 are more vulnerable to extreme hot and cold weather. Those that live alone may have more difficulty getting the resources they need in extreme weather events and are at higher risk of weather-related illnesses like heat stroke and hypothermia.</div>
-            <hr>
-            <div class="modal-body">
-                <h3>Neighborhood Comparison</h3>
-                <div class="row comparison">
-                    <div class="col-sm-4 text-primary">Hunts Point - Mott Haven <span class="indicator-value">39.4</span></div>
-                    <div class="col-sm-4">Bronx <span class="indicator-value">33.1</span></div>
-                    <div class="col-sm-4">New York City <span class="indicator-value">30.1</span></div>
-                </div>
-                <p><em>Percent </em></p><div class="data-note"></div></div>
-            <hr>
-            <div class="modal-body">
-                <h3>Adults aged 65 years and older who live alone (percent), 2015-19</h3>
-                <p>  <em>Percent</em></p>
-                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Olde693-4"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>Trends Over Time</h3>
-                <p><em>Percent </em></p>
-                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Olde693-4"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>By Neighborhood</h3>
-                <p><em>Percent </em></p>
-                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Olde693-4"></div>
-                
-            </div>
-            
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-<script type="text/javascript">
-    
-    $( "#modal-Olde693-4" ).on('shown.bs.modal', function() {
-        
-        var opt = {"renderer": "svg"};
-
-        
-        
-        aq.loadCSV(
-
-            
-            
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/data/" + report_name + "_data.csv"
-        
-        ).then(data => {
-            
-            arqTable = data;
-            
-
-            
-
-            
-            
-            var summaryData = 
-                arqTable
-                .filter(d => d.data_field_name == "Olde693")
-                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
-                .dedupe()
-                .groupby("neighborhood")
-                .orderby("neighborhood", aq.desc("end_date"))
-                .slice(0,1) 
-                .ungroup()
-                .orderby("data_value") 
-                .select(aq.not("end_date"))
-                .objects()
-                
-            
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/summarySpec.json").then(data => {
-                
-                summarySpec = data;
-
-                
-
-                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#summary-Olde693-4", 
-                    summarySpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("summaryData", summaryData).run()
-
-                }).catch(console.error);;
-                
-            });
-            
-
-            
-
-            
-
-            var mapData = summaryData;
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/mapSpec.json").then(data => {
-                
-                mapSpec = data;
-                
-                
-
-                mapSpec.layer[1].encoding.stroke.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#map-Olde693-4", 
-                    mapSpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("mapData", mapData).run()
-                    
-                }).catch(console.error);;
-                
-            });
-
-            
-            
-
-            
-            
-            var trendData = 
-                arqTable
-                .filter(d => d.data_field_name == "Olde693")
-                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
-                .dedupe()
-                .objects()
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/trendSpec.json").then(data => {
-                
-                
-                
-                trendSpec = data;
-                
-                
-
-                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#trend-Olde693-4", 
-                    trendSpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("trendData", trendData).run()
-                    
-                }).catch(console.error);;
-                
-            });
-            
-        });
-            
-    });
-        
-    </script>
-    <button data-toggle="modal" data-target="#modal-Adul692-4" class="indicator-anchor">
-    <div class="row align-items-center">
-        <div class="col-6 col-md-5">
-            <span class="indicator-short-name">Independence difficulty</span>
-        </div>
-        <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/Adul692_107.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="worse">Worse</span></div>
-        <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/Adul692_107.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
-        </div>
-    </div>
-</button>
-
-
-<div class="modal fade report-modal" id="modal-Adul692-4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header text-left">
-                <h2 class="modal-title fs-xl" id="exampleModalLabel">Independence difficulty</h2>
-                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
-                    <span class="fas fa-times-circle"></span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h2 class="fs-xl">Adults aged 18 and older with independent living difficulty (percent), 2013-17</h2>
-                <p>In <strong>Hunts Point - Mott Haven</strong>, the adults aged 18 and older with independent living difficulty (percent), 2013-17 is <span class="worse">Worse</span>compared to the NYC average.</p><p>People with disabilities or access or functional needs may need additional support during extreme weather to avoid injury, illness or even death. For example, planning needs to be made for safe travel out of evacuation zones during a hurricane, or to ensure back-up electricity is available to to support medical equipment during power outages caused by heat waves.</p>
-<p>&nbsp;</p>
-<p>Information provided here about adults with independent living difficulties can help emergency management professionals better prepare our residents for emergencies. For more information, please visit:</p>
-<p><a href="https://www1.nyc.gov/site/em/ready/disabilities-access-functional-needs.page">NYC Emergency Management: Disabilities, Access &amp; Functional Needs</a></p></div>
-            <hr>
-            <div class="modal-body">
-                <h3>Neighborhood Comparison</h3>
-                <div class="row comparison">
-                    <div class="col-sm-4 text-primary">Hunts Point - Mott Haven <span class="indicator-value">7.5</span></div>
-                    <div class="col-sm-4">Bronx <span class="indicator-value">7</span></div>
-                    <div class="col-sm-4">New York City <span class="indicator-value">5.5</span></div>
-                </div>
-                <p><em>Percent </em></p><div class="data-note"></div></div>
-            <hr>
-            <div class="modal-body">
-                <h3>Adults aged 18 and older with independent living difficulty (percent), 2013-17</h3>
-                <p>  <em>Percent</em></p>
-                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Adul692-4"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>Trends Over Time</h3>
-                <p><em>Percent </em></p>
-                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Adul692-4"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>By Neighborhood</h3>
-                <p><em>Percent </em></p>
-                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Adul692-4"></div>
-                
-            </div>
-            
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-<script type="text/javascript">
-    
-    $( "#modal-Adul692-4" ).on('shown.bs.modal', function() {
-        
-        var opt = {"renderer": "svg"};
-
-        
-        
-        aq.loadCSV(
-
-            
-            
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/data/" + report_name + "_data.csv"
-        
-        ).then(data => {
-            
-            arqTable = data;
-            
-
-            
-
-            
-            
-            var summaryData = 
-                arqTable
-                .filter(d => d.data_field_name == "Adul692")
-                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
-                .dedupe()
-                .groupby("neighborhood")
-                .orderby("neighborhood", aq.desc("end_date"))
-                .slice(0,1) 
-                .ungroup()
-                .orderby("data_value") 
-                .select(aq.not("end_date"))
-                .objects()
-                
-            
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/summarySpec.json").then(data => {
-                
-                summarySpec = data;
-
-                
-
-                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#summary-Adul692-4", 
-                    summarySpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("summaryData", summaryData).run()
-
-                }).catch(console.error);;
-                
-            });
-            
-
-            
-
-            
-
-            var mapData = summaryData;
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/mapSpec.json").then(data => {
-                
-                mapSpec = data;
-                
-                
-
-                mapSpec.layer[1].encoding.stroke.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#map-Adul692-4", 
-                    mapSpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("mapData", mapData).run()
-                    
-                }).catch(console.error);;
-                
-            });
-
-            
-            
-
-            
-            
-            var trendData = 
-                arqTable
-                .filter(d => d.data_field_name == "Adul692")
-                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
-                .dedupe()
-                .objects()
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/trendSpec.json").then(data => {
-                
-                
-                
-                trendSpec = data;
-                
-                
-
-                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#trend-Adul692-4", 
-                    trendSpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("trendData", trendData).run()
-                    
-                }).catch(console.error);;
-                
-            });
-            
-        });
-            
-    });
-        
-    </script>
-    <button data-toggle="modal" data-target="#modal-Obes506-4" class="indicator-anchor">
+                </div><button data-toggle="modal" data-target="#modal-Obes506-4" class="indicator-anchor">
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
             <span class="indicator-short-name">Obesity</span>
@@ -2688,7 +2123,7 @@
 
 
 <script type="text/javascript">
-    
+
     $( "#modal-Obes506-4" ).on('shown.bs.modal', function() {
         
         var opt = {"renderer": "svg"};
@@ -2699,12 +2134,12 @@
 
             
             
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/data/" + data_download_loc
         
         ).then(data => {
             
             arqTable = data;
-            
+
 
             
 
@@ -2719,11 +2154,11 @@
                 .orderby("neighborhood", aq.desc("end_date"))
                 .slice(0,1) 
                 .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
                 .orderby("data_value") 
                 .select(aq.not("end_date"))
                 .objects()
                 
-            
             
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/summarySpec.json").then(data => {
                 
@@ -2753,27 +2188,26 @@
             
 
             var mapData = summaryData;
-            
+
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/mapSpec.json").then(data => {
                 
                 mapSpec = data;
-                
+
                 
 
-                mapSpec.layer[1].encoding.stroke.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
                 
             }).then(() => {
                 
                 vegaEmbed(
                     "#map-Obes506-4", 
-                    mapSpec, 
+                    mapSpec,
                     opt
                 ).then((res) => {
                     
                     res.view.insert("mapData", mapData).run()
                     
-                }).catch(console.error);;
+                }).catch(console.error);
                 
             });
 
@@ -2886,7 +2320,7 @@
 
 
 <script type="text/javascript">
-    
+
     $( "#modal-Seri691-4" ).on('shown.bs.modal', function() {
         
         var opt = {"renderer": "svg"};
@@ -2897,12 +2331,12 @@
 
             
             
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/data/" + report_name + "_data.csv"
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/data/" + data_download_loc
         
         ).then(data => {
             
             arqTable = data;
-            
+
 
             
 
@@ -2917,11 +2351,11 @@
                 .orderby("neighborhood", aq.desc("end_date"))
                 .slice(0,1) 
                 .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
                 .orderby("data_value") 
                 .select(aq.not("end_date"))
                 .objects()
                 
-            
             
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/summarySpec.json").then(data => {
                 
@@ -2951,27 +2385,26 @@
             
 
             var mapData = summaryData;
-            
+
             d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/mapSpec.json").then(data => {
                 
                 mapSpec = data;
-                
+
                 
 
-                mapSpec.layer[1].encoding.stroke.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
                 
             }).then(() => {
                 
                 vegaEmbed(
                     "#map-Seri691-4", 
-                    mapSpec, 
+                    mapSpec,
                     opt
                 ).then((res) => {
                     
                     res.view.insert("mapData", mapData).run()
                     
-                }).catch(console.error);;
+                }).catch(console.error);
                 
             });
 
@@ -3001,6 +2434,600 @@
                 
                 vegaEmbed(
                     "#trend-Seri691-4", 
+                    trendSpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("trendData", trendData).run()
+                    
+                }).catch(console.error);;
+                
+            });
+            
+        });
+            
+    });
+        
+    </script>
+    <button data-toggle="modal" data-target="#modal-Neig689-4" class="indicator-anchor">
+    <div class="row align-items-center">
+        <div class="col-6 col-md-5">
+            <span class="indicator-short-name">Poverty</span>
+        </div>
+        <div class="col-6 col-md-4 topic-list">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/Neig689_107.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="worse">Worse</span></div>
+        <div class="d-none d-md-inline col-md-3">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/Neig689_107.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+        </div>
+    </div>
+</button>
+
+
+<div class="modal fade report-modal" id="modal-Neig689-4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-left">
+                <h2 class="modal-title fs-xl" id="exampleModalLabel">Poverty</h2>
+                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
+                    <span class="fas fa-times-circle"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2 class="fs-xl">People living below federal poverty level (percent),  2008-2012</h2>
+                <p>In <strong>Hunts Point - Mott Haven</strong>, the people living below federal poverty level (percent),  2008-2012 is <span class="worse">Worse</span>compared to the NYC average.</p>Neighborhood poverty measures residents' access to economic stability, education, adequate health care, safe housing and freedom from stress. Neighborhoods with higher poverty tend to have less access to these factors and experience worse health outcomes.</div>
+            <hr>
+            <div class="modal-body">
+                <h3>Neighborhood Comparison</h3>
+                <div class="row comparison">
+                    <div class="col-sm-4 text-primary">Hunts Point - Mott Haven <span class="indicator-value">43.1</span></div>
+                    <div class="col-sm-4">Bronx <span class="indicator-value">29.3</span></div>
+                    <div class="col-sm-4">New York City <span class="indicator-value">19.9</span></div>
+                </div>
+                <p><em>Percent </em></p><div class="data-note"></div></div>
+            <hr>
+            <div class="modal-body">
+                <h3>People living below federal poverty level (percent),  2008-2012</h3>
+                <p>  <em>Percent</em></p>
+                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Neig689-4"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>Trends Over Time</h3>
+                <p><em>Percent </em></p>
+                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Neig689-4"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>By Neighborhood</h3>
+                <p><em>Percent </em></p>
+                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Neig689-4"></div>
+                
+            </div>
+            
+            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    $( "#modal-Neig689-4" ).on('shown.bs.modal', function() {
+        
+        var opt = {"renderer": "svg"};
+
+        
+        
+        aq.loadCSV(
+
+            
+            
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/data/" + data_download_loc
+        
+        ).then(data => {
+            
+            arqTable = data;
+
+
+            
+
+            
+            
+            var summaryData = 
+                arqTable
+                .filter(d => d.data_field_name == "Neig689")
+                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
+                .dedupe()
+                .groupby("neighborhood")
+                .orderby("neighborhood", aq.desc("end_date"))
+                .slice(0,1) 
+                .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
+                .orderby("data_value") 
+                .select(aq.not("end_date"))
+                .objects()
+                
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/summarySpec.json").then(data => {
+                
+                summarySpec = data;
+
+                
+
+                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#summary-Neig689-4", 
+                    summarySpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("summaryData", summaryData).run()
+
+                }).catch(console.error);;
+                
+            });
+            
+
+            
+
+            
+
+            var mapData = summaryData;
+
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/mapSpec.json").then(data => {
+                
+                mapSpec = data;
+
+                
+
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#map-Neig689-4", 
+                    mapSpec,
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("mapData", mapData).run()
+                    
+                }).catch(console.error);
+                
+            });
+
+            
+            
+
+            
+            
+            var trendData = 
+                arqTable
+                .filter(d => d.data_field_name == "Neig689")
+                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
+                .dedupe()
+                .objects()
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/trendSpec.json").then(data => {
+                
+                
+                
+                trendSpec = data;
+                
+                
+
+                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#trend-Neig689-4", 
+                    trendSpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("trendData", trendData).run()
+                    
+                }).catch(console.error);;
+                
+            });
+            
+        });
+            
+    });
+        
+    </script>
+    <button data-toggle="modal" data-target="#modal-Adul692-4" class="indicator-anchor">
+    <div class="row align-items-center">
+        <div class="col-6 col-md-5">
+            <span class="indicator-short-name">Independence difficulty</span>
+        </div>
+        <div class="col-6 col-md-4 topic-list">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/Adul692_107.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="worse">Worse</span></div>
+        <div class="d-none d-md-inline col-md-3">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/Adul692_107.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+        </div>
+    </div>
+</button>
+
+
+<div class="modal fade report-modal" id="modal-Adul692-4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-left">
+                <h2 class="modal-title fs-xl" id="exampleModalLabel">Independence difficulty</h2>
+                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
+                    <span class="fas fa-times-circle"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2 class="fs-xl">Adults aged 18 and older with independent living difficulty (percent), 2013-17</h2>
+                <p>In <strong>Hunts Point - Mott Haven</strong>, the adults aged 18 and older with independent living difficulty (percent), 2013-17 is <span class="worse">Worse</span>compared to the NYC average.</p><p>People with disabilities or access or functional needs may need additional support during extreme weather to avoid injury, illness or even death. For example, planning needs to be made for safe travel out of evacuation zones during a hurricane, or to ensure back-up electricity is available to to support medical equipment during power outages caused by heat waves.</p>
+<p>&nbsp;</p>
+<p>Information provided here about adults with independent living difficulties can help emergency management professionals better prepare our residents for emergencies. For more information, please visit:</p>
+<p><a href="https://www1.nyc.gov/site/em/ready/disabilities-access-functional-needs.page">NYC Emergency Management: Disabilities, Access &amp; Functional Needs</a></p></div>
+            <hr>
+            <div class="modal-body">
+                <h3>Neighborhood Comparison</h3>
+                <div class="row comparison">
+                    <div class="col-sm-4 text-primary">Hunts Point - Mott Haven <span class="indicator-value">7.5</span></div>
+                    <div class="col-sm-4">Bronx <span class="indicator-value">7</span></div>
+                    <div class="col-sm-4">New York City <span class="indicator-value">5.5</span></div>
+                </div>
+                <p><em>Percent </em></p><div class="data-note"></div></div>
+            <hr>
+            <div class="modal-body">
+                <h3>Adults aged 18 and older with independent living difficulty (percent), 2013-17</h3>
+                <p>  <em>Percent</em></p>
+                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Adul692-4"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>Trends Over Time</h3>
+                <p><em>Percent </em></p>
+                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Adul692-4"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>By Neighborhood</h3>
+                <p><em>Percent </em></p>
+                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Adul692-4"></div>
+                
+            </div>
+            
+            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    $( "#modal-Adul692-4" ).on('shown.bs.modal', function() {
+        
+        var opt = {"renderer": "svg"};
+
+        
+        
+        aq.loadCSV(
+
+            
+            
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/data/" + data_download_loc
+        
+        ).then(data => {
+            
+            arqTable = data;
+
+
+            
+
+            
+            
+            var summaryData = 
+                arqTable
+                .filter(d => d.data_field_name == "Adul692")
+                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
+                .dedupe()
+                .groupby("neighborhood")
+                .orderby("neighborhood", aq.desc("end_date"))
+                .slice(0,1) 
+                .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
+                .orderby("data_value") 
+                .select(aq.not("end_date"))
+                .objects()
+                
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/summarySpec.json").then(data => {
+                
+                summarySpec = data;
+
+                
+
+                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#summary-Adul692-4", 
+                    summarySpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("summaryData", summaryData).run()
+
+                }).catch(console.error);;
+                
+            });
+            
+
+            
+
+            
+
+            var mapData = summaryData;
+
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/mapSpec.json").then(data => {
+                
+                mapSpec = data;
+
+                
+
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#map-Adul692-4", 
+                    mapSpec,
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("mapData", mapData).run()
+                    
+                }).catch(console.error);
+                
+            });
+
+            
+            
+
+            
+            
+            var trendData = 
+                arqTable
+                .filter(d => d.data_field_name == "Adul692")
+                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
+                .dedupe()
+                .objects()
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/trendSpec.json").then(data => {
+                
+                
+                
+                trendSpec = data;
+                
+                
+
+                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#trend-Adul692-4", 
+                    trendSpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("trendData", trendData).run()
+                    
+                }).catch(console.error);;
+                
+            });
+            
+        });
+            
+    });
+        
+    </script>
+    <button data-toggle="modal" data-target="#modal-Olde693-4" class="indicator-anchor">
+    <div class="row align-items-center">
+        <div class="col-6 col-md-5">
+            <span class="indicator-short-name">Older adults living alone</span>
+        </div>
+        <div class="col-6 col-md-4 topic-list">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/Olde693_107.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="worse">Worse</span></div>
+        <div class="d-none d-md-inline col-md-3">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/prod/neighborhood-reports/images/Olde693_107.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+        </div>
+    </div>
+</button>
+
+
+<div class="modal fade report-modal" id="modal-Olde693-4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-left">
+                <h2 class="modal-title fs-xl" id="exampleModalLabel">Older adults living alone</h2>
+                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
+                    <span class="fas fa-times-circle"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2 class="fs-xl">Adults aged 65 years and older who live alone (percent), 2015-19</h2>
+                <p>In <strong>Hunts Point - Mott Haven</strong>, the adults aged 65 years and older who live alone (percent), 2015-19 is <span class="worse">Worse</span>compared to the NYC average.</p>Adults over the age of 65 are more vulnerable to extreme hot and cold weather. Those that live alone may have more difficulty getting the resources they need in extreme weather events and are at higher risk of weather-related illnesses like heat stroke and hypothermia.</div>
+            <hr>
+            <div class="modal-body">
+                <h3>Neighborhood Comparison</h3>
+                <div class="row comparison">
+                    <div class="col-sm-4 text-primary">Hunts Point - Mott Haven <span class="indicator-value">39.4</span></div>
+                    <div class="col-sm-4">Bronx <span class="indicator-value">33.1</span></div>
+                    <div class="col-sm-4">New York City <span class="indicator-value">30.1</span></div>
+                </div>
+                <p><em>Percent </em></p><div class="data-note"></div></div>
+            <hr>
+            <div class="modal-body">
+                <h3>Adults aged 65 years and older who live alone (percent), 2015-19</h3>
+                <p>  <em>Percent</em></p>
+                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Olde693-4"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>Trends Over Time</h3>
+                <p><em>Percent </em></p>
+                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Olde693-4"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>By Neighborhood</h3>
+                <p><em>Percent </em></p>
+                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Olde693-4"></div>
+                
+            </div>
+            
+            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    $( "#modal-Olde693-4" ).on('shown.bs.modal', function() {
+        
+        var opt = {"renderer": "svg"};
+
+        
+        
+        aq.loadCSV(
+
+            
+            
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/data/" + data_download_loc
+        
+        ).then(data => {
+            
+            arqTable = data;
+
+
+            
+
+            
+            
+            var summaryData = 
+                arqTable
+                .filter(d => d.data_field_name == "Olde693")
+                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
+                .dedupe()
+                .groupby("neighborhood")
+                .orderby("neighborhood", aq.desc("end_date"))
+                .slice(0,1) 
+                .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
+                .orderby("data_value") 
+                .select(aq.not("end_date"))
+                .objects()
+                
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/summarySpec.json").then(data => {
+                
+                summarySpec = data;
+
+                
+
+                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#summary-Olde693-4", 
+                    summarySpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("summaryData", summaryData).run()
+
+                }).catch(console.error);;
+                
+            });
+            
+
+            
+
+            
+
+            var mapData = summaryData;
+
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/mapSpec.json").then(data => {
+                
+                mapSpec = data;
+
+                
+
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#map-Olde693-4", 
+                    mapSpec,
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("mapData", mapData).run()
+                    
+                }).catch(console.error);
+                
+            });
+
+            
+            
+
+            
+            
+            var trendData = 
+                arqTable
+                .filter(d => d.data_field_name == "Olde693")
+                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
+                .dedupe()
+                .objects()
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/prod/neighborhood-reports/spec/trendSpec.json").then(data => {
+                
+                
+                
+                trendSpec = data;
+                
+                
+
+                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#trend-Olde693-4", 
                     trendSpec, 
                     opt
                 ).then((res) => {
@@ -3376,7 +3403,6 @@
 </script>
 
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-<script src="https://unpkg.com/lunr/lunr.js"></script>
 <script src="https://unpkg.com/lunr/lunr.js"></script>
 <script type="text/javascript" src="https://nychealth.github.io/EH-dataportal/js/search.js" integrity=""></script></body>
 </html>
