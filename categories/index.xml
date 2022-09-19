@@ -2,125 +2,125 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Environment &amp; Health Data Portal</title>
-    <link>/categories/</link>
+    <link>/EH-dataportal/categories/</link>
     <description>Recent content in Categories on Environment &amp; Health Data Portal</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 20 Apr 2022 11:14:56 -0400</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 20 Apr 2022 11:14:56 -0400</lastBuildDate><atom:link href="/EH-dataportal/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>airquality</title>
-      <link>/categories/airquality/</link>
+      <link>/EH-dataportal/categories/airquality/</link>
       <pubDate>Wed, 20 Apr 2022 11:14:56 -0400</pubDate>
       
-      <guid>/categories/airquality/</guid>
+      <guid>/EH-dataportal/categories/airquality/</guid>
       <description></description>
     </item>
     
     <item>
       <title>foodanddrink</title>
-      <link>/categories/foodanddrink/</link>
+      <link>/EH-dataportal/categories/foodanddrink/</link>
       <pubDate>Wed, 20 Apr 2022 08:33:22 -0400</pubDate>
       
-      <guid>/categories/foodanddrink/</guid>
+      <guid>/EH-dataportal/categories/foodanddrink/</guid>
       <description></description>
     </item>
     
     <item>
       <title>transportation</title>
-      <link>/categories/transportation/</link>
+      <link>/EH-dataportal/categories/transportation/</link>
       <pubDate>Wed, 20 Apr 2022 08:33:22 -0400</pubDate>
       
-      <guid>/categories/transportation/</guid>
+      <guid>/EH-dataportal/categories/transportation/</guid>
       <description></description>
     </item>
     
     <item>
       <title>climatehealth</title>
-      <link>/categories/climatehealth/</link>
+      <link>/EH-dataportal/categories/climatehealth/</link>
       <pubDate>Mon, 10 Jan 2022 12:34:38 -0400</pubDate>
       
-      <guid>/categories/climatehealth/</guid>
+      <guid>/EH-dataportal/categories/climatehealth/</guid>
       <description></description>
     </item>
     
     <item>
       <title>healthoutcomes</title>
-      <link>/categories/healthoutcomes/</link>
+      <link>/EH-dataportal/categories/healthoutcomes/</link>
       <pubDate>Mon, 10 Jan 2022 12:34:38 -0400</pubDate>
       
-      <guid>/categories/healthoutcomes/</guid>
+      <guid>/EH-dataportal/categories/healthoutcomes/</guid>
       <description></description>
     </item>
     
     <item>
       <title>social</title>
-      <link>/categories/social/</link>
+      <link>/EH-dataportal/categories/social/</link>
       <pubDate>Mon, 10 Jan 2022 12:34:38 -0400</pubDate>
       
-      <guid>/categories/social/</guid>
+      <guid>/EH-dataportal/categories/social/</guid>
       <description></description>
     </item>
     
     <item>
       <title>neighborhoods</title>
-      <link>/categories/neighborhoods/</link>
+      <link>/EH-dataportal/categories/neighborhoods/</link>
       <pubDate>Wed, 17 Nov 2021 12:01:22 -0500</pubDate>
       
-      <guid>/categories/neighborhoods/</guid>
+      <guid>/EH-dataportal/categories/neighborhoods/</guid>
       <description></description>
     </item>
     
     <item>
       <title>housing</title>
-      <link>/categories/housing/</link>
+      <link>/EH-dataportal/categories/housing/</link>
       <pubDate>Sat, 02 Oct 2021 07:56:00 -0400</pubDate>
       
-      <guid>/categories/housing/</guid>
+      <guid>/EH-dataportal/categories/housing/</guid>
       <description></description>
     </item>
     
     <item>
       <title>outcomes</title>
-      <link>/categories/outcomes/</link>
+      <link>/EH-dataportal/categories/outcomes/</link>
       <pubDate>Wed, 08 Sep 2021 11:14:56 -0400</pubDate>
       
-      <guid>/categories/outcomes/</guid>
+      <guid>/EH-dataportal/categories/outcomes/</guid>
       <description></description>
     </item>
     
     <item>
       <title>childhealth</title>
-      <link>/categories/childhealth/</link>
+      <link>/EH-dataportal/categories/childhealth/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
-      <guid>/categories/childhealth/</guid>
+      <guid>/EH-dataportal/categories/childhealth/</guid>
       <description></description>
     </item>
     
     <item>
       <title>climate</title>
-      <link>/categories/climate/</link>
+      <link>/EH-dataportal/categories/climate/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
-      <guid>/categories/climate/</guid>
+      <guid>/EH-dataportal/categories/climate/</guid>
       <description></description>
     </item>
     
     <item>
       <title>pests</title>
-      <link>/categories/pests/</link>
+      <link>/EH-dataportal/categories/pests/</link>
       <pubDate>Fri, 28 May 2021 18:02:58 +0000</pubDate>
       
-      <guid>/categories/pests/</guid>
+      <guid>/EH-dataportal/categories/pests/</guid>
       <description></description>
     </item>
     
     <item>
       <title>internal</title>
-      <link>/categories/internal/</link>
+      <link>/EH-dataportal/categories/internal/</link>
       <pubDate>Sat, 01 Aug 2020 08:33:22 -0400</pubDate>
       
-      <guid>/categories/internal/</guid>
+      <guid>/EH-dataportal/categories/internal/</guid>
       <description></description>
     </item>
     
