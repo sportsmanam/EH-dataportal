@@ -20,7 +20,7 @@
 <meta property="fb:profile_id" content="0" />
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="en_us" />
-<meta property="og:url" content="/neighborhood-reports/east_flatbush_flatbush/asthma_and_the_environment/" />
+<meta property="og:url" content="https://nychealth.github.io/EH-dataportal/neighborhood-reports/east_flatbush_flatbush/asthma_and_the_environment/" />
 <meta property="og:title" content="Asthma and the Environment in East Flatbush - Flatbush&ndash; Environment &amp; Health Data Portal" />
 <meta property="og:description" content="Asthma and the Environment data profile for the East Flatbush - Flatbush neighborhood of NYC." />
 <meta property="og:site_name" content="Environment &amp; Health Data Portal" />
@@ -56,8 +56,8 @@
 <script src="https://cdn.jsdelivr.net/npm/arquero@5.0.0/dist/arquero.min.js" 
         integrity="sha256-/zlNWswLuC4RosePYPfLgXO2UB9ZnEFd5yERf44WeMU=" 
         crossorigin="anonymous"></script><script>
-    let sitepath = "";
-    let baseURL = "";
+    let sitepath = "\/EH-dataportal";
+    let baseURL = "https:\/\/nychealth.github.io\/EH-dataportal";
     let data_repo = "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data";
     let data_branch = "prod";
 </script>
@@ -5461,8 +5461,7 @@
   document.querySelector('form.autocomplete-form').addEventListener("submit", function (e) {
     e.preventDefault(); 
     var locVal = searchForm.options[searchForm.selectedIndex].value;
-    window.location = '/neighborhood-reports/'+ DOMPurify.sanitize(locVal) + "/" + reportExt;
-    
+    window.location = sitepath + '/neighborhood-reports/'+ DOMPurify.sanitize(locVal) + "/" + reportExt;
   });
 
  </script><ul id="results"></ul>

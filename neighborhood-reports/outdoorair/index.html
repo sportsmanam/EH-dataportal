@@ -20,7 +20,7 @@
 <meta property="fb:profile_id" content="0" />
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="en_us" />
-<meta property="og:url" content="/neighborhood-reports/outdoorair/" />
+<meta property="og:url" content="https://nychealth.github.io/EH-dataportal/neighborhood-reports/outdoorair/" />
 <meta property="og:title" content="Outdoor Air and Health in NYC&ndash; Environment &amp; Health Data Portal" />
 <meta property="og:description" content="Here is the site global SEO description" />
 <meta property="og:site_name" content="Environment &amp; Health Data Portal" />
@@ -51,8 +51,8 @@
     crossorigin="anonymous"></script>
 
 <script>
-    let sitepath = "";
-    let baseURL = "";
+    let sitepath = "\/EH-dataportal";
+    let baseURL = "https:\/\/nychealth.github.io\/EH-dataportal";
     let data_repo = "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data";
     let data_branch = "prod";
 </script>
@@ -359,8 +359,7 @@
     document.querySelector('form.autocomplete-form').addEventListener("submit", function (e) {
         e.preventDefault(); 
         var locVal = searchForm.options[searchForm.selectedIndex].value
-        window.location = '/neighborhood-reports/'+ DOMPurify.sanitize(locVal) + "/" + "/outdoor_air_and_health/"
-        
+        window.location = sitepath + '/neighborhood-reports/'+ DOMPurify.sanitize(locVal) + "/" + "/outdoor_air_and_health/"
       });
    </script><ul id="results"></ul>
   </main>
