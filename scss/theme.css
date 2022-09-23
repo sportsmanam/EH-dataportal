@@ -10218,3 +10218,15 @@ span.th-sub {
     padding: 20px 24px 20px 24px; }
   .related-reading .card-body {
     font-weight: 500; }
+
+.ds-accent {
+  color: #197BBD !important; }
+
+.kt-accent {
+  color: #800080 !important; }
+
+.nr-accent {
+  color: #D75047 !important; }
+
+.de-accent {
+  color: #00923E !important; }
