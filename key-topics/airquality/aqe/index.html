@@ -24,7 +24,7 @@
 <meta property="og:title" content="Your Neighborhood&#39;s Air Quality&ndash; Environment &amp; Health Data Portal" />
 <meta property="og:description" content="Get data for your neighborhood here." />
 <meta property="og:site_name" content="Environment &amp; Health Data Portal" />
-<meta property="og:image" content="https://nychealth.github.io/EH-dataportal/images/report_bottom_background_hu55023dbc37de342337a21cf33dcc5889_222582_2400x1260_fill_q75_box_smart1.jpg"><meta property="og:see_also" content="https://twitter.com/nycHealthy" />
+<meta property="og:image" content="https://nychealth.github.io/EH-dataportal/images/report_bottom_background_hu55023dbc37de342337a21cf33dcc5889_222582_2400x1260_fill_q95_mitchellnetravali_smart1.jpg"><meta property="og:see_also" content="https://twitter.com/nycHealthy" />
 <meta name="twitter:title" content="Your Neighborhood&#39;s Air Quality&ndash; Environment &amp; Health Data Portal">
 <meta name="twitter:description" content="Get data for your neighborhood here.">
 <meta name="twitter:image" content="/images/report_bottom_background.jpg">
@@ -38,10 +38,10 @@
 
 
 
-<link rel="icon" href="../../../7618350_heatmap_business_analytics_statistics_icon-gpr.ico">
+<link rel="icon" href="https://nychealth.github.io/EH-dataportal/7618350_heatmap_business_analytics_statistics_icon-gpr.ico">
 
 
-<link rel="stylesheet" href="../../../fontawesome/css/all.min.css">
+<link rel="stylesheet" href="https://nychealth.github.io/EH-dataportal/fontawesome/css/all.min.css">
 
 <link rel="stylesheet" href="https://nychealth.github.io/EH-dataportal/scss/theme.css" />
 
@@ -52,6 +52,13 @@
 <script src="https://cdn.jsdelivr.net/npm/dompurify@2.3.10/dist/purify.min.js" 
     integrity="sha256-keaR/uWEpEmmUnoJ6BemH9gp9Ng8u/YplhVwdmmquNY=" 
     crossorigin="anonymous"></script>
+
+<script>
+    let sitepath = "\/EH-dataportal";
+    let baseURL = "https:\/\/nychealth.github.io\/EH-dataportal";
+    let data_repo = "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data";
+    let data_branch = "prod";
+</script>
 
 </head>
 <body>
@@ -97,7 +104,7 @@
                         </li>
                         <li>
                             <a href="https://www1.nyc.gov/" title="Go to nyc.gov">
-                                <img class="d-block" src="../../../images/nyc-bubble-logo.svg" width="45" alt="NYC Logo">
+                                <img class="d-block" src="https://nychealth.github.io/EH-dataportal/images/nyc-bubble-logo.svg" width="45" alt="NYC Logo">
                             </a>
                         </li>
                     </ul>
@@ -113,7 +120,8 @@
 
     </div>
     
-    <div class="site-header bg-primary" style="background-image: url(/EH-dataportal/images/header_background.jpg)">
+    <div class="site-header bg-primary" style="background-image: url(https://nychealth.github.io/EH-dataportal/images/header_background.jpg)">
+    
         <div class="wrap-header">
 
             <div class="container-fluid wide">
@@ -164,9 +172,9 @@
                                         </button>
                                     </li>
                                     <li>
-                                        <button class="no-btn-style" type="button" title="Search" data-toggle="collapse"
-                                            data-target="#global-search" aria-controls="global-search"
-                                            aria-expanded="false">
+                                        <button class="no-btn-style" type="button" title="Search" 
+                                            data-toggle="collapse" data-target="#global-search" 
+                                            aria-controls="global-search" aria-expanded="false">
                                             <span class="sr-only">Search</span>
                                             <span class="fas fa-search fa-lg"></span>
                                         </button>
@@ -218,35 +226,35 @@
 
             <nav class="nav nav-pills border-bottom" role="navigation"><div class="nav-item">
 
-                    <a class="nav-link" href="../../../" id="nav-item-01">
+                    <a class="nav-link" href="https://nychealth.github.io/EH-dataportal/" id="nav-item-01">
                         <span class='text-primary'><i class='fa fa-home' aria-hidden='true'></i></span> Home
                     </a>
 
                 </div>
                 <div class="nav-item">
 
-                    <a class="nav-link" href="../../../data-stories/" id="nav-item-02">
+                    <a class="nav-link" href="https://nychealth.github.io/EH-dataportal/data-stories/" id="nav-item-02">
                         <span class='text-primary'><i class='fas fa-passport' aria-hidden='true'></i></span> Data Stories
                     </a>
 
                 </div>
                 <div class="nav-item">
 
-                    <a class="nav-link" href="../../../neighborhood-reports/" id="nav-item-04">
+                    <a class="nav-link" href="https://nychealth.github.io/EH-dataportal/neighborhood-reports/" id="nav-item-04">
                         <span class='text-primary'><i class='fas fa-map-marked-alt' aria-hidden='true'></i></span> Neighborhood Reports
                     </a>
 
                 </div>
                 <div class="nav-item active">
 
-                    <a class="nav-link" href="../../../key-topics/" id="nav-item-05">
+                    <a class="nav-link" href="https://nychealth.github.io/EH-dataportal/key-topics/" id="nav-item-05">
                         <span class='text-primary'><i class='fas fa-star' aria-hidden='true'></i></span> Key Topics
                     </a>
 
                 </div>
                 <div class="nav-item">
 
-                    <a class="nav-link" href="../../../data-explorer/" id="nav-item-03">
+                    <a class="nav-link" href="https://nychealth.github.io/EH-dataportal/data-explorer/" id="nav-item-03">
                         <span class='text-primary'><i class='fas fa-chart-line' aria-hidden='true'></i></span> Data Explorer
                     </a>
 
@@ -259,7 +267,7 @@
     </div>
 
 </header>
-<main id="skip-header-target" role="main"><link rel="stylesheet" href="../../../css/accessible-autocomplete.min.css">
+<main id="skip-header-target" role="main"><link rel="stylesheet" href="https://nychealth.github.io/EH-dataportal/css/accessible-autocomplete.min.css">
 
 <article class="container-fluid" id="skip-header-target">
 
@@ -268,8 +276,8 @@
             <nav aria-label="breadcrumb" class="mb-4">
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="../../../key-topics/">Key Topics</a></li>
-                    <li class="breadcrumb-item"><a href="../../../key-topics/airquality/">Air Quality</a></li>
+                    <li class="breadcrumb-item"><a href="https://nychealth.github.io/EH-dataportal/key-topics/">Key Topics</a></li>
+                    <li class="breadcrumb-item"><a href="https://nychealth.github.io/EH-dataportal/key-topics/airquality/">Air Quality</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Your Neighborhood&#39;s Air Quality</li>
                 </ul>
             </nav>
@@ -429,8 +437,7 @@
                         <option value="QN06">QN06: Jamaica Estates-Holliswood</option>
                         <option value="QN07">QN07: Hollis</option>
                         <option value="QN08">QN08: St. Albans</option>
-                        <option value="QN10">QN10: Breezy Point-Belle Harbor-Rockaway Park-Broad Channel
-                        </option>
+                        <option value="QN10">QN10: Breezy Point-Belle Harbor-Rockaway Park-Broad Channel</option>
                         <option value="QN12">QN12: Hammels-Arverne-Edgemere</option>
                         <option value="QN15">QN15: Far Rockaway-Bayswater</option>
                         <option value="QN17">QN17: Forest Hills</option>
@@ -489,8 +496,7 @@
                         <option value="SI12">SI12: Mariner's Harbor-Arlington-Port Ivory-Graniteville</option>
                         <option value="SI14">SI14: Grasmere-Arrochar-Ft. Wadsworth</option>
                         <option value="SI22">SI22: West New Brighton-New Brighton-St. George</option>
-                        <option value="SI24">SI24: Todt Hill-Emerson Hill-Heartland Village-Lighthouse Hill
-                        </option>
+                        <option value="SI24">SI24: Todt Hill-Emerson Hill-Heartland Village-Lighthouse Hill</option>
                         <option value="SI25">SI25: Oakwood-Oakwood Beach</option>
                         <option value="SI28">SI28: Port Richmond</option>
                         <option value="SI32">SI32: Rossville-Woodrow</option>
@@ -705,7 +711,7 @@
 </article>
 
 
-<script type="text/javascript" src="../../../js/accessible-autocomplete.min.js"></script>
+<script type="text/javascript" src="https://nychealth.github.io/EH-dataportal/js/accessible-autocomplete.min.js"></script>
 
 <script>
     var data_repo = "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data"
@@ -735,7 +741,7 @@
     </div>
 </div>
 
-<script src="../../../js/conditional-modal.js"></script>
+<script src="https://nychealth.github.io/EH-dataportal/js/conditional-modal.js"></script>
 <footer class="bg-black" id="global-footer" role="contentinfo">
 
   <h2 class="sr-only">
@@ -940,5 +946,11 @@
 
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script src="https://unpkg.com/lunr/lunr.js"></script>
-<script type="text/javascript" src="https://nychealth.github.io/EH-dataportal/js/search.js" integrity=""></script></body>
+
+<script type="text/javascript" 
+    src="https://nychealth.github.io/EH-dataportal/js/main.552c9e0eb5b9f567a863809d88dfdb9dfc2e5062f1aa7ae313abbdf21a346fd773ae265f5ff618d8322e2b96b95be1b319c681eb0ea7b818a3c6485a84b6ad5a.js" 
+    integrity="sha512-VSyeDrW59WeoY4CdiN/bnfwuUGLxqnrjE6u98ho0b9dzriZfX/YY2DIuK5a5W&#43;GzGcaB6w6nuBijxkhahLatWg=="></script>
+<script type="text/javascript" 
+    src="https://nychealth.github.io/EH-dataportal/js/search.53f77a5a97433d16d462f91d502fba8bd3d447a53cec259dcc6289ce2972ffed57b1390ea40439598c38f79c90fdcaca445712f1b2b8b259f498235bb8f1095e.js" 
+    integrity="sha512-U/d6WpdDPRbUYvkdUC&#43;6i9PUR6U87CWdzGKJzily/&#43;1XsTkOpAQ5WYw495yQ/crKRFcS8bK4sln0mCNbuPEJXg=="></script></body>
 </html>

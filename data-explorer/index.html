@@ -24,7 +24,7 @@
 <meta property="og:title" content="Explore Data&ndash; Environment &amp; Health Data Portal" />
 <meta property="og:description" content="Explore data on environments and health in NYC." />
 <meta property="og:site_name" content="Environment &amp; Health Data Portal" />
-<meta property="og:image" content="https://nychealth.github.io/EH-dataportal/images/report_bottom_background_hu55023dbc37de342337a21cf33dcc5889_222582_2400x1260_fill_q75_box_smart1.jpg"><meta property="og:see_also" content="https://twitter.com/nycHealthy" />
+<meta property="og:image" content="https://nychealth.github.io/EH-dataportal/images/report_bottom_background_hu55023dbc37de342337a21cf33dcc5889_222582_2400x1260_fill_q95_mitchellnetravali_smart1.jpg"><meta property="og:see_also" content="https://twitter.com/nycHealthy" />
 <meta name="twitter:title" content="Explore Data&ndash; Environment &amp; Health Data Portal">
 <meta name="twitter:description" content="Explore data on environments and health in NYC.">
 <meta name="twitter:image" content="/images/report_bottom_background.jpg">
@@ -38,10 +38,10 @@
 
 
 
-<link rel="icon" href="../7618350_heatmap_business_analytics_statistics_icon-gpr.ico">
+<link rel="icon" href="https://nychealth.github.io/EH-dataportal/7618350_heatmap_business_analytics_statistics_icon-gpr.ico">
 
 
-<link rel="stylesheet" href="../fontawesome/css/all.min.css">
+<link rel="stylesheet" href="https://nychealth.github.io/EH-dataportal/fontawesome/css/all.min.css">
 
 <link rel="stylesheet" href="https://nychealth.github.io/EH-dataportal/scss/theme.css" />
 
@@ -49,6 +49,13 @@
 <script src="https://cdn.jsdelivr.net/npm/dompurify@2.3.10/dist/purify.min.js" 
     integrity="sha256-keaR/uWEpEmmUnoJ6BemH9gp9Ng8u/YplhVwdmmquNY=" 
     crossorigin="anonymous"></script>
+
+<script>
+    let sitepath = "\/EH-dataportal";
+    let baseURL = "https:\/\/nychealth.github.io\/EH-dataportal";
+    let data_repo = "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data";
+    let data_branch = "prod";
+</script>
 
 </head>
 <body>
@@ -94,7 +101,7 @@
                         </li>
                         <li>
                             <a href="https://www1.nyc.gov/" title="Go to nyc.gov">
-                                <img class="d-block" src="../images/nyc-bubble-logo.svg" width="45" alt="NYC Logo">
+                                <img class="d-block" src="https://nychealth.github.io/EH-dataportal/images/nyc-bubble-logo.svg" width="45" alt="NYC Logo">
                             </a>
                         </li>
                     </ul>
@@ -110,7 +117,8 @@
 
     </div>
     
-    <div class="site-header bg-primary" style="background-image: url(/EH-dataportal/images/header_background.jpg)">
+    <div class="site-header bg-primary" style="background-image: url(https://nychealth.github.io/EH-dataportal/images/header_background.jpg)">
+    
         <div class="wrap-header">
 
             <div class="container-fluid wide">
@@ -161,9 +169,9 @@
                                         </button>
                                     </li>
                                     <li>
-                                        <button class="no-btn-style" type="button" title="Search" data-toggle="collapse"
-                                            data-target="#global-search" aria-controls="global-search"
-                                            aria-expanded="false">
+                                        <button class="no-btn-style" type="button" title="Search" 
+                                            data-toggle="collapse" data-target="#global-search" 
+                                            aria-controls="global-search" aria-expanded="false">
                                             <span class="sr-only">Search</span>
                                             <span class="fas fa-search fa-lg"></span>
                                         </button>
@@ -215,35 +223,35 @@
 
             <nav class="nav nav-pills border-bottom" role="navigation"><div class="nav-item">
 
-                    <a class="nav-link" href="../" id="nav-item-01">
+                    <a class="nav-link" href="https://nychealth.github.io/EH-dataportal/" id="nav-item-01">
                         <span class='text-primary'><i class='fa fa-home' aria-hidden='true'></i></span> Home
                     </a>
 
                 </div>
                 <div class="nav-item">
 
-                    <a class="nav-link" href="../data-stories/" id="nav-item-02">
+                    <a class="nav-link" href="https://nychealth.github.io/EH-dataportal/data-stories/" id="nav-item-02">
                         <span class='text-primary'><i class='fas fa-passport' aria-hidden='true'></i></span> Data Stories
                     </a>
 
                 </div>
                 <div class="nav-item">
 
-                    <a class="nav-link" href="../neighborhood-reports/" id="nav-item-04">
+                    <a class="nav-link" href="https://nychealth.github.io/EH-dataportal/neighborhood-reports/" id="nav-item-04">
                         <span class='text-primary'><i class='fas fa-map-marked-alt' aria-hidden='true'></i></span> Neighborhood Reports
                     </a>
 
                 </div>
                 <div class="nav-item">
 
-                    <a class="nav-link" href="../key-topics/" id="nav-item-05">
+                    <a class="nav-link" href="https://nychealth.github.io/EH-dataportal/key-topics/" id="nav-item-05">
                         <span class='text-primary'><i class='fas fa-star' aria-hidden='true'></i></span> Key Topics
                     </a>
 
                 </div>
                 <div class="nav-item active">
 
-                    <a class="nav-link" href="../data-explorer/" id="nav-item-03">
+                    <a class="nav-link" href="https://nychealth.github.io/EH-dataportal/data-explorer/" id="nav-item-03">
                         <span class='text-primary'><i class='fas fa-chart-line' aria-hidden='true'></i></span> Data Explorer
                     </a>
 
@@ -257,9 +265,9 @@
 
 </header>
 <main id="skip-header-target" role="main"><article class="container-fluid" id="skip-header-target">
-    
+
     <div class="col-lg-10 col-md-12 mx-auto my-4">
-        <h1><i class="fas fa-chart-line" aria-hidden="true" style="margin-right: 10px"></i>Data Explorer</h1><p>Get data sets on important environment and health topics for NYC. View maps, charts, and more.</p>
+        <h1 class="de-accent"><i class="fas fa-chart-line" aria-hidden="true" style="margin-right: 10px"></i>Data Explorer</h1><p>Get data sets on important environment and health topics for NYC. View maps, charts, and more.</p>
 <div class="row">
             <div class="col-md-4 p-2 pl-0">
                 <p class="sm-label">Select a topic to view data:</p>
@@ -955,7 +963,7 @@
     <div class="col-4">
         <div class="card de-card borderbox fs-sm m-1">
             <div class="card-body">
-                <span class="card-title text-primary"><a href="../data-explorer/air-quality/?id=2023">Air quality: PM2.5</a></span>
+                <span class="card-title text-primary"><a href="https://nychealth.github.io/EH-dataportal/data-explorer/air-quality/?id=2023">Air quality: PM2.5</a></span>
               </div>
           </div>
     </div>
@@ -963,7 +971,7 @@
     <div class="col-4">
         <div class="card de-card borderbox fs-sm m-1">
             <div class="card-body">
-                <span class="card-title text-primary"><a href="../data-explorer/housing-stability/?id=2365">Evictions</a></span>
+                <span class="card-title text-primary"><a href="https://nychealth.github.io/EH-dataportal/data-explorer/housing-stability/?id=2365">Evictions</a></span>
               </div>
           </div>
     </div>
@@ -971,7 +979,7 @@
     <div class="col-4">
         <div class="card de-card borderbox fs-sm m-1">
             <div class="card-body">
-                <span class="card-title text-primary"><a href="../data-explorer/economic-conditions/?id=103">Poverty</a></span>
+                <span class="card-title text-primary"><a href="https://nychealth.github.io/EH-dataportal/data-explorer/economic-conditions/?id=103">Poverty</a></span>
               </div>
           </div>
     </div>
@@ -979,7 +987,7 @@
     <div class="col-4">
         <div class="card de-card borderbox fs-sm m-1">
             <div class="card-body">
-                <span class="card-title text-primary"><a href="../data-explorer/asthma/?id=2383">Child asthma</a></span>
+                <span class="card-title text-primary"><a href="https://nychealth.github.io/EH-dataportal/data-explorer/asthma/?id=2383">Child asthma</a></span>
               </div>
           </div>
     </div>
@@ -987,7 +995,7 @@
     <div class="col-4">
         <div class="card de-card borderbox fs-sm m-1">
             <div class="card-body">
-                <span class="card-title text-primary"><a href="../data-explorer/weather-related-illness/?id=2411">Heat vulnerability</a></span>
+                <span class="card-title text-primary"><a href="https://nychealth.github.io/EH-dataportal/data-explorer/weather-related-illness/?id=2411">Heat vulnerability</a></span>
               </div>
           </div>
     </div>
@@ -995,7 +1003,7 @@
     <div class="col-4">
         <div class="card de-card borderbox fs-sm m-1">
             <div class="card-body">
-                <span class="card-title text-primary"><a href="../data-explorer/violence/?id=2400">Violence</a></span>
+                <span class="card-title text-primary"><a href="https://nychealth.github.io/EH-dataportal/data-explorer/violence/?id=2400">Violence</a></span>
               </div>
           </div>
     </div>
@@ -1021,7 +1029,7 @@
                             <div class="card-body">
                                 <span class="card-title text-dark"><em>Get trends...</em></span>
                               </div>
-                            <img class="card-img-top" src="../images/trend-chart-2.png" alt="Card image cap">
+                            <img class="card-img-top" src="https://nychealth.github.io/EH-dataportal/images/trend-chart-3.png" alt="Card image cap">
                           </div>
                     </div>
 
@@ -1030,7 +1038,7 @@
                             <div class="card-body" style="text-align: center">
                                 <span class="card-title text-prdarkimary" ><em>...maps...</em></span>
                               </div>
-                            <img class="card-img-top" src="../images/data-map-2.png" alt="Card image cap">
+                            <img class="card-img-top" src="https://nychealth.github.io/EH-dataportal/images/data-map-3.png" alt="Card image cap">
             
                           </div>
                     </div>
@@ -1040,7 +1048,7 @@
                             <div class="card-body" style="text-align: right">
                                 <span class="card-title text-dark"><em>...and more!</em></span>
                               </div>
-                            <img class="card-img-top" src="../images/links-chart-2.png" alt="Card image cap">
+                            <img class="card-img-top" src="https://nychealth.github.io/EH-dataportal/images/links-chart-3.png" alt="Card image cap">
                           </div>
                     </div>
 
@@ -1061,7 +1069,9 @@
 
     </div>
     
-</article><script type="text/javascript" src="https://nychealth.github.io/EH-dataportal/js/accessible-autocomplete.min.js" integrity=""></script><script type="text/javascript"> 
+</article><script type="text/javascript" 
+    src="https://nychealth.github.io/EH-dataportal/js/accessible-autocomplete.min.a28dbcfe4538f42cec64a42e75429f873bd86641fea0b326b3a4800b59917b99b877d3715b07405ff36917ed9e3cc0873f7b58a65905ff508cd42e8c427a5f9a.js" 
+    integrity="sha512-oo28/kU49CzsZKQudUKfhzvYZkH&#43;oLMms6SAC1mRe5m4d9NxWwdAX/NpF&#43;2ePMCHP3tYplkF/1CM1C6MQnpfmg=="></script><script type="text/javascript"> 
     
     function populateDropDownList() {          
         var ddlData = document.getElementById("all-data");
@@ -1069,266 +1079,266 @@
         
         option.innerHTML = "Healthy eating"
         
-        option.value = 'https:\/\/nychealth.github.io\/EH-dataportal\/data-explorer\/healthy-eating\/'
+        option.value = '\/data-explorer\/healthy-eating\/'
         
         ddlData.options.add(option);
         var option = document.createElement("OPTION");
         
         option.innerHTML = "Active design"
         
-        option.value = 'https:\/\/nychealth.github.io\/EH-dataportal\/data-explorer\/active-design\/'
+        option.value = '\/data-explorer\/active-design\/'
         
         ddlData.options.add(option);
         var option = document.createElement("OPTION");
         
         option.innerHTML = "Air quality"
         
-        option.value = 'https:\/\/nychealth.github.io\/EH-dataportal\/data-explorer\/air-quality\/'
+        option.value = '\/data-explorer\/air-quality\/'
         
         ddlData.options.add(option);
         var option = document.createElement("OPTION");
         
         option.innerHTML = "Alcohol access and use"
         
-        option.value = 'https:\/\/nychealth.github.io\/EH-dataportal\/data-explorer\/alcohol-use\/'
+        option.value = '\/data-explorer\/alcohol-use\/'
         
         ddlData.options.add(option);
         var option = document.createElement("OPTION");
         
         option.innerHTML = "All data sets"
         
-        option.value = 'https:\/\/nychealth.github.io\/EH-dataportal\/data-explorer\/all-data\/'
+        option.value = '\/data-explorer\/all-data\/'
         
         ddlData.options.add(option);
         var option = document.createElement("OPTION");
         
         option.innerHTML = "Asthma"
         
-        option.value = 'https:\/\/nychealth.github.io\/EH-dataportal\/data-explorer\/asthma\/'
+        option.value = '\/data-explorer\/asthma\/'
         
         ddlData.options.add(option);
         var option = document.createElement("OPTION");
         
         option.innerHTML = "Asthma triggers at home"
         
-        option.value = 'https:\/\/nychealth.github.io\/EH-dataportal\/data-explorer\/asthma-triggers\/'
+        option.value = '\/data-explorer\/asthma-triggers\/'
         
         ddlData.options.add(option);
         var option = document.createElement("OPTION");
         
         option.innerHTML = "Bed bugs"
         
-        option.value = 'https:\/\/nychealth.github.io\/EH-dataportal\/data-explorer\/bed-bugs\/'
+        option.value = '\/data-explorer\/bed-bugs\/'
         
         ddlData.options.add(option);
         var option = document.createElement("OPTION");
         
         option.innerHTML = "Birth defects"
         
-        option.value = 'https:\/\/nychealth.github.io\/EH-dataportal\/data-explorer\/birth-defects\/'
+        option.value = '\/data-explorer\/birth-defects\/'
         
         ddlData.options.add(option);
         var option = document.createElement("OPTION");
         
         option.innerHTML = "Birth outcomes"
         
-        option.value = 'https:\/\/nychealth.github.io\/EH-dataportal\/data-explorer\/birth-outcomes\/'
+        option.value = '\/data-explorer\/birth-outcomes\/'
         
         ddlData.options.add(option);
         var option = document.createElement("OPTION");
         
         option.innerHTML = "Cancer"
         
-        option.value = 'https:\/\/nychealth.github.io\/EH-dataportal\/data-explorer\/cancer\/'
+        option.value = '\/data-explorer\/cancer\/'
         
         ddlData.options.add(option);
         var option = document.createElement("OPTION");
         
         option.innerHTML = "Cancers in children"
         
-        option.value = 'https:\/\/nychealth.github.io\/EH-dataportal\/data-explorer\/cancers-in-children\/'
+        option.value = '\/data-explorer\/cancers-in-children\/'
         
         ddlData.options.add(option);
         var option = document.createElement("OPTION");
         
         option.innerHTML = "Carbon monoxide"
         
-        option.value = 'https:\/\/nychealth.github.io\/EH-dataportal\/data-explorer\/carbon-monoxide-incidents\/'
+        option.value = '\/data-explorer\/carbon-monoxide-incidents\/'
         
         ddlData.options.add(option);
         var option = document.createElement("OPTION");
         
         option.innerHTML = "Cigarette smoke"
         
-        option.value = 'https:\/\/nychealth.github.io\/EH-dataportal\/data-explorer\/cigarette-smoke\/'
+        option.value = '\/data-explorer\/cigarette-smoke\/'
         
         ddlData.options.add(option);
         var option = document.createElement("OPTION");
         
         option.innerHTML = "Climate"
         
-        option.value = 'https:\/\/nychealth.github.io\/EH-dataportal\/data-explorer\/climate\/'
+        option.value = '\/data-explorer\/climate\/'
         
         ddlData.options.add(option);
         var option = document.createElement("OPTION");
         
         option.innerHTML = "Cockroaches"
         
-        option.value = 'https:\/\/nychealth.github.io\/EH-dataportal\/data-explorer\/cockroaches\/'
+        option.value = '\/data-explorer\/cockroaches\/'
         
         ddlData.options.add(option);
         var option = document.createElement("OPTION");
         
         option.innerHTML = "Drinking water quality"
         
-        option.value = 'https:\/\/nychealth.github.io\/EH-dataportal\/data-explorer\/drinking-water-quality\/'
+        option.value = '\/data-explorer\/drinking-water-quality\/'
         
         ddlData.options.add(option);
         var option = document.createElement("OPTION");
         
         option.innerHTML = "Economic conditions"
         
-        option.value = 'https:\/\/nychealth.github.io\/EH-dataportal\/data-explorer\/economic-conditions\/'
+        option.value = '\/data-explorer\/economic-conditions\/'
         
         ddlData.options.add(option);
         var option = document.createElement("OPTION");
         
         option.innerHTML = "Falls among older adults"
         
-        option.value = 'https:\/\/nychealth.github.io\/EH-dataportal\/data-explorer\/falls-among-older-adults\/'
+        option.value = '\/data-explorer\/falls-among-older-adults\/'
         
         ddlData.options.add(option);
         var option = document.createElement("OPTION");
         
         option.innerHTML = "Health care"
         
-        option.value = 'https:\/\/nychealth.github.io\/EH-dataportal\/data-explorer\/health-care\/'
+        option.value = '\/data-explorer\/health-care\/'
         
         ddlData.options.add(option);
         var option = document.createElement("OPTION");
         
         option.innerHTML = "Health impacts of air pollution"
         
-        option.value = 'https:\/\/nychealth.github.io\/EH-dataportal\/data-explorer\/health-impacts-of-air-pollution\/'
+        option.value = '\/data-explorer\/health-impacts-of-air-pollution\/'
         
         ddlData.options.add(option);
         var option = document.createElement("OPTION");
         
         option.innerHTML = "Housing maintenance"
         
-        option.value = 'https:\/\/nychealth.github.io\/EH-dataportal\/data-explorer\/housing-maintenance\/'
+        option.value = '\/data-explorer\/housing-maintenance\/'
         
         ddlData.options.add(option);
         var option = document.createElement("OPTION");
         
         option.innerHTML = "Housing safety"
         
-        option.value = 'https:\/\/nychealth.github.io\/EH-dataportal\/data-explorer\/housing-safety\/'
+        option.value = '\/data-explorer\/housing-safety\/'
         
         ddlData.options.add(option);
         var option = document.createElement("OPTION");
         
         option.innerHTML = "Housing stability"
         
-        option.value = 'https:\/\/nychealth.github.io\/EH-dataportal\/data-explorer\/housing-stability\/'
+        option.value = '\/data-explorer\/housing-stability\/'
         
         ddlData.options.add(option);
         var option = document.createElement("OPTION");
         
         option.innerHTML = "Lead poisoning"
         
-        option.value = 'https:\/\/nychealth.github.io\/EH-dataportal\/data-explorer\/lead\/'
+        option.value = '\/data-explorer\/lead\/'
         
         ddlData.options.add(option);
         var option = document.createElement("OPTION");
         
         option.innerHTML = "Mice and rats"
         
-        option.value = 'https:\/\/nychealth.github.io\/EH-dataportal\/data-explorer\/mice-and-rats\/'
+        option.value = '\/data-explorer\/mice-and-rats\/'
         
         ddlData.options.add(option);
         var option = document.createElement("OPTION");
         
         option.innerHTML = "Mortality"
         
-        option.value = 'https:\/\/nychealth.github.io\/EH-dataportal\/data-explorer\/mortality\/'
+        option.value = '\/data-explorer\/mortality\/'
         
         ddlData.options.add(option);
         var option = document.createElement("OPTION");
         
         option.innerHTML = "Overweight"
         
-        option.value = 'https:\/\/nychealth.github.io\/EH-dataportal\/data-explorer\/overweight\/'
+        option.value = '\/data-explorer\/overweight\/'
         
         ddlData.options.add(option);
         var option = document.createElement("OPTION");
         
         option.innerHTML = "Pesticides"
         
-        option.value = 'https:\/\/nychealth.github.io\/EH-dataportal\/data-explorer\/pesticides\/'
+        option.value = '\/data-explorer\/pesticides\/'
         
         ddlData.options.add(option);
         var option = document.createElement("OPTION");
         
         option.innerHTML = "Physical activity"
         
-        option.value = 'https:\/\/nychealth.github.io\/EH-dataportal\/data-explorer\/physical-activity\/'
+        option.value = '\/data-explorer\/physical-activity\/'
         
         ddlData.options.add(option);
         var option = document.createElement("OPTION");
         
         option.innerHTML = "Restaurant food safety"
         
-        option.value = 'https:\/\/nychealth.github.io\/EH-dataportal\/data-explorer\/restaurant-food-safety\/'
+        option.value = '\/data-explorer\/restaurant-food-safety\/'
         
         ddlData.options.add(option);
         var option = document.createElement("OPTION");
         
         option.innerHTML = "Social conditions"
         
-        option.value = 'https:\/\/nychealth.github.io\/EH-dataportal\/data-explorer\/social-conditions\/'
+        option.value = '\/data-explorer\/social-conditions\/'
         
         ddlData.options.add(option);
         var option = document.createElement("OPTION");
         
         option.innerHTML = "Transportation-related injuries"
         
-        option.value = 'https:\/\/nychealth.github.io\/EH-dataportal\/data-explorer\/transportation-related-injuries\/'
+        option.value = '\/data-explorer\/transportation-related-injuries\/'
         
         ddlData.options.add(option);
         var option = document.createElement("OPTION");
         
         option.innerHTML = "Vector-borne disease"
         
-        option.value = 'https:\/\/nychealth.github.io\/EH-dataportal\/data-explorer\/vector-borne-disease\/'
+        option.value = '\/data-explorer\/vector-borne-disease\/'
         
         ddlData.options.add(option);
         var option = document.createElement("OPTION");
         
         option.innerHTML = "Violence"
         
-        option.value = 'https:\/\/nychealth.github.io\/EH-dataportal\/data-explorer\/violence\/'
+        option.value = '\/data-explorer\/violence\/'
         
         ddlData.options.add(option);
         var option = document.createElement("OPTION");
         
         option.innerHTML = "Walking, driving, and cycling"
         
-        option.value = 'https:\/\/nychealth.github.io\/EH-dataportal\/data-explorer\/walking-driving-and-cycling\/'
+        option.value = '\/data-explorer\/walking-driving-and-cycling\/'
         
         ddlData.options.add(option);
         var option = document.createElement("OPTION");
         
         option.innerHTML = "Weather-related illness"
         
-        option.value = 'https:\/\/nychealth.github.io\/EH-dataportal\/data-explorer\/weather-related-illness\/'
+        option.value = '\/data-explorer\/weather-related-illness\/'
         
         ddlData.options.add(option);
         var option = document.createElement("OPTION");
         
         option.innerHTML = "Worker health"
         
-        option.value = 'https:\/\/nychealth.github.io\/EH-dataportal\/data-explorer\/worker-health\/'
+        option.value = '\/data-explorer\/worker-health\/'
         
         ddlData.options.add(option);};
     
@@ -1373,7 +1383,7 @@
     </div>
 </div>
 
-<script src="../js/conditional-modal.js"></script>
+<script src="https://nychealth.github.io/EH-dataportal/js/conditional-modal.js"></script>
 <footer class="bg-black" id="global-footer" role="contentinfo">
 
   <h2 class="sr-only">
@@ -1578,5 +1588,11 @@
 
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script src="https://unpkg.com/lunr/lunr.js"></script>
-<script type="text/javascript" src="https://nychealth.github.io/EH-dataportal/js/search.js" integrity=""></script></body>
+
+<script type="text/javascript" 
+    src="https://nychealth.github.io/EH-dataportal/js/main.552c9e0eb5b9f567a863809d88dfdb9dfc2e5062f1aa7ae313abbdf21a346fd773ae265f5ff618d8322e2b96b95be1b319c681eb0ea7b818a3c6485a84b6ad5a.js" 
+    integrity="sha512-VSyeDrW59WeoY4CdiN/bnfwuUGLxqnrjE6u98ho0b9dzriZfX/YY2DIuK5a5W&#43;GzGcaB6w6nuBijxkhahLatWg=="></script>
+<script type="text/javascript" 
+    src="https://nychealth.github.io/EH-dataportal/js/search.53f77a5a97433d16d462f91d502fba8bd3d447a53cec259dcc6289ce2972ffed57b1390ea40439598c38f79c90fdcaca445712f1b2b8b259f498235bb8f1095e.js" 
+    integrity="sha512-U/d6WpdDPRbUYvkdUC&#43;6i9PUR6U87CWdzGKJzily/&#43;1XsTkOpAQ5WYw495yQ/crKRFcS8bK4sln0mCNbuPEJXg=="></script></body>
 </html>
