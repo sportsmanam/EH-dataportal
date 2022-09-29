@@ -1543,39 +1543,36 @@
     <script>
 
         
-        
-        
-        
+
         let indicators = []; 
         let defaultIndicatorId;
         let selectedSummaryYears = [];
         let selectedSummaryGeography = [];
         let aboutMeasures;
         let dataSources;
-        
+
         let measureAbout = `N/A`;
         let measureSources = `N/A`;
         let geoTable;
         let aqData;
         let joinedAqData;
-        
+
         let fullDataTableObjects;
         let fullDataMapObjects;
         let fullDataTrendObjects;
         let fullDataLinksObjects;
         let joinedDataLinksObjects;
         let disparitiyData; 
-        
+
         let indicator;
         let indicatorName;
         let indicatorDesc;
         let indicatorShortName;
         let indicatorMeasures;
         let indicatorId;
-        
         let primaryIndicatorName;
         let secondaryIndicatorName;
-        
+
         let defaultTrendMetadata = [];
         let defaultTrendAbout;
         let defaultTrendSources;
@@ -1586,7 +1583,7 @@
         let defaultLinkMeasureTimes = [];
         let defaultLinksAbout;
         let defaultLinksSources;
-        
+
         let selectedMapMeasure;
         let selectedTrendMeasure;
         let selectedLinksMeasure;
@@ -1604,16 +1601,16 @@
         let filteredMapData;
         let filteredTrendData;
         let filteredLinksData;
-        
+
         let mapMeasures = [];
         let trendMeasures = [];
         let linksMeasures = [];
-        
+
         let tabTable;
         let tabMap;
         let tabTrend;
         let tabLinks;
-        
+
         let showTable;
         let showMap;
         let showTrend;
@@ -1626,12 +1623,10 @@
 
         
         let tabTrendDropDown = document.querySelector('#tab-trend .dropdown');
-        
+
         
         let btnShowDisparities = document.querySelector('.btn-show-disparities');
 
-        
-        
         const url = new URL(window.location);
         
         const updateChartPlotSize = () => {
@@ -1644,19 +1639,22 @@
         
 
         let hashchange = new Event('hashchange');
+
+        
         
         window.onpopstate = function (event) {
-            if (event.state != null){
+            
+            const new_url = new URL(window.location);
+            let new_indicatorId = new_url.searchParams.get('id')
+            
+            if (new_indicatorId != indicatorId) {
                 
-                document.url = event.state.url;
+                loadIndicator(new_indicatorId, true)
                 
-                loadIndicator(event.state.id, true)
             }
         };
         
-        window.addEventListener("hashchange", function () {
-        
-            
+        window.addEventListener("hashchange", () => {
 
             const hash = window.location.hash.replace('#', "");
             
@@ -1668,6 +1666,7 @@
                 case 'display=summary':
                 case 'tab-table':
                     
+                    currentHash = 'display=summary';
                     $('#tab-btn-table').tab('show');
                     showTable();
                     break;
@@ -1675,6 +1674,7 @@
                 case 'display=map':
                 case 'tab-map':
                     
+                    currentHash = 'display=map';
                     $('#tab-btn-map').tab('show');
                     showMap();
                     break;
@@ -1682,6 +1682,7 @@
                 case 'display=trend':
                 case 'tab-trend':
                     
+                    currentHash = 'display=trend';
                     $('#tab-btn-trend').tab('show');
                     showTrend();
                     break;
@@ -1689,19 +1690,19 @@
                 case 'display=links':
                 case 'tab-links':
                     
+                    currentHash = 'display=links';
                     $('#tab-btn-links').tab('show');
                     showLinks();
                     break;
 
                 default:
+                    currentHash = 'display=summary';
                     
                     
-                    $('#tab-btn-table').tab('show');
-                    showTable();
+                    
+                    
                     break;
             }
-
-            currentHash = hash;
 
         });
 
@@ -1746,7 +1747,8 @@
                 case 'NTA':
                     return 7;
             }
-        }        
+        }
+
 
         
         
@@ -1756,11 +1758,7 @@
             .then(response => response.json())
             .then(async data => {
 
-                // console.log("** fetch indicators.json");
-
                 indicators = data;
-
-                // console.log("indicators [fetch]", indicators);
 
                 const paramId = url.searchParams.get('id') !== null ? parseInt(url.searchParams.get('id')) : false;
                 
@@ -1846,12 +1844,13 @@
         // function to load indicator metadata
         // ----------------------------------------------------------------------- //
 
-        const loadIndicator = (this_indicatorId, bypassUrlChange) => {
+        const loadIndicator = (this_indicatorId, dont_add_to_history) => {
 
-            // console.log("window.location.hash 1 [loadIndicator]", window.location.hash);
-            currentHash = window.location.hash;
+            
 
-            // console.log("** loadIndicator");
+            console.log("currentHash [loadIndicator]", currentHash);
+
+            console.log("** loadIndicator");
 
             // if indicatorId isn't given, use the first indicator from the dropdown list 
             //  (which is populated by Hugo reading the content frontmatter). 
@@ -1896,15 +1895,32 @@
             selectedTrendMeasure = false;
             selectedLinksMeasure = false;
             
-            // console.log("window.location.hash 2 [loadIndicator]", window.location.hash);
-
-            if (!bypassUrlChange) {
-                url.searchParams.set('id', indicatorId);
-                url.hash = window.location.hash;
-                window.history.pushState({ id: indicatorId , hash: window.location.hash}, '', url);
-            }
+            // if dont_add_to_history is true, then don't push the state
+            // if dont_add_to_history is false, or not set, push the state
+            // this prevents loadIndicator from setting new history entries when it's called 
+            //  on a popstate event, i.e. when the user is traversing the history stack
             
-            // console.log("window.location.hash 3 [loadIndicator]", window.location.hash);
+            if (!dont_add_to_history) {
+                
+                url.searchParams.set('id', indicatorId);
+
+                if (!url.hash) {
+                    
+                    // if loadIndicator is being called without a hash (like when a topic page is loaded), then show the first ID and summary
+
+                    url.hash = "display=summary";
+                    window.history.replaceState({ id: indicatorId, hash: url.hash}, '', url);
+
+                } else {
+
+                    let href = `${url.origin}${url.pathname}?id=${indicatorId}#${currentHash}`
+
+                    url.hash = currentHash;
+                    window.history.pushState({ id: indicatorId, hash: url.hash }, '', url);
+
+                }
+
+            }
 
             // call data loading function
 
@@ -1921,9 +1937,6 @@
         
         const loadData = (this_indicatorId) => {
             
-            // console.log("window.location.hash [loadData]", window.location.hash);
-            // console.log("** loadData");
-
             fetch(data_repo + "/" + data_branch + `/indicators/data/${this_indicatorId}.json`)
             .then(response => response.json())
             .then(async data => {
@@ -1932,8 +1945,6 @@
 
                 loadGeo();
 
-                // console.log("data [loadData]", data);
-                
                 ful = aq.from(data)
                     .derive({ "GeoRank": aq.escape( d => assignGeoRank(d.GeoType))})
                     .groupby("Time", "GeoType", "GeoID", "GeoRank")
@@ -1950,8 +1961,6 @@
         // ----------------------------------------------------------------------- //
 
         const loadGeo = () => {
-
-            // console.log("window.location.hash [loadGeo]", window.location.hash);
 
             const geoUrl = data_repo + "/" + data_branch + `/geography/GeoLookup.csv`; // col named "GeoType"
             
@@ -1973,8 +1982,6 @@
 
         const joinData = () => {
 
-            // console.log("window.location.hash [joinData]", window.location.hash);
-
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
             // get metadata fields
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
@@ -1986,7 +1993,6 @@
             // create table column header with display type
 
             let measurementDisplay = [];
-
 
             indicatorMeasures.map(
             
@@ -2016,12 +2022,6 @@
             let aqMeasureIdTimes     = availableTimes.reduce((a, b) => a.concat(b))
             let aqMeasurementDisplay = measurementDisplay.reduce((a, b) => a.concat(b))
             
-            // console.log("aqMeasurementDisplay");
-            // aqMeasurementDisplay.print()
-
-            // console.log("aqMeasureIdTimes [joinData]");
-            // aqMeasureIdTimes.print()
-
             // foundational joined dataset
 
             joinedAqData = aqData
@@ -2056,8 +2056,6 @@
                 .select(aq.not("start_period", "end_period"))
                 .objects()
 
-            // console.log("fullDataTableObjects", fullDataTableObjects);
-
             // data for map
             
             fullDataMapObjects = joinedAqData
@@ -2090,10 +2088,6 @@
         
         const filterSecondaryIndicatorMeasure = async (primaryMeasureId, secondaryMeasureId) => {
 
-            // console.log("window.location.hash [filterSecondaryIndicatorMeasure]", window.location.hash);
-
-            // console.log("** filterSecondaryIndicatorMeasure");
-
             // filter links data to keep primary measure
             
             const primaryMeasureTimesDataObjects = fullDataLinksObjects.filter(
@@ -2110,21 +2104,11 @@
                 // most recent period in the data
                 .filter(d => d.end_period === op.max(d.end_period))
 
-            // console.log("aqFilteredPrimaryMeasureTimesData", aqFilteredPrimaryMeasureTimesData);
-
             const mostRecentPrimaryMeasureStartTime = aqFilteredPrimaryMeasureTimesData.array("start_period")[0]
             const mostRecentPrimaryMeasureEndTime   = aqFilteredPrimaryMeasureTimesData.array("end_period")[0]
             const mostRecentPrimaryMeasureTime      = aqFilteredPrimaryMeasureTimesData.array("Time")[0]
             const primaryMeasureGeoRanks            = [...new Set(aqFilteredPrimaryMeasureTimesData.array("GeoRank"))]
 
-            // console.log("mostRecentPrimaryMeasureTime", mostRecentPrimaryMeasureTime);
-            // console.log("mostRecentPrimaryMeasureStartTime", mostRecentPrimaryMeasureStartTime);
-            // console.log("mostRecentPrimaryMeasureEndTime", mostRecentPrimaryMeasureEndTime);
-            // console.log("primaryMeasureGeoRanks", primaryMeasureGeoRanks);
-            
-            // const filteredPrimaryMeasureTimesDataObjects = aqFilteredPrimaryMeasureTimesData.objects()
-
-            
             // get metadata for the selected primary measure, assign to global variable
             // indicatorMeasures created in loadIndicator
             
@@ -2175,8 +2159,6 @@
                     
                     const filteredSecondaryMeasureData = data.filter(d => d.MeasureID === secondaryMeasureId)
 
-                    // console.log("filteredSecondaryMeasureData", filteredSecondaryMeasureData);
-                    
                     // join with geotable and times
                     
                     const aqFilteredSecondaryMeasureTimesData = aq.from(filteredSecondaryMeasureData)
@@ -2195,9 +2177,6 @@
                         )
                         .select(aq.not("TimeDescription"))
 
-                    // console.log("aqFilteredSecondaryMeasureTimesData");
-                    // aqFilteredSecondaryMeasureTimesData.print()
-
                     // convert to JS objects
                     
                     const filteredSecondaryMeasureTimesDataObjects = aqFilteredSecondaryMeasureTimesData.objects();
@@ -2209,8 +2188,6 @@
                         return (Math.abs(curr.end_period - mostRecentPrimaryMeasureEndTime) < Math.abs(prev.end_period - mostRecentPrimaryMeasureEndTime) ? curr : prev);
 
                     });
-
-                    // console.log("closestSecondaryTime", closestSecondaryTime);
 
                     // get closest secondary data 
 
@@ -2226,29 +2203,17 @@
                         //  which will be yearly over seasonal
                         .filter(d => d.start_period === op.min(d.start_period))
                     
-                    // console.log("closestSecondaryData");
-                    // aqClosestSecondaryData.print()
-                    
-                    
                     // count the number of time periods with this end period (should always be 1)
 
-                    // const secondaryYears =  [...new Set(aqClosestSecondaryData.array("Time"))];
-                    // console.log("secondaryYears.length", secondaryYears.length);
-                    
                     const aqJoinedPrimarySecondaryData = aqFilteredPrimaryMeasureTimesData
                         .join(
                             aqClosestSecondaryData, 
                             [["GeoID", "GeoType"], ["GeoID", "GeoType"]]
                         )
                     
-                    
-                    
-                    
                     // set the value of joinedDataLinksObjects, and make sure to wait for it
                     
                     joinedDataLinksObjects = await aqJoinedPrimarySecondaryData.objects();
-
-                    // console.log("joinedDataLinksObjects", joinedDataLinksObjects);
 
                 })
         }
@@ -2261,7 +2226,6 @@
         const handleYearFilter = (el) => {
             el.addEventListener('change', (e) => {
                 if (e.target.checked) {
-                    // console.log('checked')
                     selectedSummaryYears = [e.target.value]
                 }
                 renderTable()
@@ -2356,8 +2320,6 @@
 
         const renderTitleDescription = (title, desc) => {
 
-            // console.log("** renderTitleDescription");
-            
             const indicatorTitle = document.getElementById('indicatorTitle');
             const indicatorDescription = document.querySelector('.indicator-description');
             indicatorTitle.innerHTML = title;
@@ -2547,27 +2509,40 @@
 
 
             // ----- render the chart ----- //
+
             // chart only the annual average for the following measureIds:
             // 365 - PM2.5 (Fine particles), Mean
             // 370 - Black carbon, Mean
             // 391 - Nitric oxide, Mean
             // 375 - Nitrogen dioxide, Mean
 
-            let measureIdsAnnualAvg = [365, 370, 375, 391];
-                                    
+            const measureIdsAnnualAvg = [365, 370, 375, 391];
+
+            // chart only the summer average for the following measureIds:
+            // 386 - Ozone (O3), Mean
+
+            const measureIdsSummer = [386];
+
             if (measureIdsAnnualAvg.includes(measureId)) {
                 
-                let filteredTrendDataAnnualAvg = filteredTrendData.filter(d => d.Time.includes('Annual Average'));
-
+                const filteredTrendDataAnnualAvg = filteredTrendData.filter(d => d.Time.startsWith('Annual Average'));
+                
                 renderTrendChart(filteredTrendDataAnnualAvg, measureMetadata);
-
+                updateChartPlotSize();
+                
+            } else if (measureIdsSummer.includes(measureId)) {
+                
+                const filteredTrendDataSummer = filteredTrendData.filter(d => d.Time.startsWith('Summer'));
+                
+                renderTrendChart(filteredTrendDataSummer, measureMetadata);
+                updateChartPlotSize();
+                
             } else {
-
-                renderTrendChart(filteredTrendData, measureMetadata);
-
+                
+                renderTrendChart(filteredTrendData, defaultTrendMetadata);
+                updateChartPlotSize();
+                
             }
-
-            updateChartPlotSize();
 
             // allow trend chart to persist when changing tabs
 
@@ -2667,7 +2642,7 @@
                 secondaryIndicatorName
             );
 
-            updateChartPlotSize();                    
+            updateChartPlotSize();
 
             // allow links chart to persist when changing tabs
 
@@ -2841,8 +2816,6 @@
                 const defaultPrimaryMeasureId = defaultArray[0].MeasureID;
                 const defaultSecondaryMeasureId = defaultArray[0].VisOptions[0].Links[0].MeasureID;
 
-                // console.log("defaultSecondaryMeasureId [setDefaultLinksMeasure]", defaultSecondaryMeasureId);
-                
                 // assigning to global object
                 defaultLinksMetadata = defaultArray;
 
@@ -3023,7 +2996,6 @@
 
             
             setDefaultMapMeasure(mapMeasures);
-            
             setDefaultTrendMeasure(trendMeasures);
             
             // set default measure for links; also calls filterSecondaryIndicatorMeasure, which creates the joined data
@@ -3040,8 +3012,6 @@
             // define function
 
             showTable = (e) => {
-
-                // console.log("** showTable");
 
                 // ----- handle tab selection ----- //
 
@@ -3066,7 +3036,6 @@
 
                 // ----- render the table ----- //
                 
-                // console.log("renderTable [#tab-btn-table]");
                 renderTable();
 
                 updateChartPlotSize();
@@ -3083,8 +3052,6 @@
             // define function
 
             showMap = (e) => {
-
-                // console.log("** showMap");
 
                 // ----- handle tab selection ----- //
 
@@ -3209,8 +3176,6 @@
 
             showTrend = (e) => {
             
-                // console.log("** showTrend");
-
                 // ----- handle tab selection ----- //
 
                 // set hash to trend
@@ -3375,8 +3340,6 @@
             
             showLinks = (e) => {
                 
-                // console.log("** showLinks");
-
                 // ----- handle tab selection ----- //
 
                 // set hash to links
@@ -3394,8 +3357,6 @@
                 
 
                 // ----- allow chart to persist when changing tabs ----- //
-
-                // console.log("selectedLinksMeasure", selectedLinksMeasure);
 
                 if (!selectedLinksMeasure) {
 
@@ -3548,13 +3509,7 @@
 
             if (mapMeasures.length === 0) {
                 
-                // console.log("disable map");
-                // console.log("map hash", window.location.hash);
-                // console.log("> map switch", tabMapSelected && window.location.hash === '#display=map');
-
                 if (tabMapSelected && window.location.hash === '#display=map') {
-                    
-                    // console.log("switch to table");
                     
                     $('#tab-btn-table').tab('show');
                     showTable();
@@ -3570,16 +3525,10 @@
 
 
             const onlyOneTime = trendMeasures.every(m => m.AvailableTimes.length <= 1)
-            // console.log("onlyOneTime", onlyOneTime);
 
             if (trendMeasures.length === 0 || onlyOneTime) {
                 
-                // console.log("disable trend");
-                // console.log("trend hash", window.location.hash);
-
                 if (tabTrendSelected && window.location.hash === '#display=trend') {
-                    
-                    // console.log("switch to table");
                     
                     $('#tab-btn-table').tab('show');
                     showTable();
@@ -3599,14 +3548,8 @@
 
             if (linksMeasures.length === 0) {
                 
-                // console.log("disable links");
-                // console.log("links hash", window.location.hash);
-                // console.log("> links switch", tabLinksSelected && window.location.hash === '#display=links');
-
                 if (tabLinksSelected && window.location.hash === '#display=links') {
                     
-                    // console.log("switch to table");
-
                     $('#tab-btn-table').tab('show');
                     showTable();
                     
@@ -3632,40 +3575,34 @@
 
                 case 'display=summary':
                 case 'tab-table':
-                    // console.log("~ switch ~ summary");
-                    // showTable();
                     $('#tab-btn-table').tab('show');
                     window.dispatchEvent(hashchange);
                     break;
 
                 case 'display=map':
                 case 'tab-map':
-                    // console.log("~ switch ~ map");
-                    // showMap();
+                    
                     $('#tab-btn-map').tab('show');
                     window.dispatchEvent(hashchange);
                     break;
 
                 case 'display=trend':
                 case 'tab-trend':
-                    // console.log("~ switch ~ trend");
-                    // showTrend();
+                    
                     $('#tab-btn-trend').tab('show');
                     window.dispatchEvent(hashchange);
                     break;
 
                 case 'display=links':
                 case 'tab-links':
-                    // console.log("~ switch ~ links");
-                    // showLinks();
+                    
                     $('#tab-btn-links').tab('show');
                     window.dispatchEvent(hashchange);
                     break;
                     
                 default:
-                    // console.log("~ switch ~ default");
-                    // showTable();
-                    window.location.hash = 'display=summary';
+                    
+                    window.dispatchEvent(hashchange);
                     $('#tab-btn-table').tab('show');
             }
             
@@ -3742,37 +3679,29 @@
     // ===== table ===== /
 
     $('#tab-btn-table').on('click', e => {
-        
         $(e.currentTarget).tab('show');
         window.location.hash = 'display=summary'
-        
     })
 
     // ===== map ===== /
 
     $('#tab-btn-map').on('click', e => {
-        
         $(e.currentTarget).tab('show');
         window.location.hash = 'display=map'
-        
     })   
     
     // ===== trend ===== /
     
     $('#tab-btn-trend').on('click', e => {
-        
         $(e.currentTarget).tab('show');
         window.location.hash = 'display=trend'
-        
     })  
     
     // ===== links ===== /
 
     $('#tab-btn-links').on('click', e => {
-        
         $(e.currentTarget).tab('show');
         window.location.hash = 'display=links'
-        
     })   
 
     </script>
