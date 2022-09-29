@@ -1835,13 +1835,13 @@
 
         const loadIndicator = (this_indicatorId, dont_add_to_history) => {
 
-            
-
-            
-
             console.log("** loadIndicator");
 
+            currentHash = window.location.hash;
+            console.log("currentHash [loadIndicator]", currentHash);
+
             console.log("this_indicatorId", this_indicatorId);
+            console.log("window.history.state", window.history.state);
 
             // if indicatorId isn't given, use the first indicator from the dropdown list 
             //  (which is populated by Hugo reading the content frontmatter). 
@@ -2434,6 +2434,8 @@
         
         
         const updateTrendData = (e) => {
+
+            console.log("updateTrendData");
             
             
 
@@ -2552,7 +2554,7 @@
                 
             } else {
                 
-                renderTrendChart(filteredTrendData, defaultTrendMetadata);
+                renderTrendChart(filteredTrendData, measureMetadata);
                 updateChartPlotSize();
                 
             }
