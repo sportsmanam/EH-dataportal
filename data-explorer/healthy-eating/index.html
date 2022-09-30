@@ -1560,6 +1560,7 @@
 
         
         let currentHash;
+        let state;
 
         
 
@@ -1651,6 +1652,10 @@
                     
                     break;
             }
+
+            state = window.history.state;
+
+            console.log(">> state [hashchange]", state);
 
         });
 
@@ -1821,7 +1826,7 @@
             
             url.searchParams.set('id', parseFloat(indicatorId));
 
-            if (!dont_add_to_history && (window.history.state === null || window.history.state.id != indicatorId)) {
+            if (!dont_add_to_history && (window.history.state === null || state === null || window.history.state.id != indicatorId)) {
 
                 console.log("++++ add to history");
                 
