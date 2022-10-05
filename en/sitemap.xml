@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml"><url>
+    <loc>/about/</loc>
+    <lastmod>2022-09-30T08:15:58-04:00</lastmod></url><url>
+    <loc>/</loc>
+    <lastmod>2022-09-30T08:15:58-04:00</lastmod><xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/"
+                /><xhtml:link
+                rel="alternate"
+                hreflang="cn"
+                href="/cn/"
+                /><xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/"
+                /></url><url>
+    <loc>/about/partner/</loc>
+    <lastmod>2022-09-30T08:15:58-04:00</lastmod></url><url>
     <loc>/keywords/air-quality/</loc>
     <lastmod>2022-04-20T11:14:56-04:00</lastmod><xhtml:link
                 rel="alternate"
@@ -45,20 +63,6 @@
                 /></url><url>
     <loc>/keywords/emissions/</loc>
     <lastmod>2022-04-20T11:14:56-04:00</lastmod></url><url>
-    <loc>/</loc>
-    <lastmod>2022-04-20T11:14:56-04:00</lastmod><xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="/es/"
-                /><xhtml:link
-                rel="alternate"
-                hreflang="cn"
-                href="/cn/"
-                /><xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/"
-                /></url><url>
     <loc>/keywords/exhaust/</loc>
     <lastmod>2022-04-20T11:14:56-04:00</lastmod></url><url>
     <loc>/keywords/</loc>
@@ -300,8 +304,6 @@
     <loc>/keywords/weather/</loc>
     <lastmod>2022-01-10T12:34:38-04:00</lastmod></url><url>
     <loc>/about/about/</loc>
-    <lastmod>2021-11-24T13:30:21-05:00</lastmod></url><url>
-    <loc>/about/</loc>
     <lastmod>2021-11-24T13:30:21-05:00</lastmod></url><url>
     <loc>/about/jobs/</loc>
     <lastmod>2021-11-24T13:30:21-05:00</lastmod></url><url>
