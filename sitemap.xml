@@ -2,21 +2,21 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <sitemap>
-    <loc>https://a816-dohbesp.nyc.gov/IndicatorPublic/beta/en/sitemap.xml</loc>
+    <loc>https://nychealth.github.io/EH-dataportal/en/sitemap.xml</loc>
     
       <lastmod>2022-09-30T08:15:58-04:00</lastmod>
     
   </sitemap>
   
   <sitemap>
-    <loc>https://a816-dohbesp.nyc.gov/IndicatorPublic/beta/es/sitemap.xml</loc>
+    <loc>https://nychealth.github.io/EH-dataportal/es/sitemap.xml</loc>
     
       <lastmod>2021-02-08T08:07:31-04:00</lastmod>
     
   </sitemap>
   
   <sitemap>
-    <loc>https://a816-dohbesp.nyc.gov/IndicatorPublic/beta/cn/sitemap.xml</loc>
+    <loc>https://nychealth.github.io/EH-dataportal/cn/sitemap.xml</loc>
     
       <lastmod>2021-02-08T08:07:31-04:00</lastmod>
     
