@@ -23,7 +23,7 @@
     {
         "title": "Data Explorer",
         "seo_title": "Explore Data",
-        "seo_description": "Explore data on environments and health in NYC.",
+        "seo_description": "Explore datasets on environments and health in NYC.",
         "href": "/EH-dataportal/data-explorer",
         "content": "Get data sets on important environment and health topics for NYC View maps charts and more"
     },
