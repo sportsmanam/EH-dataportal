@@ -7669,6 +7669,9 @@ In this file:
 // I. Z-index
 
 */
+.fs-xs {
+  font-size: 0.7rem; }
+
 .fs-sm {
   font-size: 0.875rem; }
 
