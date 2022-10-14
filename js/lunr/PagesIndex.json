@@ -335,17 +335,32 @@
         ],
         "indicators": [
             {
-                "header": null,
+                "header": "Preterm birth",
+                "IndicatorID": [
+                    1,
+                    2
+                ]
+            },
+            {
+                "header": "Low birthweight",
+                "IndicatorID": [
+                    4,
+                    3
+                ]
+            },
+            {
+                "header": "Death",
                 "IndicatorID": [
                     5,
-                    4,
                     6,
                     7,
-                    8,
-                    1,
-                    9,
-                    3,
-                    2
+                    8
+                ]
+            },
+            {
+                "header": "Other",
+                "IndicatorID": [
+                    9
                 ]
             }
         ],
@@ -413,11 +428,11 @@
             {
                 "header": null,
                 "IndicatorID": [
+                    2039,
                     2037,
                     2035,
                     2033,
-                    2031,
-                    2039
+                    2031
                 ]
             }
         ],
@@ -444,13 +459,18 @@
         ],
         "indicators": [
             {
-                "header": null,
+                "header": "Incidents",
                 "IndicatorID": [
                     38,
-                    2168,
-                    2398,
+                    2168
+                ]
+            },
+            {
+                "header": "Poisoning",
+                "IndicatorID": [
                     2405,
-                    2406
+                    2406,
+                    2398
                 ]
             }
         ],
@@ -482,7 +502,12 @@
                 "IndicatorID": [
                     2338,
                     2020,
-                    2017,
+                    2017
+                ]
+            },
+            {
+                "header": "Smoking",
+                "IndicatorID": [
                     2019,
                     2021
                 ]
@@ -572,7 +597,7 @@
         "seo_title": "Cockroaches data for NYC",
         "seo_description": "Explore data, visualizations, and more.",
         "href": "data-explorer/cockroaches",
-        "content": "Cockroaches or just roaches are a common urban pest Though there are more than a thousand species of roaches just a few are found in NYC homes The most common are American Cockroaches typically found in moist basements and lower floors and German Cockroaches found anywhere inside homes Cockroaches like warm dark places such as toasters clocks microwave ovens walls and cabinets They need regular access to food and water to live and breed This site provides survey data on the prevalence of cockroaches in NYC homes Cockroaches and Health Besides causing annoyance and stress roaches are sources of allergens that can trigger asthma symptoms in sensitized individuals Cockroaches also contaminate food and may contribute to food borne illnesses The often indiscriminate use of hazardous chemicals to try to control cockroaches especially from sprays bombs and foggers causes many cases of poisonings each year in NYC About the Data and Indicators Estimates of numbers and percentages of adults reporting cockroaches inside their residences are measured using surveys The accuracy of survey data depends on the participants ability to recall and correctly report sightings of cockroaches Prevention Simple steps can be taken to safely control these pests Use caulk and plaster to seal holes and cracks in kitchen and bathroom walls floors ceilings and cabinets Store food in sealed containers and do not put out food for stray cats pigeons or squirrels Remove garbage daily from apartments and put garbage on the curb as close to pickup time as possible Use hard plastic or metal cans with tight fitting lids Wash and dry dishes after each use Use only safer pest control products such as boric acid gels and baits for cockroaches Apply boric acid where roaches are active but away from children Use behind cabinets under refrigerators and in cracks and crevices before they are sealed Place cockroach bait stations or apply gel bait in areas where you see roach droppings egg cases live or dead roaches Avoid use of foggers bombs and sprays Never use products called Tempo or Roach Chalk Key Messages In 2003 adults in nearly 30 of NYC households 874000 households reported having cockroaches in their home Tenants are entitled to safe and decent housing All building owners are required by law to provide homes free of pests and to employ maintenance practices that prevent and treat for the presence of roaches Chemicalonly approaches to pest control are generally insufficient to prevent and manage infestations The Health Department offers detailed guides on how to safely prevent and manage pests in the home"
+        "content": "Cockroaches are a common urban pest Though there are more than a thousand species of roaches just a few are found in NYC homes The most common are American Cockroaches typically found in moist basements and lower floors and German Cockroaches found anywhere inside homes Cockroaches like warm dark places such as toasters clocks microwave ovens walls and cabinets They need regular access to food and water to live and breed Cockroaches and Health Besides causing annoyance and stress roaches are sources of allergens that can trigger asthma symptoms in sensitized individuals Cockroaches also contaminate food and may contribute to food borne illnesses The often indiscriminate use of hazardous chemicals to try to control cockroaches especially from sprays bombs and foggers causes many cases of poisonings each year in NYC About the Data and Indicators Estimates of numbers and percentages of adults reporting cockroaches inside their residences are measured using surveys The accuracy of survey data depends on the participants ability to recall and correctly report sightings of cockroaches Prevention Simple steps can be taken to safely control these pests Use caulk and plaster to seal holes and cracks in kitchen and bathroom walls floors ceilings and cabinets Store food in sealed containers and do not put out food for stray cats pigeons or squirrels Remove garbage daily from apartments and put garbage on the curb as close to pickup time as possible Use hard plastic or metal cans with tight fitting lids Wash and dry dishes after each use Use only safer pest control products such as boric acid gels and baits for cockroaches Apply boric acid where roaches are active but away from children Use behind cabinets under refrigerators and in cracks and crevices before they are sealed Place cockroach bait stations or apply gel bait in areas where you see roach droppings egg cases live or dead roaches Avoid use of foggers bombs and sprays Never use products called Tempo or Roach Chalk Key Messages In 2003 adults in nearly 30 of NYC households 874000 households reported having cockroaches in their home Tenants are entitled to safe and decent housing All building owners are required by law to provide homes free of pests and to employ maintenance practices that prevent and treat for the presence of roaches Chemicalonly approaches to pest control are generally insufficient to prevent and manage infestations The Health Department offers detailed guides on how to safely prevent and manage pests in the home"
     },
     {
         "title": "Drinking water quality",
@@ -590,10 +615,10 @@
             {
                 "header": null,
                 "IndicatorID": [
-                    2207,
                     2044,
-                    2043,
-                    2041
+                    2041,
+                    2207,
+                    2043
                 ]
             }
         ],
@@ -665,11 +690,21 @@
             {
                 "header": null,
                 "IndicatorID": [
-                    2135,
-                    2136,
-                    2408,
-                    2409,
                     2403
+                ]
+            },
+            {
+                "header": "Emergency Department Visits",
+                "IndicatorID": [
+                    2135,
+                    2408
+                ]
+            },
+            {
+                "header": "Hospitalizations",
+                "IndicatorID": [
+                    2136,
+                    2409
                 ]
             },
             {
@@ -738,15 +773,25 @@
         ],
         "indicators": [
             {
-                "header": null,
+                "header": "Emergency Department Visits",
                 "IndicatorID": [
                     2122,
+                    2117
+                ]
+            },
+            {
+                "header": "Hospitalizations",
+                "IndicatorID": [
                     2124,
-                    2121,
-                    2117,
                     2120,
-                    2108,
                     2119
+                ]
+            },
+            {
+                "header": "Deaths",
+                "IndicatorID": [
+                    2121,
+                    2108
                 ]
             }
         ],
@@ -776,8 +821,8 @@
             {
                 "header": null,
                 "IndicatorID": [
-                    2097,
                     2389,
+                    2097,
                     2098
                 ]
             }
@@ -806,7 +851,7 @@
         ],
         "indicators": [
             {
-                "header": "Maintenance",
+                "header": null,
                 "IndicatorID": [
                     2396,
                     2395,
@@ -993,10 +1038,10 @@
             {
                 "header": null,
                 "IndicatorID": [
+                    2322,
                     5,
                     6,
-                    8,
-                    2322
+                    8
                 ]
             }
         ],
@@ -1103,10 +1148,10 @@
                 "header": null,
                 "IndicatorID": [
                     2060,
-                    2058,
                     2173,
-                    2059,
-                    2172
+                    2172,
+                    2058,
+                    2059
                 ]
             }
         ],
@@ -1316,10 +1361,15 @@
                 "IndicatorID": [
                     2236,
                     2237,
-                    2238,
+                    2238
+                ]
+            },
+            {
+                "header": "Traffic",
+                "IndicatorID": [
+                    2112,
                     2113,
-                    2114,
-                    2112
+                    2114
                 ]
             }
         ],
