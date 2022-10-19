@@ -7669,6 +7669,9 @@ In this file:
 // I. Z-index
 
 */
+.fs-xs {
+  font-size: 0.7rem; }
+
 .fs-sm {
   font-size: 0.875rem; }
 
@@ -10198,7 +10201,7 @@ span.th-sub {
 
 .related-reading {
   padding: 100px 0;
-  background-image: url("/EH-dataportal/images/report_bottom_background.jpg");
+  background-image: url("/IndicatorPublic/beta/images/report_bottom_background.jpg"), url("/EH-dataportal/images/report_bottom_background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   border-top: 4px solid #00923E; }

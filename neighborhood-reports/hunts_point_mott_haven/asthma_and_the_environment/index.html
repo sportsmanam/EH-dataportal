@@ -328,13 +328,13 @@
                   </div>
                 </div>
                 <div class="col-3">
-                  <button type="submit" class="btn-primary btn btn-block fs-sm">Go</button> 
+                  <button type="submit" class="btn-primary btn btn-block fs-sm">Go</button>
                 </div>
               </div>
-            </form> 
+            </form>
             <hr class="mt-4 mb-1">
 
-            <button onclick="getData()" class="btn btn-sm btn-block btn-report" target="_blank"><i class="fa fa-download mr-1"></i>Download Report Data <span class="sr-only">(opens in a new tab)</span></button>          
+            <button onclick="getData()" class="btn btn-sm btn-block btn-report" target="_blank"><i class="fa fa-download mr-1"></i>Download Report Data <span class="sr-only">(opens in a new tab)</span></button>
         </div>
         
 
@@ -346,7 +346,7 @@
       var downloadLoc = "https://raw.githubusercontent.com/nychealth/EHDP-data" + "/" + "production" + "/neighborhood-reports/data/" + data_download_loc
       var reportData;
       var download
-  
+
       
       function getData() {
         d3.csv(downloadLoc).then(data => {
@@ -370,8 +370,14 @@
           hiddenElement.target = '_blank';
           hiddenElement.download = 'NYC EH Data Portal - Neighborhood Report - ' + report_name + " - " + "Hunts Point - Mott Haven" + '.csv';
           hiddenElement.click();
+
+          gtag('event', 'file_download', {
+            'file_name': hiddenElement.download,
+            'file_extension': '.csv',
+            'link_text': 'Download Report Data'
+          });
         };
-  
+
     </script>
 
     <div class="col-12 col-lg-9 overflow-hidden" id="primary-content">
@@ -381,31 +387,31 @@
             <span class="sub-title">Hunts Point - Mott Haven</span>
           </h1>
           <p class="report-description">Asthma is a common lung disease and a leading cause of hospitalizations for children under 15 years old. This report provides a summary of asthma indicators by neighborhood. It also describes housing and neighborhood characteristics that can make asthma worse.</p>
-          
+
           <p><strong style="color:#00923E">Hunts Point - Mott Haven</strong> includes ZIP Codes: <span class="home-label">10454,10455,10459,10474</span>.</p>
-          
+
           <hr class="mt-4">
-          
+
           <div><div class="report-topic">
 
               <div class="topic-header">
                 <h2>Adult Asthma</h2>
                 <p>Age-adjusted rates per 10,000 residents (or percent where indicated)</p>
               </div>
-              
+
               <div class="container-fluid px-0 mb-4">
                 <div class="row indicator-headings mb-2">
                   <div class="col-6 col-md-5 pl-3">
                     Topic
                   </div>
                   <div class="col-6 col-md-4">
-                    
+
                     <div class="position-relative">
                       Comparison<br>
                       <span class="meta"> to NYC average</span></a>
                       <a href="#" data-toggle="modal" data-target="#modal-rank" class="info-modal"><i class="fas fa-question-circle fs-rg"></i></a>
                     </div>
-                    
+
                   </div>
                   <div class="d-none d-md-inline col-md-3">
                     Rank<br>
@@ -1012,20 +1018,20 @@
                 <h2>Child Asthma</h2>
                 <p>Rates per 10,000 residents, unless otherwise indicated.</p>
               </div>
-              
+
               <div class="container-fluid px-0 mb-4">
                 <div class="row indicator-headings mb-2">
                   <div class="col-6 col-md-5 pl-3">
                     Topic
                   </div>
                   <div class="col-6 col-md-4">
-                    
+
                     <div class="position-relative">
                       Comparison<br>
                       <span class="meta"> to NYC average</span></a>
                       <a href="#" data-toggle="modal" data-target="#modal-rank" class="info-modal"><i class="fas fa-question-circle fs-rg"></i></a>
                     </div>
-                    
+
                   </div>
                   <div class="d-none d-md-inline col-md-3">
                     Rank<br>
@@ -1632,20 +1638,20 @@
                 <h2>Health Burden: Fine Particles (PM2.5) </h2>
                 <p>Estimated health events attributable to PM2.5 exposures, (average annual rate per 100,000 residents)</p>
               </div>
-              
+
               <div class="container-fluid px-0 mb-4">
                 <div class="row indicator-headings mb-2">
                   <div class="col-6 col-md-5 pl-3">
                     Topic
                   </div>
                   <div class="col-6 col-md-4">
-                    
+
                     <div class="position-relative">
                       Comparison<br>
                       <span class="meta"> to NYC average</span></a>
                       <a href="#" data-toggle="modal" data-target="#modal-rank" class="info-modal"><i class="fas fa-question-circle fs-rg"></i></a>
                     </div>
-                    
+
                   </div>
                   <div class="d-none d-md-inline col-md-3">
                     Rank<br>
@@ -2055,20 +2061,20 @@
                 <h2>Health Burden: Ozone (O3)</h2>
                 <p>Estimated health events attributable to ozone (O3) exposures,(average annual rate per 100,000 residents), April through September</p>
               </div>
-              
+
               <div class="container-fluid px-0 mb-4">
                 <div class="row indicator-headings mb-2">
                   <div class="col-6 col-md-5 pl-3">
                     Topic
                   </div>
                   <div class="col-6 col-md-4">
-                    
+
                     <div class="position-relative">
                       Comparison<br>
                       <span class="meta"> to NYC average</span></a>
                       <a href="#" data-toggle="modal" data-target="#modal-rank" class="info-modal"><i class="fas fa-question-circle fs-rg"></i></a>
                     </div>
-                    
+
                   </div>
                   <div class="d-none d-md-inline col-md-3">
                     Rank<br>
@@ -2872,20 +2878,20 @@
                 <h2>Home Maintenance</h2>
                 <p>Percentage of homes with conditions that can affect asthma.</p>
               </div>
-              
+
               <div class="container-fluid px-0 mb-4">
                 <div class="row indicator-headings mb-2">
                   <div class="col-6 col-md-5 pl-3">
                     Topic
                   </div>
                   <div class="col-6 col-md-4">
-                    
+
                     <div class="position-relative">
                       Comparison<br>
                       <span class="meta"> to NYC average</span></a>
                       <a href="#" data-toggle="modal" data-target="#modal-rank" class="info-modal"><i class="fas fa-question-circle fs-rg"></i></a>
                     </div>
-                    
+
                   </div>
                   <div class="d-none d-md-inline col-md-3">
                     Rank<br>
@@ -3492,20 +3498,20 @@
                 <h2>Indoor Air Quality</h2>
                 <p>Percentage of homes with potential sources of allergens and pollutants that can make asthma symptoms worse.</p>
               </div>
-              
+
               <div class="container-fluid px-0 mb-4">
                 <div class="row indicator-headings mb-2">
                   <div class="col-6 col-md-5 pl-3">
                     Topic
                   </div>
                   <div class="col-6 col-md-4">
-                    
+
                     <div class="position-relative">
                       Comparison<br>
                       <span class="meta"> to NYC average</span></a>
                       <a href="#" data-toggle="modal" data-target="#modal-rank" class="info-modal"><i class="fas fa-question-circle fs-rg"></i></a>
                     </div>
-                    
+
                   </div>
                   <div class="d-none d-md-inline col-md-3">
                     Rank<br>
@@ -4506,20 +4512,20 @@
                 <h2>Outdoor Air Quality</h2>
                 <p>Outdoor pollutants that can worsen asthma symptoms.</p>
               </div>
-              
+
               <div class="container-fluid px-0 mb-4">
                 <div class="row indicator-headings mb-2">
                   <div class="col-6 col-md-5 pl-3">
                     Topic
                   </div>
                   <div class="col-6 col-md-4">
-                    
+
                     <div class="position-relative">
                       Comparison<br>
                       <span class="meta"> to NYC average</span></a>
                       <a href="#" data-toggle="modal" data-target="#modal-rank" class="info-modal"><i class="fas fa-question-circle fs-rg"></i></a>
                     </div>
-                    
+
                   </div>
                   <div class="d-none d-md-inline col-md-3">
                     Rank<br>
@@ -4929,20 +4935,20 @@
                 <h2>Social and Economic Risk Factors</h2>
                 <p>These indicators describe conditions that make a neighborhood more at-risk for asthma.</p>
               </div>
-              
+
               <div class="container-fluid px-0 mb-4">
                 <div class="row indicator-headings mb-2">
                   <div class="col-6 col-md-5 pl-3">
                     Topic
                   </div>
                   <div class="col-6 col-md-4">
-                    
+
                     <div class="position-relative">
                       Comparison<br>
                       <span class="meta"> to NYC average</span></a>
                       <a href="#" data-toggle="modal" data-target="#modal-rank" class="info-modal"><i class="fas fa-question-circle fs-rg"></i></a>
                     </div>
-                    
+
                   </div>
                   <div class="d-none d-md-inline col-md-3">
                     Rank<br>
@@ -5378,7 +5384,7 @@
         </div>
       </div>
       
-      
+
       <div class="col-lg">
         <div class="card bg-white text-black">
           <div class="card-header">More NYC neighborhood data</div>
@@ -5426,20 +5432,20 @@
       </div>
     </div>
   </div>
-</div><script type="text/javascript" 
-  src="https://a816-dohbesp.nyc.gov/IndicatorPublic/beta/js/accessible-autocomplete.min.a28dbcfe4538f42cec64a42e75429f873bd86641fea0b326b3a4800b59917b99b877d3715b07405ff36917ed9e3cc0873f7b58a65905ff508cd42e8c427a5f9a.js" 
-  integrity="sha512-oo28/kU49CzsZKQudUKfhzvYZkH&#43;oLMms6SAC1mRe5m4d9NxWwdAX/NpF&#43;2ePMCHP3tYplkF/1CM1C6MQnpfmg=="></script><script type="text/javascript" 
-  src="https://a816-dohbesp.nyc.gov/IndicatorPublic/beta/js/uhflist.10c2b591a4750dc88b44ccdfb848243cc23dfabde6f7b76834729f8120ce5a1f4e5bb395583d4aad36022534cda12434e555651518d29a93187c9953b391f8f4.js" 
+</div><script type="text/javascript"
+  src="https://a816-dohbesp.nyc.gov/IndicatorPublic/beta/js/accessible-autocomplete.min.a28dbcfe4538f42cec64a42e75429f873bd86641fea0b326b3a4800b59917b99b877d3715b07405ff36917ed9e3cc0873f7b58a65905ff508cd42e8c427a5f9a.js"
+  integrity="sha512-oo28/kU49CzsZKQudUKfhzvYZkH&#43;oLMms6SAC1mRe5m4d9NxWwdAX/NpF&#43;2ePMCHP3tYplkF/1CM1C6MQnpfmg=="></script><script type="text/javascript"
+  src="https://a816-dohbesp.nyc.gov/IndicatorPublic/beta/js/uhflist.10c2b591a4750dc88b44ccdfb848243cc23dfabde6f7b76834729f8120ce5a1f4e5bb395583d4aad36022534cda12434e555651518d29a93187c9953b391f8f4.js"
   integrity="sha512-EMK1kaR1DciLRMzfuEgkPMI9&#43;r3m97doNHKfgSDOWh9OW7OVWD1KrTYCJTTNoSQ05VVlFRjSmpMYfJlTs5H49A=="></script>
 
-<script type="text/javascript"> 
+<script type="text/javascript">
   
   function PopulateDropDownList() {
         
         
-        
+
          var ddlNeighborhoods = document.getElementById("last-neighborhood");
-        
+
          
          for (var i = 0; i < neighborhoods.length; i++) {
              var option = document.createElement("OPTION");
