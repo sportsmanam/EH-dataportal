@@ -328,13 +328,13 @@
                   </div>
                 </div>
                 <div class="col-3">
-                  <button type="submit" class="btn-primary btn btn-block fs-sm">Go</button> 
+                  <button type="submit" class="btn-primary btn btn-block fs-sm">Go</button>
                 </div>
               </div>
-            </form> 
+            </form>
             <hr class="mt-4 mb-1">
 
-            <button onclick="getData()" class="btn btn-sm btn-block btn-report" target="_blank"><i class="fa fa-download mr-1"></i>Download Report Data <span class="sr-only">(opens in a new tab)</span></button>          
+            <button onclick="getData()" class="btn btn-sm btn-block btn-report" target="_blank"><i class="fa fa-download mr-1"></i>Download Report Data <span class="sr-only">(opens in a new tab)</span></button>
         </div>
         
 
@@ -346,7 +346,7 @@
       var downloadLoc = "https://raw.githubusercontent.com/nychealth/EHDP-data" + "/" + "staging" + "/neighborhood-reports/data/" + data_download_loc
       var reportData;
       var download
-  
+
       
       function getData() {
         d3.csv(downloadLoc).then(data => {
@@ -370,8 +370,14 @@
           hiddenElement.target = '_blank';
           hiddenElement.download = 'NYC EH Data Portal - Neighborhood Report - ' + report_name + " - " + "Upper West Side" + '.csv';
           hiddenElement.click();
+
+          gtag('event', 'file_download', {
+            'file_name': hiddenElement.download,
+            'file_extension': '.csv',
+            'link_text': 'Download Report Data'
+          });
         };
-  
+
     </script>
 
     <div class="col-12 col-lg-9 overflow-hidden" id="primary-content">
@@ -381,31 +387,31 @@
             <span class="sub-title">Upper West Side</span>
           </h1>
           <p class="report-description">Air pollution is one of the most important environmental threats to urban populations and while all people are exposed, pollutant emissions, levels of exposure, and population vulnerability vary across neighborhoods. Exposures to common air pollutants have been linked to respiratory and cardiovascular diseases, cancers, and premature deaths.</p>
-          
+
           <p><strong style="color:#00923E">Upper West Side</strong> includes ZIP Codes: <span class="home-label">10023,10024,10025,10069</span>.</p>
-          
+
           <hr class="mt-4">
-          
+
           <div><div class="report-topic">
 
               <div class="topic-header">
                 <h2>Health Burden: Fine Particles (PM2.5) </h2>
                 <p>Estimated health events attributable to PM2.5 exposure over natural background levels in NYC (average annual rate per 100,000 residents).</p>
               </div>
-              
+
               <div class="container-fluid px-0 mb-4">
                 <div class="row indicator-headings mb-2">
                   <div class="col-6 col-md-5 pl-3">
                     Topic
                   </div>
                   <div class="col-6 col-md-4">
-                    
+
                     <div class="position-relative">
                       Comparison<br>
                       <span class="meta"> to NYC average</span></a>
                       <a href="#" data-toggle="modal" data-target="#modal-rank" class="info-modal"><i class="fas fa-question-circle fs-rg"></i></a>
                     </div>
-                    
+
                   </div>
                   <div class="d-none d-md-inline col-md-3">
                     Rank<br>
@@ -1406,20 +1412,20 @@
                 <h2>Health Burden: Ozone (O3)</h2>
                 <p>Estimated health events attributable to ozone exposure over natural background levels in NYC (average annual rate per 100,000 residents).</p>
               </div>
-              
+
               <div class="container-fluid px-0 mb-4">
                 <div class="row indicator-headings mb-2">
                   <div class="col-6 col-md-5 pl-3">
                     Topic
                   </div>
                   <div class="col-6 col-md-4">
-                    
+
                     <div class="position-relative">
                       Comparison<br>
                       <span class="meta"> to NYC average</span></a>
                       <a href="#" data-toggle="modal" data-target="#modal-rank" class="info-modal"><i class="fas fa-question-circle fs-rg"></i></a>
                     </div>
-                    
+
                   </div>
                   <div class="d-none d-md-inline col-md-3">
                     Rank<br>
@@ -2420,20 +2426,20 @@
                 <h2>Heating Fuel Emissions</h2>
                 <p>Estimated annual boiler emissions per km2 as of January 2015.  Calculated using heating fuel type on NYC boiler permits and estimates of boiler activity.</p>
               </div>
-              
+
               <div class="container-fluid px-0 mb-4">
                 <div class="row indicator-headings mb-2">
                   <div class="col-6 col-md-5 pl-3">
                     Topic
                   </div>
                   <div class="col-6 col-md-4">
-                    
+
                     <div class="position-relative">
                       Comparison<br>
                       <span class="meta"> to NYC average</span></a>
                       <a href="#" data-toggle="modal" data-target="#modal-rank" class="info-modal"><i class="fas fa-question-circle fs-rg"></i></a>
                     </div>
-                    
+
                   </div>
                   <div class="d-none d-md-inline col-md-3">
                     Rank<br>
@@ -3040,20 +3046,20 @@
                 <h2>Outdoor Air Pollutants</h2>
                 <p>Estimated annual average concentrations calculated from a model that used NYC Community Air Survey measurements.</p>
               </div>
-              
+
               <div class="container-fluid px-0 mb-4">
                 <div class="row indicator-headings mb-2">
                   <div class="col-6 col-md-5 pl-3">
                     Topic
                   </div>
                   <div class="col-6 col-md-4">
-                    
+
                     <div class="position-relative">
                       Comparison<br>
                       <span class="meta"> to NYC average</span></a>
                       <a href="#" data-toggle="modal" data-target="#modal-rank" class="info-modal"><i class="fas fa-question-circle fs-rg"></i></a>
                     </div>
-                    
+
                   </div>
                   <div class="d-none d-md-inline col-md-3">
                     Rank<br>
@@ -3463,20 +3469,20 @@
                 <h2>Outdoor Air Toxics</h2>
                 <p>Estimated annual average concentrations of known carcinogens that are part of a class of pollutants also known as hazardous air pollutants.</p>
               </div>
-              
+
               <div class="container-fluid px-0 mb-4">
                 <div class="row indicator-headings mb-2">
                   <div class="col-6 col-md-5 pl-3">
                     Topic
                   </div>
                   <div class="col-6 col-md-4">
-                    
+
                     <div class="position-relative">
                       Comparison<br>
                       <span class="meta"> to NYC average</span></a>
                       <a href="#" data-toggle="modal" data-target="#modal-rank" class="info-modal"><i class="fas fa-question-circle fs-rg"></i></a>
                     </div>
-                    
+
                   </div>
                   <div class="d-none d-md-inline col-md-3">
                     Rank<br>
@@ -3886,20 +3892,20 @@
                 <h2>Traffic Density</h2>
                 <p>Estimated millions of annual vehicle miles traveled per km2. Vehicle miles traveled is an indicator of emissions from automobile exhaust, brake wear and tire wear.</p>
               </div>
-              
+
               <div class="container-fluid px-0 mb-4">
                 <div class="row indicator-headings mb-2">
                   <div class="col-6 col-md-5 pl-3">
                     Topic
                   </div>
                   <div class="col-6 col-md-4">
-                    
+
                     <div class="position-relative">
                       Comparison<br>
                       <span class="meta"> to NYC average</span></a>
                       <a href="#" data-toggle="modal" data-target="#modal-rank" class="info-modal"><i class="fas fa-question-circle fs-rg"></i></a>
                     </div>
-                    
+
                   </div>
                   <div class="d-none d-md-inline col-md-3">
                     Rank<br>
@@ -4532,7 +4538,7 @@
         </div>
       </div>
       
-      
+
       <div class="col-lg">
         <div class="card bg-white text-black">
           <div class="card-header">More NYC neighborhood data</div>
@@ -4580,20 +4586,20 @@
       </div>
     </div>
   </div>
-</div><script type="text/javascript" 
-  src="http://gcappbesp307/IndicatorPublic/beta/js/accessible-autocomplete.min.a28dbcfe4538f42cec64a42e75429f873bd86641fea0b326b3a4800b59917b99b877d3715b07405ff36917ed9e3cc0873f7b58a65905ff508cd42e8c427a5f9a.js" 
-  integrity="sha512-oo28/kU49CzsZKQudUKfhzvYZkH&#43;oLMms6SAC1mRe5m4d9NxWwdAX/NpF&#43;2ePMCHP3tYplkF/1CM1C6MQnpfmg=="></script><script type="text/javascript" 
-  src="http://gcappbesp307/IndicatorPublic/beta/js/uhflist.10c2b591a4750dc88b44ccdfb848243cc23dfabde6f7b76834729f8120ce5a1f4e5bb395583d4aad36022534cda12434e555651518d29a93187c9953b391f8f4.js" 
+</div><script type="text/javascript"
+  src="http://gcappbesp307/IndicatorPublic/beta/js/accessible-autocomplete.min.a28dbcfe4538f42cec64a42e75429f873bd86641fea0b326b3a4800b59917b99b877d3715b07405ff36917ed9e3cc0873f7b58a65905ff508cd42e8c427a5f9a.js"
+  integrity="sha512-oo28/kU49CzsZKQudUKfhzvYZkH&#43;oLMms6SAC1mRe5m4d9NxWwdAX/NpF&#43;2ePMCHP3tYplkF/1CM1C6MQnpfmg=="></script><script type="text/javascript"
+  src="http://gcappbesp307/IndicatorPublic/beta/js/uhflist.10c2b591a4750dc88b44ccdfb848243cc23dfabde6f7b76834729f8120ce5a1f4e5bb395583d4aad36022534cda12434e555651518d29a93187c9953b391f8f4.js"
   integrity="sha512-EMK1kaR1DciLRMzfuEgkPMI9&#43;r3m97doNHKfgSDOWh9OW7OVWD1KrTYCJTTNoSQ05VVlFRjSmpMYfJlTs5H49A=="></script>
 
-<script type="text/javascript"> 
+<script type="text/javascript">
   
   function PopulateDropDownList() {
         
         
-        
+
          var ddlNeighborhoods = document.getElementById("last-neighborhood");
-        
+
          
          for (var i = 0; i < neighborhoods.length; i++) {
              var option = document.createElement("OPTION");

@@ -284,12 +284,12 @@
     #vg-tooltip-element table tr {
         border-bottom: 1px solid #d9d9d9;
         
-    }    
+    }
      
     #vg-tooltip-element table tr:last-child {
         border-bottom: 0px;
     }
-    
+
      
     #vg-tooltip-element table tr td.key {
         font-size: 12px!important;
@@ -298,8 +298,8 @@
         text-align: right;
         padding-right: 10px;
         width: max-content;
-    }    
-    
+    }
+
      
     #vg-tooltip-element table tr td.value {
         font-size: 12px!important;
@@ -308,112 +308,112 @@
         padding-left: 10px;
         width: max-content;
     }
-    
+
      
     #summary-table table thead tr th {
         font-size: 13px!important;
     }
-    
+
      
     [aria-expanded="false"]>.expanded,
     [aria-expanded="true"]>.collapsed {
         display: none;
     }
-    
+
     #truncate {
         display: block;
     }
-    
+
     #full {
         display: none;
     }
-    
+
     #expand-collapse {
         cursor: pointer;
     }
-    
+
     .show {
         display: block !important;
     }
-    
+
     .hide {
         display: none !important;
     }
-    
+
      
-    
+
     .dropdown-title {
         padding: 0.25rem 1.5rem;
     }
-    
+
     .indicator-measures h6 {
         margin-top: 0.5em;
     }
-    
+
     .dropdown-menu {
         z-index: 2000;
     }
-    
+
     div[aria-labelledby="dropdownMapMeasures"].show {
         display: flex !important;
     }
-    
+
      
-    
+
     .topic-text {
         font-size: 12px!important;
     }
-    
+
     .topic-text h3 {
         font-size: 16px;
         color: #656565;
     }
-    
+
     .topic-text p li {
         font-size: 12px;
     }
-    
+
      
-    
+
     button.text-info, button.text-info {
-        color: #841972 !important; 
+        color: #841972 !important;
     }
     button.text-info:hover, button.text-info:focus {
-        color: #ffffff !important; 
+        color: #ffffff !important;
     }
-    
+
      
-    
-    .btn-outline-primary ~ .dropdown-menu .dropdown-item.active, 
+
+    .btn-outline-primary ~ .dropdown-menu .dropdown-item.active,
     .btn-outline-primary ~ .dropdown-menu .dropdown-item:active {
         color: #ffffff;
         text-decoration: none;
-        background-color: #841972; 
+        background-color: #841972;
     }
-    
-    .btn-outline-secondary ~ .dropdown-menu .dropdown-item.active, 
+
+    .btn-outline-secondary ~ .dropdown-menu .dropdown-item.active,
     .btn-outline-secondary ~ .dropdown-menu .dropdown-item:active {
         color: #ffffff;
         text-decoration: none;
-        background-color: #181A7B; 
+        background-color: #181A7B;
     }
-    
+
      
-    
+
     .modal-backdrop.show {
-        opacity: 0.70; 
+        opacity: 0.70;
         background-color: #424242
     }
-    
+
     .de-modal-title {
         margin-bottom: 0;
         margin-top: 0;
-        line-height: 1; 
+        line-height: 1;
     }
-    
+
     .modal-header .close {
         padding: 0.5rem 0.5rem;
-        margin: -1rem -1rem -1rem auto; 
+        margin: -1rem -1rem -1rem auto;
     }
 
      
@@ -422,42 +422,88 @@
         accent-color: #656565;
     }
     
-</style>
+     
+
+     
+    ::-webkit-scrollbar {
+      width: 3px;
+    }
+    
+     
+    ::-webkit-scrollbar-track {
+      background: #ffffff; 
+    }
+     
+     
+    ::-webkit-scrollbar-thumb {
+      background: rgb(196, 196, 196); 
+    }
+    
+     
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgb(175, 175, 175); 
+    }
+
+    .overflow-fade-ind {
+        -webkit-mask-image: linear-gradient(180deg, #000 80%, transparent);
+        max-height: 32vmin; overflow-y:scroll; overflow-x:hidden;
+      }
+    
+    .overflow-fade-about {
+        -webkit-mask-image: linear-gradient(180deg, #000 80%, transparent);
+        max-height: 55vmin; overflow-y:scroll; overflow-x:hidden;
+      }
+
+      .vis-bucket {
+        clear:both;
+        width:100%; 
+        max-height: 75vmin; 
+    }
+    </style>
 
 <article class="container-fluid" id="skip-header-target">
     <div class="row">
-        <div class="col-md-11 mx-auto mt-4 mx-1">
+        <div class="col-12 mt-4">
             <nav aria-label="breadcrumb" class="mb-2">
                 <ul class="breadcrumb mr-auto">
                     <li class="breadcrumb-item"><a href="http://gcappbesp307/IndicatorPublic/beta/">Home</a></li>
                     <li class="breadcrumb-item"><a href="http://gcappbesp307/IndicatorPublic/beta//data-explorer/">Data Explorer</a></li>
-                    <li class="breadcrumb-item active"><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/economic-conditions/">Economic conditions</a></li>
-                    <li class="nav-item ml-auto">
+
+                    <li class="breadcrumb-item active"><strong><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/economic-conditions/">Economic conditions</a></strong></li>
+                    <li class="nav-item ml-auto d-none d-lg-block">
                         <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal"
                                 data-target="#topicModal">
                             Change topic
                         </button>
-
-                        
-
                     </li>
                 </ul>
             </nav>
+        </div>
+    </div>
 
-            <div class="row mb-1">
-                <div class="col mx-2 ml-0 pl-0 py-2">
-                    <h2>Economic conditions</h2>
-                </div>
+    <div class="row no-gutters px-0">
+        <div class="col-lg-4 col-md-12 pr-1">
+            
+            <button class="btn btn-sm btn-outline-light text-primary btn-block d-lg-none mt-0 mb-2" type="button" data-toggle="modal" data-target="#aboutModal">About Economic conditions</button>
+
+            <div class="d-none d-lg-block">
+            
+            <span class='home-label d-none d-md-block border-bottom mb-1 font-weight-bold'>Economic conditions datasets:</span>
+            <div style="border-left: 8px solid #00923E50; border-bottom: 1px dashed #00923E50">
+            <div id="indicatorButtons" class="pb-3 overflow-fade-ind">
+                    
+            </div>
+            </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-4">
 
-                    <div class="card content-card mb-2">
-                        <div class="card-content">
-                            <div class="card-body topic-text">
-                                <span class='home-label d-none d-md-block border-bottom mb-1'>About this topic</span>
-                                 <p>Social and economic conditions affect people’s health. These conditions (also called “social determinants of health”) are conditions that people may be born into or fall into over the course of their lives.</p>
+            
+            <div class="d-none d-lg-block">
+                <span class='home-label d-none d-md-block border-bottom mt-3 mb-1 font-weight-bold'>About Economic conditions</span>
+                <div class="card mb-2" style="border-left: 8px solid #00923E50; border-bottom: 1px dashed #00923E50">
+                    <div class="card-content">
+                        <div class="card-body overflow-fade-about topic-text pb-3">
+                                <p>Social and economic conditions affect people’s health. These conditions (also called “social determinants of health”) are conditions that people may be born into or fall into over the course of their lives.</p>
 <p>People tend to be healthier when they have access to:</p>
 <ul>
 <li>Economic and financial stability</li>
@@ -467,278 +513,245 @@
 </ul>
 <p>Access to these are shaped by local, national and global distribution of resources and power. When people are deprived of the resources they need to maintain health, they experience worse health outcomes. Discrimination based on race, or limited access to resources because of their cost, often results in <strong>health inequity</strong> – <strong>avoidable and unfair health outcomes.</strong></p>
 
-                            </div>
-
-                        </div>
-
-
-                    </div>
-                </div>
-
-                <div class="col-md-8">
-                    
-                    <button class="btn btn-sm btn-outline-light text-primary btn-block d-block d-md-none mt-0 mb-2"
-                            type="button" data-toggle="modal" data-target="#aboutModal">
-                        About Economic conditions
-                    </button>
-
-                    
-                    
-
-                    <div class="card content-card topic-text">
-                        <div class="card-content">
-                            <div class="card-body">
-                                <div class="dropdown">
-
-                                    <span class='home-label d-block'>Change dataset</span>
-            
-                                    <button class="btn btn-outline-primary btn-lg btn-block text-wrap text-info dropdown-toggle" type="button"
-                                            id="dropdownIndicator" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        More Economic conditions data
-                                    </button>
-
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownIndicator"
-                                         id="indicator-dropdown">
-                                        
-                                    </div>
-
-                                </div>
-            
-            
-                                <div style="clear:both" class="my-2">
-                                    <span class="home-label d-block">About <span id="indicatorTitle">Indicator</span></span>
-            
-                                    <p class="fs-sm indicator-description"></p>
-                                </div>
-                            </div>
-
-                        </div>
-
-
-                    </div>
-
-                    <div class="card content-card mt-1">
-                        <div class="card-content">
-                            <div class="card-body">
-                                <div class="mt-2">
-                                    <div class="nav nav-pills bg-white device-xs" role="tablist">
-            
-                                        <a class="nav-item nav-link flex-fill" id="tab-btn-table" href="#tab-table" data-toggle="pill"
-                                           aria-controls="tab-table" aria-selected="false" role="tab" style="text-decoration:none">
-                                            <i class="fas fa-list fa-fw"></i>
-                                            <div class="d-none d-lg-inline-block py-1">Summary</div>
-                                        </a>
-                
-                                        <a class="nav-item nav-link flex-fill" id="tab-btn-map" href="#tab-map" data-toggle="pill"
-                                           aria-controls="tab-map" aria-selected="false" role="tab" style="text-decoration:none">
-                                            <i class="fas fa-map-marker-alt fa-fw"></i>
-                                            <div class="d-none d-lg-inline-block py-1">Map</div>
-                                        </a>
-                
-                                        <a class="nav-item nav-link flex-fill" id="tab-btn-trend" href="#tab-trend" data-toggle="pill"
-                                           aria-controls="tab-trend" aria-selected="false" role="tab" style="text-decoration:none">
-                                            <i class="fas fa-chart-line fa-fw"></i>
-                                            <div class="d-none d-lg-inline-block py-1">Trend</div>
-                                        </a>
-                
-                
-                                        <a class="nav-item nav-link flex-fill" id="tab-btn-links" href="#tab-links" data-toggle="pill"
-                                           aria-controls="tab-links" aria-selected="false" aria-disabled="true" role="tab" style="text-decoration:none">
-                                            <i class="fas fa-link fa-fw"></i>
-                                            <div class="d-none d-lg-inline-block py-1">Links</div>
-                                        </a>
-                
-                                    </div>
-                
-                                    <div class="tab-content bg-white mb-4" id="tabs-01-content">
-                                        
-                                        <div class="tab-pane fade show active py-2" id="tab-table" aria-labelledby="tab-btn-table"
-                                             role="tabpanel">
-                                            <div class="float right mr-1">
-                                                <div class="dropdown">
-                                                    <button class="btn btn-sm float-right btn-outline-secondary dropdown-toggle"
-                                                            type="button" id="dropdownTableYear" data-toggle="dropdown"
-                                                            aria-haspopup="true" aria-expanded="false">Select year
-                                                    </button>
-                                                    <div class="dropdown-menu" aria-labelledby="dropdownTableYear">
-                                                        
-                                                    </div>
-                                                </div>
-                
-                                                <div class="dropdown">
-                                                    <button class="btn btn-sm mr-1 float-right btn-outline-secondary dropdown-toggle"
-                                                            type="button" id="dropdownTableGeo" data-toggle="dropdown"
-                                                            aria-haspopup="true" aria-expanded="false">Select geography
-                                                    </button>
-                                                    <div class="dropdown-menu" aria-labelledby="dropdownTableGeo">
-                                                        
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="mt-4">
-                                                <span id="summaryTitle" class="home-label"></span>
-                                                <div id="summary-table">
-                                                    
-                                                </div>
-                
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="tab-pane fade py-2" id="tab-map" aria-labelledby="tab-btn-map" role="tabpanel">
-                                            <div class="float right mr-1">
-                                                <div class="dropdown">
-                                                    <button class="btn btn-sm mr-1 float-right btn-outline-secondary dropdown-toggle"
-                                                            type="button" id="dropdownMapMeasures" data-toggle="dropdown"
-                                                            aria-haspopup="true" aria-expanded="false">Select
-                                                        measure
-                                                    </button>
-                                                    <div class="dropdown-menu" aria-labelledby="dropdownMapMeasures">
-                                                        
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="mt-4">
-                                                <span id="mapTitle" class="home-label"></span>
-                                                <div id="map" width=600 height=500
-                                                     style="width: 100%; min-height: 450px; margin-bottom: 50px;"></div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="tab-pane fade py-2" id="tab-trend" aria-labelledby="tab-btn-trend" role="tabpanel">
-                                            <div class="dropdown float-right mr-1">
-                                                <button class="btn btn-sm float-right btn-outline-secondary dropdown-toggle" type="button"
-                                                        id="dropdownTrendMeasures" data-toggle="dropdown" aria-haspopup="true"
-                                                        aria-expanded="false">Choose measure</button>
-                                                
-                                                <button class="btn btn-sm mr-1 float-right btn-outline-secondary btn-show-disparities"
-                                                        style="display:inline">Show Dispartites</button>
-                                                
-                                                <div class="dropdown-menu" aria-labelledby="dropdownTrendMeasures">
-                                                    
-                                                </div>
-                                            </div>
-                                            <div class="mt-4">
-                                                <span id="trendTitle" class="home-label"></span>
-                                                
-                                                <div id="trend" style="width: 100%; height: 550px"></div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="tab-pane fade py-2" id="tab-links" aria-labelledby="tab-btn-links" role="tabpanel">
-                                            <div class="dropdown float-right">
-                                                <button class="btn btn-sm float-right btn-outline-secondary dropdown-toggle" type="button"
-                                                        id="dropdownLinksMeasures" data-toggle="dropdown" aria-haspopup="true"
-                                                        aria-expanded="false">Select data to link
-                                                </button>
-                                                <div class="dropdown-menu" aria-labelledby="dropdownLinksMeasures">
-                                                    
-                                                </div>
-                                            </div>
-                                            <div class="mt-4" style="height: 550px; clear: both">
-                                                <span id="linksTitle" class="home-label"></span>
-                                                
-                                                <div id="links" style="width: 100%"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
-
-                    <hr class="my-2">
-
-                    <div class="row my-2">
-                        <div class="col-md-4">
-                            <div class="dropdown">
-                                <button class="btn btn-sm btn-outline-light text-secondary dropdown-toggle" 
-                                        type="button"
-                                        id="downloadDD" 
-                                        data-toggle="dropdown" 
-                                        aria-haspopup="true" 
-                                        aria-expanded="false"
-                                    ><i class="fa fa-download mr-1"></i>Download Data
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right" 
-                                     aria-labelledby="downloadDD">
-                                <a class="dropdown-item buttons-csv btn-outline-info" id="thisView">Current table view</a>
-                                <a class="dropdown-item buttons-csv btn-outline-info" id="allData">Full table for this indicator</a>
-                                <a class="dropdown-item buttons-csv btn-outline-info" id="rawData">Raw data for this indicator</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 ml-auto">
-                            <button class="btn float-right btn-sm btn-outline-light text-secondary"
-                                    onclick="copyCitation()" id="citeButton"><i class="fas fa-copy mr-1"></i>Copy
-                                citation</button>
-                            <input type="text" id="citeText" value=""
-                                   style="display:inline-block; width:100%; height: 40px; font-size: 14px;"
-                                   class="my-2 sr-only">
-                        </div>
-                    </div>
-
-                    <div class="row mb-4">
-                        <div class="col-md-6 col-xs-12">
-                            <div class="btn-toggle">
-                                <button class="btn btn-block btn-md btn-outline-light text-secondary"
-                                        data-toggle="collapse" data-target="#toggle-target" aria-expanded="false"
-                                        aria-controls="toggle-target">
-                                    <span class="title"><i class="fas fa-info-circle mr-1"></i>About the Measures</span>
-                                </button>
-                            </div>
-
-                            <div class="collapse p-2" id="toggle-target" role="navigation">
-                                <p class="fs-sm indicator-measures">Insert from `How_Calculated.` Vivamus consequat id
-                                    nibh et tempor. Cras
-                                    augue enim, iaculis quis purus sit amet, interdum accumsan neque. In blandit varius
-                                    blandit. Praesent
-                                    vel leo ac urna dapibus faucibus. Donec sed luctus neque. Nulla porta finibus elit,
-                                    luctus eleifend
-                                    felis ornare vitae. Ut consequat laoreet libero eu venenatis.</p>
-
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-xs-12">
-                            <div class="btn-toggle">
-                                <button class="btn btn-block btn-md btn-outline-light text-secondary"
-                                        data-toggle="collapse" data-target="#toggle-target-2" aria-expanded="false"
-                                        aria-controls="toggle-target-2">
-                                    <span class="title"><i class="fas fa-database mr-1"></i>Data sources</span>
-                                </button>
-                            </div>
-
-                            <div class="collapse p-2" id="toggle-target-2" role="navigation">
-                                <p class="fs-sm indicator-sources">Insert from `Sources.` Pellentesque blandit ante vel
-                                    augue mattis, lacinia
-                                    tincidunt velit feugiat. Class aptent taciti sociosqu ad litora torquent per conubia
-                                    nostra, per inceptos
-                                    himenaeos. Donec nulla nisl, sollicitudin et volutpat at, finibus ac quam.
-                                    Pellentesque faucibus turpis
-                                    egestas tellus luctus, nec porttitor diam bibendum. Sed mauris augue, tempus id urna
-                                    sit amet, hendrerit
-                                    blandit libero. Cras sit amet luctus nunc, nec mattis leo. </p>
-
-                            </div>
-                        </div>
-
-                    </div>
-
-                    
-                    <div class="row mb-4">
-                        <div class="col">
-                                <p style="font-size:10px">
-                                    <em>* Estimate is based on small numbers so should be interpreted with caution.<br>
-                                        ** Estimate is suppressed due to insufficient data.</em>
-                                    </p>
-    
-                        </div>
-                    </div>
-
                 </div>
             </div>
 
+            
+            <div class="d-none d-lg-block p-2 borderbox mt-2"><div class="keywords"><strong>Keywords:</strong> <br><a href="http://gcappbesp307/IndicatorPublic/beta/keywords/social">social</a> |&#32;<a href="http://gcappbesp307/IndicatorPublic/beta/keywords/social-justice">social justice</a> |&#32;<a href="http://gcappbesp307/IndicatorPublic/beta/keywords/justice">justice</a> |&#32;<a href="http://gcappbesp307/IndicatorPublic/beta/keywords/injustice">injustice</a> |&#32;<a href="http://gcappbesp307/IndicatorPublic/beta/keywords/social-conditions">social conditions</a> |&#32;<a href="http://gcappbesp307/IndicatorPublic/beta/keywords/poverty">poverty</a> |&#32;<a href="http://gcappbesp307/IndicatorPublic/beta/keywords/racism">racism</a> |&#32;<a href="http://gcappbesp307/IndicatorPublic/beta/keywords/housing">housing</a> |&#32;<a href="http://gcappbesp307/IndicatorPublic/beta/keywords/health">health</a> |&#32;</div>
+</div>
         </div>
+
+        <div class="col-lg-7 mx-auto col-md-12">
+
+                
+                <div class="dropdown d-lg-none">
+                    <span class='home-label'>Change dataset</span>
+                    <button class="btn btn-outline-primary btn-lg btn-block text-wrap text-info dropdown-toggle" type="button"
+                            id="dropdownIndicator" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        More Economic conditions data
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownIndicator"
+                         id="indicator-dropdown">
+                        
+                    </div>
+                </div>
+
+                 
+                <div style="clear:both; border-left: 8px solid #00923E50;" class="px-1">
+                    <span class="border-bottom mt-2 font-weight-bold d-none d-lg-block"><span id="indicatorTitle">Loading data...</span></span>
+
+                    <p class="fs-sm indicator-description">Just a moment...</p>
+                </div>
+
+                
+                <div class="mt-3">
+                    
+                    <div class="nav nav-pills bg-white device-xs" role="tablist">
+
+                        <a class="nav-item nav-link flex-fill" id="tab-btn-table" href="#tab-table" data-toggle="pill"
+                            aria-controls="tab-table" aria-selected="false" role="tab" style="text-decoration:none">
+                            <i class="fas fa-list fa-fw"></i>
+                            <div class="d-none d-lg-inline-block">Summary</div>
+                        </a>
+
+                        <a class="nav-item nav-link flex-fill" id="tab-btn-map" href="#tab-map" data-toggle="pill"
+                            aria-controls="tab-map" aria-selected="false" role="tab" style="text-decoration:none">
+                            <i class="fas fa-map-marker-alt fa-fw"></i>
+                            <div class="d-none d-lg-inline-block">Map</div>
+                        </a>
+
+                        <a class="nav-item nav-link flex-fill" id="tab-btn-trend" href="#tab-trend" data-toggle="pill"
+                            aria-controls="tab-trend" aria-selected="false" role="tab" style="text-decoration:none">
+                            <i class="fas fa-chart-line fa-fw"></i>
+                            <div class="d-none d-lg-inline-block">Trend</div>
+                        </a>
+
+
+                        <a class="nav-item nav-link flex-fill" id="tab-btn-links" href="#tab-links" data-toggle="pill"
+                            aria-controls="tab-links" aria-selected="false" aria-disabled="true" role="tab" style="text-decoration:none">
+                            <i class="fas fa-link fa-fw"></i>
+                            <div class="d-none d-lg-inline-block">Links</div>
+                        </a>
+
+                    </div>
+
+
+                    
+                    <div class="tab-content bg-white mb-4" id="tabs-01-content">
+                        
+                        <div class="tab-pane fade show active py-2" id="tab-table" aria-labelledby="tab-btn-table"
+                                role="tabpanel">
+                                <div class="dropdown">
+                                    <button class="btn btn-sm float-right btn-outline-secondary dropdown-toggle"
+                                            type="button" id="dropdownTableYear" data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">Year
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownTableYear">
+                                        
+                                    </div>
+                                </div>
+
+                                <div class="dropdown">
+                                    <button class="btn btn-sm mr-1 float-right btn-outline-secondary dropdown-toggle"
+                                            type="button" id="dropdownTableGeo" data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">Geography
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownTableGeo">
+                                        
+                                    </div>
+                                </div>
+
+                                <span id="summaryTitle" class="home-label border-bottom"></span>
+                                <div id="summary-table" class="" style="height:550px!important">
+                                    
+                                </div>
+                        </div>
+
+                        
+                        <div class="tab-pane fade py-2" id="tab-map" aria-labelledby="tab-btn-map" role="tabpanel">
+                                <div class="dropdown">
+                                    <button class="btn btn-sm float-right btn-outline-secondary dropdown-toggle"
+                                            type="button" id="dropdownMapMeasures" data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                        Measure
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMapMeasures">
+                                        
+                                    </div>
+                                </div>
+
+                                <span id="mapTitle" class="home-label  border-bottom"></span>
+                                <div id="map" class="vis-bucket"></div>
+                        </div>
+                        
+                        
+                        <div class="tab-pane fade py-2" id="tab-trend" aria-labelledby="tab-btn-trend" role="tabpanel">
+                            <div class="dropdown float-right">
+                                <button class="btn btn-sm float-right btn-outline-secondary dropdown-toggle" type="button"
+                                        id="dropdownTrendMeasures" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">Measure</button>
+                                
+                                <button class="btn btn-sm mr-1 float-right btn-outline-secondary btn-show-disparities d-none"
+                                        style="display:inline">Dispartites</button>
+                                
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownTrendMeasures">
+                                    
+                                </div>
+                            </div>
+                                <span id="trendTitle" class="home-label  border-bottom"></span>
+                                
+                                <div id="trend" class="vis-bucket"></div>
+                        </div>
+
+                        
+                        <div class="tab-pane fade py-2" id="tab-links" aria-labelledby="tab-btn-links" role="tabpanel">
+                            <div class="dropdown float-right">
+                                <button class="btn btn-sm float-right btn-outline-secondary dropdown-toggle" type="button"
+                                        id="dropdownLinksMeasures" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">Select link
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownLinksMeasures">
+                                    
+                                </div>
+                            </div>
+                                <span id="linksTitle" class="home-label border-bottom">Explore correlation</span>
+                                
+                                <div id="links" class="vis-bucket"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <hr>
+
+                
+
+                <div class="row my-2">
+                    <div class="col-md-4 col-sm-12">
+                        <div class="dropdown">
+                            <button class="btn btn-sm btn-block btn-outline-light text-secondary dropdown-toggle mb-1" 
+                                    type="button"
+                                    id="downloadDD" 
+                                    data-toggle="dropdown" 
+                                    aria-haspopup="true" 
+                                    aria-expanded="false"
+                                ><i class="fa fa-download mr-1"></i>Download Data
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right" 
+                                 aria-labelledby="downloadDD">
+                            <a class="dropdown-item buttons-csv btn-outline-info" id="thisView">Current table view</a>
+                            <a class="dropdown-item buttons-csv btn-outline-info" id="allData">Full table for this indicator</a>
+                            <a class="dropdown-item buttons-csv btn-outline-info" id="rawData">Raw data for this indicator</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-12">
+                        <a href="https://github.com/nychealth/EHDP-data/tree/production/indicators"><button class="btn btn-sm btn-block btn-outline-light text-secondary mb-1">
+                            <i class="fas fa-external-link-alt mr-1"></i>Full data Github repo
+                        </button></a>
+                    </div>
+
+                    <div class="col-md-4 col-sm-12">
+                        <button class="btn float-right btn-sm btn-block btn-outline-light text-secondary mb-1"
+                                onclick="copyCitation()" id="citeButton"><i class="fas fa-copy mr-1"></i>Copy
+                            citation</button>
+                        <input type="text" id="citeText" value=""
+                               style="display:inline-block; width:100%; height: 40px; font-size: 14px;"
+                               class="my-2 sr-only">
+                    </div>
+                </div>
+                
+                
+                <div class="row mb-2">
+                    <div class="col-md-6 col-xs-12">
+                        <div class="btn-toggle">
+                            <button class="btn btn-block btn-md btn-outline-light text-secondary mb-1"
+                                    data-toggle="collapse" data-target="#toggle-target" aria-expanded="false"
+                                    aria-controls="toggle-target">
+                                <span class="title"><i class="fas fa-info-circle mr-1"></i>About the Measures</span>
+                            </button>
+                        </div>
+
+                        <div class="collapse p-2 border" id="toggle-target" role="navigation">
+                            <p class="fs-sm indicator-measures">Insert from `How_Calculated.` Vivamus consequat id
+                                nibh et tempor. Cras
+                                augue enim, iaculis quis purus sit amet, interdum accumsan neque. In blandit varius
+                                blandit. Praesent
+                                vel leo ac urna dapibus faucibus. Donec sed luctus neque. Nulla porta finibus elit,
+                                luctus eleifend
+                                felis ornare vitae. Ut consequat laoreet libero eu venenatis.</p>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        <div class="btn-toggle">
+                            <button class="btn btn-block btn-md btn-outline-light text-secondary mb-1"
+                                    data-toggle="collapse" data-target="#toggle-target-2" aria-expanded="false"
+                                    aria-controls="toggle-target-2">
+                                <span class="title"><i class="fas fa-database mr-1"></i>Data sources</span>
+                            </button>
+                        </div>
+
+                        <div class="collapse p-2 border" id="toggle-target-2" role="navigation">
+                            <p class="fs-sm indicator-sources">Insert from `Sources.` Pellentesque blandit ante vel
+                                augue mattis, lacinia
+                                tincidunt velit feugiat. Class aptent taciti sociosqu ad litora torquent per conubia
+                                nostra, per inceptos
+                                himenaeos. Donec nulla nisl, sollicitudin et volutpat at, finibus ac quam.
+                                Pellentesque faucibus turpis
+                                egestas tellus luctus, nec porttitor diam bibendum. Sed mauris augue, tempus id urna
+                                sit amet, hendrerit
+                                blandit libero. Cras sit amet luctus nunc, nec mattis leo. </p>
+
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+
     </div>
 
     
@@ -1273,117 +1286,155 @@
                     <div class="card-body bg-white">
                         <ul>
                             
-                                <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/healthy-eating/">Healthy eating</a>
-                                </li>
-                            
+                                
                                 <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/active-design/">Active design</a>
                                 </li>
                             
+                                
                                 <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/air-quality/">Air quality</a>
                                 </li>
                             
+                                
                                 <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/alcohol-use/">Alcohol access and use</a>
                                 </li>
                             
+                                
                                 <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/all-data/">All data sets</a>
                                 </li>
                             
+                                
                                 <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/asthma/">Asthma</a>
                                 </li>
                             
+                                
                                 <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/asthma-triggers/">Asthma triggers at home</a>
                                 </li>
                             
+                                
                                 <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/bed-bugs/">Bed bugs</a>
                                 </li>
                             
+                                
                                 <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/birth-defects/">Birth defects</a>
                                 </li>
                             
+                                
                                 <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/birth-outcomes/">Birth outcomes</a>
                                 </li>
                             
+                                
                                 <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/cancer/">Cancer</a>
                                 </li>
                             
+                                
                                 <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/cancers-in-children/">Cancers in children</a>
                                 </li>
                             
+                                
                                 <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/carbon-monoxide-incidents/">Carbon monoxide</a>
                                 </li>
                             
+                                
                                 <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/cigarette-smoke/">Cigarette smoke</a>
                                 </li>
                             
+                                
                                 <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/climate/">Climate</a>
                                 </li>
                             
+                                
                                 <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/cockroaches/">Cockroaches</a>
                                 </li>
                             
+                                
                                 <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/drinking-water-quality/">Drinking water quality</a>
                                 </li>
                             
+                                
                                 <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/economic-conditions/">Economic conditions</a>
                                 </li>
                             
+                                
                                 <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/falls-among-older-adults/">Falls among older adults</a>
                                 </li>
                             
+                                
                                 <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/health-care/">Health care</a>
                                 </li>
                             
+                                
                                 <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/health-impacts-of-air-pollution/">Health impacts of air pollution</a>
                                 </li>
                             
+                                
+                                <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/healthy-eating/">Healthy eating</a>
+                                </li>
+                            
+                                
                                 <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/housing-maintenance/">Housing maintenance</a>
                                 </li>
                             
+                                
                                 <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/housing-safety/">Housing safety</a>
                                 </li>
                             
+                                
                                 <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/housing-stability/">Housing stability</a>
                                 </li>
                             
+                                
                                 <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/lead/">Lead poisoning</a>
                                 </li>
                             
+                                
                                 <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/mice-and-rats/">Mice and rats</a>
                                 </li>
                             
+                                
                                 <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/mortality/">Mortality</a>
                                 </li>
                             
+                                
                                 <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/overweight/">Overweight</a>
                                 </li>
                             
+                                
                                 <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/pesticides/">Pesticides</a>
                                 </li>
                             
+                                
                                 <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/physical-activity/">Physical activity</a>
                                 </li>
                             
+                                
                                 <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/restaurant-food-safety/">Restaurant food safety</a>
                                 </li>
                             
+                                
                                 <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/social-conditions/">Social conditions</a>
                                 </li>
                             
+                                
                                 <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/transportation-related-injuries/">Transportation-related injuries</a>
                                 </li>
                             
+                                
                                 <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/vector-borne-disease/">Vector-borne disease</a>
                                 </li>
                             
+                                
                                 <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/violence/">Violence</a>
                                 </li>
                             
+                                
                                 <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/walking-driving-and-cycling/">Walking, driving, and cycling</a>
                                 </li>
                             
+                                
                                 <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/weather-related-illness/">Weather-related illness</a>
                                 </li>
                             
+                                
                                 <li><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/worker-health/">Worker health</a>
                                 </li>
                             
@@ -1403,7 +1454,7 @@
 
 
 <script>
-    var subtopic_indicators = {"active-design":{"IndicatorID":[2390,2181,2158,2157,2143,2388,2391,2389,2133],"subtopic_name":"Active design"},"air-quality":{"IndicatorID":[92,57,55,2024,2023,2028,2025,2027,2026],"subtopic_name":"Air quality"},"alcohol-use":{"IndicatorID":[2049,2057,2050,2051,2056,2055],"subtopic_name":"Alcohol access and use"},"asthma":{"IndicatorID":[2380,2384,2048,2378,2379,2383,2382,2387,84,2381,2386,18,2392,2147,2149,2339],"subtopic_name":"Asthma"},"asthma-triggers":{"IndicatorID":[2101,25,2393,2394,107,48],"subtopic_name":"Asthma triggers at home"},"bed-bugs":{"IndicatorID":[2030],"subtopic_name":"Bed bugs"},"birth-defects":{"IndicatorID":[26,30,31,36,37,33,28,32,35,27,101,29,34],"subtopic_name":"Birth defects"},"birth-outcomes":{"IndicatorID":[5,4,6,7,8,1,9,3,2],"subtopic_name":"Birth outcomes"},"cancer":{"IndicatorID":[74,2096,66,60,770,2077,2087,2088,73,2089,63,2090,2095,71,2091,64,690],"subtopic_name":"Cancer"},"cancers-in-children":{"IndicatorID":[2037,2035,2033,2031,2039],"subtopic_name":"Cancers in children"},"carbon-monoxide-incidents":{"IndicatorID":[38,2168,2398,2405,2406],"subtopic_name":"Carbon monoxide"},"cigarette-smoke":{"IndicatorID":[2338,2020,2017,2019,2021,25],"subtopic_name":"Cigarette smoke"},"climate":{"IndicatorID":[2141,2143,2084,2191,2411,2155,2104,2185,2377],"subtopic_name":"Climate"},"cockroaches":{"IndicatorID":[22,2393,107],"subtopic_name":"Cockroaches"},"drinking-water-quality":{"IndicatorID":[2207,2044,2043,2041],"subtopic_name":"Drinking water quality"},"economic-conditions":{"IndicatorID":[103,2176,2337,2132,2317,2073,17,2336,15,2365],"subtopic_name":"Economic conditions"},"falls-among-older-adults":{"IndicatorID":[2135,2136,2408,2409,2403,2188],"subtopic_name":"Falls among older adults"},"health-care":{"IndicatorID":[2151,2132,2401,2232],"subtopic_name":"Health care"},"health-impacts-of-air-pollution":{"IndicatorID":[2122,2124,2121,2117,2120,2108,2119],"subtopic_name":"Health impacts of air pollution"},"healthy-eating":{"IndicatorID":[2097,2389,2098],"subtopic_name":"Healthy eating"},"housing-maintenance":{"IndicatorID":[2396,2395,46,47,45,40,42,41,2399,2179],"subtopic_name":"Housing maintenance"},"housing-safety":{"IndicatorID":[2188,2185,2377],"subtopic_name":"Housing safety"},"housing-stability":{"IndicatorID":[2365,15,17,2336],"subtopic_name":"Housing stability"},"lead":{"IndicatorID":[2189,2184,2216,2176,2209,41,16],"subtopic_name":"Lead poisoning"},"mice-and-rats":{"IndicatorID":[2394,2105,24,48],"subtopic_name":"Mice and rats"},"mortality":{"IndicatorID":[5,6,8,2322],"subtopic_name":"Mortality"},"overweight":{"IndicatorID":[2063,2064,2061,2062],"subtopic_name":"Overweight"},"pesticides":{"IndicatorID":[2235,91,100,2312,96,94,93,99,97,98,102,2366,2364,2367,2368,2369,2374,2370],"subtopic_name":"Pesticides"},"physical-activity":{"IndicatorID":[2060,2058,2173,2059,2172],"subtopic_name":"Physical activity"},"restaurant-food-safety":{"IndicatorID":[2065],"subtopic_name":"Restaurant food safety"},"social-conditions":{"IndicatorID":[2325,2145,14,2334,2317,2335,2146,2323],"subtopic_name":"Social conditions"},"transportation-related-injuries":{"IndicatorID":[2092,2086,2094,2093],"subtopic_name":"Transportation-related injuries"},"vector-borne-disease":{"IndicatorID":[2218,2340],"subtopic_name":"Vector-borne disease"},"violence":{"IndicatorID":[2400,2375],"subtopic_name":"Violence"},"walking-driving-and-cycling":{"IndicatorID":[2133,2172,2058,2173,2059,2236,2237,2238,2113,2114,2112],"subtopic_name":"Walking, driving, and cycling"},"weather-related-illness":{"IndicatorID":[2376,2175,2174,2410,2084,2074,2075,2076,2191,2411],"subtopic_name":"Weather-related illness"},"worker-health":{"IndicatorID":[2209,2211,2208,2210,2214,2239,2215],"subtopic_name":"Worker health"}};
+    var subtopic_indicators = {"active-design":{"IndicatorID":[2390,2181,2158,2157,2143,2388,2391,2389,2133],"subtopic_name":"Active design"},"air-quality":{"IndicatorID":[92,57,55,2024,2023,2028,2025,2027,2026],"subtopic_name":"Air quality"},"alcohol-use":{"IndicatorID":[2049,2057,2050,2051,2056,2055],"subtopic_name":"Alcohol access and use"},"asthma":{"IndicatorID":[2380,2384,2048,2378,2379,2383,2382,2387,84,2381,2386,18,2392,2147,2149,2339],"subtopic_name":"Asthma"},"asthma-triggers":{"IndicatorID":[2101,25,2393,2394,107,48],"subtopic_name":"Asthma triggers at home"},"bed-bugs":{"IndicatorID":[2030],"subtopic_name":"Bed bugs"},"birth-defects":{"IndicatorID":[26,30,31,36,37,33,28,32,35,27,101,29,34],"subtopic_name":"Birth defects"},"birth-outcomes":{"IndicatorID":[1,2,4,3,5,6,7,8,9],"subtopic_name":"Birth outcomes"},"cancer":{"IndicatorID":[74,2096,66,60,770,2077,2087,2088,73,2089,63,2090,2095,71,2091,64,690],"subtopic_name":"Cancer"},"cancers-in-children":{"IndicatorID":[2039,2037,2035,2033,2031],"subtopic_name":"Cancers in children"},"carbon-monoxide-incidents":{"IndicatorID":[38,2168,2405,2406,2398],"subtopic_name":"Carbon monoxide"},"cigarette-smoke":{"IndicatorID":[2338,2020,2017,2019,2021,25],"subtopic_name":"Cigarette smoke"},"climate":{"IndicatorID":[2141,2143,2084,2191,2411,2155,2104,2185,2377],"subtopic_name":"Climate"},"cockroaches":{"IndicatorID":[22,2393,107],"subtopic_name":"Cockroaches"},"drinking-water-quality":{"IndicatorID":[2044,2041,2207,2043],"subtopic_name":"Drinking water quality"},"economic-conditions":{"IndicatorID":[103,2176,2337,2132,2317,2073,17,2336,15,2365],"subtopic_name":"Economic conditions"},"falls-among-older-adults":{"IndicatorID":[2403,2135,2408,2136,2409,2188],"subtopic_name":"Falls among older adults"},"health-care":{"IndicatorID":[2151,2132,2401,2232],"subtopic_name":"Health care"},"health-impacts-of-air-pollution":{"IndicatorID":[2122,2117,2124,2120,2119,2121,2108],"subtopic_name":"Health impacts of air pollution"},"healthy-eating":{"IndicatorID":[2389,2097,2098],"subtopic_name":"Healthy eating"},"housing-maintenance":{"IndicatorID":[2396,2395,46,47,45,40,42,41,2399,2179],"subtopic_name":"Housing maintenance"},"housing-safety":{"IndicatorID":[2188,2185,2377],"subtopic_name":"Housing safety"},"housing-stability":{"IndicatorID":[2365,15,17,2336],"subtopic_name":"Housing stability"},"lead":{"IndicatorID":[2189,2184,2216,2176,2209,41,16],"subtopic_name":"Lead poisoning"},"mice-and-rats":{"IndicatorID":[2394,2105,24,48],"subtopic_name":"Mice and rats"},"mortality":{"IndicatorID":[2322,5,6,8],"subtopic_name":"Mortality"},"overweight":{"IndicatorID":[2063,2064,2061,2062],"subtopic_name":"Overweight"},"pesticides":{"IndicatorID":[2235,91,100,2312,96,94,93,99,97,98,102,2366,2364,2367,2368,2369,2374,2370],"subtopic_name":"Pesticides"},"physical-activity":{"IndicatorID":[2060,2173,2172,2058,2059],"subtopic_name":"Physical activity"},"restaurant-food-safety":{"IndicatorID":[2065],"subtopic_name":"Restaurant food safety"},"social-conditions":{"IndicatorID":[2325,2145,14,2334,2317,2335,2146,2323],"subtopic_name":"Social conditions"},"transportation-related-injuries":{"IndicatorID":[2092,2086,2094,2093],"subtopic_name":"Transportation-related injuries"},"vector-borne-disease":{"IndicatorID":[2218,2340],"subtopic_name":"Vector-borne disease"},"violence":{"IndicatorID":[2400,2375],"subtopic_name":"Violence"},"walking-driving-and-cycling":{"IndicatorID":[2133,2172,2058,2173,2059,2236,2237,2238,2112,2113,2114],"subtopic_name":"Walking, driving, and cycling"},"weather-related-illness":{"IndicatorID":[2376,2175,2174,2410,2084,2074,2075,2076,2191,2411],"subtopic_name":"Weather-related illness"},"worker-health":{"IndicatorID":[2209,2211,2208,2210,2214,2239,2215],"subtopic_name":"Worker health"}};
     
 
     var destination = document.getElementById('indicatorNames')    
@@ -1475,14 +1526,14 @@
     
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.1.0/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js" 
-        integrity="sha512-oaT4uVdyleJGVHZqklOx2Bb8WhOTBW3iCXRtgk3+YutYmFx0jSs97UR3/+r1vh1Isyb3GOGjFonLbS6LFiiEVA==" 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"
+        integrity="sha512-oaT4uVdyleJGVHZqklOx2Bb8WhOTBW3iCXRtgk3+YutYmFx0jSs97UR3/+r1vh1Isyb3GOGjFonLbS6LFiiEVA=="
         crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js" 
-        integrity="sha512-guWTt6syHB4T9gdPdw8W1iQUGqqricRt5VRjnjgMPpOhUhwOsxmXpk2SImqfcPgsiroK00z/loICebflVeJvqg==" 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"
+        integrity="sha512-guWTt6syHB4T9gdPdw8W1iQUGqqricRt5VRjnjgMPpOhUhwOsxmXpk2SImqfcPgsiroK00z/loICebflVeJvqg=="
         crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js" 
-        integrity="sha512-vv3EN6dNaQeEWDcxrKPFYSFba/kgm//IUnvLPMPadaUf5+ylZyx4cKxuc4HdBf0PPAlM7560DV63ZcolRJFPqA==" 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"
+        integrity="sha512-vv3EN6dNaQeEWDcxrKPFYSFba/kgm//IUnvLPMPadaUf5+ylZyx4cKxuc4HdBf0PPAlM7560DV63ZcolRJFPqA=="
         crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.print.min.js"></script>
@@ -1592,22 +1643,22 @@
         let btnShowDisparities = document.querySelector('.btn-show-disparities');
 
         const url = new URL(window.location);
-        
+
         const updateChartPlotSize = () => {
             setTimeout(() => {
                 window.dispatchEvent(new Event('resize'));
             }, 200)
-            
+
         }
-        
+
         
 
         let hashchange = new Event('hashchange');
 
         
-        
+
         window.onpopstate = function (event) {
-        
+
             console.log("** pop **");
             console.log("state: ", window.history.state);
             console.log("event: ", event);
@@ -1616,19 +1667,19 @@
             let new_indicatorId = parseFloat(new_url.searchParams.get('id'));
 
             console.log("new_indicatorId [pop]", new_indicatorId);
-            
+
             if (new_indicatorId != indicatorId) {
-                
+
                 loadIndicator(new_indicatorId, true)
-                
+
             }
         };
-        
+
         window.addEventListener("hashchange", () => {
 
             const hash = window.location.hash.replace('#', "");
             console.log("< hashchange > hash: ", hash);
-            
+
             switch (hash) {
 
                 
@@ -1680,7 +1731,7 @@
 
         });
 
-        
+
         document.addEventListener("DOMContentLoaded", () => {
 
             tabTable = document.querySelector('#tab-btn-table');
@@ -1692,16 +1743,16 @@
             dataSources = document.querySelector('.indicator-sources');
 
         });
-        
+
         function reveal() {
             document.getElementById('truncate').classList.toggle('hide');
             document.getElementById('full').classList.toggle('show');
             document.getElementById('contenttoggle').innerHTML = `Show less... <i class="fas fa-caret-square-up" aria-hidden="true"></i>`;
         }
 
+
         
-        
-        
+
         const assignGeoRank = (GeoType) => {
             switch (GeoType) {
                 case 'Citywide':
@@ -1735,7 +1786,7 @@
                 indicators = data;
 
                 const paramId = url.searchParams.get('id') !== null ? parseInt(url.searchParams.get('id')) : false;
-                
+
                 const renderIndicatorDropdown = () => {
 
                     const indicatorDropdown = document.getElementById("indicator-dropdown");
@@ -1791,29 +1842,87 @@
                             indicator = indicators.find(indicator => indicator.IndicatorID === 2365);
                             this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
                             indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator( 2365 )" data-indicator-id=2365>${this_indicatorName}</button>`}
-                
+
                 renderIndicatorDropdown()
+
+                const renderIndicatorButtons = () => {
+
+                    const indicatorButtons = document.getElementById("indicatorButtons");
+                    let this_indicatorName;
+                    let header;
+
+                        header = ``;
+                        indicatorButtons.innerHTML += header.length ? `<div class="pl-1 mt-2 home-label">${header}</div>`: '';
+
+                        defaultIndicatorId = 103
+
+                            indicator = indicators.find(indicator => indicator.IndicatorID === 103);
+                            this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
+                            indicatorButtons.innerHTML += `<button class="btn btn-sm btn-block btn-outline-light text-primary text-left my-0 indicator-dropdown-item text-align-left font-weight-normal" onclick="loadIndicator( 103 )" data-indicator-id=103>${this_indicatorName}</button>`
+
+                            indicator = indicators.find(indicator => indicator.IndicatorID === 2176);
+                            this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
+                            indicatorButtons.innerHTML += `<button class="btn btn-sm btn-block btn-outline-light text-primary text-left my-0 indicator-dropdown-item text-align-left font-weight-normal" onclick="loadIndicator( 2176 )" data-indicator-id=2176>${this_indicatorName}</button>`
+
+                            indicator = indicators.find(indicator => indicator.IndicatorID === 2337);
+                            this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
+                            indicatorButtons.innerHTML += `<button class="btn btn-sm btn-block btn-outline-light text-primary text-left my-0 indicator-dropdown-item text-align-left font-weight-normal" onclick="loadIndicator( 2337 )" data-indicator-id=2337>${this_indicatorName}</button>`
+
+                            indicator = indicators.find(indicator => indicator.IndicatorID === 2132);
+                            this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
+                            indicatorButtons.innerHTML += `<button class="btn btn-sm btn-block btn-outline-light text-primary text-left my-0 indicator-dropdown-item text-align-left font-weight-normal" onclick="loadIndicator( 2132 )" data-indicator-id=2132>${this_indicatorName}</button>`
+
+                            indicator = indicators.find(indicator => indicator.IndicatorID === 2317);
+                            this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
+                            indicatorButtons.innerHTML += `<button class="btn btn-sm btn-block btn-outline-light text-primary text-left my-0 indicator-dropdown-item text-align-left font-weight-normal" onclick="loadIndicator( 2317 )" data-indicator-id=2317>${this_indicatorName}</button>`
+
+                            indicator = indicators.find(indicator => indicator.IndicatorID === 2073);
+                            this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
+                            indicatorButtons.innerHTML += `<button class="btn btn-sm btn-block btn-outline-light text-primary text-left my-0 indicator-dropdown-item text-align-left font-weight-normal" onclick="loadIndicator( 2073 )" data-indicator-id=2073>${this_indicatorName}</button>`
+
+                        header = `Housing`;
+                        indicatorButtons.innerHTML += header.length ? `<div class="pl-1 mt-2 home-label">${header}</div>`: '';
+
+                        defaultIndicatorId = 17
+
+                            indicator = indicators.find(indicator => indicator.IndicatorID === 17);
+                            this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
+                            indicatorButtons.innerHTML += `<button class="btn btn-sm btn-block btn-outline-light text-primary text-left my-0 indicator-dropdown-item text-align-left font-weight-normal" onclick="loadIndicator( 17 )" data-indicator-id=17>${this_indicatorName}</button>`
+
+                            indicator = indicators.find(indicator => indicator.IndicatorID === 2336);
+                            this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
+                            indicatorButtons.innerHTML += `<button class="btn btn-sm btn-block btn-outline-light text-primary text-left my-0 indicator-dropdown-item text-align-left font-weight-normal" onclick="loadIndicator( 2336 )" data-indicator-id=2336>${this_indicatorName}</button>`
+
+                            indicator = indicators.find(indicator => indicator.IndicatorID === 15);
+                            this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
+                            indicatorButtons.innerHTML += `<button class="btn btn-sm btn-block btn-outline-light text-primary text-left my-0 indicator-dropdown-item text-align-left font-weight-normal" onclick="loadIndicator( 15 )" data-indicator-id=15>${this_indicatorName}</button>`
+
+                            indicator = indicators.find(indicator => indicator.IndicatorID === 2365);
+                            this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
+                            indicatorButtons.innerHTML += `<button class="btn btn-sm btn-block btn-outline-light text-primary text-left my-0 indicator-dropdown-item text-align-left font-weight-normal" onclick="loadIndicator( 2365 )" data-indicator-id=2365>${this_indicatorName}</button>`}
+                
+                renderIndicatorButtons()
 
                 // calling loadIndicator calls loadData, etc, and eventually renderMeasures. Because all 
                 //  of this depends on the global "indicator" object, we call loadIndicator here
-                
+
                 if (paramId) {
                     await loadIndicator(paramId)
                 } else {
                     await loadIndicator()
                 }
-                
+
             })
             .catch(error => console.log(error));
-        
-        
+
+
         // ======================================================================= //
         // data loading and manipulation functions
         // ======================================================================= //
 
         // I reversed the order of these function declarations to make the process
         //  of data creation easier to understand
-        
+
         // ----------------------------------------------------------------------- //
         // function to load indicator metadata
         // ----------------------------------------------------------------------- //
@@ -1828,8 +1937,8 @@
             console.log("this_indicatorId", this_indicatorId);
             console.log("window.history.state", window.history.state);
 
-            // if indicatorId isn't given, use the first indicator from the dropdown list 
-            //  (which is populated by Hugo reading the content frontmatter). 
+            // if indicatorId isn't given, use the first indicator from the dropdown list
+            //  (which is populated by Hugo reading the content frontmatter).
 
             const firstIndicatorId = document.querySelectorAll('#indicator-dropdown button')[0].getAttribute('data-indicator-id');
 
@@ -1841,7 +1950,7 @@
 
             // get the list element for this indicator
             const thisIndicatorEl = document.querySelector(`button[data-indicator-id='${indicatorId}']`)
-            
+
             // set this element as active & selected
             $(thisIndicatorEl).addClass("active");
             $(thisIndicatorEl).attr('aria-selected', true);
@@ -1857,7 +1966,7 @@
             //create Citation
 
             createCitation(); // re-runs on updating Indicator
-            
+
             // send Indicator Title to vis headers
 
             document.getElementById('summaryTitle').innerHTML = indicatorName;
@@ -1869,21 +1978,21 @@
             selectedMapMeasure = false;
             selectedTrendMeasure = false;
             selectedLinksMeasure = false;
-            
+
             // if dont_add_to_history is true, then don't push the state
             // if dont_add_to_history is false, or not set, push the state
-            // this prevents loadIndicator from setting new history entries when it's called 
+            // this prevents loadIndicator from setting new history entries when it's called
             //  on a popstate event, i.e. when the user is traversing the history stack
 
             // dont_add_to_history catches the pop state case, state.id != indicatorId catches the location change case
-            // we don't want to add to the history stack if we've landed on this page by way of the history stack 
-            
+            // we don't want to add to the history stack if we've landed on this page by way of the history stack
+
             url.searchParams.set('id', parseFloat(indicatorId));
 
             if (!dont_add_to_history && (window.history.state === null || state === null || window.history.state.id != indicatorId)) {
 
                 console.log("++++ add to history");
-                
+
                 console.log("indicatorId [1]:", url.searchParams.get('id'))
 
                 if (!url.hash) {
@@ -1932,9 +2041,9 @@
         // ----------------------------------------------------------------------- //
         // function to Load indicator data and create Arquero data frame
         // ----------------------------------------------------------------------- //
-        
+
         const loadData = (this_indicatorId) => {
-            
+
             fetch(data_repo + "/" + data_branch + `/indicators/data/${this_indicatorId}.json`)
             .then(response => response.json())
             .then(async data => {
@@ -1946,8 +2055,8 @@
                 ful = aq.from(data)
                     .derive({ "GeoRank": aq.escape( d => assignGeoRank(d.GeoType))})
                     .groupby("Time", "GeoType", "GeoID", "GeoRank")
-                
-                
+
+
                 aqData = ful
                     .groupby("Time", "GeoType", "GeoID")
                     .orderby(aq.desc('Time'), 'GeoRank')
@@ -1961,16 +2070,16 @@
         const loadGeo = () => {
 
             const geoUrl = data_repo + "/" + data_branch + `/geography/GeoLookup.csv`; // col named "GeoType"
-            
+
             aq.loadCSV(geoUrl)
                 .then(data => {
-                    
+
                     geoTable = data.select(aq.not('Lat', 'Long'));
-                    
+
                     // call the data-to-geo joining function
-                    
+
                     joinData();
-                
+
             });
         }
 
@@ -1985,7 +2094,7 @@
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
 
             // flatten MeasureID + TimeDescription
-            
+
             let availableTimes = [];
 
             // create table column header with display type
@@ -1993,33 +2102,33 @@
             let measurementDisplay = [];
 
             indicatorMeasures.map(
-            
+
                 measure => {
 
-                    let aqAvailableTimes = 
+                    let aqAvailableTimes =
                         aq.from(measure.AvailableTimes)
                         .derive({MeasureID: `${measure.MeasureID}`})
-                    
+
                     availableTimes.push(aqAvailableTimes);
 
-                    let aqMeasurementDisplay = 
+                    let aqMeasurementDisplay =
                         aq.table(
                         {
-                            MeasureID: [measure.MeasureID], 
-                            MeasurementType: [measure.MeasurementType], 
+                            MeasureID: [measure.MeasureID],
+                            MeasurementType: [measure.MeasurementType],
                             DisplayType: [measure.DisplayType]
                         })
-                    
+
                     measurementDisplay.push(aqMeasurementDisplay);
 
                 }
             )
-            
+
             // bind rows of Arquero tables in arrays
 
             let aqMeasureIdTimes     = availableTimes.reduce((a, b) => a.concat(b))
             let aqMeasurementDisplay = measurementDisplay.reduce((a, b) => a.concat(b))
-            
+
             // foundational joined dataset
 
             joinedAqData = aqData
@@ -2027,14 +2136,14 @@
                 .rename({'Name': 'Geography'})
                 .join(aqMeasureIdTimes, [["MeasureID", "Time"], ["MeasureID", "TimeDescription"]])
                 .select(
-                    "GeoID", 
-                    "GeoType", 
-                    "GeoRank", 
-                    "Geography", 
+                    "GeoID",
+                    "GeoType",
+                    "GeoRank",
+                    "Geography",
                     "MeasureID",
-                    "Time", 
-                    "Value", 
-                    "DisplayValue", 
+                    "Time",
+                    "Value",
+                    "DisplayValue",
                     "CI",
                     "start_period",
                     "end_period"
@@ -2046,7 +2155,7 @@
 
             fullDataTableObjects = joinedAqData
                 .join_left(aqMeasurementDisplay, "MeasureID")
-                .derive({ 
+                .derive({
                     MeasurementDisplay: d => op.trim(op.join([d.MeasurementType, d.DisplayType], " ")),
                     DisplayCI: d => op.trim(op.join([d.DisplayValue, d.CI], " "))
                 })
@@ -2055,7 +2164,7 @@
                 .objects()
 
             // data for map
-            
+
             fullDataMapObjects = joinedAqData
                 .filter(d => !op.match(d.GeoType, /Citywide|Borough/)) // remove Citywide and Boro
                 .impute({ Value: () => NaN })
@@ -2076,22 +2185,22 @@
             // call the measure rendering etc. function
 
             renderMeasures();
-            
+
         }
-        
-        
+
+
         // ----------------------------------------------------------------------- //
         // function to create data and metadata for links chart
         // ----------------------------------------------------------------------- //
-        
+
         const filterSecondaryIndicatorMeasure = async (primaryMeasureId, secondaryMeasureId) => {
 
             // filter links data to keep primary measure
-            
+
             const primaryMeasureTimesDataObjects = fullDataLinksObjects.filter(
                 d => d.MeasureID === primaryMeasureId
             );
-            
+
             // get most recent time period for primary measure
 
             const aqFilteredPrimaryMeasureTimesData = aq.from(fullDataLinksObjects)
@@ -2109,7 +2218,7 @@
 
             // get metadata for the selected primary measure, assign to global variable
             // indicatorMeasures created in loadIndicator
-            
+
             primaryMeasureMetadata = linksMeasures.filter(
                 measure => measure.MeasureID === primaryMeasureId
             )
@@ -2121,47 +2230,47 @@
             }
 
             
-            
+
             const secondaryIndicator = indicators.filter(
                 indicator => indicator.Measures.some(
                     measure => measure.MeasureID === secondaryMeasureId
                 )
             )
+
             
-            
-            
+
             const secondaryIndicatorId = secondaryIndicator[0].IndicatorID
+
             
-            
-            
-            secondaryMeasureMetadata = 
+
+            secondaryMeasureMetadata =
                 secondaryIndicator[0].Measures.filter(
                 measure => measure.MeasureID === secondaryMeasureId
             )
+
             
-            
-            
+
             const secondaryMeasureTimes = secondaryMeasureMetadata[0].AvailableTimes;
             const aqSecondaryMeasureTimes = aq.from(secondaryMeasureTimes);
+
+
             
             
             
-            
-            
-            
+
             await fetch(data_repo + "/" + data_branch + `/indicators/data/${secondaryIndicatorId}.json`)
                 .then(response => response.json())
                 .then(async data => {
 
                     
-                    
+
                     const filteredSecondaryMeasureData = data.filter(d => d.MeasureID === secondaryMeasureId)
 
                     
-                    
+
                     const aqFilteredSecondaryMeasureTimesData = aq.from(filteredSecondaryMeasureData)
                         .join(
-                            geoTable, 
+                            geoTable,
                             [["GeoID", "GeoType"], ["GeoID", "GeoType"]]
                         )
                         .derive({ "GeoRank": aq.escape( d => assignGeoRank(d.GeoType))})
@@ -2170,17 +2279,17 @@
                         .filter(`d => op.includes([${primaryMeasureGeoRanks}], d.GeoRank)`)
                         .rename({'Name': 'Geography'})
                         .join(
-                            aqSecondaryMeasureTimes, 
+                            aqSecondaryMeasureTimes,
                             ["Time", "TimeDescription"]
                         )
                         .select(aq.not("TimeDescription"))
 
                     
-                    
+
                     const filteredSecondaryMeasureTimesDataObjects = aqFilteredSecondaryMeasureTimesData.objects();
+
                     
-                    
-                    
+
                     const closestSecondaryTime = filteredSecondaryMeasureTimesDataObjects.reduce((prev, curr) => {
 
                         return (Math.abs(curr.end_period - mostRecentPrimaryMeasureEndTime) < Math.abs(prev.end_period - mostRecentPrimaryMeasureEndTime) ? curr : prev);
@@ -2200,22 +2309,22 @@
                         
                         
                         .filter(d => d.start_period === op.min(d.start_period))
-                    
+
                     
 
                     const aqJoinedPrimarySecondaryData = aqFilteredPrimaryMeasureTimesData
                         .join(
-                            aqClosestSecondaryData, 
+                            aqClosestSecondaryData,
                             [["GeoID", "GeoType"], ["GeoID", "GeoType"]]
                         )
+
                     
-                    
-                    
+
                     joinedDataLinksObjects = await aqJoinedPrimarySecondaryData.objects();
 
                 })
         }
-        
+
 
         
         
@@ -2229,7 +2338,7 @@
                 renderTable()
             })
         }
-        
+
         const handleGeoFilter = (el) => {
 
             el.addEventListener('change', (e) => {
@@ -2239,7 +2348,7 @@
                 } else {
                     selectedSummaryGeography = selectedSummaryGeography.filter(item => item !== e.target.value);
                 }
-                
+
                 
 
                 if (selectedSummaryGeography.length > 0) {
@@ -2250,9 +2359,9 @@
                 }
             })
         }
-        
-        const handleToggle = () => { 
-            
+
+        const handleToggle = () => {
+
             $('body').off('click', '#summary-table tr.group td');
             $('body').on('click', '#summary-table tr.group td', (e) => {
 
@@ -2260,12 +2369,12 @@
                 const tr = td.parent();
                 const group = td.data('group');
                 const groupLevel = td.data('group-level');
-                
+
                 const handleGroupToggle = () => {
-                    
+
                     const subGroupToggle = $(`td[data-year="${group}"][data-group-level="1"]`);
                     const subGroupRow = $(`tr[data-year="${group}"]`);
-                    
+
                     if (subGroupToggle.css('display') === 'none') {
                         subGroupToggle.removeClass('hidden');
                         subGroupRow.removeClass('hidden');
@@ -2280,14 +2389,14 @@
                         subGroupRow.hide();
                     }
                 }
-                
+
                 const handleSubGroupToggle = () => {
 
                     const subDataGroup = tr.next(`tr`).data(`group`);
                     const parentDataGroup = subDataGroup.split('-')[0];
                     const subGroupRow = $(`tr[data-group="${subDataGroup}"]`);
                     const parentGroupToggle = $(`td[data-group="${parentDataGroup}"]`);
-                    
+
                     if (subGroupRow.css('display') == 'none')  {
                         subGroupRow.show();
                         td.removeClass('hidden');
@@ -2299,16 +2408,16 @@
                         subGroupRow.addClass('hidden');
                     }
                 }
-                
+
                 if (groupLevel === 0) {
                     handleGroupToggle();
                 } else {
                     handleSubGroupToggle();
                 }
-                
+
             });
         }
-        
+
 
         
         
@@ -2323,7 +2432,7 @@
             indicatorTitle.innerHTML = title;
             indicatorDescription.innerHTML = `${desc}`;
         }
-        
+
         
 
         const renderAboutSources = (about, sources) => {
@@ -2331,14 +2440,14 @@
             aboutMeasures.innerHTML = about;
             dataSources.innerHTML = sources;
         }
-        
+
 
         
         
         
 
         
-        
+
         const updateMapData = (e) => {
 
             
@@ -2369,37 +2478,37 @@
             const about           = measureMetadata[0].how_calculated;
             const sources         = measureMetadata[0].Sources;
             const display         = measureMetadata[0].DisplayType;
-            
+
 
             
 
             
-            
-            selectedMapAbout   = 
+
+            selectedMapAbout   =
                 `<h6>${indicatorName} - ${measurementType}</h6>
                 <p>${about}</p>`;
 
-            selectedMapSources = 
+            selectedMapSources =
                 `<h6>${indicatorName} - ${measurementType}</h6>
                 <p>${sources}</p>`;
-            
+
             
 
             renderAboutSources(selectedMapAbout, selectedMapSources);
-            
+
 
             
 
             
 
-            let mapMeasureData = 
+            let mapMeasureData =
                 fullDataMapObjects.filter(
-                    obj => obj.MeasureID === measureId && 
+                    obj => obj.MeasureID === measureId &&
                     obj.Time === time
                 );
+
             
-            
-            
+
             let maxGeoRank = Math.max(mapMeasureData[0].GeoRank);
             filteredMapData = mapMeasureData.filter(obj => obj.GeoRank === maxGeoRank)
 
@@ -2408,20 +2517,20 @@
             renderMap(filteredMapData, measureMetadata);
 
             updateChartPlotSize();
-            
+
             
 
             selectedMapMeasure = true;
 
         }
-        
+
 
         
-        
+
         const updateTrendData = (e) => {
 
             console.log("updateTrendData");
-            
+
             
 
             
@@ -2439,7 +2548,7 @@
             $(e.target).attr('aria-selected', true);
 
             
-            
+
             
             const measureMetadata = trendMeasures.filter(m => m.MeasureID == measureId);
             const measurementType = measureMetadata[0].MeasurementType;
@@ -2450,14 +2559,14 @@
 
             
 
-            selectedTrendAbout = 
+            selectedTrendAbout =
                 `<h6>${indicatorName} - ${measurementType}</h6>
                 <p>${about}</p>`;
 
-            selectedTrendSources = 
+            selectedTrendSources =
                 `<h6>${indicatorName} - ${measurementType}</h6>
                 <p>${sources}</p>`;
-            
+
             
 
             renderAboutSources(selectedTrendAbout, selectedTrendSources);
@@ -2466,21 +2575,21 @@
             
 
             
-            
-            const disparities = 
-                measureMetadata[0].VisOptions[0].Trend && 
+
+            const disparities =
+                measureMetadata[0].VisOptions[0].Trend &&
                 measureMetadata[0].VisOptions[0].Trend[0]?.Disparities;
 
             
 
             if (disparities == 0) {
-                
+
                 
 
                 btnShowDisparities.style.display = "none";
 
                 
-                
+
                 $(btnShowDisparities).off()
 
             } else if (disparities == 1) {
@@ -2489,7 +2598,7 @@
 
                 btnShowDisparities.innerText = "Show Disparities";
                 $(btnShowDisparities).off()
-                
+
                 
 
                 btnShowDisparities.style.display = "inline";
@@ -2497,7 +2606,7 @@
                 
 
                 $(btnShowDisparities).on("click", () => renderDisparities(measureMetadata, 221));
-                
+
             }
 
 
@@ -2524,24 +2633,24 @@
             const measureIdsSummer = [386];
 
             if (measureIdsAnnualAvg.includes(measureId)) {
-                
+
                 const filteredTrendDataAnnualAvg = filteredTrendData.filter(d => d.Time.startsWith('Annual Average'));
-                
+
                 renderTrendChart(filteredTrendDataAnnualAvg, measureMetadata);
                 updateChartPlotSize();
-                
+
             } else if (measureIdsSummer.includes(measureId)) {
-                
+
                 const filteredTrendDataSummer = filteredTrendData.filter(d => d.Time.startsWith('Summer'));
-                
+
                 renderTrendChart(filteredTrendDataSummer, measureMetadata);
                 updateChartPlotSize();
-                
+
             } else {
-                
+
                 renderTrendChart(filteredTrendData, measureMetadata);
                 updateChartPlotSize();
-                
+
             }
 
             
@@ -2549,10 +2658,10 @@
             selectedTrendMeasure = true;
 
         }
-        
+
 
         
-        
+
         const updateLinksData = async (e) => {
 
             
@@ -2568,26 +2677,26 @@
             $(e.target).attr('aria-selected', true);
 
             
-            
+
             const primaryMeasureId = parseInt(e.target.dataset.primaryMeasureId);
             const secondaryMeasureId = parseInt(e.target.dataset.secondaryMeasureId);
 
             
             
-            
+
             await filterSecondaryIndicatorMeasure(primaryMeasureId, secondaryMeasureId)
 
 
             
 
             
-            
+
             const linksSecondaryIndicator = indicators.filter(
                 indicator => indicator.Measures.some(
                     m => m.MeasureID === secondaryMeasureId
                 )
             )
-            
+
             
 
             primaryIndicatorName   = indicatorName 
@@ -2597,7 +2706,7 @@
 
             const primaryMeasurementType = primaryMeasureMetadata[0].MeasurementType;
             const secondaryMeasurementType = secondaryMeasureMetadata[0].MeasurementType;
-            
+
             const primaryAbout = primaryMeasureMetadata[0].how_calculated;
             const secondaryAbout = secondaryMeasureMetadata[0].how_calculated;
 
@@ -2607,30 +2716,30 @@
 
             
 
-            selectedLinksAbout = 
+            selectedLinksAbout =
                 `<h6>${primaryIndicatorName} - ${primaryMeasurementType}</h6>
                 <p>${primaryAbout}</p>
                 <h6>${secondaryIndicatorName} - ${secondaryMeasurementType}</h6>
                 <p>${secondaryAbout}</p>`;
 
-            selectedLinksSources = 
+            selectedLinksSources =
                 `<h6>${primaryIndicatorName} - ${primaryMeasurementType}</h6>
                 <p>${primarySources}</p>
                 <h6>${secondaryIndicatorName} - ${secondaryMeasurementType}</h6>
                 <p>${secondarySources}</p>`;
-            
+
             
 
             renderAboutSources(selectedLinksAbout, selectedLinksSources);
-            
+
 
             
 
             
+
             
             
-            
-            
+
 
             
 
@@ -2650,20 +2759,20 @@
 
         }
 
-        
+
         
         
         
 
         
-        
+
         const setDefaultMapMeasure = (visArray) => {
 
             
             
 
             let defaultArray = [];
-            
+
             const hasAgeAdjustedRate = visArray.filter(measure =>
                 measure.MeasurementType.includes('Age Adjusted Rate')
             )
@@ -2675,13 +2784,13 @@
             )
 
             
-            
+
             if (hasAgeAdjustedRate.length) {
 
-                const hasAgeAdjustedRateTotal = hasAgeAdjustedRate.filter(measure => 
+                const hasAgeAdjustedRateTotal = hasAgeAdjustedRate.filter(measure =>
                     measure.MeasurementType.includes('Total')
                 )
-                
+
                 
                 if (hasAgeAdjustedRateTotal.length) {
                     defaultArray.push(hasAgeAdjustedRateTotal[0]);
@@ -2690,7 +2799,7 @@
                     defaultArray.push(hasAgeAdjustedRate[0]);
 
                 }
-                
+
             } else if (hasRate.length) {
                 defaultArray.push(hasRate[0]);
 
@@ -2701,23 +2810,23 @@
                 defaultArray.push(visArray[0]);
 
             }
-            
+
             
 
             defaultMapMetadata = defaultArray;
 
         }
-        
+
 
         
-        
+
         const setDefaultTrendMeasure = (visArray) => {
+
             
             
-            
-            
+
             let defaultArray = [];
-            
+
             if (visArray.length > 0) {
 
                 const hasAgeAdjustedRate = visArray.filter(measure =>
@@ -2729,11 +2838,11 @@
                 const hasPercent = visArray.filter(measure =>
                     measure.MeasurementType.includes('Percent')
                 )
-                
+
 
                 if (hasAgeAdjustedRate.length) {
 
-                    const hasAgeAdjustedRateTotal = hasAgeAdjustedRate.filter(measure => 
+                    const hasAgeAdjustedRateTotal = hasAgeAdjustedRate.filter(measure =>
                         measure.MeasurementType.includes('Total')
                     )
                     
@@ -2744,7 +2853,7 @@
                         defaultArray.push(hasAgeAdjustedRate[0]);
 
                     }
-                    
+
 
                 } else if (hasRate.length) {
                     defaultArray.push(hasRate[0]);
@@ -2757,22 +2866,22 @@
 
                 }
             }
-            
+
             
 
             defaultTrendMetadata = defaultArray;
         }
-        
+
 
         
-        
+
         const setDefaultLinksMeasure = async (visArray) => {
 
             
             
-            
+
             let defaultArray = [];
-            
+
             if (visArray.length > 0) {
 
                 const hasAgeAdjustedRate = visArray.filter(measure =>
@@ -2812,7 +2921,7 @@
                 }
 
                 defaultLinkMeasureTimes = defaultArray[0].AvailableTime;
-                
+
                 const defaultPrimaryMeasureId = defaultArray[0].MeasureID;
                 const defaultSecondaryMeasureId = defaultArray[0].VisOptions[0].Links[0].MeasureID;
 
@@ -2820,12 +2929,12 @@
                 defaultLinksMetadata = defaultArray;
 
                 
-                
+
                 await filterSecondaryIndicatorMeasure(defaultPrimaryMeasureId, defaultSecondaryMeasureId)
-                
+
             }
         }
-        
+
 
         
         
@@ -2834,9 +2943,9 @@
         const renderMeasures = async () => {
 
             
-            
+
             linksMeasures.length = 0
-            
+
             const contentSummary = document.querySelector('#tab-table');
             const contentMap     = document.querySelector('#tab-map')
             const contentTrend   = document.querySelector('#tab-trend');
@@ -2845,13 +2954,13 @@
             
 
             const dropdownTableYear = contentSummary.querySelector('div[aria-labelledby="dropdownTableYear"]');
-            const dropdownMapMeasures = document.querySelector('div[aria-labelledby="dropdownMapMeasures"]');                        
-            
+            const dropdownMapMeasures = document.querySelector('div[aria-labelledby="dropdownMapMeasures"]');
+
             const dropdownMapYear  = contentMap.querySelector('div[aria-labelledby="dropdownMapYear"]');
             const dropdownTableGeo = contentSummary.querySelector('div[aria-labelledby="dropdownTableGeo"]');
             const dropdownTrendMeasures = contentTrend.querySelector('div[aria-labelledby="dropdownTrendMeasures"]');
             const dropdownLinksMeasures = contentLinks.querySelector('div[aria-labelledby="dropdownLinksMeasures"]');
-            
+
             
 
             dropdownTableYear.innerHTML = ``;
@@ -2859,48 +2968,48 @@
             dropdownMapMeasures.innerHTML = ``;
             dropdownTrendMeasures.innerHTML = ``;
             dropdownLinksMeasures.innerHTML = ``;
-            
+
             mapMeasures.length = 0;
             trendMeasures.length = 0;
 
             
 
             const tableYears = [...new Set(fullDataTableObjects.map(item => item.Time))];
-            
+
             tableYears.forEach((year, index) => {
-                
+
                 if (index === 0) {
 
                     selectedSummaryYears.push(year);
-                    dropdownTableYear.innerHTML += 
+                    dropdownTableYear.innerHTML +=
                         `<label class="dropdown-item checkbox-year"><input type="radio" name="year" value="${year}" checked /> ${year}</label>`;
 
                 } else {
 
-                    dropdownTableYear.innerHTML += 
+                    dropdownTableYear.innerHTML +=
                         `<label class="dropdown-item checkbox-year"><input type="radio" name="year" value="${year}" /> ${year}</label>`;
                 }
-                
+
             });
-            
+
             // create geo dropdown for table
 
             const tableGeoTypes = [...new Set(fullDataTableObjects.map(item => item.GeoType))];
 
             tableGeoTypes.forEach((geoType, index) => {
-                
+
                 selectedSummaryGeography.push(geoType);
                 dropdownTableGeo.innerHTML += `<label class="dropdown-item checkbox-geo"><input type="checkbox" value="${geoType}" checked /> ${geoType}</label>`;
-                
+
             });
-            
+
 
             // ----- handle measures for this indicator ----- 
-            
+
             const mapYears = [...new Set(fullDataMapObjects.map(item => item.Time))];
 
             indicatorMeasures.map((measure, index) => {
-                
+
                 const type = measure?.MeasurementType;
                 const displayType = measure?.DisplayType;
                 const years = measure?.AvailableTimes.sort((a, b) => b.start_period - a.start_period);
@@ -2915,15 +3024,15 @@
 
 
                 
-                
+
                 if (map === 1) {
-                    
+
                     mapMeasures.push(measure)
 
                     dropdownMapMeasures.innerHTML += `<div class="dropdown-column-${index}"><div class="dropdown-title"><strong> ${type}</strong></div></div>`;
 
                     const dropdownMapMeasuresColumn = document.querySelector(`.dropdown-column-${index}`);
-                    
+
                     mapYears.map((time, index) => {
                         dropdownMapMeasuresColumn.innerHTML += `<button class="dropdown-item link-measure mapbutton"
                         data-measure-id="${measureId}"
@@ -2933,7 +3042,7 @@
 
                     });
                 }
-            
+
 
                 
 
@@ -2943,72 +3052,72 @@
 
                     if (fullDataTrendObjects) {
                         dropdownTrendMeasures.innerHTML += `<button class="dropdown-item link-measure trendbutton"
-                        data-measure-id="${measureId}"> 
+                        data-measure-id="${measureId}">
                         ${type}
                         </button>`;
                     }
                 }
-                
-                
+
+
                 // ----- handle links measures ----- 
-                
+
                 if (links) {
-                    
+
                     
 
                     linksMeasures.push(measure)
 
                     
-                    
+
                     const secondaryMeasureId = measure.VisOptions[0].Links[0].MeasureID;
-                    
+
 
                     if (fullDataTableObjects) {
-                        
+
                         const linkYears = [...new Set(fullDataTableObjects.map(item => item.Time))];
 
-                        dropdownLinksMeasures.innerHTML += 
+                        dropdownLinksMeasures.innerHTML +=
                             `<div class="dropdown-title"><strong> ${type}</strong></div>`;
-                        
+
                         measure.VisOptions[0].Links.map(link => {
 
                             const linksSecondaryIndicator = indicators.filter(indicator =>
-                                indicator.Measures.some(m => 
+                                indicator.Measures.some(m =>
                                     m.MeasureID === link.MeasureID)
                             );
-                            
-                            const linksSecondaryMeasure = linksSecondaryIndicator[0].Measures.filter(m => 
+
+                            const linksSecondaryMeasure = linksSecondaryIndicator[0].Measures.filter(m =>
                                 m.MeasureID === link.MeasureID
                             );
-                            
-                            dropdownLinksMeasures.innerHTML += 
-                                `<button class="dropdown-item link-measure linksbutton" 
+
+                            dropdownLinksMeasures.innerHTML +=
+                                `<button class="dropdown-item link-measure linksbutton"
                                 data-primary-measure-id="${measureId}"
                                 data-measure-id="${measure.MeasureID}"
                                 data-secondary-measure-id="${link.MeasureID}">
                                 ${linksSecondaryMeasure[0].MeasureName}
                             </button>`;
-                            
+
                         });
                     }
                 }
             });
 
-            
+
             setDefaultMapMeasure(mapMeasures);
             setDefaultTrendMeasure(trendMeasures);
-            
+
             // set default measure for links; also calls filterSecondaryIndicatorMeasure, which creates the joined data
-            
+
             await setDefaultLinksMeasure(linksMeasures);
 
-            
+
             
             
             
 
             
-            
+
             
 
             showTable = (e) => {
@@ -3040,7 +3149,7 @@
 
 
                 
-                
+
                 renderTable();
 
                 updateChartPlotSize();
@@ -3050,7 +3159,7 @@
                     .columns.adjust().draw();
 
             };
-            
+
 
             
 
@@ -3061,7 +3170,7 @@
                 
 
                 
-                
+
                 window.location.hash = 'display=map'
                 currentHash = 'display=map'
 
@@ -3084,7 +3193,7 @@
                     
 
                     
-                
+
                     const defaultMapMeasureId = defaultMapMetadata[0].MeasureID;
 
                     
@@ -3096,14 +3205,14 @@
 
                     
 
-                    defaultMapAbout   = 
+                    defaultMapAbout   =
                         `<h6>${indicatorName} - ${measure}</h6>
                         <p>${about}</p>`;
 
-                    defaultMapSources = 
+                    defaultMapSources =
                         `<h6>${indicatorName} - ${measure}</h6>
                         <p>${sources}</p>`;
-                        
+
                     
 
                     renderTitleDescription(indicatorShortName, indicatorDesc);
@@ -3125,20 +3234,20 @@
                     let mapTimeData = mapMeasureData.filter(
                             obj => obj.end_period === latest_end_period
                         );
-                    
+
                     let latest_time = mapTimeData[0].Time
 
                     
-                    
+
                     let maxGeoRank = Math.max(mapTimeData[0].GeoRank);
 
                     filteredMapData = mapTimeData.filter(
                             obj => obj.GeoRank === maxGeoRank
                         );
+
+
                     
-                    
-                    
-                    
+
                     renderMap(filteredMapData, defaultMapMetadata);
 
                     updateChartPlotSize();
@@ -3166,7 +3275,7 @@
                     renderAboutSources(selectedMapAbout, selectedMapSources);
 
                     
-                    
+
                     renderMap(filteredMapData, defaultMapMetadata);
 
                     updateChartPlotSize();
@@ -3180,11 +3289,11 @@
             
 
             showTrend = (e) => {
-            
+
                 
 
                 
-                
+
                 window.location.hash = 'display=trend'
                 currentHash = 'display=trend'
 
@@ -3214,11 +3323,11 @@
 
                     
 
-                    defaultTrendAbout = 
+                    defaultTrendAbout =
                         `<h6>${indicatorName} - ${measure}</h6>
                         <p>${about}</p>`;
 
-                    defaultTrendSources = 
+                    defaultTrendSources =
                         `<h6>${indicatorName} - ${measure}</h6>
                         <p>${sources}</p>`;
 
@@ -3229,15 +3338,15 @@
                     
 
                     
-                    
-                    const disparities = 
-                        defaultTrendMetadata[0].VisOptions[0].Trend && 
+
+                    const disparities =
+                        defaultTrendMetadata[0].VisOptions[0].Trend &&
                         defaultTrendMetadata[0].VisOptions[0].Trend[0]?.Disparities;
 
                     
 
                     if (disparities == 0) {
-                        
+
                         
 
                         btnShowDisparities.style.display = "none";
@@ -3245,7 +3354,7 @@
                         
 
                         $(btnShowDisparities).off()
-                        
+
                     } else if (disparities == 1) {
 
                         
@@ -3260,7 +3369,7 @@
                         
 
                         $(btnShowDisparities).on("click", () => renderDisparities(defaultTrendMetadata, 221))
-                        
+
                     }
 
 
@@ -3271,7 +3380,7 @@
 
 
                     
-                    
+
                     
                     
                     
@@ -3284,7 +3393,7 @@
                     
 
                     const measureIdsSummer = [386];
-                    
+
                     if (measureIdsAnnualAvg.includes(defaultTrendMeasureId)) {
 
                         const filteredTrendDataAnnualAvg = filteredTrendData.filter(d => d.Time.startsWith('Annual Average'));
@@ -3298,7 +3407,7 @@
 
                         renderTrendChart(filteredTrendDataSummer, defaultTrendMetadata);
                         updateChartPlotSize();
-                        
+
                     } else {
 
                         renderTrendChart(filteredTrendData, defaultTrendMetadata);
@@ -3337,18 +3446,18 @@
                 }
 
             };
+
+
             
+
             
-            
-            
-            
-            
+
             showLinks = (e) => {
-                
+
                 
 
                 
-                
+
                 window.location.hash = 'display=links'
                 currentHash = 'display=links'
                 
@@ -3359,7 +3468,7 @@
                 tabMap.setAttribute('aria-selected', false);
                 tabTrend.setAttribute('aria-selected', false);
                 tabLinks.setAttribute('aria-selected', true);
-                
+
 
                 
 
@@ -3368,21 +3477,21 @@
                     
                     
                     
-                    
+
                     
 
                     
-                    
+
                     const secondaryMeasureId = defaultLinksMetadata[0]?.VisOptions[0].Links[0].MeasureID;
-                    
+
                     
 
                     const linksSecondaryIndicator = indicators.filter(indicator =>
-                        indicator.Measures.some(measure => 
+                        indicator.Measures.some(measure =>
                             measure.MeasureID === secondaryMeasureId
                         )
                     )
-                    
+
                     
 
                     const linksSecondaryMeasure = linksSecondaryIndicator[0].Measures.filter(m =>
@@ -3391,13 +3500,13 @@
 
                     primaryIndicatorName   = indicatorName;
                     secondaryIndicatorName = linksSecondaryIndicator[0].IndicatorName;
-                    
+
                     
 
                     const primaryMeasure         = defaultLinksMetadata[0].MeasurementType;
                     const primaryAbout           = defaultLinksMetadata[0].how_calculated;
                     const primarySources         = defaultLinksMetadata[0].Sources;
-                    
+
                     const secondaryMeasure       = linksSecondaryMeasure[0].MeasurementType;
                     const secondaryAbout         = linksSecondaryMeasure[0].how_calculated;
                     const secondarySources       = linksSecondaryMeasure[0].Sources;
@@ -3406,25 +3515,25 @@
                     
 
                     
-                    
-                    defaultLinksAbout = 
+
+                    defaultLinksAbout =
                         `<h6>${primaryIndicatorName} - ${primaryMeasure}</h6>
                         <p>${primaryAbout}</p>
                         <h6>${secondaryIndicatorName} - ${secondaryMeasure}</h6>
                         <p>${secondaryAbout}</p>`;
 
-                    defaultLinksSources = 
+                    defaultLinksSources =
                         `<h6>${primaryIndicatorName} - ${primaryMeasure}</h6>
                         <p>${primarySources}</p>
                         <h6>${secondaryIndicatorName} - ${secondaryMeasure}</h6>
                         <p>${secondarySources}</p>`;
 
-                    
+
                     
 
                     
                     
-                    
+
                     
                     
 
@@ -3454,7 +3563,7 @@
                     $('.linksbutton').attr('aria-selected', false);
 
                     
-                    
+
                     let linksMeasureEl = document.querySelector(`.linksbutton[data-secondary-measure-id='${secondaryMeasureId}']`)
 
                     $(linksMeasureEl).addClass("active");
@@ -3481,7 +3590,7 @@
 
                     updateChartPlotSize();
                 }
-                
+
             };
 
 
@@ -3490,30 +3599,30 @@
             
 
             
-            
+
             const tabTableSelected = tabTable.getAttribute('aria-selected');
             const tabMapSelected   = tabMap.getAttribute('aria-selected');
             const tabTrendSelected = tabTrend.getAttribute('aria-selected');
             const tabLinksSelected = tabLinks.getAttribute('aria-selected');
 
             
-            
+
             const disableTab = (el) => {
                 el.classList.add('disabled');
                 el.setAttribute('aria-disabled', true);
             }
-            
+
             const enableTab = (el) => {
                 el.classList.remove('disabled');
                 el.setAttribute('aria-disabled', false);
             }
-            
+
 
             
             
 
             if (mapMeasures.length === 0) {
-                
+
                 if (tabMapSelected && window.location.hash === '#display=map') {
 
                     console.log("xxx NO MAP!");
@@ -3522,13 +3631,13 @@
 
                     url.hash = "display=summary";
                     window.history.replaceState({ id: indicatorId, hash: url.hash}, '', url);
-                    
+
                 }
 
                 disableTab(tabMap);
-                
+
             } else {
-                
+
                 enableTab(tabMap);
             }
 
@@ -3536,9 +3645,9 @@
             const onlyOneTime = trendMeasures.every(m => m.AvailableTimes.length <= 1)
 
             if (trendMeasures.length === 0 || onlyOneTime) {
-                
+
                 if (tabTrendSelected && window.location.hash === '#display=trend') {
-                    
+
                     console.log("xxx NO TREND!");
 
                     
@@ -3547,23 +3656,23 @@
                     window.history.replaceState({ id: indicatorId, hash: url.hash}, '', url);
 
                 }
-                
+
                 disableTab(tabTrend);
-                
+
             } else {
-                
+
                 enableTab(tabTrend);
             }
 
 
             if (linksMeasures.length === 0) {
-                
+
                 if (tabLinksSelected && window.location.hash === '#display=links') {
-                    
+
                     console.log("xxx NO LINKS!");
 
                     
-                    
+
                     url.hash = "display=summary";
                     window.history.replaceState({ id: indicatorId, hash: url.hash}, '', url);
 
@@ -3572,7 +3681,7 @@
                 disableTab(tabLinks);
 
             } else {
-                
+
                 enableTab(tabLinks);
             }
 
@@ -3613,13 +3722,13 @@
                     $('#tab-btn-links').tab('show');
                     window.dispatchEvent(hashchange);
                     break;
-                    
+
                 default:
                     
                     window.dispatchEvent(hashchange);
                     $('#tab-btn-table').tab('show');
             }
-            
+
 
             
             
@@ -3634,7 +3743,7 @@
 
             
             
-            
+
             mapMeasuresLinks.forEach(link => {
                 link.addEventListener('click', updateMapData);
             })
@@ -3646,41 +3755,41 @@
             linksMeasuresLinks.forEach(link => {
                 link.addEventListener('click', updateLinksData);
             })
+
+
             
             
             
-            
-            
-            
+
             const checkboxYear = document.querySelectorAll('.checkbox-year');
             const checkboxGeo = document.querySelectorAll('.checkbox-geo');
-            
+
             checkboxYear.forEach(checkbox => {
                 handleYearFilter(checkbox);
             })
             checkboxGeo.forEach(checkbox => {
                 handleGeoFilter(checkbox);
             })
+
+
             
             
             
-            
-            
-            
+
             measureAbout = '';
             measureSources = '';
             indicatorMeasures.map(measure => {
 
-                measureAbout += 
+                measureAbout +=
                     `<h6>${measure.MeasurementType}</h6>
                     <p>${measure.how_calculated}</p>`;
 
-                measureSources += 
+                measureSources +=
                     `<h6>${measure.MeasurementType}</h6>
                     <p>${measure.Sources}</p>`;
 
             })
-            
+
             renderAboutSources(measureAbout, measureSources);
 
         }
@@ -3702,21 +3811,21 @@
     $('#tab-btn-map').on('click', e => {
         $(e.currentTarget).tab('show');
         window.location.hash = 'display=map'
-    })   
+    })
+
     
-    
-    
+
     $('#tab-btn-trend').on('click', e => {
         $(e.currentTarget).tab('show');
         window.location.hash = 'display=trend'
-    })  
-    
+    })
+
     
 
     $('#tab-btn-links').on('click', e => {
         $(e.currentTarget).tab('show');
         window.location.hash = 'display=links'
-    })   
+    })
 
     </script>
 
@@ -3725,13 +3834,92 @@
 </article>
 
 
+<section class="related-reading">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card bg-white text-green mb-2 p-2 text-primary fs-lg">
+                   <strong class="border-bottom">Related content</strong>
+                </div>
+            </div>
 
-<script type="text/javascript" 
-    src="http://gcappbesp307/IndicatorPublic/beta/js/accessible-autocomplete.min.a28dbcfe4538f42cec64a42e75429f873bd86641fea0b326b3a4800b59917b99b877d3715b07405ff36917ed9e3cc0873f7b58a65905ff508cd42e8c427a5f9a.js" 
+            <div class="col-lg">
+                <div class="card bg-white text-black mb-2">
+                  <div class="card-header"><h4 class="fs-md text-muted"><i class="fas fa-passport text-muted mr-1" aria-hidden="true"></i>Data Stories</h4>
+                  </div>
+                  <div class="card-body fs-sm overflow-fade-about" style="height:400px; overflow-y:scroll;"><a href="http://gcappbesp307/IndicatorPublic/beta/data-stories/poweroutages/">How power outages affect health</a>
+            <hr class="my-1"><a href="http://gcappbesp307/IndicatorPublic/beta/data-stories/violence/">Why violence is a public health issue</a>
+            <hr class="my-1"><a href="http://gcappbesp307/IndicatorPublic/beta/data-stories/redlining/">A brief history of redlining</a>
+            <hr class="my-1"><a href="http://gcappbesp307/IndicatorPublic/beta/data-stories/housing/">Health, housing, and history</a>
+            <hr class="my-1"><a href="http://gcappbesp307/IndicatorPublic/beta/data-stories/heat/">Protecting New Yorkers from extreme heat</a>
+            <hr class="my-1"><a href="http://gcappbesp307/IndicatorPublic/beta/data-stories/assaults/">Disparities in violence</a>
+            <hr class="my-1"><a href="http://gcappbesp307/IndicatorPublic/beta/data-stories/povasthma/">Why asthma is a social justice issue</a>
+            <hr class="my-1"></div>
+                </div>
+              </div>
+              
+        
+              <div class="col-lg">
+                <div class="card bg-white text-black mb-2">
+                    <div class="card-header"><h4 class="fs-md text-muted"><i class="fas fa-star text-muted mr-1" aria-hidden="true"></i>Key Topics</h4>
+
+                    </div>
+                    <div class="card-body fs-sm">
+                        <a href="http://gcappbesp307/IndicatorPublic/beta/key-topics/housing/">Housing</a>
+                        <hr class="my-1"><a href="http://gcappbesp307/IndicatorPublic/beta/key-topics/social/">Inequality and health inequities</a>
+                        <hr class="my-1"></div>
+                  </div>
+
+                  <div class="card bg-white text-black mb-2">
+                    <div class="card-header"><h4 class="fs-md text-muted"><i class="fas fa-map-marked-alt text-muted mr-1" aria-hidden="true"></i>Neighborhood Reports</h4>
+                    </div>
+                    <div class="card-body fs-sm"><a href="http://gcappbesp307/IndicatorPublic/beta/neighborhood-reports/activedesign/">Active Design, Physical Activity and Health</a>
+            <hr class="my-1"><a href="http://gcappbesp307/IndicatorPublic/beta/neighborhood-reports/asthma/">Asthma and the Environment</a>
+            <hr class="my-1"><a href="http://gcappbesp307/IndicatorPublic/beta/neighborhood-reports/climateandhealth/">Climate and Health</a>
+            <hr class="my-1"><a href="http://gcappbesp307/IndicatorPublic/beta/neighborhood-reports/housing/">Housing and Health in NYC</a>
+            <hr class="my-1"></div>
+                  </div>
+              </div>
+              
+        
+              <div class="col-lg">
+                <div class="card bg-white text-black">
+                  <div class="card-header"><h4 class="fs-md text-muted"><i class="fas fa-chart-line text-muted mr-1" aria-hidden="true"></i>Data Explorer</h4>
+                  </div>
+                  <div class="card-body fs-sm overflow-fade-about" style="height:400px; overflow-y:scroll;"><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/asthma/">Asthma</a>
+            <hr class="my-1"><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/asthma-triggers/">Asthma triggers at home</a>
+            <hr class="my-1"><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/bed-bugs/">Bed bugs</a>
+            <hr class="my-1"><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/cancer/">Cancer</a>
+            <hr class="my-1"><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/carbon-monoxide-incidents/">Carbon monoxide</a>
+            <hr class="my-1"><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/cigarette-smoke/">Cigarette smoke</a>
+            <hr class="my-1"><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/cockroaches/">Cockroaches</a>
+            <hr class="my-1"><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/falls-among-older-adults/">Falls among older adults</a>
+            <hr class="my-1"><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/health-care/">Health care</a>
+            <hr class="my-1"><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/health-impacts-of-air-pollution/">Health impacts of air pollution</a>
+            <hr class="my-1"><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/housing-maintenance/">Housing maintenance</a>
+            <hr class="my-1"><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/housing-safety/">Housing safety</a>
+            <hr class="my-1"><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/housing-stability/">Housing stability</a>
+            <hr class="my-1"><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/lead/">Lead poisoning</a>
+            <hr class="my-1"><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/mice-and-rats/">Mice and rats</a>
+            <hr class="my-1"><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/mortality/">Mortality</a>
+            <hr class="my-1"><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/social-conditions/">Social conditions</a>
+            <hr class="my-1"><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/violence/">Violence</a>
+            <hr class="my-1"><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/weather-related-illness/">Weather-related illness</a>
+            <hr class="my-1"><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/worker-health/">Worker health</a>
+            <hr class="my-1"></div>
+                </div>
+              </div>
+              
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript"
+    src="http://gcappbesp307/IndicatorPublic/beta/js/accessible-autocomplete.min.a28dbcfe4538f42cec64a42e75429f873bd86641fea0b326b3a4800b59917b99b877d3715b07405ff36917ed9e3cc0873f7b58a65905ff508cd42e8c427a5f9a.js"
     integrity="sha512-oo28/kU49CzsZKQudUKfhzvYZkH&#43;oLMms6SAC1mRe5m4d9NxWwdAX/NpF&#43;2ePMCHP3tYplkF/1CM1C6MQnpfmg=="></script>
 
-<script type="text/javascript"> 
-    
+<script type="text/javascript">
+
     function createCitation() {
         
         let today = new Date();
@@ -3739,20 +3927,20 @@
         let mm = String(today.getMonth() + 1).padStart(2, '0'); 
         let yyyy = today.getFullYear();
         today = mm + '/' + dd + '/' + yyyy;
-        
+
         
         let citation = "New York City Department of Health, Environment & Health Data Portal. "  + `"Economic conditions"` + " data. " + indicatorName + '. Accessed at ' + `"/data-explorer/economic-conditions/"` + ' on ' + today + "."
-        
+
         
         document.getElementById('citeText').setAttribute('value',citation);
+
         
-        
-        
+
         let btn = document.getElementById('citeButton')
         btn.innerHTML = `<i class="fas fa-copy mr-1"></i>Copy citation`
-        
+
     }
-    
+
     function copyCitation(){
         let citeText = document.getElementById('citeText')
         citeText.select()
@@ -3762,9 +3950,9 @@
         btn.innerHTML = `<i class="fas fa-copy mr-1"></i>Copied!`
         
     }
-    
+
     createCitation();
-    
+
     
 
     $("#thisView").on("click", (e) => {
@@ -3772,10 +3960,16 @@
         let summaryTable = $('#tableID').DataTable();
         summaryTable.button("thisView:name").trigger();
 
+        gtag('event', 'file_download', {
+            'file_name': 'NYC EH Data Portal - ' + indicatorName + " (filtered)" + '.csv',
+            'file_extension': '.csv',
+            'link_text': 'Current table view'
+        });
+
         e.stopPropagation();
 
     });
-    
+
     
 
     $("#allData").on("click", (e) => {
@@ -3785,18 +3979,24 @@
         let allData = aq.from(fullDataTableObjects)
             .groupby("Time", "GeoType", "GeoID", "GeoRank", "Geography")
             .pivot("MeasurementDisplay", "DisplayCI")
-            .relocate(["Time", "GeoType", "GeoID", "GeoRank"], { before: 0 }) 
+            .relocate(["Time", "GeoType", "GeoID", "GeoRank"], { before: 0 })
 
         let downloadTableCSV = allData.toCSV();
 
         
         let csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(downloadTableCSV);
         let hiddenElement = document.createElement('a');
-        
+
         hiddenElement.href = csvData;
         hiddenElement.target = '_blank';
         hiddenElement.download = 'NYC EH Data Portal - ' + indicatorName + " (full)" + '.csv';
         hiddenElement.click();
+
+        gtag('event', 'file_download', {
+            'file_name': hiddenElement.download,
+            'file_extension': '.csv',
+            'link_text': 'Full table for this indicator'
+        });
 
         e.stopPropagation();
 
@@ -3824,12 +4024,18 @@
             hiddenElement.download = 'NYC EH Data Portal - ' + indicatorName + " (raw)" + '.csv';
             hiddenElement.click();
 
+            gtag('event', 'file_download', {
+                'file_name': hiddenElement.download,
+                'file_extension': '.csv',
+                'link_text': 'Raw data for this indicator'
+            });
+
             e.stopPropagation();
 
         })
     });
-    
-    
+
+
 </script>
 
 <ul id="results"></ul>
