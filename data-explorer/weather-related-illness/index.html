@@ -344,6 +344,7 @@
 
     .dropdown-title {
         padding: 0.25rem 1.5rem;
+        white-space: nowrap;
     }
 
     .indicator-measures h6 {
@@ -1707,14 +1708,14 @@
 
         window.onpopstate = function (event) {
 
-            console.log("** pop **");
-            console.log("state: ", window.history.state);
-            console.log("event: ", event);
+            
+            
+            
 
             const new_url = new URL(window.location);
             let new_indicatorId = parseFloat(new_url.searchParams.get('id'));
 
-            console.log("new_indicatorId [pop]", new_indicatorId);
+            
 
             if (new_indicatorId != indicatorId) {
 
@@ -1726,7 +1727,7 @@
         window.addEventListener("hashchange", () => {
 
             const hash = window.location.hash.replace('#', "");
-            console.log("< hashchange > hash: ", hash);
+            
 
             switch (hash) {
 
@@ -1734,7 +1735,7 @@
 
                 case 'display=summary':
                 case 'tab-table':
-                    console.log("< hashchange > summary");
+                    
                     currentHash = 'display=summary';
                     $('#tab-btn-table').tab('show');
                     showTable();
@@ -1742,7 +1743,7 @@
 
                 case 'display=map':
                 case 'tab-map':
-                    console.log("< hashchange > map");
+                    
                     currentHash = 'display=map';
                     $('#tab-btn-map').tab('show');
                     showMap();
@@ -1750,7 +1751,7 @@
 
                 case 'display=trend':
                 case 'tab-trend':
-                    console.log("< hashchange > trend");
+                    
                     currentHash = 'display=trend';
                     $('#tab-btn-trend').tab('show');
                     showTrend();
@@ -1758,14 +1759,14 @@
 
                 case 'display=links':
                 case 'tab-links':
-                    console.log("< hashchange > links");
+                    
                     currentHash = 'display=links';
                     $('#tab-btn-links').tab('show');
                     showLinks();
                     break;
 
                 default:
-                    console.log("< hashchange > default");
+                    
                     currentHash = 'display=summary';
                     
                     
@@ -1775,7 +1776,7 @@
 
             state = window.history.state;
 
-            console.log(">> state [hashchange]", state);
+            
 
         });
 
@@ -1980,10 +1981,10 @@
             console.log("** loadIndicator");
 
             currentHash = window.location.hash;
-            console.log("currentHash [loadIndicator]", currentHash);
+            // console.log("currentHash [loadIndicator]", currentHash);
 
-            console.log("this_indicatorId", this_indicatorId);
-            console.log("window.history.state", window.history.state);
+            // console.log("this_indicatorId", this_indicatorId);
+            // console.log("window.history.state", window.history.state);
 
             // if indicatorId isn't given, use the first indicator from the dropdown list
             //  (which is populated by Hugo reading the content frontmatter).
@@ -2039,41 +2040,41 @@
 
             if (!dont_add_to_history && (window.history.state === null || state === null || window.history.state.id != indicatorId)) {
 
-                console.log("++++ add to history");
+                // console.log("++++ add to history");
 
-                console.log("indicatorId [1]:", url.searchParams.get('id'))
+                // console.log("indicatorId [1]:", url.searchParams.get('id'))
 
                 if (!url.hash) {
 
-                    console.log("- no hash");
-                    console.log("state [pre]: ", window.history.state);
-                    console.log("indicatorId [2]:", url.searchParams.get('id'))
+                    // console.log("- no hash");
+                    // console.log("state [pre]: ", window.history.state);
+                    // console.log("indicatorId [2]:", url.searchParams.get('id'))
 
                     // if loadIndicator is being called without a hash (like when a topic page is loaded), then show the first ID and summary
 
                     url.hash = "display=summary";
                     window.history.replaceState({ id: indicatorId, hash: url.hash}, '', url);
 
-                    console.log("state [post]: ", window.history.state);
+                    // console.log("state [post]: ", window.history.state);
 
                 } else {
 
-                    console.log("# hash");
-                    console.log("state [pre]: ", window.history.state);
-                    console.log("indicatorId [3]:", url.searchParams.get('id'))
+                    // console.log("# hash");
+                    // console.log("state [pre]: ", window.history.state);
+                    // console.log("indicatorId [3]:", url.searchParams.get('id'))
 
                     url.hash = currentHash;
                     window.history.pushState({ id: indicatorId, hash: url.hash }, '', url);
 
-                    console.log("state [post]: ", window.history.state);
+                    // console.log("state [post]: ", window.history.state);
 
                 }
 
             } else {
 
-                console.log("---- don't add to history");
-                console.log("state: ", window.history.state);
-                console.log("indicatorId [4]:", url.searchParams.get('id'))
+                // console.log("---- don't add to history");
+                // console.log("state: ", window.history.state);
+                // console.log("indicatorId [4]:", url.searchParams.get('id'))
 
             }
 
@@ -2241,37 +2242,40 @@
         // function to create data and metadata for links chart
         // ----------------------------------------------------------------------- //
 
+        // WHAT'S THE MOST RECENT YEAR WHERE PRIMARY AND SECONDARY SHARE A GEOGRAPHY?
+
         const filterSecondaryIndicatorMeasure = async (primaryMeasureId, secondaryMeasureId) => {
 
-            // filter links data to keep primary measure
+            console.log("primaryMeasureId", primaryMeasureId);
+            console.log("secondaryMeasureId", secondaryMeasureId);
 
-            const primaryMeasureTimesDataObjects = fullDataLinksObjects.filter(
-                d => d.MeasureID === primaryMeasureId
-            );
+            
+            
+            
 
-            // get most recent time period for primary measure
-
-            const aqFilteredPrimaryMeasureTimesData = aq.from(fullDataLinksObjects)
-
-                // most recent period in the data
-                .filter(`d => d.MeasureID === ${primaryMeasureId}`)
-
-                // most recent period in the data
-                .filter(d => d.end_period === op.max(d.end_period))
-
-            const mostRecentPrimaryMeasureStartTime = aqFilteredPrimaryMeasureTimesData.array("start_period")[0]
-            const mostRecentPrimaryMeasureEndTime   = aqFilteredPrimaryMeasureTimesData.array("end_period")[0]
-            const mostRecentPrimaryMeasureTime      = aqFilteredPrimaryMeasureTimesData.array("Time")[0]
-            const primaryMeasureGeoRanks            = [...new Set(aqFilteredPrimaryMeasureTimesData.array("GeoRank"))]
-
-            // get metadata for the selected primary measure, assign to global variable
-            // indicatorMeasures created in loadIndicator
+            
+            
 
             primaryMeasureMetadata = linksMeasures.filter(
                 measure => measure.MeasureID === primaryMeasureId
             )
 
-            // if no secondary measure ID is given, set it to the first in the primary measure's links list
+            
+
+            
+
+            const primaryMeasureGeos = primaryMeasureMetadata[0].AvailableGeographyTypes
+                .map(g => g.GeoType)
+                .filter(g => !/Citywide|Borough/.test(g))
+
+            console.log("primaryMeasureGeos", primaryMeasureGeos);
+
+
+            
+            
+            
+
+            
 
             if (typeof secondaryMeasureId == "undefined") {
                 secondaryMeasureId = primaryMeasureMetadata[0].VisOptions[0].Links[0].MeasureID;
@@ -2297,35 +2301,94 @@
             )
 
             
+            
+            
 
-            const secondaryMeasureTimes = secondaryMeasureMetadata[0].AvailableTimes;
+            
+
+            const secondaryMeasureGeos = secondaryMeasureMetadata[0].AvailableGeographyTypes
+                .map(g => g.GeoType)
+                .filter(g => !/Citywide|Borough/.test(g))
+
+            console.log("secondaryMeasureGeos", secondaryMeasureGeos);
+            
+            
+
+            const sharedGeos = secondaryMeasureGeos.filter(g => primaryMeasureGeos.includes(g));
+
+            
+
+            
+
+            const secondaryMeasureTimes   = secondaryMeasureMetadata[0].AvailableTimes;
             const aqSecondaryMeasureTimes = aq.from(secondaryMeasureTimes);
 
+            
+            
+            
+            
+
+            const filteredPrimaryMeasureData = fullDataLinksObjects
+
+                
+                .filter(d => d.MeasureID === primaryMeasureId)
+                
+                
+                .filter(d => sharedGeos.includes(d.GeoType))
+
+            
+
+            
+            
+
+            const mostRecentPrimaryMeasureEndTime = Math.max(...filteredPrimaryMeasureData.map(d => d.end_period));
+
+            
+
+            
+
+            const filteredPrimaryMeasureTimesData = filteredPrimaryMeasureData
+
+                .filter(d => d.end_period === mostRecentPrimaryMeasureEndTime)
+            
+            
+
+            
+
+            const aqFilteredPrimaryMeasureTimesData = aq.from(filteredPrimaryMeasureTimesData);
+
 
             
             
             
 
-            await fetch(data_repo + "/" + data_branch + `/indicators/data/${secondaryIndicatorId}.json`)
+            
+            
+            
+
+            await fetch(`${data_repo}/${data_branch}/indicators/data/${secondaryIndicatorId}.json`)
                 .then(response => response.json())
                 .then(async data => {
 
                     
 
-                    const filteredSecondaryMeasureData = data.filter(d => d.MeasureID === secondaryMeasureId)
+                    const secondaryMeasureData = data.filter(d => d.MeasureID === secondaryMeasureId)
 
                     
 
-                    const aqFilteredSecondaryMeasureTimesData = aq.from(filteredSecondaryMeasureData)
+                    const aqFilteredSecondaryMeasureData = aq.from(secondaryMeasureData)
                         .join(
                             geoTable,
                             [["GeoID", "GeoType"], ["GeoID", "GeoType"]]
                         )
-                        .derive({ "GeoRank": aq.escape( d => assignGeoRank(d.GeoType))})
 
                         
-                        .filter(`d => op.includes([${primaryMeasureGeoRanks}], d.GeoRank)`)
+                        .filter(aq.escape(d => sharedGeos.includes(d.GeoType)))
+
+                        .derive({ "GeoRank": aq.escape( d => assignGeoRank(d.GeoType))})
                         .rename({'Name': 'Geography'})
+
+                        
                         .join(
                             aqSecondaryMeasureTimes,
                             ["Time", "TimeDescription"]
@@ -2334,7 +2397,10 @@
 
                     
 
-                    const filteredSecondaryMeasureTimesDataObjects = aqFilteredSecondaryMeasureTimesData.objects();
+                    const filteredSecondaryMeasureTimesDataObjects = aqFilteredSecondaryMeasureData.objects();
+                    
+
+                    
 
                     
 
@@ -2346,7 +2412,9 @@
 
                     
 
-                    const aqClosestSecondaryData = aqFilteredSecondaryMeasureTimesData
+                    
+
+                    const aqClosestSecondaryData = aqFilteredSecondaryMeasureData
 
                         
                         .filter(`d => d.end_period === ${closestSecondaryTime.end_period}`)
@@ -2357,9 +2425,15 @@
                         
                         
                         .filter(d => d.start_period === op.min(d.start_period))
-
+                        
+                    
                     
 
+
+                    
+                    
+                    
+                    
                     const aqJoinedPrimarySecondaryData = aqFilteredPrimaryMeasureTimesData
                         .join(
                             aqClosestSecondaryData,
@@ -2990,7 +3064,7 @@
 
         const renderMeasures = async () => {
 
-            
+            console.log("** renderMeasures");
 
             linksMeasures.length = 0
 
@@ -3673,7 +3747,7 @@
 
                 if (tabMapSelected && window.location.hash === '#display=map') {
 
-                    console.log("xxx NO MAP!");
+                    
 
                     
 
@@ -3696,7 +3770,7 @@
 
                 if (tabTrendSelected && window.location.hash === '#display=trend') {
 
-                    console.log("xxx NO TREND!");
+                    
 
                     
 
@@ -3717,7 +3791,7 @@
 
                 if (tabLinksSelected && window.location.hash === '#display=links') {
 
-                    console.log("xxx NO LINKS!");
+                    
 
                     
 
