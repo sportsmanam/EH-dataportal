@@ -374,7 +374,7 @@
     document.querySelector('form.autocomplete-form').addEventListener("submit", function (e) {
         e.preventDefault(); 
         var locVal = searchForm.options[searchForm.selectedIndex].value
-        window.location = baseURL + '/neighborhood-reports/'+ DOMPurify.sanitize(locVal) + "/" + "/housing_and_health/"
+        window.location = baseURL + 'neighborhood-reports/'+ DOMPurify.sanitize(locVal) + "/" + "/housing_and_health/"
       });
    </script><ul id="results"></ul>
   </main>
