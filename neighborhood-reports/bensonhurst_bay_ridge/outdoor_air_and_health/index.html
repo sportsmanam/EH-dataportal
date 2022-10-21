@@ -281,143 +281,143 @@
 
 </header>
 <main id="skip-header-target" role="main"><div class="d-flex flex-column report-header">
-
-  
-  <div class="container-fluid p-0 d-lg-none">
-    <div>
-      <div class="btn-toggle">
-        <button class="btn btn-block btn-lg btn-primary shadow" data-toggle="collapse" data-target="#sidebar-nav" aria-expanded="false" aria-controls="sidebar-nav">
-            <span class="title">Reports</span>
-        </button>
-      </div>
+    
+    
+    <div class="container-fluid p-0 d-lg-none">
+        <div>
+            <div class="btn-toggle">
+                <button class="btn btn-block btn-lg btn-primary shadow" data-toggle="collapse" data-target="#sidebar-nav" aria-expanded="false" aria-controls="sidebar-nav">
+                    <span class="title">Reports</span>
+                </button>
+            </div>
+        </div>
     </div>
-  </div>
-
+    
 </div>
 
 <script>
-  var NeighborhoodName = "Bensonhurst - Bay Ridge"; 
-  var report_name = "Outdoor Air and Health"
-  var data_download_loc = "Outdoor_Air_and_Health_data.csv"
+    var NeighborhoodName = "Bensonhurst - Bay Ridge"; 
+    var report_name = "Outdoor Air and Health"
+    var data_download_loc = "Outdoor_Air_and_Health_data.csv"
 </script>
 
 <section class="container-fluid pl-lg-6" id="skip-header-target">
-  <div class="row">
-
-    <div class="col-lg-3 collapse d-lg-block sidebar-report d-print-none" id="sidebar-nav">
-        <div class="mt-5">
-            <a class="sr-only sr-only-focusable skip-menu" href="#primary-content">Skip Nav</a>
-
-            <h2>Change Report</h2>
-            <nav role="navigation">
-              <div class="list-group custom-active">
+    <div class="row">
+        
+        <div class="col-lg-3 collapse d-lg-block sidebar-report d-print-none" id="sidebar-nav">
+            <div class="mt-5">
+                <a class="sr-only sr-only-focusable skip-menu" href="#primary-content">Skip Nav</a>
+                
+                <h2>Change Report</h2>
+                <nav role="navigation">
+                    <div class="list-group custom-active">
 <a href="https://a816-dohbesp.nyc.gov/IndicatorPublic/beta/neighborhood-reports/bensonhurst_bay_ridge/active_design_physical_activity_and_health/" class="list-group-item list-group-item-action" aria-current="page">Active Design Physical Activity and Health</a><a href="https://a816-dohbesp.nyc.gov/IndicatorPublic/beta/neighborhood-reports/bensonhurst_bay_ridge/asthma_and_the_environment/" class="list-group-item list-group-item-action" aria-current="page">Asthma and the Environment</a><a href="https://a816-dohbesp.nyc.gov/IndicatorPublic/beta/neighborhood-reports/bensonhurst_bay_ridge/climate_and_health/" class="list-group-item list-group-item-action" aria-current="page">Climate and Health</a><a href="https://a816-dohbesp.nyc.gov/IndicatorPublic/beta/neighborhood-reports/bensonhurst_bay_ridge/housing_and_health/" class="list-group-item list-group-item-action" aria-current="page">Housing and Health</a><a href="https://a816-dohbesp.nyc.gov/IndicatorPublic/beta/neighborhood-reports/bensonhurst_bay_ridge/outdoor_air_and_health/" class="list-group-item list-group-item-action active" aria-current="page">Outdoor Air and Health</a></div>
-            </nav>
-
-            <hr class="mt-2">
-
-            <h2 class="mt-4">Change Neighborhood</h2>
-            <form action="https://a816-dohbesp.nyc.gov/IndicatorPublic/beta/neighborhood-reports" method="get" class="autocomplete-form">
-              <div class="row no-gutters">
-                <label for="last-neighborhood" class="block col-sm-12 font-weight-bold h4 mb-3 sr-only">What NYC neighborhood are you interested in?</label>
-                <div class="col-9">
-                  <div class="autocomplete-wrapper">
-                    <select name="last-neighborhood" id="last-neighborhood">
-                      <option value="">Select a neighborhood</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-3">
-                  <button type="submit" class="btn-primary btn btn-block fs-sm">Go</button>
-                </div>
-              </div>
-            </form>
-            <hr class="mt-4 mb-1">
-
-            <button onclick="getData()" class="btn btn-sm btn-block btn-report" target="_blank"><i class="fa fa-download mr-1"></i>Download Report Data <span class="sr-only">(opens in a new tab)</span></button>
+                </nav>
+                
+                <hr class="mt-2">
+                
+                <h2 class="mt-4">Change Neighborhood</h2>
+                <form action="https://a816-dohbesp.nyc.gov/IndicatorPublic/beta/neighborhood-reports" method="get" class="autocomplete-form">
+                    <div class="row no-gutters">
+                        <label for="last-neighborhood" class="block col-sm-12 font-weight-bold h4 mb-3 sr-only">What NYC neighborhood are you interested in?</label>
+                        <div class="col-9">
+                            <div class="autocomplete-wrapper">
+                                <select name="last-neighborhood" id="last-neighborhood">
+                                    <option value="">Select a neighborhood</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <button type="submit" class="btn-primary btn btn-block fs-sm">Go</button>
+                        </div>
+                    </div>
+                </form>
+                <hr class="mt-4 mb-1">
+                
+                <button onclick="getData()" class="btn btn-sm btn-block btn-report" target="_blank"><i class="fa fa-download mr-1"></i>Download Report Data <span class="sr-only">(opens in a new tab)</span></button>
+            </div>
+            
+            
         </div>
         
-
-    </div>
-    
-
-    <script>
-      
-      var downloadLoc = "https://raw.githubusercontent.com/nychealth/EHDP-data" + "/" + "production" + "/neighborhood-reports/data/" + data_download_loc
-      var reportData;
-      var download
-
-      
-      function getData() {
-        d3.csv(downloadLoc).then(data => {
-          reportData = data;
-          reportData.filter(x => x.neighborhood = 'Bensonhurst - Bay Ridge') 
-          
-          downloadData()
-        });
-      };
-
-      
-      function downloadData() {
-        let data = aq.from(reportData); 
-        download = data.select(aq.not('report_id','indicator_id','data_field_name','start_date','end_date',)) 
-
-          let downloadTableCSV = download.toCSV(); 
-          
-          let csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(downloadTableCSV);
-          let hiddenElement = document.createElement('a');
-          hiddenElement.href = csvData;
-          hiddenElement.target = '_blank';
-          hiddenElement.download = 'NYC EH Data Portal - Neighborhood Report - ' + report_name + " - " + "Bensonhurst - Bay Ridge" + '.csv';
-          hiddenElement.click();
-
-          gtag('event', 'file_download', {
-            'file_name': hiddenElement.download,
-            'file_extension': '.csv',
-            'link_text': 'Download Report Data'
-          });
-        };
-
-    </script>
-
-    <div class="col-12 col-lg-9 overflow-hidden" id="primary-content">
-      <div class="my-5">
-        <div class="px-lg-6 my-4">
-          <h1 class="report-title">Outdoor Air and Health in<br>
-            <span class="sub-title">Bensonhurst - Bay Ridge</span>
-          </h1>
-          <p class="report-description">Air pollution is one of the most important environmental threats to urban populations and while all people are exposed, pollutant emissions, levels of exposure, and population vulnerability vary across neighborhoods. Exposures to common air pollutants have been linked to respiratory and cardiovascular diseases, cancers, and premature deaths.</p>
-
-          <p><strong style="color:#00923E">Bensonhurst - Bay Ridge</strong> includes ZIP Codes: <span class="home-label">11209,11214,11228,11425</span>.</p>
-
-          <hr class="mt-4">
-
-          <div><div class="report-topic">
-
-              <div class="topic-header">
-                <h2>Health Burden: Fine Particles (PM2.5) </h2>
-                <p>Estimated health events attributable to PM2.5 exposure over natural background levels in NYC (average annual rate per 100,000 residents).</p>
-              </div>
-
-              <div class="container-fluid px-0 mb-4">
-                <div class="row indicator-headings mb-2">
-                  <div class="col-6 col-md-5 pl-3">
-                    Topic
-                  </div>
-                  <div class="col-6 col-md-4">
-
-                    <div class="position-relative">
-                      Comparison<br>
-                      <span class="meta"> to NYC average</span></a>
-                      <a href="#" data-toggle="modal" data-target="#modal-rank" class="info-modal"><i class="fas fa-question-circle fs-rg"></i></a>
-                    </div>
-
-                  </div>
-                  <div class="d-none d-md-inline col-md-3">
-                    Rank<br>
-                    <span class="meta"> out of the 42 neighborhoods</span>
-                  </div>
-                </div><button data-toggle="modal" data-target="#modal-PM2-651-1" class="indicator-anchor">
+        
+        <script>
+            
+            var downloadLoc = "https://raw.githubusercontent.com/nychealth/EHDP-data" + "/" + "production" + "/neighborhood-reports/data/" + data_download_loc
+            var reportData;
+            var download
+            
+            
+            function getData() {
+                d3.csv(downloadLoc).then(data => {
+                    reportData = data;
+                    reportData.filter(x => x.neighborhood = 'Bensonhurst - Bay Ridge') 
+                    
+                    downloadData()
+                });
+            };
+            
+            
+            function downloadData() {
+                let data = aq.from(reportData); 
+                download = data.select(aq.not('report_id','indicator_id','data_field_name','start_date','end_date',)) 
+                
+                let downloadTableCSV = download.toCSV(); 
+                
+                let csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(downloadTableCSV);
+                let hiddenElement = document.createElement('a');
+                hiddenElement.href = csvData;
+                hiddenElement.target = '_blank';
+                hiddenElement.download = 'NYC EH Data Portal - Neighborhood Report - ' + report_name + " - " + "Bensonhurst - Bay Ridge" + '.csv';
+                hiddenElement.click();
+                
+                gtag('event', 'file_download', {
+                    'file_name': hiddenElement.download,
+                    'file_extension': '.csv',
+                    'link_text': 'Download Report Data'
+                });
+            };
+            
+        </script>
+        
+        <div class="col-12 col-lg-9 overflow-hidden" id="primary-content">
+            <div class="my-5">
+                <div class="px-lg-6 my-4">
+                    <h1 class="report-title">Outdoor Air and Health in<br>
+                        <span class="sub-title">Bensonhurst - Bay Ridge</span>
+                    </h1>
+                    <p class="report-description">Air pollution is one of the most important environmental threats to urban populations and while all people are exposed, pollutant emissions, levels of exposure, and population vulnerability vary across neighborhoods. Exposures to common air pollutants have been linked to respiratory and cardiovascular diseases, cancers, and premature deaths.</p>
+                    
+                    <p><strong style="color:#00923E">Bensonhurst - Bay Ridge</strong> includes ZIP Codes: <span class="home-label">11209,11214,11228,11425</span>.</p>
+                    
+                    <hr class="mt-4">
+                    
+                    <div><div class="report-topic">
+                            
+                            <div class="topic-header">
+                                <h2>Health Burden: Fine Particles (PM2.5) </h2>
+                                <p>Estimated health events attributable to PM2.5 exposure over natural background levels in NYC (average annual rate per 100,000 residents).</p>
+                            </div>
+                            
+                            <div class="container-fluid px-0 mb-4">
+                                <div class="row indicator-headings mb-2">
+                                    <div class="col-6 col-md-5 pl-3">
+                                        Topic
+                                    </div>
+                                    <div class="col-6 col-md-4">
+                                        
+                                        <div class="position-relative">
+                                            Comparison<br>
+                                            <span class="meta"> to NYC average</span></a>
+                                            <a href="#" data-toggle="modal" data-target="#modal-rank" class="info-modal"><i class="fas fa-question-circle fs-rg"></i></a>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="d-none d-md-inline col-md-3">
+                                        Rank<br>
+                                        <span class="meta"> out of the 42 neighborhoods</span>
+                                    </div>
+                                </div><button data-toggle="modal" data-target="#modal-PM2-651-1" class="indicator-anchor">
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
             <span class="indicator-short-name">PM2.5 health burden (heart)</span>
@@ -1403,35 +1403,35 @@
         
     </script>
     </div>
-              
-
-            </div>
-            <div class="report-topic">
-
-              <div class="topic-header">
-                <h2>Health Burden: Ozone (O3)</h2>
-                <p>Estimated health events attributable to ozone exposure over natural background levels in NYC (average annual rate per 100,000 residents).</p>
-              </div>
-
-              <div class="container-fluid px-0 mb-4">
-                <div class="row indicator-headings mb-2">
-                  <div class="col-6 col-md-5 pl-3">
-                    Topic
-                  </div>
-                  <div class="col-6 col-md-4">
-
-                    <div class="position-relative">
-                      Comparison<br>
-                      <span class="meta"> to NYC average</span></a>
-                      <a href="#" data-toggle="modal" data-target="#modal-rank" class="info-modal"><i class="fas fa-question-circle fs-rg"></i></a>
-                    </div>
-
-                  </div>
-                  <div class="d-none d-md-inline col-md-3">
-                    Rank<br>
-                    <span class="meta"> out of the 42 neighborhoods</span>
-                  </div>
-                </div><button data-toggle="modal" data-target="#modal-O3-A653-2" class="indicator-anchor">
+                            
+                            
+                        </div>
+                        <div class="report-topic">
+                            
+                            <div class="topic-header">
+                                <h2>Health Burden: Ozone (O3)</h2>
+                                <p>Estimated health events attributable to ozone exposure over natural background levels in NYC (average annual rate per 100,000 residents).</p>
+                            </div>
+                            
+                            <div class="container-fluid px-0 mb-4">
+                                <div class="row indicator-headings mb-2">
+                                    <div class="col-6 col-md-5 pl-3">
+                                        Topic
+                                    </div>
+                                    <div class="col-6 col-md-4">
+                                        
+                                        <div class="position-relative">
+                                            Comparison<br>
+                                            <span class="meta"> to NYC average</span></a>
+                                            <a href="#" data-toggle="modal" data-target="#modal-rank" class="info-modal"><i class="fas fa-question-circle fs-rg"></i></a>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="d-none d-md-inline col-md-3">
+                                        Rank<br>
+                                        <span class="meta"> out of the 42 neighborhoods</span>
+                                    </div>
+                                </div><button data-toggle="modal" data-target="#modal-O3-A653-2" class="indicator-anchor">
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
             <span class="indicator-short-name">Ozone asthma ED visits (children)</span>
@@ -2417,35 +2417,35 @@
         
     </script>
     </div>
-              
-
-            </div>
-            <div class="report-topic">
-
-              <div class="topic-header">
-                <h2>Heating Fuel Emissions</h2>
-                <p>Estimated annual boiler emissions per km2 as of January 2015.  Calculated using heating fuel type on NYC boiler permits and estimates of boiler activity.</p>
-              </div>
-
-              <div class="container-fluid px-0 mb-4">
-                <div class="row indicator-headings mb-2">
-                  <div class="col-6 col-md-5 pl-3">
-                    Topic
-                  </div>
-                  <div class="col-6 col-md-4">
-
-                    <div class="position-relative">
-                      Comparison<br>
-                      <span class="meta"> to NYC average</span></a>
-                      <a href="#" data-toggle="modal" data-target="#modal-rank" class="info-modal"><i class="fas fa-question-circle fs-rg"></i></a>
-                    </div>
-
-                  </div>
-                  <div class="d-none d-md-inline col-md-3">
-                    Rank<br>
-                    <span class="meta"> out of the 42 neighborhoods</span>
-                  </div>
-                </div><button data-toggle="modal" data-target="#modal-Boil641-3" class="indicator-anchor">
+                            
+                            
+                        </div>
+                        <div class="report-topic">
+                            
+                            <div class="topic-header">
+                                <h2>Heating Fuel Emissions</h2>
+                                <p>Estimated annual boiler emissions per km2 as of January 2015.  Calculated using heating fuel type on NYC boiler permits and estimates of boiler activity.</p>
+                            </div>
+                            
+                            <div class="container-fluid px-0 mb-4">
+                                <div class="row indicator-headings mb-2">
+                                    <div class="col-6 col-md-5 pl-3">
+                                        Topic
+                                    </div>
+                                    <div class="col-6 col-md-4">
+                                        
+                                        <div class="position-relative">
+                                            Comparison<br>
+                                            <span class="meta"> to NYC average</span></a>
+                                            <a href="#" data-toggle="modal" data-target="#modal-rank" class="info-modal"><i class="fas fa-question-circle fs-rg"></i></a>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="d-none d-md-inline col-md-3">
+                                        Rank<br>
+                                        <span class="meta"> out of the 42 neighborhoods</span>
+                                    </div>
+                                </div><button data-toggle="modal" data-target="#modal-Boil641-3" class="indicator-anchor">
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
             <span class="indicator-short-name">Boiler emissions (PM2.5)</span>
@@ -3037,35 +3037,35 @@
         
     </script>
     </div>
-              
-
-            </div>
-            <div class="report-topic">
-
-              <div class="topic-header">
-                <h2>Outdoor Air Pollutants</h2>
-                <p>Estimated annual average concentrations calculated from a model that used NYC Community Air Survey measurements.</p>
-              </div>
-
-              <div class="container-fluid px-0 mb-4">
-                <div class="row indicator-headings mb-2">
-                  <div class="col-6 col-md-5 pl-3">
-                    Topic
-                  </div>
-                  <div class="col-6 col-md-4">
-
-                    <div class="position-relative">
-                      Comparison<br>
-                      <span class="meta"> to NYC average</span></a>
-                      <a href="#" data-toggle="modal" data-target="#modal-rank" class="info-modal"><i class="fas fa-question-circle fs-rg"></i></a>
-                    </div>
-
-                  </div>
-                  <div class="d-none d-md-inline col-md-3">
-                    Rank<br>
-                    <span class="meta"> out of the 42 neighborhoods</span>
-                  </div>
-                </div><button data-toggle="modal" data-target="#modal-Sulf383-4" class="indicator-anchor">
+                            
+                            
+                        </div>
+                        <div class="report-topic">
+                            
+                            <div class="topic-header">
+                                <h2>Outdoor Air Pollutants</h2>
+                                <p>Estimated annual average concentrations calculated from a model that used NYC Community Air Survey measurements.</p>
+                            </div>
+                            
+                            <div class="container-fluid px-0 mb-4">
+                                <div class="row indicator-headings mb-2">
+                                    <div class="col-6 col-md-5 pl-3">
+                                        Topic
+                                    </div>
+                                    <div class="col-6 col-md-4">
+                                        
+                                        <div class="position-relative">
+                                            Comparison<br>
+                                            <span class="meta"> to NYC average</span></a>
+                                            <a href="#" data-toggle="modal" data-target="#modal-rank" class="info-modal"><i class="fas fa-question-circle fs-rg"></i></a>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="d-none d-md-inline col-md-3">
+                                        Rank<br>
+                                        <span class="meta"> out of the 42 neighborhoods</span>
+                                    </div>
+                                </div><button data-toggle="modal" data-target="#modal-Sulf383-4" class="indicator-anchor">
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
             <span class="indicator-short-name">Sulfur dioxide</span>
@@ -3854,35 +3854,35 @@
         
     </script>
     </div>
-              
-
-            </div>
-            <div class="report-topic">
-
-              <div class="topic-header">
-                <h2>Outdoor Air Toxics</h2>
-                <p>Estimated annual average concentrations of known carcinogens that are part of a class of pollutants also known as hazardous air pollutants.</p>
-              </div>
-
-              <div class="container-fluid px-0 mb-4">
-                <div class="row indicator-headings mb-2">
-                  <div class="col-6 col-md-5 pl-3">
-                    Topic
-                  </div>
-                  <div class="col-6 col-md-4">
-
-                    <div class="position-relative">
-                      Comparison<br>
-                      <span class="meta"> to NYC average</span></a>
-                      <a href="#" data-toggle="modal" data-target="#modal-rank" class="info-modal"><i class="fas fa-question-circle fs-rg"></i></a>
-                    </div>
-
-                  </div>
-                  <div class="d-none d-md-inline col-md-3">
-                    Rank<br>
-                    <span class="meta"> out of the 42 neighborhoods</span>
-                  </div>
-                </div><button data-toggle="modal" data-target="#modal-Air647-5" class="indicator-anchor">
+                            
+                            
+                        </div>
+                        <div class="report-topic">
+                            
+                            <div class="topic-header">
+                                <h2>Outdoor Air Toxics</h2>
+                                <p>Estimated annual average concentrations of known carcinogens that are part of a class of pollutants also known as hazardous air pollutants.</p>
+                            </div>
+                            
+                            <div class="container-fluid px-0 mb-4">
+                                <div class="row indicator-headings mb-2">
+                                    <div class="col-6 col-md-5 pl-3">
+                                        Topic
+                                    </div>
+                                    <div class="col-6 col-md-4">
+                                        
+                                        <div class="position-relative">
+                                            Comparison<br>
+                                            <span class="meta"> to NYC average</span></a>
+                                            <a href="#" data-toggle="modal" data-target="#modal-rank" class="info-modal"><i class="fas fa-question-circle fs-rg"></i></a>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="d-none d-md-inline col-md-3">
+                                        Rank<br>
+                                        <span class="meta"> out of the 42 neighborhoods</span>
+                                    </div>
+                                </div><button data-toggle="modal" data-target="#modal-Air647-5" class="indicator-anchor">
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
             <span class="indicator-short-name">Formaldehyde</span>
@@ -4277,35 +4277,35 @@
         
     </script>
     </div>
-              
-
-            </div>
-            <div class="report-topic">
-
-              <div class="topic-header">
-                <h2>Traffic Density</h2>
-                <p>Estimated millions of annual vehicle miles traveled per km2. Vehicle miles traveled is an indicator of emissions from automobile exhaust, brake wear and tire wear.</p>
-              </div>
-
-              <div class="container-fluid px-0 mb-4">
-                <div class="row indicator-headings mb-2">
-                  <div class="col-6 col-md-5 pl-3">
-                    Topic
-                  </div>
-                  <div class="col-6 col-md-4">
-
-                    <div class="position-relative">
-                      Comparison<br>
-                      <span class="meta"> to NYC average</span></a>
-                      <a href="#" data-toggle="modal" data-target="#modal-rank" class="info-modal"><i class="fas fa-question-circle fs-rg"></i></a>
-                    </div>
-
-                  </div>
-                  <div class="d-none d-md-inline col-md-3">
-                    Rank<br>
-                    <span class="meta"> out of the 42 neighborhoods</span>
-                  </div>
-                </div><button data-toggle="modal" data-target="#modal-Traf644-6" class="indicator-anchor">
+                            
+                            
+                        </div>
+                        <div class="report-topic">
+                            
+                            <div class="topic-header">
+                                <h2>Traffic Density</h2>
+                                <p>Estimated millions of annual vehicle miles traveled per km2. Vehicle miles traveled is an indicator of emissions from automobile exhaust, brake wear and tire wear.</p>
+                            </div>
+                            
+                            <div class="container-fluid px-0 mb-4">
+                                <div class="row indicator-headings mb-2">
+                                    <div class="col-6 col-md-5 pl-3">
+                                        Topic
+                                    </div>
+                                    <div class="col-6 col-md-4">
+                                        
+                                        <div class="position-relative">
+                                            Comparison<br>
+                                            <span class="meta"> to NYC average</span></a>
+                                            <a href="#" data-toggle="modal" data-target="#modal-rank" class="info-modal"><i class="fas fa-question-circle fs-rg"></i></a>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="d-none d-md-inline col-md-3">
+                                        Rank<br>
+                                        <span class="meta"> out of the 42 neighborhoods</span>
+                                    </div>
+                                </div><button data-toggle="modal" data-target="#modal-Traf644-6" class="indicator-anchor">
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
             <span class="indicator-short-name">Car traffic</span>
@@ -4897,149 +4897,202 @@
         
     </script>
     </div>
-              
-
-            </div>
+                            
+                            
+                        </div>
+                        </div>
+                </div>
+                
             </div>
         </div>
-        
-      </div>
     </div>
-  </div>
-  
-
+    
+    
 </section>
 <section class="related-reading">
-  <div class="container">
-    <div class="row">
-
-      <div class="col-lg">
-        <div class="card bg-white text-black mb-2">
-          <div class="card-header">What the city is doing?</div>
-          <div class="card-body">
-            <ul class="list-group list-group-flush"><li class="list-group-item border-0 py-1 bg-transparent"><a href="https://www1.nyc.gov/assets/doh/downloads/pdf/asthma/local-law-55.pdf">Enforces tenant and housing laws: landlords must keep homes free of pests and mold</a></li><li class="list-group-item border-0 py-1 bg-transparent"><a href="https://www1.nyc.gov/site/doh/health/health-topics/healthy-home-workshops.page">Offers free Healthy Homes Community Workshops</a></li><li class="list-group-item border-0 py-1 bg-transparent"><a href="https://www1.nyc.gov/site/doh/data/data-sets/air-quality-nyc-community-air-survey.page">Monitors air quality across neighborhoods through the NYC Community Air Survey</a></li><li class="list-group-item border-0 py-1 bg-transparent"><a href="https://onenyc.cityofnewyork.us/">Follows a plan called OneNYC to create a more sustainable and equitable City</a></li></ul>
-          </div>
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-lg">
+                <div class="card bg-white text-black mb-2">
+                    <div class="card-header">What the city is doing?</div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush"><li class="list-group-item border-0 py-1 bg-transparent"><a href="https://www1.nyc.gov/assets/doh/downloads/pdf/asthma/local-law-55.pdf">Enforces tenant and housing laws: landlords must keep homes free of pests and mold</a></li><li class="list-group-item border-0 py-1 bg-transparent"><a href="https://www1.nyc.gov/site/doh/health/health-topics/healthy-home-workshops.page">Offers free Healthy Homes Community Workshops</a></li><li class="list-group-item border-0 py-1 bg-transparent"><a href="https://www1.nyc.gov/site/doh/data/data-sets/air-quality-nyc-community-air-survey.page">Monitors air quality across neighborhoods through the NYC Community Air Survey</a></li><li class="list-group-item border-0 py-1 bg-transparent"><a href="https://onenyc.cityofnewyork.us/">Follows a plan called OneNYC to create a more sustainable and equitable City</a></li></ul>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="col-lg">
+                <div class="card bg-white text-black mb-2">
+                    <div class="card-header">What can you do?</div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush"><li class="list-group-item border-0 py-1 bg-transparent"><a href="http://www.nyc.gov/health/asthma">Work with your healthcare provider to create an asthma action plan</a></li><li class="list-group-item border-0 py-1 bg-transparent"><a href="http://www.weather.gov/">Check the weather report for the air quality index and pollen counts</a></li><li class="list-group-item border-0 py-1 bg-transparent"><a href="https://www1.nyc.gov/site/doh/health/health-topics/smoking-smoke-free-housing.page">If you smoke, quit. Don’t allow smoking in your home or car</a></li><li class="list-group-item border-0 py-1 bg-transparent">Reduce dust levels in your home. Removing clutter and cleaning regularly can help.</li><li class="list-group-item border-0 py-1 bg-transparent"><a href="https://www1.nyc.gov/site/doh/health/health-topics/healthy-home.page">Fix leaks in your home to prevent mold. Notify your landlord. If they do not fix leaks promptly, call 311.</a></li></ul>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="col-lg">
+                <div class="card bg-white text-black">
+                    <div class="card-header">More NYC neighborhood data</div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush"><li class="list-group-item border-0 py-1 bg-transparent"><a href="https://www1.nyc.gov/site/doh/data/data-publications/profiles.page">NYC Community Health Profiles</a></li></ul>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
         </div>
-      </div>
-      
-
-      <div class="col-lg">
-        <div class="card bg-white text-black mb-2">
-          <div class="card-header">What can you do?</div>
-          <div class="card-body">
-            <ul class="list-group list-group-flush"><li class="list-group-item border-0 py-1 bg-transparent"><a href="http://www.nyc.gov/health/asthma">Work with your healthcare provider to create an asthma action plan</a></li><li class="list-group-item border-0 py-1 bg-transparent"><a href="http://www.weather.gov/">Check the weather report for the air quality index and pollen counts</a></li><li class="list-group-item border-0 py-1 bg-transparent"><a href="https://www1.nyc.gov/site/doh/health/health-topics/smoking-smoke-free-housing.page">If you smoke, quit. Don’t allow smoking in your home or car</a></li><li class="list-group-item border-0 py-1 bg-transparent">Reduce dust levels in your home. Removing clutter and cleaning regularly can help.</li><li class="list-group-item border-0 py-1 bg-transparent"><a href="https://www1.nyc.gov/site/doh/health/health-topics/healthy-home.page">Fix leaks in your home to prevent mold. Notify your landlord. If they do not fix leaks promptly, call 311.</a></li></ul>
-          </div>
-        </div>
-      </div>
-      
-
-      <div class="col-lg">
-        <div class="card bg-white text-black">
-          <div class="card-header">More NYC neighborhood data</div>
-          <div class="card-body">
-            <ul class="list-group list-group-flush"><li class="list-group-item border-0 py-1 bg-transparent"><a href="https://www1.nyc.gov/site/doh/data/data-publications/profiles.page">NYC Community Health Profiles</a></li></ul>
-          </div>
-        </div>
-      </div>
-      
-
-    
     </div>
-  </div>
 </section>
 
 
 <div class="modal fade report-modal" id="modal-rank" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="exampleModalLabel">Indicator ranking</h4>
-        <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
-          <span class="fas fa-times-circle"></span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Each indicator is placed in one of three categories:</p>
-        <ul>
-          <li class="mb-2"><span class="better">Better</span></li>
-          <li class="mb-2"><span class="middle">Middle</span></li>
-          <li><span class="worse">Worse</span></li>
-        </ul>
-        <p>This shows us how the neighborhood compares to other NYC neighborhoods, if you ranked all of the NYC neighborhoods based on this indicator.</p>
-        <ul>
-          <li><strong>Better:</strong> in the top 1/3rd of all NYC neighorhoods.</li>
-          <li><strong>Middle:</strong> it's close to the NYC median - ranking somewhere in the middle third of all neighborhoods.</li>
-          <li><strong>Worse:</strong> in the bottom 1/3rd of NYC neighborhoods.</li>
-        </ul>
-        <p>These are only based on the distribution of data values, not the range. The absolute values of indicators in different categoeis may not be all that different.</p>
-
-      </div>
-      
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
-      </div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">Indicator ranking</h4>
+                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
+                    <span class="fas fa-times-circle"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Each indicator is placed in one of three categories:</p>
+                <ul>
+                    <li class="mb-2"><span class="better">Better</span></li>
+                    <li class="mb-2"><span class="middle">Middle</span></li>
+                    <li><span class="worse">Worse</span></li>
+                </ul>
+                <p>This shows us how the neighborhood compares to other NYC neighborhoods, if you ranked all of the NYC neighborhoods based on this indicator.</p>
+                <ul>
+                    <li><strong>Better:</strong> in the top 1/3rd of all NYC neighorhoods.</li>
+                    <li><strong>Middle:</strong> it's close to the NYC median - ranking somewhere in the middle third of all neighborhoods.</li>
+                    <li><strong>Worse:</strong> in the bottom 1/3rd of NYC neighborhoods.</li>
+                </ul>
+                <p>These are only based on the distribution of data values, not the range. The absolute values of indicators in different categoeis may not be all that different.</p>
+                
+            </div>
+            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div><script type="text/javascript"
-  src="https://a816-dohbesp.nyc.gov/IndicatorPublic/beta/js/accessible-autocomplete.min.a28dbcfe4538f42cec64a42e75429f873bd86641fea0b326b3a4800b59917b99b877d3715b07405ff36917ed9e3cc0873f7b58a65905ff508cd42e8c427a5f9a.js"
-  integrity="sha512-oo28/kU49CzsZKQudUKfhzvYZkH&#43;oLMms6SAC1mRe5m4d9NxWwdAX/NpF&#43;2ePMCHP3tYplkF/1CM1C6MQnpfmg=="></script><script type="text/javascript"
-  src="https://a816-dohbesp.nyc.gov/IndicatorPublic/beta/js/uhflist.10c2b591a4750dc88b44ccdfb848243cc23dfabde6f7b76834729f8120ce5a1f4e5bb395583d4aad36022534cda12434e555651518d29a93187c9953b391f8f4.js"
-  integrity="sha512-EMK1kaR1DciLRMzfuEgkPMI9&#43;r3m97doNHKfgSDOWh9OW7OVWD1KrTYCJTTNoSQ05VVlFRjSmpMYfJlTs5H49A=="></script>
+    src="https://a816-dohbesp.nyc.gov/IndicatorPublic/beta/js/accessible-autocomplete.min.a28dbcfe4538f42cec64a42e75429f873bd86641fea0b326b3a4800b59917b99b877d3715b07405ff36917ed9e3cc0873f7b58a65905ff508cd42e8c427a5f9a.js"
+    integrity="sha512-oo28/kU49CzsZKQudUKfhzvYZkH&#43;oLMms6SAC1mRe5m4d9NxWwdAX/NpF&#43;2ePMCHP3tYplkF/1CM1C6MQnpfmg=="></script><script type="text/javascript"
+    src="https://a816-dohbesp.nyc.gov/IndicatorPublic/beta/js/uhflist.10c2b591a4750dc88b44ccdfb848243cc23dfabde6f7b76834729f8120ce5a1f4e5bb395583d4aad36022534cda12434e555651518d29a93187c9953b391f8f4.js"
+    integrity="sha512-EMK1kaR1DciLRMzfuEgkPMI9&#43;r3m97doNHKfgSDOWh9OW7OVWD1KrTYCJTTNoSQ05VVlFRjSmpMYfJlTs5H49A=="></script>
 
 <script type="text/javascript">
-  
-  function PopulateDropDownList() {
+    
+    function PopulateDropDownList() {
         
         
+        
+        var ddlNeighborhoods = document.getElementById("last-neighborhood");
+        
+        
+        for (var i = 0; i < neighborhoods.length; i++) {
+            var option = document.createElement("OPTION");
+            
+            
+            option.innerHTML = neighborhoods[i].namezip;
+            
+            
+            option.value = neighborhoods[i].page_name;
+            
+            
+            ddlNeighborhoods.options.add(option);
+        }
+    }
+</script>
 
-         var ddlNeighborhoods = document.getElementById("last-neighborhood");
+<script type="text/javascript">
+    PopulateDropDownList();
+    var selectEl = document.querySelector('#last-neighborhood')
+    accessibleAutocomplete.enhanceSelectElement({
+        autoselect: true,
+        confirmOnBlur: true,
+        defaultValue: "",
+        minLength: 2,
+        selectElement: selectEl
+    })
+    
+    
+    var thisURL = window.location.pathname.match(/neighborhood-reports.*/)
+    var report = thisURL[0].split("/")[2];
 
-         
-         for (var i = 0; i < neighborhoods.length; i++) {
-             var option = document.createElement("OPTION");
+    
+    
+    
+    var searchForm = document.getElementById('last-neighborhood-select') 
 
-             
-             option.innerHTML = neighborhoods[i].namezip;
-
-             
-             option.value = neighborhoods[i].page_name;
-
-             
-             ddlNeighborhoods.options.add(option);
-         }
-     }
- </script>
-
- <script type="text/javascript">
-   PopulateDropDownList();
-   var selectEl = document.querySelector('#last-neighborhood')
-   accessibleAutocomplete.enhanceSelectElement({
-     autoselect: true,
-     confirmOnBlur: true,
-     defaultValue: "",
-     minLength: 2,
-     selectElement: selectEl
-   })
-
-   var thisURL = window.location.pathname.split('/')
-   var reportExt = thisURL[4];
-   
-
-  
-  var searchForm = document.getElementById('last-neighborhood-select') 
-  document.querySelector('form.autocomplete-form').addEventListener("submit", function (e) {
-    e.preventDefault(); 
-    var locVal = searchForm.options[searchForm.selectedIndex].value;
-    window.location = baseURL + '/neighborhood-reports/'+ DOMPurify.sanitize(locVal) + "/" + reportExt;
-  });
-
- </script><ul id="results"></ul>
+    document.querySelector('form.autocomplete-form').addEventListener("submit", function (e) {
+        e.preventDefault(); 
+        var locVal = searchForm.options[searchForm.selectedIndex].value;
+        console.log("locVal", locVal);
+        
+        window.location = 'https:\/\/a816-dohbesp.nyc.gov\/IndicatorPublic\/beta\/neighborhood-reports/'+ DOMPurify.sanitize(locVal) + "/" + report;
+    });
+    
+</script><ul id="results"></ul>
   </main>
   
-  
+  <div class="modal" tabindex="-1" role="dialog" id="prototypeModal">
+    <div class='modal-dialog modal-lg modal-dialog-centered' role='document'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <h5 class='modal-title'>Welcome to the new Environment & Health Data Portal site. </h5>
+            </div>
+            <div class='modal-body'>
+                <p>The site may look different, but a lot of the content is the same on the old site. We hope we've made it easier to find and understand information on the site.
+                </p>
+                <p><strong>Please sign up for our email list</strong>. We will email you every few months with updates,
+                    or opportunities to participate in user research. 
+                    <a href='https://docs.google.com/forms/d/e/1FAIpQLSfUg3JE5ODNc6aqBPJwM8mZ80TYtK6ISw-OM7PBwKuoN3M--g/viewform'>Click here to sign up</a>.
+                </p>
+                <br />
+                <p>Prefer to use the old site? <a id="want_old_site" class="close-dialog" data-dismiss="modal" onclick="setCookie()">Click here.</a></p>
+            </div>
+            <hr>
+            <button type="button" class="btn btn-outline-primary close-dialog" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+</div>
 
-<script src="https://a816-dohbesp.nyc.gov/IndicatorPublic/beta//js/conditional-modal.js"></script>
-<footer class="bg-black" id="global-footer" role="contentinfo">
+<script>
+
+    
+
+    const setCookie = () => {
+        document.cookie = "want_old_site=true; path=/IndicatorPublic/";
+        $('#prototypeModal').modal('hide');
+    }
+
+    
+
+    const original_url = document.cookie
+        .split(';')
+        .find((row) => row.startsWith('original_url='))
+        ?.replace("original_url=", "");
+
+    original_url = original_url ? original_url : "/IndicatorPublic/";
+
+    console.log("original_url", original_url);
+    
+    
+
+    document.querySelector("#want_old_site").href = original_url;
+
+</script>
+
+
+
+
+<script src="https://a816-dohbesp.nyc.gov/IndicatorPublic/beta/js/conditional-modal.js"></script><footer class="bg-black" id="global-footer" role="contentinfo">
 
   <h2 class="sr-only">
       Page Footer
