@@ -432,7 +432,12 @@
 </article><ul id="results"></ul>
   </main>
   
-  <div class="modal" tabindex="-1" role="dialog" id="prototypeModal">
+  <style>
+    .modal-backdrop.show {
+        opacity: 0.70;
+        background-color: #424242
+    }
+</style><div class="modal" tabindex="-1" role="dialog" id="prototypeModal">
     <div class='modal-dialog modal-lg modal-dialog-centered' role='document'>
         <div class='modal-content'>
             <div class='modal-header'>
@@ -465,7 +470,7 @@
 
     
 
-    const original_url = document.cookie
+    let original_url = document.cookie
         .split(';')
         .find((row) => row.startsWith('original_url='))
         ?.replace("original_url=", "");
