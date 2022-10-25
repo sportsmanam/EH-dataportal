@@ -417,601 +417,10 @@
                                         Rank<br>
                                         <span class="meta"> out of the 42 neighborhoods</span>
                                     </div>
-                                </div><button data-toggle="modal" data-target="#modal-Heat540-1" class="indicator-anchor">
+                                </div><button data-toggle="modal" data-target="#modal-Asth1201-1" class="indicator-anchor">
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
-            <span class="indicator-short-name">Heat hospitalizations</span>
-        </div>
-        <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/Heat540_504.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
-        <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/Heat540_504.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
-        </div>
-    </div>
-</button>
-
-
-<div class="modal fade report-modal" id="modal-Heat540-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header text-left">
-                <h2 class="modal-title fs-xl" id="exampleModalLabel">Heat hospitalizations</h2>
-                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
-                    <span class="fas fa-times-circle"></span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h2 class="fs-xl">Heat stress hospitalizations (age-adjusted rate per 100,000 residents) 2015</h2>
-                <p>In <strong>South Beach - Tottenville</strong>, the heat stress hospitalizations (age-adjusted rate per 100,000 residents) 2015 is <span class="better">Better</span>compared to the NYC average.</p>Hospitalizations due to heat stress represent part of the public health burden of extreme heat.</div>
-            <hr>
-            <div class="modal-body">
-                <h3>Neighborhood Comparison</h3>
-                <div class="row comparison">
-                    <div class="col-sm-4 text-primary">South Beach - Tottenville <span class="indicator-value">0.3*</span></div>
-                    <div class="col-sm-4">Staten Island <span class="indicator-value">1</span></div>
-                    <div class="col-sm-4">New York City <span class="indicator-value">0.8</span></div>
-                </div>
-                <p><em>Age-Adjusted Rate per 100,000 residents</em></p><div class="data-note">*Estimate is based on small numbers so should be interpreted with caution.</div></div>
-            <hr>
-            <div class="modal-body">
-                <h3>Heat stress hospitalizations (age-adjusted rate per 100,000 residents) 2015</h3>
-                <p>  <em>Age-Adjusted Rateper 100,000 residents</em></p>
-                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Heat540-1"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>Trends Over Time</h3>
-                <p><em>Age-Adjusted Rate per 100,000 residents</em></p>
-                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Heat540-1"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>By Neighborhood</h3>
-                <p><em>Age-Adjusted Rate per 100,000 residents</em></p>
-                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Heat540-1"></div>
-                
-            </div>
-            
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-<script type="text/javascript">
-
-    $( "#modal-Heat540-1" ).on('shown.bs.modal', function() {
-        
-        var opt = {"renderer": "svg"};
-
-        
-        
-        aq.loadCSV(
-
-            
-            
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/data/" + data_download_loc
-        
-        ).then(data => {
-            
-            arqTable = data;
-
-
-            
-
-            
-            
-            var summaryData = 
-                arqTable
-                .filter(d => d.data_field_name == "Heat540")
-                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
-                .dedupe()
-                .groupby("neighborhood")
-                .orderby("neighborhood", aq.desc("end_date"))
-                .slice(0,1) 
-                .ungroup()
-                .derive({data_value: d => op.parse_float(d.data_value)})
-                .orderby("data_value") 
-                .select(aq.not("end_date"))
-                .objects()
-                
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/summarySpec.json").then(data => {
-                
-                summarySpec = data;
-
-                
-
-                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#summary-Heat540-1", 
-                    summarySpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("summaryData", summaryData).run()
-
-                }).catch(console.error);;
-                
-            });
-            
-
-            
-
-            
-
-            var mapData = summaryData;
-
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/mapSpec.json").then(data => {
-                
-                mapSpec = data;
-
-                
-
-                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#map-Heat540-1", 
-                    mapSpec,
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("mapData", mapData).run()
-                    
-                }).catch(console.error);
-                
-            });
-
-            
-            
-
-            
-            
-            var trendData = 
-                arqTable
-                .filter(d => d.data_field_name == "Heat540")
-                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
-                .dedupe()
-                .objects()
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/trendSpec.json").then(data => {
-                
-                
-                
-                trendSpec = data;
-                
-                
-
-                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#trend-Heat540-1", 
-                    trendSpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("trendData", trendData).run()
-                    
-                }).catch(console.error);;
-                
-            });
-            
-        });
-            
-    });
-        
-    </script>
-    <button data-toggle="modal" data-target="#modal-Asth1204-1" class="indicator-anchor">
-    <div class="row align-items-center">
-        <div class="col-6 col-md-5">
-            <span class="indicator-short-name">Asthma hospitalizations (adults)</span>
-        </div>
-        <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/Asth1204_504.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
-        <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/Asth1204_504.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
-        </div>
-    </div>
-</button>
-
-
-<div class="modal fade report-modal" id="modal-Asth1204-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header text-left">
-                <h2 class="modal-title fs-xl" id="exampleModalLabel">Asthma hospitalizations (adults)</h2>
-                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
-                    <span class="fas fa-times-circle"></span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h2 class="fs-xl">Asthma Hospitalizations among Adults (Age-Adjusted Rate per 10,000 residents) 2018</h2>
-                <p>In <strong>South Beach - Tottenville</strong>, the asthma hospitalizations among adults (age-adjusted rate per 10,000 residents) 2018 is <span class="better">Better</span>compared to the NYC average.</p>Asthma hospitalizations are more severe asthma outcomes. They're often clustered in high-poverty neighborhoods, where disinvestment and poor housing conditions expose residents to triggers.</div>
-            <hr>
-            <div class="modal-body">
-                <h3>Neighborhood Comparison</h3>
-                <div class="row comparison">
-                    <div class="col-sm-4 text-primary">South Beach - Tottenville <span class="indicator-value">4.8</span></div>
-                    <div class="col-sm-4">Staten Island <span class="indicator-value">8.3</span></div>
-                    <div class="col-sm-4">New York City <span class="indicator-value">10.3</span></div>
-                </div>
-                <p><em>Age-Adjusted Rate per 10,000 residents</em></p><div class="data-note"></div></div>
-            <hr>
-            <div class="modal-body">
-                <h3>Asthma Hospitalizations among Adults (Age-Adjusted Rate per 10,000 residents) 2018</h3>
-                <p>  <em>Age-Adjusted Rateper 10,000 residents</em></p>
-                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Asth1204-1"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>Trends Over Time</h3>
-                <p><em>Age-Adjusted Rate per 10,000 residents</em></p>
-                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Asth1204-1"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>By Neighborhood</h3>
-                <p><em>Age-Adjusted Rate per 10,000 residents</em></p>
-                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Asth1204-1"></div>
-                
-            </div>
-            
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-<script type="text/javascript">
-
-    $( "#modal-Asth1204-1" ).on('shown.bs.modal', function() {
-        
-        var opt = {"renderer": "svg"};
-
-        
-        
-        aq.loadCSV(
-
-            
-            
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/data/" + data_download_loc
-        
-        ).then(data => {
-            
-            arqTable = data;
-
-
-            
-
-            
-            
-            var summaryData = 
-                arqTable
-                .filter(d => d.data_field_name == "Asth1204")
-                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
-                .dedupe()
-                .groupby("neighborhood")
-                .orderby("neighborhood", aq.desc("end_date"))
-                .slice(0,1) 
-                .ungroup()
-                .derive({data_value: d => op.parse_float(d.data_value)})
-                .orderby("data_value") 
-                .select(aq.not("end_date"))
-                .objects()
-                
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/summarySpec.json").then(data => {
-                
-                summarySpec = data;
-
-                
-
-                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#summary-Asth1204-1", 
-                    summarySpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("summaryData", summaryData).run()
-
-                }).catch(console.error);;
-                
-            });
-            
-
-            
-
-            
-
-            var mapData = summaryData;
-
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/mapSpec.json").then(data => {
-                
-                mapSpec = data;
-
-                
-
-                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#map-Asth1204-1", 
-                    mapSpec,
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("mapData", mapData).run()
-                    
-                }).catch(console.error);
-                
-            });
-
-            
-            
-
-            
-            
-            var trendData = 
-                arqTable
-                .filter(d => d.data_field_name == "Asth1204")
-                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
-                .dedupe()
-                .objects()
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/trendSpec.json").then(data => {
-                
-                
-                
-                trendSpec = data;
-                
-                
-
-                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#trend-Asth1204-1", 
-                    trendSpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("trendData", trendData).run()
-                    
-                }).catch(console.error);;
-                
-            });
-            
-        });
-            
-    });
-        
-    </script>
-    <button data-toggle="modal" data-target="#modal-Chil777-1" class="indicator-anchor">
-    <div class="row align-items-center">
-        <div class="col-6 col-md-5">
-            <span class="indicator-short-name">Child lead poisoning</span>
-        </div>
-        <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/Chil777_504.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
-        <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/Chil777_504.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
-        </div>
-    </div>
-</button>
-
-
-<div class="modal fade report-modal" id="modal-Chil777-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header text-left">
-                <h2 class="modal-title fs-xl" id="exampleModalLabel">Child lead poisoning</h2>
-                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
-                    <span class="fas fa-times-circle"></span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h2 class="fs-xl">Children under 6 years with elevated blood lead levels (BLL)(Rate  BLL&gt;=5 per 1,000 tested) 2019</h2>
-                <p>In <strong>South Beach - Tottenville</strong>, the children under 6 years with elevated blood lead levels (bll)(rate  bll&gt;=5 per 1,000 tested) 2019 is <span class="better">Better</span>compared to the NYC average.</p>There is no safe level of lead in the blood. Lead poisoning can cause learning and behavior problems, and delay growth and mental development.</div>
-            <hr>
-            <div class="modal-body">
-                <h3>Neighborhood Comparison</h3>
-                <div class="row comparison">
-                    <div class="col-sm-4 text-primary">South Beach - Tottenville <span class="indicator-value">3.6</span></div>
-                    <div class="col-sm-4">Staten Island <span class="indicator-value">8</span></div>
-                    <div class="col-sm-4">New York City <span class="indicator-value">10.7</span></div>
-                </div>
-                <p><em>Rate BLL &gt;=5 µg/dL per 1,000 tested</em></p><div class="data-note"></div></div>
-            <hr>
-            <div class="modal-body">
-                <h3>Children under 6 years with elevated blood lead levels (BLL)(Rate  BLL&gt;=5 per 1,000 tested) 2019</h3>
-                <p>  <em>Rate BLL &gt;=5 µg/dLper 1,000 tested</em></p>
-                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Chil777-1"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>Trends Over Time</h3>
-                <p><em>Rate BLL &gt;=5 µg/dL per 1,000 tested</em></p>
-                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Chil777-1"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>By Neighborhood</h3>
-                <p><em>Rate BLL &gt;=5 µg/dL per 1,000 tested</em></p>
-                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Chil777-1"></div>
-                
-            </div>
-            
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-<script type="text/javascript">
-
-    $( "#modal-Chil777-1" ).on('shown.bs.modal', function() {
-        
-        var opt = {"renderer": "svg"};
-
-        
-        
-        aq.loadCSV(
-
-            
-            
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/data/" + data_download_loc
-        
-        ).then(data => {
-            
-            arqTable = data;
-
-
-            
-
-            
-            
-            var summaryData = 
-                arqTable
-                .filter(d => d.data_field_name == "Chil777")
-                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
-                .dedupe()
-                .groupby("neighborhood")
-                .orderby("neighborhood", aq.desc("end_date"))
-                .slice(0,1) 
-                .ungroup()
-                .derive({data_value: d => op.parse_float(d.data_value)})
-                .orderby("data_value") 
-                .select(aq.not("end_date"))
-                .objects()
-                
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/summarySpec.json").then(data => {
-                
-                summarySpec = data;
-
-                
-
-                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#summary-Chil777-1", 
-                    summarySpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("summaryData", summaryData).run()
-
-                }).catch(console.error);;
-                
-            });
-            
-
-            
-
-            
-
-            var mapData = summaryData;
-
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/mapSpec.json").then(data => {
-                
-                mapSpec = data;
-
-                
-
-                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#map-Chil777-1", 
-                    mapSpec,
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("mapData", mapData).run()
-                    
-                }).catch(console.error);
-                
-            });
-
-            
-            
-
-            
-            
-            var trendData = 
-                arqTable
-                .filter(d => d.data_field_name == "Chil777")
-                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
-                .dedupe()
-                .objects()
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/trendSpec.json").then(data => {
-                
-                
-                
-                trendSpec = data;
-                
-                
-
-                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#trend-Chil777-1", 
-                    trendSpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("trendData", trendData).run()
-                    
-                }).catch(console.error);;
-                
-            });
-            
-        });
-            
-    });
-        
-    </script>
-    <button data-toggle="modal" data-target="#modal-Asth1201-1" class="indicator-anchor">
-    <div class="row align-items-center">
-        <div class="col-6 col-md-5">
-            <span class="indicator-short-name">Asthma hospitalizations (children)</span>
+            <span class="indicator-short-name">Asthma hospitalizations (age 5 to 17)</span>
         </div>
         <div class="col-6 col-md-4 topic-list">
             <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/Asth1201_504.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
@@ -1026,7 +435,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header text-left">
-                <h2 class="modal-title fs-xl" id="exampleModalLabel">Asthma hospitalizations (children)</h2>
+                <h2 class="modal-title fs-xl" id="exampleModalLabel">Asthma hospitalizations (age 5 to 17)</h2>
                 <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
                     <span class="fas fa-times-circle"></span>
                 </button>
@@ -1042,11 +451,11 @@
                     <div class="col-sm-4">Staten Island <span class="indicator-value">15.7</span></div>
                     <div class="col-sm-4">New York City <span class="indicator-value">25.1</span></div>
                 </div>
-                <p><em>Estimated Annual Rate per 10,000 residents</em></p><div class="data-note"></div></div>
+                <p><em>Estimated annual rate per 10,000</em></p><div class="data-note"></div></div>
             <hr>
             <div class="modal-body">
                 <h3>Asthma Hospitalizations among Children 5 to 17 Yrs Old (Rate per 10,000 residents) 2018</h3>
-                <p>  <em>Estimated Annual Rateper 10,000 residents</em></p>
+                <p>  <em>Estimated annual rateper 10,000</em></p>
                 <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Asth1201-1"></div> 
                 
             </div>
@@ -1054,7 +463,7 @@
             <div class="modal-body">
                 
                 <h3>Trends Over Time</h3>
-                <p><em>Estimated Annual Rate per 10,000 residents</em></p>
+                <p><em>Estimated annual rate per 10,000</em></p>
                 <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Asth1201-1"></div> 
                 
             </div>
@@ -1062,7 +471,7 @@
             <div class="modal-body">
                 
                 <h3>By Neighborhood</h3>
-                <p><em>Estimated Annual Rate per 10,000 residents</em></p>
+                <p><em>Estimated annual rate per 10,000</em></p>
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-Asth1201-1"></div>
                 
             </div>
@@ -1205,6 +614,598 @@
     });
         
     </script>
+    <button data-toggle="modal" data-target="#modal-Chil777-1" class="indicator-anchor">
+    <div class="row align-items-center">
+        <div class="col-6 col-md-5">
+            <span class="indicator-short-name">Child lead poisoning</span>
+        </div>
+        <div class="col-6 col-md-4 topic-list">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/Chil777_504.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
+        <div class="d-none d-md-inline col-md-3">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/Chil777_504.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+        </div>
+    </div>
+</button>
+
+
+<div class="modal fade report-modal" id="modal-Chil777-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-left">
+                <h2 class="modal-title fs-xl" id="exampleModalLabel">Child lead poisoning</h2>
+                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
+                    <span class="fas fa-times-circle"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2 class="fs-xl">Children under 6 years with elevated blood lead levels (BLL)(Rate  BLL&gt;=5 per 1,000 tested) 2019</h2>
+                <p>In <strong>South Beach - Tottenville</strong>, the children under 6 years with elevated blood lead levels (bll)(rate  bll&gt;=5 per 1,000 tested) 2019 is <span class="better">Better</span>compared to the NYC average.</p>Elevated blood lead levels are 5+ mcg/dL. There is no safe level of lead in the blood. Lead poisoning can cause learning and behavior problems, and delay growth and mental development.</div>
+            <hr>
+            <div class="modal-body">
+                <h3>Neighborhood Comparison</h3>
+                <div class="row comparison">
+                    <div class="col-sm-4 text-primary">South Beach - Tottenville <span class="indicator-value">3.6</span></div>
+                    <div class="col-sm-4">Staten Island <span class="indicator-value">8</span></div>
+                    <div class="col-sm-4">New York City <span class="indicator-value">10.7</span></div>
+                </div>
+                <p><em>Rate (5&#43; mcg/dL) per 1,000 tested</em></p><div class="data-note"></div></div>
+            <hr>
+            <div class="modal-body">
+                <h3>Children under 6 years with elevated blood lead levels (BLL)(Rate  BLL&gt;=5 per 1,000 tested) 2019</h3>
+                <p>  <em>Rate (5&#43; mcg/dL)per 1,000 tested</em></p>
+                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Chil777-1"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>Trends Over Time</h3>
+                <p><em>Rate (5&#43; mcg/dL) per 1,000 tested</em></p>
+                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Chil777-1"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>By Neighborhood</h3>
+                <p><em>Rate (5&#43; mcg/dL) per 1,000 tested</em></p>
+                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Chil777-1"></div>
+                
+            </div>
+            
+            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    $( "#modal-Chil777-1" ).on('shown.bs.modal', function() {
+        
+        var opt = {"renderer": "svg"};
+
+        
+        
+        aq.loadCSV(
+
+            
+            
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/data/" + data_download_loc
+        
+        ).then(data => {
+            
+            arqTable = data;
+
+
+            
+
+            
+            
+            var summaryData = 
+                arqTable
+                .filter(d => d.data_field_name == "Chil777")
+                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
+                .dedupe()
+                .groupby("neighborhood")
+                .orderby("neighborhood", aq.desc("end_date"))
+                .slice(0,1) 
+                .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
+                .orderby("data_value") 
+                .select(aq.not("end_date"))
+                .objects()
+                
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/summarySpec.json").then(data => {
+                
+                summarySpec = data;
+
+                
+
+                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#summary-Chil777-1", 
+                    summarySpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("summaryData", summaryData).run()
+
+                }).catch(console.error);;
+                
+            });
+            
+
+            
+
+            
+
+            var mapData = summaryData;
+
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/mapSpec.json").then(data => {
+                
+                mapSpec = data;
+
+                
+
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#map-Chil777-1", 
+                    mapSpec,
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("mapData", mapData).run()
+                    
+                }).catch(console.error);
+                
+            });
+
+            
+            
+
+            
+            
+            var trendData = 
+                arqTable
+                .filter(d => d.data_field_name == "Chil777")
+                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
+                .dedupe()
+                .objects()
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/trendSpec.json").then(data => {
+                
+                
+                
+                trendSpec = data;
+                
+                
+
+                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#trend-Chil777-1", 
+                    trendSpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("trendData", trendData).run()
+                    
+                }).catch(console.error);;
+                
+            });
+            
+        });
+            
+    });
+        
+    </script>
+    <button data-toggle="modal" data-target="#modal-Asth1204-1" class="indicator-anchor">
+    <div class="row align-items-center">
+        <div class="col-6 col-md-5">
+            <span class="indicator-short-name">Asthma hospitalizations (adults)</span>
+        </div>
+        <div class="col-6 col-md-4 topic-list">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/Asth1204_504.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
+        <div class="d-none d-md-inline col-md-3">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/Asth1204_504.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+        </div>
+    </div>
+</button>
+
+
+<div class="modal fade report-modal" id="modal-Asth1204-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-left">
+                <h2 class="modal-title fs-xl" id="exampleModalLabel">Asthma hospitalizations (adults)</h2>
+                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
+                    <span class="fas fa-times-circle"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2 class="fs-xl">Asthma Hospitalizations among Adults (Age-Adjusted Rate per 10,000 residents) 2018</h2>
+                <p>In <strong>South Beach - Tottenville</strong>, the asthma hospitalizations among adults (age-adjusted rate per 10,000 residents) 2018 is <span class="better">Better</span>compared to the NYC average.</p>Asthma hospitalizations are more severe asthma outcomes. They're often clustered in high-poverty neighborhoods, where disinvestment and poor housing conditions expose residents to triggers.</div>
+            <hr>
+            <div class="modal-body">
+                <h3>Neighborhood Comparison</h3>
+                <div class="row comparison">
+                    <div class="col-sm-4 text-primary">South Beach - Tottenville <span class="indicator-value">4.8</span></div>
+                    <div class="col-sm-4">Staten Island <span class="indicator-value">8.3</span></div>
+                    <div class="col-sm-4">New York City <span class="indicator-value">10.3</span></div>
+                </div>
+                <p><em>Age-adjusted rate per 10,000</em></p><div class="data-note"></div></div>
+            <hr>
+            <div class="modal-body">
+                <h3>Asthma Hospitalizations among Adults (Age-Adjusted Rate per 10,000 residents) 2018</h3>
+                <p>  <em>Age-adjusted rateper 10,000</em></p>
+                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Asth1204-1"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>Trends Over Time</h3>
+                <p><em>Age-adjusted rate per 10,000</em></p>
+                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Asth1204-1"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>By Neighborhood</h3>
+                <p><em>Age-adjusted rate per 10,000</em></p>
+                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Asth1204-1"></div>
+                
+            </div>
+            
+            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    $( "#modal-Asth1204-1" ).on('shown.bs.modal', function() {
+        
+        var opt = {"renderer": "svg"};
+
+        
+        
+        aq.loadCSV(
+
+            
+            
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/data/" + data_download_loc
+        
+        ).then(data => {
+            
+            arqTable = data;
+
+
+            
+
+            
+            
+            var summaryData = 
+                arqTable
+                .filter(d => d.data_field_name == "Asth1204")
+                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
+                .dedupe()
+                .groupby("neighborhood")
+                .orderby("neighborhood", aq.desc("end_date"))
+                .slice(0,1) 
+                .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
+                .orderby("data_value") 
+                .select(aq.not("end_date"))
+                .objects()
+                
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/summarySpec.json").then(data => {
+                
+                summarySpec = data;
+
+                
+
+                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#summary-Asth1204-1", 
+                    summarySpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("summaryData", summaryData).run()
+
+                }).catch(console.error);;
+                
+            });
+            
+
+            
+
+            
+
+            var mapData = summaryData;
+
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/mapSpec.json").then(data => {
+                
+                mapSpec = data;
+
+                
+
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#map-Asth1204-1", 
+                    mapSpec,
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("mapData", mapData).run()
+                    
+                }).catch(console.error);
+                
+            });
+
+            
+            
+
+            
+            
+            var trendData = 
+                arqTable
+                .filter(d => d.data_field_name == "Asth1204")
+                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
+                .dedupe()
+                .objects()
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/trendSpec.json").then(data => {
+                
+                
+                
+                trendSpec = data;
+                
+                
+
+                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#trend-Asth1204-1", 
+                    trendSpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("trendData", trendData).run()
+                    
+                }).catch(console.error);;
+                
+            });
+            
+        });
+            
+    });
+        
+    </script>
+    <button data-toggle="modal" data-target="#modal-Heat540-1" class="indicator-anchor">
+    <div class="row align-items-center">
+        <div class="col-6 col-md-5">
+            <span class="indicator-short-name">Heat hospitalizations</span>
+        </div>
+        <div class="col-6 col-md-4 topic-list">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/Heat540_504.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="middle">Middle</span></div>
+        <div class="d-none d-md-inline col-md-3">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/Heat540_504.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+        </div>
+    </div>
+</button>
+
+
+<div class="modal fade report-modal" id="modal-Heat540-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-left">
+                <h2 class="modal-title fs-xl" id="exampleModalLabel">Heat hospitalizations</h2>
+                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
+                    <span class="fas fa-times-circle"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2 class="fs-xl">Heat stress hospitalizations (age-adjusted rate per 100,000 residents) 2015</h2>
+                <p>In <strong>South Beach - Tottenville</strong>, the heat stress hospitalizations (age-adjusted rate per 100,000 residents) 2015 is <span class="middle">Middle</span>compared to the NYC average.</p>Heat stress hospitalizations due to heat-related illnesses, such as heat stroke and heat exhaustion, represent part of the public health burden of hot weather. Data aggregated over five years provides enough stability to display neighborhood impacts.
+</div>
+            <hr>
+            <div class="modal-body">
+                <h3>Neighborhood Comparison</h3>
+                <div class="row comparison">
+                    <div class="col-sm-4 text-primary">South Beach - Tottenville <span class="indicator-value">0.3*</span></div>
+                    <div class="col-sm-4">Staten Island <span class="indicator-value">1</span></div>
+                    <div class="col-sm-4">New York City <span class="indicator-value">0.8</span></div>
+                </div>
+                <p><em>Age-adjusted rate per 100,000</em></p><div class="data-note">*Estimate is based on small numbers so should be interpreted with caution.</div></div>
+            <hr>
+            <div class="modal-body">
+                <h3>Heat stress hospitalizations (age-adjusted rate per 100,000 residents) 2015</h3>
+                <p>  <em>Age-adjusted rateper 100,000</em></p>
+                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Heat540-1"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>Trends Over Time</h3>
+                <p><em>Age-adjusted rate per 100,000</em></p>
+                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Heat540-1"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>By Neighborhood</h3>
+                <p><em>Age-adjusted rate per 100,000</em></p>
+                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Heat540-1"></div>
+                
+            </div>
+            
+            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    $( "#modal-Heat540-1" ).on('shown.bs.modal', function() {
+        
+        var opt = {"renderer": "svg"};
+
+        
+        
+        aq.loadCSV(
+
+            
+            
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/data/" + data_download_loc
+        
+        ).then(data => {
+            
+            arqTable = data;
+
+
+            
+
+            
+            
+            var summaryData = 
+                arqTable
+                .filter(d => d.data_field_name == "Heat540")
+                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
+                .dedupe()
+                .groupby("neighborhood")
+                .orderby("neighborhood", aq.desc("end_date"))
+                .slice(0,1) 
+                .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
+                .orderby("data_value") 
+                .select(aq.not("end_date"))
+                .objects()
+                
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/summarySpec.json").then(data => {
+                
+                summarySpec = data;
+
+                
+
+                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#summary-Heat540-1", 
+                    summarySpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("summaryData", summaryData).run()
+
+                }).catch(console.error);;
+                
+            });
+            
+
+            
+
+            
+
+            var mapData = summaryData;
+
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/mapSpec.json").then(data => {
+                
+                mapSpec = data;
+
+                
+
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#map-Heat540-1", 
+                    mapSpec,
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("mapData", mapData).run()
+                    
+                }).catch(console.error);
+                
+            });
+
+            
+            
+
+            
+            
+            var trendData = 
+                arqTable
+                .filter(d => d.data_field_name == "Heat540")
+                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
+                .dedupe()
+                .objects()
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/trendSpec.json").then(data => {
+                
+                
+                
+                trendSpec = data;
+                
+                
+
+                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#trend-Heat540-1", 
+                    trendSpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("trendData", trendData).run()
+                    
+                }).catch(console.error);;
+                
+            });
+            
+        });
+            
+    });
+        
+    </script>
     </div>
                             
                             
@@ -1268,11 +1269,11 @@
                     <div class="col-sm-4">Staten Island <span class="indicator-value">3.5</span></div>
                     <div class="col-sm-4">New York City <span class="indicator-value">12.3</span></div>
                 </div>
-                <p><em>Percent of Households </em></p><div class="data-note">*Estimate is based on small numbers so should be interpreted with caution.</div></div>
+                <p><em>Percent </em></p><div class="data-note">*Estimate is based on small numbers so should be interpreted with caution.</div></div>
             <hr>
             <div class="modal-body">
                 <h3>Homes with cracks or holes (percent) 2017</h3>
-                <p>  <em>Percent of Households</em></p>
+                <p>  <em>Percent</em></p>
                 <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Home76-2"></div> 
                 
             </div>
@@ -1280,7 +1281,7 @@
             <div class="modal-body">
                 
                 <h3>Trends Over Time</h3>
-                <p><em>Percent of Households </em></p>
+                <p><em>Percent </em></p>
                 <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Home76-2"></div> 
                 
             </div>
@@ -1288,7 +1289,7 @@
             <div class="modal-body">
                 
                 <h3>By Neighborhood</h3>
-                <p><em>Percent of Households </em></p>
+                <p><em>Percent </em></p>
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-Home76-2"></div>
                 
             </div>
@@ -1456,7 +1457,7 @@
             </div>
             <div class="modal-body">
                 <h2 class="fs-xl">Homes using supplemental heat (percent)  2017</h2>
-                <p>In <strong>South Beach - Tottenville</strong>, the homes using supplemental heat (percent)  2017 is <span class="better">Better</span>compared to the NYC average.</p>The need for supplemental heat may mean a building's main heat source doesn't work - and can indicate the presence of other health-threatening maintenance deficiencies</div>
+                <p>In <strong>South Beach - Tottenville</strong>, the homes using supplemental heat (percent)  2017 is <span class="better">Better</span>compared to the NYC average.</p>The need for supplemental heat may mean a building's main heat source doesn't work - and can indicate the presence of other health-threatening maintenance deficiencies.</div>
             <hr>
             <div class="modal-body">
                 <h3>Neighborhood Comparison</h3>
@@ -1628,203 +1629,6 @@
     });
         
     </script>
-    <button data-toggle="modal" data-target="#modal-Home80-2" class="indicator-anchor">
-    <div class="row align-items-center">
-        <div class="col-6 col-md-5">
-            <span class="indicator-short-name">Leaks</span>
-        </div>
-        <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/Home80_504.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
-        <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/Home80_504.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
-        </div>
-    </div>
-</button>
-
-
-<div class="modal fade report-modal" id="modal-Home80-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header text-left">
-                <h2 class="modal-title fs-xl" id="exampleModalLabel">Leaks</h2>
-                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
-                    <span class="fas fa-times-circle"></span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h2 class="fs-xl">Homes with leaks (percent) 2017</h2>
-                <p>In <strong>South Beach - Tottenville</strong>, the homes with leaks (percent) 2017 is <span class="better">Better</span>compared to the NYC average.</p>Leaks are a maintenance deficiency that can harm health by introducing mold, which can worsen respiratory conditions like asthma.</div>
-            <hr>
-            <div class="modal-body">
-                <h3>Neighborhood Comparison</h3>
-                <div class="row comparison">
-                    <div class="col-sm-4 text-primary">South Beach - Tottenville <span class="indicator-value">3.5*</span></div>
-                    <div class="col-sm-4">Staten Island <span class="indicator-value">4.6</span></div>
-                    <div class="col-sm-4">New York City <span class="indicator-value">13.4</span></div>
-                </div>
-                <p><em>Percent of Households </em></p><div class="data-note">*Estimate is based on small numbers so should be interpreted with caution.</div></div>
-            <hr>
-            <div class="modal-body">
-                <h3>Homes with leaks (percent) 2017</h3>
-                <p>  <em>Percent of Households</em></p>
-                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Home80-2"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>Trends Over Time</h3>
-                <p><em>Percent of Households </em></p>
-                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Home80-2"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>By Neighborhood</h3>
-                <p><em>Percent of Households </em></p>
-                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Home80-2"></div>
-                
-            </div>
-            
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-<script type="text/javascript">
-
-    $( "#modal-Home80-2" ).on('shown.bs.modal', function() {
-        
-        var opt = {"renderer": "svg"};
-
-        
-        
-        aq.loadCSV(
-
-            
-            
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/data/" + data_download_loc
-        
-        ).then(data => {
-            
-            arqTable = data;
-
-
-            
-
-            
-            
-            var summaryData = 
-                arqTable
-                .filter(d => d.data_field_name == "Home80")
-                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
-                .dedupe()
-                .groupby("neighborhood")
-                .orderby("neighborhood", aq.desc("end_date"))
-                .slice(0,1) 
-                .ungroup()
-                .derive({data_value: d => op.parse_float(d.data_value)})
-                .orderby("data_value") 
-                .select(aq.not("end_date"))
-                .objects()
-                
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/summarySpec.json").then(data => {
-                
-                summarySpec = data;
-
-                
-
-                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#summary-Home80-2", 
-                    summarySpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("summaryData", summaryData).run()
-
-                }).catch(console.error);;
-                
-            });
-            
-
-            
-
-            
-
-            var mapData = summaryData;
-
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/mapSpec.json").then(data => {
-                
-                mapSpec = data;
-
-                
-
-                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#map-Home80-2", 
-                    mapSpec,
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("mapData", mapData).run()
-                    
-                }).catch(console.error);
-                
-            });
-
-            
-            
-
-            
-            
-            var trendData = 
-                arqTable
-                .filter(d => d.data_field_name == "Home80")
-                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
-                .dedupe()
-                .objects()
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/trendSpec.json").then(data => {
-                
-                
-                
-                trendSpec = data;
-                
-                
-
-                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#trend-Home80-2", 
-                    trendSpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("trendData", trendData).run()
-                    
-                }).catch(console.error);;
-                
-            });
-            
-        });
-            
-    });
-        
-    </script>
     <button data-toggle="modal" data-target="#modal-Pre-78-2" class="indicator-anchor">
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
@@ -1850,7 +1654,7 @@
             </div>
             <div class="modal-body">
                 <h2 class="fs-xl">Pre-1960 homes with peeling paint (percent)  2017</h2>
-                <p>In <strong>South Beach - Tottenville</strong>, the pre-1960 homes with peeling paint (percent)  2017 is <span class="better">Better</span>compared to the NYC average.</p>Older housing and peeling paint can put residents at risk of lead poisoning, due to lead paint - which was banned from household paints in the USA in 1978.</div>
+                <p>In <strong>South Beach - Tottenville</strong>, the pre-1960 homes with peeling paint (percent)  2017 is <span class="better">Better</span>compared to the NYC average.</p>Older housing (built before 1960) that has peeling paint can put residents at risk of lead poisoning, due to lead paint. Lead paint was banned from household paints in New York City in 1960 and in the USA in 1978.</div>
             <hr>
             <div class="modal-body">
                 <h3>Neighborhood Comparison</h3>
@@ -1859,11 +1663,11 @@
                     <div class="col-sm-4">Staten Island <span class="indicator-value">1.3</span></div>
                     <div class="col-sm-4">New York City <span class="indicator-value">3.9</span></div>
                 </div>
-                <p><em>Percent of Households </em></p><div class="data-note">&lt;1%* cannot be estimated reliably.</div></div>
+                <p><em>Percent </em></p><div class="data-note">&lt;1%* cannot be estimated reliably.</div></div>
             <hr>
             <div class="modal-body">
                 <h3>Pre-1960 homes with peeling paint (percent)  2017</h3>
-                <p>  <em>Percent of Households</em></p>
+                <p>  <em>Percent</em></p>
                 <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Pre-78-2"></div> 
                 
             </div>
@@ -1871,7 +1675,7 @@
             <div class="modal-body">
                 
                 <h3>Trends Over Time</h3>
-                <p><em>Percent of Households </em></p>
+                <p><em>Percent </em></p>
                 <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Pre-78-2"></div> 
                 
             </div>
@@ -1879,7 +1683,7 @@
             <div class="modal-body">
                 
                 <h3>By Neighborhood</h3>
-                <p><em>Percent of Households </em></p>
+                <p><em>Percent </em></p>
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-Pre-78-2"></div>
                 
             </div>
@@ -2022,6 +1826,203 @@
     });
         
     </script>
+    <button data-toggle="modal" data-target="#modal-Home80-2" class="indicator-anchor">
+    <div class="row align-items-center">
+        <div class="col-6 col-md-5">
+            <span class="indicator-short-name">Leaks</span>
+        </div>
+        <div class="col-6 col-md-4 topic-list">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/Home80_504.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
+        <div class="d-none d-md-inline col-md-3">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/Home80_504.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+        </div>
+    </div>
+</button>
+
+
+<div class="modal fade report-modal" id="modal-Home80-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-left">
+                <h2 class="modal-title fs-xl" id="exampleModalLabel">Leaks</h2>
+                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
+                    <span class="fas fa-times-circle"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2 class="fs-xl">Homes with leaks (percent) 2017</h2>
+                <p>In <strong>South Beach - Tottenville</strong>, the homes with leaks (percent) 2017 is <span class="better">Better</span>compared to the NYC average.</p>Leaks are a maintenance deficiency that can harm health by introducing mold, which can worsen respiratory conditions like asthma.</div>
+            <hr>
+            <div class="modal-body">
+                <h3>Neighborhood Comparison</h3>
+                <div class="row comparison">
+                    <div class="col-sm-4 text-primary">South Beach - Tottenville <span class="indicator-value">3.5*</span></div>
+                    <div class="col-sm-4">Staten Island <span class="indicator-value">4.6</span></div>
+                    <div class="col-sm-4">New York City <span class="indicator-value">13.4</span></div>
+                </div>
+                <p><em>Percent </em></p><div class="data-note">*Estimate is based on small numbers so should be interpreted with caution.</div></div>
+            <hr>
+            <div class="modal-body">
+                <h3>Homes with leaks (percent) 2017</h3>
+                <p>  <em>Percent</em></p>
+                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Home80-2"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>Trends Over Time</h3>
+                <p><em>Percent </em></p>
+                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Home80-2"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>By Neighborhood</h3>
+                <p><em>Percent </em></p>
+                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Home80-2"></div>
+                
+            </div>
+            
+            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    $( "#modal-Home80-2" ).on('shown.bs.modal', function() {
+        
+        var opt = {"renderer": "svg"};
+
+        
+        
+        aq.loadCSV(
+
+            
+            
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/data/" + data_download_loc
+        
+        ).then(data => {
+            
+            arqTable = data;
+
+
+            
+
+            
+            
+            var summaryData = 
+                arqTable
+                .filter(d => d.data_field_name == "Home80")
+                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
+                .dedupe()
+                .groupby("neighborhood")
+                .orderby("neighborhood", aq.desc("end_date"))
+                .slice(0,1) 
+                .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
+                .orderby("data_value") 
+                .select(aq.not("end_date"))
+                .objects()
+                
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/summarySpec.json").then(data => {
+                
+                summarySpec = data;
+
+                
+
+                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#summary-Home80-2", 
+                    summarySpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("summaryData", summaryData).run()
+
+                }).catch(console.error);;
+                
+            });
+            
+
+            
+
+            
+
+            var mapData = summaryData;
+
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/mapSpec.json").then(data => {
+                
+                mapSpec = data;
+
+                
+
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#map-Home80-2", 
+                    mapSpec,
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("mapData", mapData).run()
+                    
+                }).catch(console.error);
+                
+            });
+
+            
+            
+
+            
+            
+            var trendData = 
+                arqTable
+                .filter(d => d.data_field_name == "Home80")
+                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
+                .dedupe()
+                .objects()
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/trendSpec.json").then(data => {
+                
+                
+                
+                trendSpec = data;
+                
+                
+
+                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#trend-Home80-2", 
+                    trendSpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("trendData", trendData).run()
+                    
+                }).catch(console.error);;
+                
+            });
+            
+        });
+            
+    });
+        
+    </script>
     <button data-toggle="modal" data-target="#modal-Rent1248-2" class="indicator-anchor">
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
@@ -2047,7 +2048,7 @@
             </div>
             <div class="modal-body">
                 <h2 class="fs-xl">Renter-occupied homes with any health-related maintenance problems (percent) 2017</h2>
-                <p>In <strong>South Beach - Tottenville</strong>, the renter-occupied homes with any health-related maintenance problems (percent) 2017 is <span class="better">Better</span>compared to the NYC average.</p>Housing without health-threatening maintenance deficiencies is an important environmental component of health.</div>
+                <p>In <strong>South Beach - Tottenville</strong>, the renter-occupied homes with any health-related maintenance problems (percent) 2017 is <span class="better">Better</span>compared to the NYC average.</p>Homes with maintenance deficiencies can threaten the health of the people who live there.</div>
             <hr>
             <div class="modal-body">
                 <h3>Neighborhood Comparison</h3>
@@ -2056,11 +2057,11 @@
                     <div class="col-sm-4">Staten Island <span class="indicator-value">35.4</span></div>
                     <div class="col-sm-4">New York City <span class="indicator-value">61.5</span></div>
                 </div>
-                <p><em>Percent of Households </em></p><div class="data-note">*Estimate is based on small numbers so should be interpreted with caution.</div></div>
+                <p><em>Percent </em></p><div class="data-note">*Estimate is based on small numbers so should be interpreted with caution.</div></div>
             <hr>
             <div class="modal-body">
                 <h3>Renter-occupied homes with any health-related maintenance problems (percent) 2017</h3>
-                <p>  <em>Percent of Households</em></p>
+                <p>  <em>Percent</em></p>
                 <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Rent1248-2"></div> 
                 
             </div>
@@ -2068,7 +2069,7 @@
             <div class="modal-body">
                 
                 <h3>Trends Over Time</h3>
-                <p><em>Percent of Households </em></p>
+                <p><em>Percent </em></p>
                 <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Rent1248-2"></div> 
                 
             </div>
@@ -2076,7 +2077,7 @@
             <div class="modal-body">
                 
                 <h3>By Neighborhood</h3>
-                <p><em>Percent of Households </em></p>
+                <p><em>Percent </em></p>
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-Rent1248-2"></div>
                 
             </div>
@@ -2219,203 +2220,6 @@
     });
         
     </script>
-    <button data-toggle="modal" data-target="#modal-Carb716-2" class="indicator-anchor">
-    <div class="row align-items-center">
-        <div class="col-6 col-md-5">
-            <span class="indicator-short-name">Carbon monoxide</span>
-        </div>
-        <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/Carb716_504.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
-        <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/Carb716_504.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
-        </div>
-    </div>
-</button>
-
-
-<div class="modal fade report-modal" id="modal-Carb716-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header text-left">
-                <h2 class="modal-title fs-xl" id="exampleModalLabel">Carbon monoxide</h2>
-                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
-                    <span class="fas fa-times-circle"></span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h2 class="fs-xl">Carbon monoxide incidents without a detector (average annual rate per 10,000 buildings) 2014-2016</h2>
-                <p>In <strong>South Beach - Tottenville</strong>, the carbon monoxide incidents without a detector (average annual rate per 10,000 buildings) 2014-2016 is <span class="better">Better</span>compared to the NYC average.</p>Carbon monoxide detectors are required in NYC homes by law. Failure to provide or maintain a detector can put residents at risk for carbon monoxide poisoning and death.</div>
-            <hr>
-            <div class="modal-body">
-                <h3>Neighborhood Comparison</h3>
-                <div class="row comparison">
-                    <div class="col-sm-4 text-primary">South Beach - Tottenville <span class="indicator-value">0.6*</span></div>
-                    <div class="col-sm-4">Staten Island <span class="indicator-value">0.7</span></div>
-                    <div class="col-sm-4">New York City <span class="indicator-value">0.9</span></div>
-                </div>
-                <p><em>Average Annual Rate per 10,000 buildings</em></p><div class="data-note">*Estimate is based on small numbers so should be interpreted with caution.</div></div>
-            <hr>
-            <div class="modal-body">
-                <h3>Carbon monoxide incidents without a detector (average annual rate per 10,000 buildings) 2014-2016</h3>
-                <p>  <em>Average Annual Rateper 10,000 buildings</em></p>
-                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Carb716-2"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>Trends Over Time</h3>
-                <p><em>Average Annual Rate per 10,000 buildings</em></p>
-                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Carb716-2"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>By Neighborhood</h3>
-                <p><em>Average Annual Rate per 10,000 buildings</em></p>
-                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Carb716-2"></div>
-                
-            </div>
-            
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-<script type="text/javascript">
-
-    $( "#modal-Carb716-2" ).on('shown.bs.modal', function() {
-        
-        var opt = {"renderer": "svg"};
-
-        
-        
-        aq.loadCSV(
-
-            
-            
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/data/" + data_download_loc
-        
-        ).then(data => {
-            
-            arqTable = data;
-
-
-            
-
-            
-            
-            var summaryData = 
-                arqTable
-                .filter(d => d.data_field_name == "Carb716")
-                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
-                .dedupe()
-                .groupby("neighborhood")
-                .orderby("neighborhood", aq.desc("end_date"))
-                .slice(0,1) 
-                .ungroup()
-                .derive({data_value: d => op.parse_float(d.data_value)})
-                .orderby("data_value") 
-                .select(aq.not("end_date"))
-                .objects()
-                
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/summarySpec.json").then(data => {
-                
-                summarySpec = data;
-
-                
-
-                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#summary-Carb716-2", 
-                    summarySpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("summaryData", summaryData).run()
-
-                }).catch(console.error);;
-                
-            });
-            
-
-            
-
-            
-
-            var mapData = summaryData;
-
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/mapSpec.json").then(data => {
-                
-                mapSpec = data;
-
-                
-
-                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#map-Carb716-2", 
-                    mapSpec,
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("mapData", mapData).run()
-                    
-                }).catch(console.error);
-                
-            });
-
-            
-            
-
-            
-            
-            var trendData = 
-                arqTable
-                .filter(d => d.data_field_name == "Carb716")
-                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
-                .dedupe()
-                .objects()
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/trendSpec.json").then(data => {
-                
-                
-                
-                trendSpec = data;
-                
-                
-
-                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#trend-Carb716-2", 
-                    trendSpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("trendData", trendData).run()
-                    
-                }).catch(console.error);;
-                
-            });
-            
-        });
-            
-    });
-        
-    </script>
     <button data-toggle="modal" data-target="#modal-Hous781-2" class="indicator-anchor">
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
@@ -2450,11 +2254,11 @@
                     <div class="col-sm-4">Staten Island <span class="indicator-value">95</span></div>
                     <div class="col-sm-4">New York City <span class="indicator-value">91</span></div>
                 </div>
-                <p><em>Percent of Households </em></p><div class="data-note">*Estimate is based on small numbers so should be interpreted with caution.</div></div>
+                <p><em>Percent (with AC) </em></p><div class="data-note">*Estimate is based on small numbers so should be interpreted with caution.</div></div>
             <hr>
             <div class="modal-body">
                 <h3>Homes reporting air conditioning (percent) 2017</h3>
-                <p>  <em>Percent of Households</em></p>
+                <p>  <em>Percent (with AC)</em></p>
                 <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Hous781-2"></div> 
                 
             </div>
@@ -2462,7 +2266,7 @@
             <div class="modal-body">
                 
                 <h3>Trends Over Time</h3>
-                <p><em>Percent of Households </em></p>
+                <p><em>Percent (with AC) </em></p>
                 <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Hous781-2"></div> 
                 
             </div>
@@ -2470,7 +2274,7 @@
             <div class="modal-body">
                 
                 <h3>By Neighborhood</h3>
-                <p><em>Percent of Households </em></p>
+                <p><em>Percent (with AC) </em></p>
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-Hous781-2"></div>
                 
             </div>
@@ -2613,6 +2417,203 @@
     });
         
     </script>
+    <button data-toggle="modal" data-target="#modal-Carb716-2" class="indicator-anchor">
+    <div class="row align-items-center">
+        <div class="col-6 col-md-5">
+            <span class="indicator-short-name">Carbon monoxide</span>
+        </div>
+        <div class="col-6 col-md-4 topic-list">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/Carb716_504.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
+        <div class="d-none d-md-inline col-md-3">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/Carb716_504.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+        </div>
+    </div>
+</button>
+
+
+<div class="modal fade report-modal" id="modal-Carb716-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-left">
+                <h2 class="modal-title fs-xl" id="exampleModalLabel">Carbon monoxide</h2>
+                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
+                    <span class="fas fa-times-circle"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2 class="fs-xl">Carbon monoxide incidents without a detector (average annual rate per 10,000 buildings) 2014-2016</h2>
+                <p>In <strong>South Beach - Tottenville</strong>, the carbon monoxide incidents without a detector (average annual rate per 10,000 buildings) 2014-2016 is <span class="better">Better</span>compared to the NYC average.</p>Carbon monoxide detectors are required in NYC homes by law. Failure to provide or maintain a detector can put people at risk for carbon monoxide poisoning and death.</div>
+            <hr>
+            <div class="modal-body">
+                <h3>Neighborhood Comparison</h3>
+                <div class="row comparison">
+                    <div class="col-sm-4 text-primary">South Beach - Tottenville <span class="indicator-value">0.6*</span></div>
+                    <div class="col-sm-4">Staten Island <span class="indicator-value">0.7</span></div>
+                    <div class="col-sm-4">New York City <span class="indicator-value">0.9</span></div>
+                </div>
+                <p><em>Average annual rate per 10,000 buildings</em></p><div class="data-note">*Estimate is based on small numbers so should be interpreted with caution.</div></div>
+            <hr>
+            <div class="modal-body">
+                <h3>Carbon monoxide incidents without a detector (average annual rate per 10,000 buildings) 2014-2016</h3>
+                <p>  <em>Average annual rateper 10,000 buildings</em></p>
+                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Carb716-2"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>Trends Over Time</h3>
+                <p><em>Average annual rate per 10,000 buildings</em></p>
+                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Carb716-2"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>By Neighborhood</h3>
+                <p><em>Average annual rate per 10,000 buildings</em></p>
+                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Carb716-2"></div>
+                
+            </div>
+            
+            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    $( "#modal-Carb716-2" ).on('shown.bs.modal', function() {
+        
+        var opt = {"renderer": "svg"};
+
+        
+        
+        aq.loadCSV(
+
+            
+            
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/data/" + data_download_loc
+        
+        ).then(data => {
+            
+            arqTable = data;
+
+
+            
+
+            
+            
+            var summaryData = 
+                arqTable
+                .filter(d => d.data_field_name == "Carb716")
+                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
+                .dedupe()
+                .groupby("neighborhood")
+                .orderby("neighborhood", aq.desc("end_date"))
+                .slice(0,1) 
+                .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
+                .orderby("data_value") 
+                .select(aq.not("end_date"))
+                .objects()
+                
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/summarySpec.json").then(data => {
+                
+                summarySpec = data;
+
+                
+
+                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#summary-Carb716-2", 
+                    summarySpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("summaryData", summaryData).run()
+
+                }).catch(console.error);;
+                
+            });
+            
+
+            
+
+            
+
+            var mapData = summaryData;
+
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/mapSpec.json").then(data => {
+                
+                mapSpec = data;
+
+                
+
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#map-Carb716-2", 
+                    mapSpec,
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("mapData", mapData).run()
+                    
+                }).catch(console.error);
+                
+            });
+
+            
+            
+
+            
+            
+            var trendData = 
+                arqTable
+                .filter(d => d.data_field_name == "Carb716")
+                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
+                .dedupe()
+                .objects()
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/trendSpec.json").then(data => {
+                
+                
+                
+                trendSpec = data;
+                
+                
+
+                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#trend-Carb716-2", 
+                    trendSpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("trendData", trendData).run()
+                    
+                }).catch(console.error);;
+                
+            });
+            
+        });
+            
+    });
+        
+    </script>
     </div>
                             
                             
@@ -2645,7 +2646,7 @@
                                 </div><button data-toggle="modal" data-target="#modal-Home94-3" class="indicator-anchor">
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
-            <span class="indicator-short-name">Mice or rats (inside)</span>
+            <span class="indicator-short-name">Mice or rats (in the building)</span>
         </div>
         <div class="col-6 col-md-4 topic-list">
             <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/Home94_504.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
@@ -2660,14 +2661,14 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header text-left">
-                <h2 class="modal-title fs-xl" id="exampleModalLabel">Mice or rats (inside)</h2>
+                <h2 class="modal-title fs-xl" id="exampleModalLabel">Mice or rats (in the building)</h2>
                 <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
                     <span class="fas fa-times-circle"></span>
                 </button>
             </div>
             <div class="modal-body">
                 <h2 class="fs-xl">Homes with mice or rats in the building (percent)  2017</h2>
-                <p>In <strong>South Beach - Tottenville</strong>, the homes with mice or rats in the building (percent)  2017 is <span class="better">Better</span>compared to the NYC average.</p>The presence of mice or rats in the home is often associated with poor housing maintenance. These pests can contaminate food and contribute to the development and exacerbation of asthma and its symptoms.</div>
+                <p>In <strong>South Beach - Tottenville</strong>, the homes with mice or rats in the building (percent)  2017 is <span class="better">Better</span>compared to the NYC average.</p>The presence of mice or rats in the home is often associated with poor housing maintenance. These pests can contaminate food and worsen asthma.</div>
             <hr>
             <div class="modal-body">
                 <h3>Neighborhood Comparison</h3>
@@ -2676,11 +2677,11 @@
                     <div class="col-sm-4">Staten Island <span class="indicator-value">6.8</span></div>
                     <div class="col-sm-4">New York City <span class="indicator-value">18.8</span></div>
                 </div>
-                <p><em>Percent of Households </em></p><div class="data-note">*Estimate is based on small numbers so should be interpreted with caution.</div></div>
+                <p><em>Percent </em></p><div class="data-note">*Estimate is based on small numbers so should be interpreted with caution.</div></div>
             <hr>
             <div class="modal-body">
                 <h3>Homes with mice or rats in the building (percent)  2017</h3>
-                <p>  <em>Percent of Households</em></p>
+                <p>  <em>Percent</em></p>
                 <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Home94-3"></div> 
                 
             </div>
@@ -2688,7 +2689,7 @@
             <div class="modal-body">
                 
                 <h3>Trends Over Time</h3>
-                <p><em>Percent of Households </em></p>
+                <p><em>Percent </em></p>
                 <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Home94-3"></div> 
                 
             </div>
@@ -2696,7 +2697,7 @@
             <div class="modal-body">
                 
                 <h3>By Neighborhood</h3>
-                <p><em>Percent of Households </em></p>
+                <p><em>Percent </em></p>
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-Home94-3"></div>
                 
             </div>
@@ -2839,6 +2840,203 @@
     });
         
     </script>
+    <button data-toggle="modal" data-target="#modal-Home245-3" class="indicator-anchor">
+    <div class="row align-items-center">
+        <div class="col-6 col-md-5">
+            <span class="indicator-short-name">Cockroaches</span>
+        </div>
+        <div class="col-6 col-md-4 topic-list">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/Home245_504.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
+        <div class="d-none d-md-inline col-md-3">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/Home245_504.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+        </div>
+    </div>
+</button>
+
+
+<div class="modal fade report-modal" id="modal-Home245-3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-left">
+                <h2 class="modal-title fs-xl" id="exampleModalLabel">Cockroaches</h2>
+                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
+                    <span class="fas fa-times-circle"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2 class="fs-xl">Homes with cockroaches (percent)  2017</h2>
+                <p>In <strong>South Beach - Tottenville</strong>, the homes with cockroaches (percent)  2017 is <span class="better">Better</span>compared to the NYC average.</p>The presence of cockroaches in the home is often associated with poor housing maintenance. Cockroaches in the home can contaminate food and worsen asthma.</div>
+            <hr>
+            <div class="modal-body">
+                <h3>Neighborhood Comparison</h3>
+                <div class="row comparison">
+                    <div class="col-sm-4 text-primary">South Beach - Tottenville <span class="indicator-value">0.5*</span></div>
+                    <div class="col-sm-4">Staten Island <span class="indicator-value">5.2</span></div>
+                    <div class="col-sm-4">New York City <span class="indicator-value">24.1</span></div>
+                </div>
+                <p><em>Percent </em></p><div class="data-note">*Estimate is based on small numbers so should be interpreted with caution.</div></div>
+            <hr>
+            <div class="modal-body">
+                <h3>Homes with cockroaches (percent)  2017</h3>
+                <p>  <em>Percent</em></p>
+                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Home245-3"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>Trends Over Time</h3>
+                <p><em>Percent </em></p>
+                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Home245-3"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>By Neighborhood</h3>
+                <p><em>Percent </em></p>
+                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Home245-3"></div>
+                
+            </div>
+            
+            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    $( "#modal-Home245-3" ).on('shown.bs.modal', function() {
+        
+        var opt = {"renderer": "svg"};
+
+        
+        
+        aq.loadCSV(
+
+            
+            
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/data/" + data_download_loc
+        
+        ).then(data => {
+            
+            arqTable = data;
+
+
+            
+
+            
+            
+            var summaryData = 
+                arqTable
+                .filter(d => d.data_field_name == "Home245")
+                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
+                .dedupe()
+                .groupby("neighborhood")
+                .orderby("neighborhood", aq.desc("end_date"))
+                .slice(0,1) 
+                .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
+                .orderby("data_value") 
+                .select(aq.not("end_date"))
+                .objects()
+                
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/summarySpec.json").then(data => {
+                
+                summarySpec = data;
+
+                
+
+                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#summary-Home245-3", 
+                    summarySpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("summaryData", summaryData).run()
+
+                }).catch(console.error);;
+                
+            });
+            
+
+            
+
+            
+
+            var mapData = summaryData;
+
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/mapSpec.json").then(data => {
+                
+                mapSpec = data;
+
+                
+
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#map-Home245-3", 
+                    mapSpec,
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("mapData", mapData).run()
+                    
+                }).catch(console.error);
+                
+            });
+
+            
+            
+
+            
+            
+            var trendData = 
+                arqTable
+                .filter(d => d.data_field_name == "Home245")
+                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
+                .dedupe()
+                .objects()
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/trendSpec.json").then(data => {
+                
+                
+                
+                trendSpec = data;
+                
+                
+
+                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#trend-Home245-3", 
+                    trendSpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("trendData", trendData).run()
+                    
+                }).catch(console.error);;
+                
+            });
+            
+        });
+            
+    });
+        
+    </script>
     <button data-toggle="modal" data-target="#modal-Adul292-3" class="indicator-anchor">
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
@@ -2864,7 +3062,7 @@
             </div>
             <div class="modal-body">
                 <h2 class="fs-xl">Adults who allow smoking in the home (percent)  2013</h2>
-                <p>In <strong>South Beach - Tottenville</strong>, the adults who allow smoking in the home (percent)  2013 is <span class="better">Better</span>compared to the NYC average.</p>A smoke-free home policy can limit people's exposure to secondhand smoke, which is especially dangerous to children.</div>
+                <p>In <strong>South Beach - Tottenville</strong>, the adults who allow smoking in the home (percent)  2013 is <span class="better">Better</span>compared to the NYC average.</p>Adults without a smoke-free home policy. A smoke-free home policy can limit people's exposure to secondhand smoke, which is especially dangerous to children.</div>
             <hr>
             <div class="modal-body">
                 <h3>Neighborhood Comparison</h3>
@@ -3036,203 +3234,6 @@
     });
         
     </script>
-    <button data-toggle="modal" data-target="#modal-Home245-3" class="indicator-anchor">
-    <div class="row align-items-center">
-        <div class="col-6 col-md-5">
-            <span class="indicator-short-name">Cockroaches</span>
-        </div>
-        <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/Home245_504.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
-        <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/Home245_504.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
-        </div>
-    </div>
-</button>
-
-
-<div class="modal fade report-modal" id="modal-Home245-3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header text-left">
-                <h2 class="modal-title fs-xl" id="exampleModalLabel">Cockroaches</h2>
-                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
-                    <span class="fas fa-times-circle"></span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h2 class="fs-xl">Homes with cockroaches (percent)  2017</h2>
-                <p>In <strong>South Beach - Tottenville</strong>, the homes with cockroaches (percent)  2017 is <span class="better">Better</span>compared to the NYC average.</p>The saliva, feces, and shedding body parts of cockroaches are an allergen and can trigger asthma.</div>
-            <hr>
-            <div class="modal-body">
-                <h3>Neighborhood Comparison</h3>
-                <div class="row comparison">
-                    <div class="col-sm-4 text-primary">South Beach - Tottenville <span class="indicator-value">0.5*</span></div>
-                    <div class="col-sm-4">Staten Island <span class="indicator-value">5.2</span></div>
-                    <div class="col-sm-4">New York City <span class="indicator-value">24.1</span></div>
-                </div>
-                <p><em>Percent of Households </em></p><div class="data-note">*Estimate is based on small numbers so should be interpreted with caution.</div></div>
-            <hr>
-            <div class="modal-body">
-                <h3>Homes with cockroaches (percent)  2017</h3>
-                <p>  <em>Percent of Households</em></p>
-                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Home245-3"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>Trends Over Time</h3>
-                <p><em>Percent of Households </em></p>
-                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Home245-3"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>By Neighborhood</h3>
-                <p><em>Percent of Households </em></p>
-                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Home245-3"></div>
-                
-            </div>
-            
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-<script type="text/javascript">
-
-    $( "#modal-Home245-3" ).on('shown.bs.modal', function() {
-        
-        var opt = {"renderer": "svg"};
-
-        
-        
-        aq.loadCSV(
-
-            
-            
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/data/" + data_download_loc
-        
-        ).then(data => {
-            
-            arqTable = data;
-
-
-            
-
-            
-            
-            var summaryData = 
-                arqTable
-                .filter(d => d.data_field_name == "Home245")
-                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
-                .dedupe()
-                .groupby("neighborhood")
-                .orderby("neighborhood", aq.desc("end_date"))
-                .slice(0,1) 
-                .ungroup()
-                .derive({data_value: d => op.parse_float(d.data_value)})
-                .orderby("data_value") 
-                .select(aq.not("end_date"))
-                .objects()
-                
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/summarySpec.json").then(data => {
-                
-                summarySpec = data;
-
-                
-
-                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#summary-Home245-3", 
-                    summarySpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("summaryData", summaryData).run()
-
-                }).catch(console.error);;
-                
-            });
-            
-
-            
-
-            
-
-            var mapData = summaryData;
-
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/mapSpec.json").then(data => {
-                
-                mapSpec = data;
-
-                
-
-                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#map-Home245-3", 
-                    mapSpec,
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("mapData", mapData).run()
-                    
-                }).catch(console.error);
-                
-            });
-
-            
-            
-
-            
-            
-            var trendData = 
-                arqTable
-                .filter(d => d.data_field_name == "Home245")
-                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
-                .dedupe()
-                .objects()
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/trendSpec.json").then(data => {
-                
-                
-                
-                trendSpec = data;
-                
-                
-
-                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#trend-Home245-3", 
-                    trendSpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("trendData", trendData).run()
-                    
-                }).catch(console.error);;
-                
-            });
-            
-        });
-            
-    });
-        
-    </script>
     <button data-toggle="modal" data-target="#modal-Adul625-3" class="indicator-anchor">
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
@@ -3258,7 +3259,7 @@
             </div>
             <div class="modal-body">
                 <h2 class="fs-xl">Adults reporting mold in the home (percent) 2012</h2>
-                <p>In <strong>South Beach - Tottenville</strong>, the adults reporting mold in the home (percent) 2012 is <span class="better">Better</span>compared to the NYC average.</p>Mold can worsen respiratory conditions like asthma, and indicate maintenance deficiencies in a building.</div>
+                <p>In <strong>South Beach - Tottenville</strong>, the adults reporting mold in the home (percent) 2012 is <span class="better">Better</span>compared to the NYC average.</p>Adults reporting mold in the home. Mold can worsen respiratory conditions like asthma, and indicate maintenance deficiencies in a building.</div>
             <hr>
             <div class="modal-body">
                 <h3>Neighborhood Comparison</h3>
@@ -3484,7 +3485,7 @@
             </div>
             <div class="modal-body">
                 <h2 class="fs-xl">Crowding (percent of homes with &gt; 1 person per room), 2015-19</h2>
-                <p>In <strong>South Beach - Tottenville</strong>, the crowding (percent of homes with &gt; 1 person per room), 2015-19 is <span class="better">Better</span>compared to the NYC average.</p> Occupied housing units with more than one person per room are considered crowded.</div>
+                <p>In <strong>South Beach - Tottenville</strong>, the crowding (percent of homes with &gt; 1 person per room), 2015-19 is <span class="better">Better</span>compared to the NYC average.</p>Households with more than one person per room are considered crowded.</div>
             <hr>
             <div class="modal-body">
                 <h3>Neighborhood Comparison</h3>
@@ -3493,11 +3494,11 @@
                     <div class="col-sm-4">Staten Island <span class="indicator-value">4.3</span></div>
                     <div class="col-sm-4">New York City <span class="indicator-value">9</span></div>
                 </div>
-                <p><em>Percent of Households </em></p><div class="data-note"></div></div>
+                <p><em>Percent </em></p><div class="data-note"></div></div>
             <hr>
             <div class="modal-body">
                 <h3>Crowding (percent of homes with &gt; 1 person per room), 2015-19</h3>
-                <p>  <em>Percent of Households</em></p>
+                <p>  <em>Percent</em></p>
                 <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Crow25-4"></div> 
                 
             </div>
@@ -3505,7 +3506,7 @@
             <div class="modal-body">
                 
                 <h3>Trends Over Time</h3>
-                <p><em>Percent of Households </em></p>
+                <p><em>Percent </em></p>
                 <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Crow25-4"></div> 
                 
             </div>
@@ -3513,7 +3514,7 @@
             <div class="modal-body">
                 
                 <h3>By Neighborhood</h3>
-                <p><em>Percent of Households </em></p>
+                <p><em>Percent </em></p>
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-Crow25-4"></div>
                 
             </div>
@@ -3938,15 +3939,13 @@
         </div>
     </div>
 </div>
-  <script type="text/javascript" 
-    src="https://a816-dohbesp.nyc.gov/IndicatorPublic/beta/js/accessible-autocomplete.min.a28dbcfe4538f42cec64a42e75429f873bd86641fea0b326b3a4800b59917b99b877d3715b07405ff36917ed9e3cc0873f7b58a65905ff508cd42e8c427a5f9a.js" 
-    integrity="sha512-oo28/kU49CzsZKQudUKfhzvYZkH&#43;oLMms6SAC1mRe5m4d9NxWwdAX/NpF&#43;2ePMCHP3tYplkF/1CM1C6MQnpfmg=="></script>
-  <script type="text/javascript" 
-    src="https://a816-dohbesp.nyc.gov/IndicatorPublic/beta/js/accessible-autocomplete.min.js.45c85ff973d114e46676808a15827ce5ae548fc52053f8d397f5572e196b7d55175b7dccc28e964af0f04375b0c012e5166e49dc06b5814c10139506d51b17f9.map" 
-    integrity="sha512-Rchf&#43;XPRFORmdoCKFYJ85a5Uj8UgU/jTl/VXLhlrfVUXW33Mwo6WSvDwQ3WwwBLlFm5J3Aa1gUwQE5UG1RsX&#43;Q=="></script>
-  <script type="text/javascript" 
-    src="https://a816-dohbesp.nyc.gov/IndicatorPublic/beta/js/uhflist.10c2b591a4750dc88b44ccdfb848243cc23dfabde6f7b76834729f8120ce5a1f4e5bb395583d4aad36022534cda12434e555651518d29a93187c9953b391f8f4.js" 
-    integrity="sha512-EMK1kaR1DciLRMzfuEgkPMI9&#43;r3m97doNHKfgSDOWh9OW7OVWD1KrTYCJTTNoSQ05VVlFRjSmpMYfJlTs5H49A=="></script><script type="text/javascript">
+  <script type="text/javascript" src="https://a816-dohbesp.nyc.gov/IndicatorPublic/beta/js/accessible-autocomplete.min.js"></script>
+  <script type="text/javascript" src="https://a816-dohbesp.nyc.gov/IndicatorPublic/beta/js/accessible-autocomplete.min.js.map"></script>
+  <script type="text/javascript" src="https://a816-dohbesp.nyc.gov/IndicatorPublic/beta/js/uhflist.js"></script>
+
+
+
+<script type="text/javascript">
     
     function PopulateDropDownList() {
         
@@ -4262,12 +4261,10 @@
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script src="https://unpkg.com/lunr/lunr.js"></script>
 
-    <script type="text/javascript" 
-        src="https://a816-dohbesp.nyc.gov/IndicatorPublic/beta/js/main.552c9e0eb5b9f567a863809d88dfdb9dfc2e5062f1aa7ae313abbdf21a346fd773ae265f5ff618d8322e2b96b95be1b319c681eb0ea7b818a3c6485a84b6ad5a.js" 
-        integrity="sha512-VSyeDrW59WeoY4CdiN/bnfwuUGLxqnrjE6u98ho0b9dzriZfX/YY2DIuK5a5W&#43;GzGcaB6w6nuBijxkhahLatWg=="></script>
-    <script type="text/javascript" 
-        src="https://a816-dohbesp.nyc.gov/IndicatorPublic/beta/js/search.5b925b298016578cc9f10a3f411ee873f4c8d7554670318dec6bc519e3728c23946c07cf29eae5ee2438fabf76ecc71e8fca6896ccf52726d171743633ff2a1a.js" 
-        integrity="sha512-W5JbKYAWV4zJ8Qo/QR7oc/TI11VGcDGN7GvFGeNyjCOUbAfPKerl7iQ4&#43;r927Mcej8polsz1JybRcXQ2M/8qGg=="></script>
+
+
+    <script type="text/javascript" src="https://a816-dohbesp.nyc.gov/IndicatorPublic/beta/js/main.js"></script>
+    <script type="text/javascript" src="https://a816-dohbesp.nyc.gov/IndicatorPublic/beta/js/search.js"></script>
 
 </body>
 </html>
