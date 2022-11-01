@@ -15,7 +15,7 @@
       <guid>https://a816-dohbesp.nyc.gov/IndicatorPublic/beta/data-stories/breatheeasy/</guid>
       <description>The air we breathe can have a major effect on our health — air pollution can make asthma worse and can cause heart disease, lung disease, strokes, and even cancer.
 Fortunately, New York City has made great strides in recent years to improve air quality. Let’s take a look.
-  !function () { &#34;use strict&#34;; window.addEventListener(&#34;message&#34;, function (a) { if (void 0 !== a.data[&#34;datawrapper-height&#34;]) for (var e in a.data[&#34;datawrapper-height&#34;]) { var t = document.</description>
+An air quality advisory day happens when air pollution builds up to dangerous levels. It means that people who are sensitive to air pollution (like people with respiratory or heart problems) should spend less time outside and avoid outdoor exercise.</description>
     </item>
     
   </channel>
