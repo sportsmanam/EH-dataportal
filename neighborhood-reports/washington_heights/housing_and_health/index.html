@@ -50,7 +50,6 @@
 
 
 
-
 <link rel="icon" href="https://nychealth.github.io/EH-dataportal//7618350_heatmap_business_analytics_statistics_icon-gpr.ico">
 
 
@@ -1431,6 +1430,203 @@
     });
         
     </script>
+    <button data-toggle="modal" data-target="#modal-Home76-2" class="indicator-anchor">
+    <div class="row align-items-center">
+        <div class="col-6 col-md-5">
+            <span class="indicator-short-name">Cracks</span>
+        </div>
+        <div class="col-6 col-md-4 topic-list">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/Home76_301.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="worse">Worse</span></div>
+        <div class="d-none d-md-inline col-md-3">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/Home76_301.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+        </div>
+    </div>
+</button>
+
+
+<div class="modal fade report-modal" id="modal-Home76-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-left">
+                <h2 class="modal-title fs-xl" id="exampleModalLabel">Cracks</h2>
+                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
+                    <span class="fas fa-times-circle"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2 class="fs-xl">Homes with cracks or holes (percent) 2017</h2>
+                <p>In <strong>Washington Heights</strong>, the homes with cracks or holes (percent) 2017 is <span class="worse">Worse</span>compared to the NYC average.</p>Cracks or holes are a maintenance deficiency linked to the presence of mice, rats, and cockroaches - which can harm residents' health.</div>
+            <hr>
+            <div class="modal-body">
+                <h3>Neighborhood Comparison</h3>
+                <div class="row comparison">
+                    <div class="col-sm-4 text-primary">Washington Heights <span class="indicator-value">16.9</span></div>
+                    <div class="col-sm-4">Manhattan <span class="indicator-value">12.3</span></div>
+                    <div class="col-sm-4">New York City <span class="indicator-value">12.3</span></div>
+                </div>
+                <p><em>Percent of Households </em></p><div class="data-note"></div></div>
+            <hr>
+            <div class="modal-body">
+                <h3>Homes with cracks or holes (percent) 2017</h3>
+                <p>  <em>Percent of Households</em></p>
+                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Home76-2"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>Trends Over Time</h3>
+                <p><em>Percent of Households </em></p>
+                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Home76-2"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>By Neighborhood</h3>
+                <p><em>Percent of Households </em></p>
+                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Home76-2"></div>
+                
+            </div>
+            
+            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    $( "#modal-Home76-2" ).on('shown.bs.modal', function() {
+        
+        var opt = {"renderer": "svg"};
+
+        
+        
+        aq.loadCSV(
+
+            
+            
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/data/" + data_download_loc
+        
+        ).then(data => {
+            
+            arqTable = data;
+
+
+            
+
+            
+            
+            var summaryData = 
+                arqTable
+                .filter(d => d.data_field_name == "Home76")
+                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
+                .dedupe()
+                .groupby("neighborhood")
+                .orderby("neighborhood", aq.desc("end_date"))
+                .slice(0,1) 
+                .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
+                .orderby("data_value") 
+                .select(aq.not("end_date"))
+                .objects()
+                
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/summarySpec.json").then(data => {
+                
+                summarySpec = data;
+
+                
+
+                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#summary-Home76-2", 
+                    summarySpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("summaryData", summaryData).run()
+
+                }).catch(console.error);;
+                
+            });
+            
+
+            
+
+            
+
+            var mapData = summaryData;
+
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/mapSpec.json").then(data => {
+                
+                mapSpec = data;
+
+                
+
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#map-Home76-2", 
+                    mapSpec,
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("mapData", mapData).run()
+                    
+                }).catch(console.error);
+                
+            });
+
+            
+            
+
+            
+            
+            var trendData = 
+                arqTable
+                .filter(d => d.data_field_name == "Home76")
+                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
+                .dedupe()
+                .objects()
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/trendSpec.json").then(data => {
+                
+                
+                
+                trendSpec = data;
+                
+                
+
+                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#trend-Home76-2", 
+                    trendSpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("trendData", trendData).run()
+                    
+                }).catch(console.error);;
+                
+            });
+            
+        });
+            
+    });
+        
+    </script>
     <button data-toggle="modal" data-target="#modal-Home90-2" class="indicator-anchor">
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
@@ -2401,203 +2597,6 @@
                 
                 vegaEmbed(
                     "#trend-Rent1248-2", 
-                    trendSpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("trendData", trendData).run()
-                    
-                }).catch(console.error);;
-                
-            });
-            
-        });
-            
-    });
-        
-    </script>
-    <button data-toggle="modal" data-target="#modal-Home76-2" class="indicator-anchor">
-    <div class="row align-items-center">
-        <div class="col-6 col-md-5">
-            <span class="indicator-short-name">Cracks</span>
-        </div>
-        <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/Home76_301.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="worse">Worse</span></div>
-        <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/Home76_301.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
-        </div>
-    </div>
-</button>
-
-
-<div class="modal fade report-modal" id="modal-Home76-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header text-left">
-                <h2 class="modal-title fs-xl" id="exampleModalLabel">Cracks</h2>
-                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
-                    <span class="fas fa-times-circle"></span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h2 class="fs-xl">Homes with cracks or holes (percent) 2017</h2>
-                <p>In <strong>Washington Heights</strong>, the homes with cracks or holes (percent) 2017 is <span class="worse">Worse</span>compared to the NYC average.</p>Cracks or holes are a maintenance deficiency linked to the presence of mice, rats, and cockroaches - which can harm residents' health.</div>
-            <hr>
-            <div class="modal-body">
-                <h3>Neighborhood Comparison</h3>
-                <div class="row comparison">
-                    <div class="col-sm-4 text-primary">Washington Heights <span class="indicator-value">16.9</span></div>
-                    <div class="col-sm-4">Manhattan <span class="indicator-value">12.3</span></div>
-                    <div class="col-sm-4">New York City <span class="indicator-value">12.3</span></div>
-                </div>
-                <p><em>Percent of Households </em></p><div class="data-note"></div></div>
-            <hr>
-            <div class="modal-body">
-                <h3>Homes with cracks or holes (percent) 2017</h3>
-                <p>  <em>Percent of Households</em></p>
-                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Home76-2"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>Trends Over Time</h3>
-                <p><em>Percent of Households </em></p>
-                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Home76-2"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>By Neighborhood</h3>
-                <p><em>Percent of Households </em></p>
-                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Home76-2"></div>
-                
-            </div>
-            
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-<script type="text/javascript">
-
-    $( "#modal-Home76-2" ).on('shown.bs.modal', function() {
-        
-        var opt = {"renderer": "svg"};
-
-        
-        
-        aq.loadCSV(
-
-            
-            
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/data/" + data_download_loc
-        
-        ).then(data => {
-            
-            arqTable = data;
-
-
-            
-
-            
-            
-            var summaryData = 
-                arqTable
-                .filter(d => d.data_field_name == "Home76")
-                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
-                .dedupe()
-                .groupby("neighborhood")
-                .orderby("neighborhood", aq.desc("end_date"))
-                .slice(0,1) 
-                .ungroup()
-                .derive({data_value: d => op.parse_float(d.data_value)})
-                .orderby("data_value") 
-                .select(aq.not("end_date"))
-                .objects()
-                
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/summarySpec.json").then(data => {
-                
-                summarySpec = data;
-
-                
-
-                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#summary-Home76-2", 
-                    summarySpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("summaryData", summaryData).run()
-
-                }).catch(console.error);;
-                
-            });
-            
-
-            
-
-            
-
-            var mapData = summaryData;
-
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/mapSpec.json").then(data => {
-                
-                mapSpec = data;
-
-                
-
-                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#map-Home76-2", 
-                    mapSpec,
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("mapData", mapData).run()
-                    
-                }).catch(console.error);
-                
-            });
-
-            
-            
-
-            
-            
-            var trendData = 
-                arqTable
-                .filter(d => d.data_field_name == "Home76")
-                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
-                .dedupe()
-                .objects()
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data/production/neighborhood-reports/spec/trendSpec.json").then(data => {
-                
-                
-                
-                trendSpec = data;
-                
-                
-
-                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#trend-Home76-2", 
                     trendSpec, 
                     opt
                 ).then((res) => {
@@ -3937,16 +3936,16 @@
             </div>
         </div>
     </div>
-</div>
-  <script type="text/javascript" 
+</div><script type="text/javascript" 
     src="https://nychealth.github.io/EH-dataportal/js/accessible-autocomplete.min.a28dbcfe4538f42cec64a42e75429f873bd86641fea0b326b3a4800b59917b99b877d3715b07405ff36917ed9e3cc0873f7b58a65905ff508cd42e8c427a5f9a.js" 
-    integrity="sha512-oo28/kU49CzsZKQudUKfhzvYZkH&#43;oLMms6SAC1mRe5m4d9NxWwdAX/NpF&#43;2ePMCHP3tYplkF/1CM1C6MQnpfmg=="></script>
-  <script type="text/javascript" 
+    integrity="sha512-oo28/kU49CzsZKQudUKfhzvYZkH&#43;oLMms6SAC1mRe5m4d9NxWwdAX/NpF&#43;2ePMCHP3tYplkF/1CM1C6MQnpfmg=="></script><script type="text/javascript" 
     src="https://nychealth.github.io/EH-dataportal/js/accessible-autocomplete.min.js.45c85ff973d114e46676808a15827ce5ae548fc52053f8d397f5572e196b7d55175b7dccc28e964af0f04375b0c012e5166e49dc06b5814c10139506d51b17f9.map" 
-    integrity="sha512-Rchf&#43;XPRFORmdoCKFYJ85a5Uj8UgU/jTl/VXLhlrfVUXW33Mwo6WSvDwQ3WwwBLlFm5J3Aa1gUwQE5UG1RsX&#43;Q=="></script>
-  <script type="text/javascript" 
+    integrity="sha512-Rchf&#43;XPRFORmdoCKFYJ85a5Uj8UgU/jTl/VXLhlrfVUXW33Mwo6WSvDwQ3WwwBLlFm5J3Aa1gUwQE5UG1RsX&#43;Q=="></script><script type="text/javascript" 
     src="https://nychealth.github.io/EH-dataportal/js/uhflist.10c2b591a4750dc88b44ccdfb848243cc23dfabde6f7b76834729f8120ce5a1f4e5bb395583d4aad36022534cda12434e555651518d29a93187c9953b391f8f4.js" 
-    integrity="sha512-EMK1kaR1DciLRMzfuEgkPMI9&#43;r3m97doNHKfgSDOWh9OW7OVWD1KrTYCJTTNoSQ05VVlFRjSmpMYfJlTs5H49A=="></script><script type="text/javascript">
+    integrity="sha512-EMK1kaR1DciLRMzfuEgkPMI9&#43;r3m97doNHKfgSDOWh9OW7OVWD1KrTYCJTTNoSQ05VVlFRjSmpMYfJlTs5H49A=="></script>
+
+
+<script type="text/javascript">
     
     function PopulateDropDownList() {
         
@@ -4234,12 +4233,10 @@
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script src="https://unpkg.com/lunr/lunr.js"></script>
 
-    <script type="text/javascript" 
-        src="https://nychealth.github.io/EH-dataportal/js/main.552c9e0eb5b9f567a863809d88dfdb9dfc2e5062f1aa7ae313abbdf21a346fd773ae265f5ff618d8322e2b96b95be1b319c681eb0ea7b818a3c6485a84b6ad5a.js" 
-        integrity="sha512-VSyeDrW59WeoY4CdiN/bnfwuUGLxqnrjE6u98ho0b9dzriZfX/YY2DIuK5a5W&#43;GzGcaB6w6nuBijxkhahLatWg=="></script>
-    <script type="text/javascript" 
-        src="https://nychealth.github.io/EH-dataportal/js/search.5b925b298016578cc9f10a3f411ee873f4c8d7554670318dec6bc519e3728c23946c07cf29eae5ee2438fabf76ecc71e8fca6896ccf52726d171743633ff2a1a.js" 
-        integrity="sha512-W5JbKYAWV4zJ8Qo/QR7oc/TI11VGcDGN7GvFGeNyjCOUbAfPKerl7iQ4&#43;r927Mcej8polsz1JybRcXQ2M/8qGg=="></script>
-
+<script type="text/javascript" 
+    src="https://nychealth.github.io/EH-dataportal/js/main.552c9e0eb5b9f567a863809d88dfdb9dfc2e5062f1aa7ae313abbdf21a346fd773ae265f5ff618d8322e2b96b95be1b319c681eb0ea7b818a3c6485a84b6ad5a.js" 
+    integrity="sha512-VSyeDrW59WeoY4CdiN/bnfwuUGLxqnrjE6u98ho0b9dzriZfX/YY2DIuK5a5W&#43;GzGcaB6w6nuBijxkhahLatWg=="></script><script type="text/javascript" 
+    src="https://nychealth.github.io/EH-dataportal/js/search.5b925b298016578cc9f10a3f411ee873f4c8d7554670318dec6bc519e3728c23946c07cf29eae5ee2438fabf76ecc71e8fca6896ccf52726d171743633ff2a1a.js" 
+    integrity="sha512-W5JbKYAWV4zJ8Qo/QR7oc/TI11VGcDGN7GvFGeNyjCOUbAfPKerl7iQ4&#43;r927Mcej8polsz1JybRcXQ2M/8qGg=="></script>
 </body>
 </html>
