@@ -179,6 +179,7 @@ fetch(data_repo + "/" + data_branch + '/indicators/indicators.json')
         const paramId = url.searchParams.get('id') !== null ? parseInt(url.searchParams.get('id')) : false;
         
         renderIndicatorDropdown()
+        renderIndicatorButtons()
 
         // calling loadIndicator calls loadData, etc, and eventually renderMeasures. Because all 
         //  of this depends on the global "indicator" object, we call loadIndicator here
@@ -2147,7 +2148,7 @@ const renderTable = () => {
     // call function to show table
     
     $('#tableID').DataTable({
-        scrollY: 500,
+        scrollY: 475,
         scrollX: true,
         scrollCollapse: true,
         searching: false,
