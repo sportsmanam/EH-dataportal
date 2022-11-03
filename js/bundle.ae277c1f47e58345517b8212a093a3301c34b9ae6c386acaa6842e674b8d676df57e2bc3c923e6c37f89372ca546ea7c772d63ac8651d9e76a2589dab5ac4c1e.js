@@ -168,7 +168,7 @@ const updateChartPlotSize = () => {
 //  fetch and load indicators metadata into global object
 // =================================================================== //
 
-fetch(data_repo + "/" + data_branch + '/indicators/indicators.json')
+fetch(data_repo + data_branch + '/indicators/indicators.json')
     .then(response => response.json())
     .then(async data => {
 
@@ -300,7 +300,7 @@ const loadIndicator = (this_indicatorId, dont_add_to_history) => {
 
 const loadData = (this_indicatorId) => {
 
-    fetch(data_repo + "/" + data_branch + `/indicators/data/${this_indicatorId}.json`)
+    fetch(data_repo + data_branch + `/indicators/data/${this_indicatorId}.json`)
     .then(response => response.json())
     .then(async data => {
 
@@ -325,7 +325,7 @@ const loadData = (this_indicatorId) => {
 
 const loadGeo = () => {
 
-    const geoUrl = data_repo + "/" + data_branch + `/geography/GeoLookup.csv`; // col named "GeoType"
+    const geoUrl = data_repo + data_branch + `/geography/GeoLookup.csv`; // col named "GeoType"
 
     aq.loadCSV(geoUrl)
         .then(data => {
@@ -561,7 +561,7 @@ const filterSecondaryIndicatorMeasure = async (primaryMeasureId, secondaryMeasur
     //  (fetches run asynchronously by default, but we need this data to do other things, so we have to 
     //  `await` the result before continuing)
 
-    await fetch(`${data_repo}/${data_branch}/indicators/data/${secondaryIndicatorId}.json`)
+    await fetch(`${data_repo}${data_branch}/indicators/data/${secondaryIndicatorId}.json`)
         .then(response => response.json())
         .then(async data => {
 
@@ -2359,7 +2359,7 @@ const renderMap = (
                             "height": 500,
                             "width": "container",
                             "data": {
-                                "url": `${data_repo}/${data_branch}/geography/borough.topo.json`,
+                                "url": `${data_repo}${data_branch}/geography/borough.topo.json`,
                                 "format": {
                                     "type": "topojson",
                                     "feature": "collection"
@@ -2384,7 +2384,7 @@ const renderMap = (
                                     "lookup": "GeoID",
                                     "from": {
                                         "data": {
-                                            "url": `${data_repo}/${data_branch}/geography/${topoFile}`,
+                                            "url": `${data_repo}${data_branch}/geography/${topoFile}`,
                                             "format": {"type": "topojson", "feature": "collection"}
                                         },
                                         "key": "properties.GEOCODE"
@@ -3010,7 +3010,7 @@ const loadDisparitiyData = async (disparityMetadata, disparityIndicatorId) => {
     
     // get disparity data
     
-    await fetch(`${data_repo}/${data_branch}/indicators/data/${disparityIndicatorId}.json`)
+    await fetch(`${data_repo}${data_branch}/indicators/data/${disparityIndicatorId}.json`)
         .then(response => response.json())
         .then(data => {
 
@@ -3483,7 +3483,7 @@ $("#allData").on("click", (e) => {
 
 $("#rawData").on("click", (e) => {
 
-    let dataURL = data_repo + "/" + data_branch + '/indicators/data/' + indicatorId + '.json'
+    let dataURL = data_repo + data_branch + '/indicators/data/' + indicatorId + '.json'
 
     // console.log('Data are at: ' + dataURL)
 
