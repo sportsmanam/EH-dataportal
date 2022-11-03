@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Abouts on Environment &amp; Health Data Portal</title>
+    <link>http://gcappbesp307/dev-test/beta/about/</link>
+    <description>Recent content in Abouts on Environment &amp; Health Data Portal</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 30 Sep 2022 08:15:58 -0400</lastBuildDate><atom:link href="http://gcappbesp307/dev-test/beta/about/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Partner with us</title>
+      <link>http://gcappbesp307/dev-test/beta/about/partner/</link>
+      <pubDate>Fri, 30 Sep 2022 08:15:58 -0400</pubDate>
+      
+      <guid>http://gcappbesp307/dev-test/beta/about/partner/</guid>
+      <description>We work to make data easier to access, understand, and use - on the belief that when we do so, we make our data - and our knowledge - more influential. Much of the data on the Environment &amp;amp; Health Data Portal comes through partnerships with the many experts here at the Health Department.
+Perhaps your work would benefit from being published - making data accessible, explaining why things are they way they are, and creating useful tools that other people can use to understand or explain the issue.</description>
+    </item>
+    
+    <item>
+      <title>About the EH Data Portal</title>
+      <link>http://gcappbesp307/dev-test/beta/about/about/</link>
+      <pubDate>Wed, 24 Nov 2021 13:30:21 -0500</pubDate>
+      
+      <guid>http://gcappbesp307/dev-test/beta/about/about/</guid>
+      <description>The NYC Environment &amp;amp; Health Data Portal shows how environments affect health, by publishing data and information that explain the connection. Public health professionals, community-based organizations, community boards, city agencies, elected officials, health workers, advocates, and everyday New Yorkers use this website to get important information that they need to do their jobs and make important, informed decisions about health.
+The Environment &amp;amp; Health Data Portal is a project by the NYC Department of Health and Mental Hygiene&amp;rsquo;s Bureau of Environmental Surveillance and Policy.</description>
+    </item>
+    
+    <item>
+      <title>We&#39;re Hiring</title>
+      <link>http://gcappbesp307/dev-test/beta/about/jobs/</link>
+      <pubDate>Wed, 24 Nov 2021 13:30:21 -0500</pubDate>
+      
+      <guid>http://gcappbesp307/dev-test/beta/about/jobs/</guid>
+      <description>We&amp;rsquo;re hiring! See below for open positions in our bureau.
+Jobs on our team: Health Content Manager
+We&amp;rsquo;re looking for somebody to join the team that develops the Environment &amp;amp; Health Data Portal - this site! We&amp;rsquo;re looking for a health communicator who&amp;rsquo;s interested in how information works to contribute to user centered research, design, and site development. If you&amp;rsquo;re a public health professional with interest in writing, user research, content strategy, design, or development, then we want to hear from you.</description>
+    </item>
+    
+  </channel>
+</rss>
