@@ -40,11 +40,10 @@
 
 
 
+<link rel="icon" href="http://gcappbesp307/IndicatorPublic/beta/7618350_heatmap_business_analytics_statistics_icon-gpr.ico">
 
-<link rel="icon" href="http://gcappbesp307/IndicatorPublic/beta//7618350_heatmap_business_analytics_statistics_icon-gpr.ico">
 
-
-<link rel="stylesheet" href="http://gcappbesp307/IndicatorPublic/beta//fontawesome/css/all.min.css">
+<link rel="stylesheet" href="http://gcappbesp307/IndicatorPublic/beta/fontawesome/css/all.min.css">
 
 <link rel="stylesheet" href="http://gcappbesp307/IndicatorPublic/beta/scss/theme.css" />
 
@@ -58,7 +57,8 @@
     let baseURL = "http:\/\/gcappbesp307\/IndicatorPublic\/beta\/";
     let data_repo = "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/";
     let data_branch = "staging";
-</script></head>
+</script>
+  </head>
 <body>
   
   
@@ -102,7 +102,7 @@
                         </li>
                         <li>
                             <a href="https://www1.nyc.gov/" title="Go to nyc.gov">
-                                <img class="d-block" src="http://gcappbesp307/IndicatorPublic/beta//images/nyc-bubble-logo.svg" width="45" alt="NYC Logo">
+                                <img class="d-block" src="http://gcappbesp307/IndicatorPublic/beta/images/nyc-bubble-logo.svg" width="45" alt="NYC Logo">
                             </a>
                         </li>
                     </ul>
@@ -118,7 +118,7 @@
 
     </div>
     
-    <div class="site-header bg-primary" style="background-image: url(http://gcappbesp307/IndicatorPublic/beta//images/header_background.jpg)">
+    <div class="site-header bg-primary" style="background-image: url(http://gcappbesp307/IndicatorPublic/beta/images/header_background.jpg)">
     
         <div class="wrap-header">
 
@@ -458,7 +458,7 @@
             <nav aria-label="breadcrumb" class="mb-2">
                 <ul class="breadcrumb mr-auto">
                     <li class="breadcrumb-item"><a href="http://gcappbesp307/IndicatorPublic/beta/">Home</a></li>
-                    <li class="breadcrumb-item"><a href="http://gcappbesp307/IndicatorPublic/beta//data-explorer/">Data Explorer</a></li>
+                    <li class="breadcrumb-item"><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/">Data Explorer</a></li>
 
                     <li class="breadcrumb-item active"><strong><a href="http://gcappbesp307/IndicatorPublic/beta/data-explorer/active-design/">Active design</a></strong></li>
                     <li class="nav-item ml-auto d-none d-lg-block">
@@ -765,11 +765,7 @@
         background-color: #f2f2f2;
         margin: 0px;
     }
-
 </style>
-
-
-
 
 <div class="row no-gutters">
     <div class="col-12">
@@ -1511,2317 +1507,7 @@
         </div>
     </div>
 
-    
-    <script src="https://cdn.jsdelivr.net/npm/arquero@latest"></script>
-
-    
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.1.0/css/buttons.dataTables.min.css">
-
-    
-    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.1.0/js/dataTables.buttons.min.js"></script>
-    
-    
-    
-    <script src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.print.min.js"></script>
-    <script src="https://cdn.datatables.net/rowgroup/1.1.4/js/dataTables.rowGroup.min.js"></script>
-
-    
-    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-
-    
-    <script src="https://d3js.org/d3.v5.min.js"></script>
-
-    
-    <script src="http://gcappbesp307/IndicatorPublic/beta//js/data-explorer/summary.js"></script>
-    <script src="http://gcappbesp307/IndicatorPublic/beta//js/data-explorer/map.js"></script>
-    <script src="http://gcappbesp307/IndicatorPublic/beta//js/data-explorer/trend.js"></script>
-    <script src="http://gcappbesp307/IndicatorPublic/beta//js/data-explorer/links.js"></script>
-    <script src="http://gcappbesp307/IndicatorPublic/beta//js/data-explorer/disparities.js"></script>
-
-    <script>
-
-        
-
-        let indicators = []; 
-        let defaultIndicatorId;
-        let selectedSummaryYears = [];
-        let selectedSummaryGeography = [];
-        let aboutMeasures;
-        let dataSources;
-
-        let measureAbout = `N/A`;
-        let measureSources = `N/A`;
-        let geoTable;
-        let aqData;
-        let joinedAqData;
-
-        let fullDataTableObjects;
-        let fullDataMapObjects;
-        let fullDataTrendObjects;
-        let fullDataLinksObjects;
-        let joinedDataLinksObjects;
-        let disparitiyData; 
-
-        let indicator;
-        let indicatorName;
-        let indicatorDesc;
-        let indicatorShortName;
-        let indicatorMeasures;
-        let indicatorId;
-        let primaryIndicatorName;
-        let secondaryIndicatorName;
-
-        let defaultTrendMetadata = [];
-        let defaultTrendAbout;
-        let defaultTrendSources;
-        let defaultMapMetadata = [];
-        let defaultMapAbout;
-        let defaultMapSources;
-        let defaultLinksMetadata = [];
-        let defaultLinkMeasureTimes = [];
-        let defaultLinksAbout;
-        let defaultLinksSources;
-
-        let selectedMapMeasure;
-        let selectedTrendMeasure;
-        let selectedLinksMeasure;
-        let selectedMapAbout;
-        let selectedMapSources;
-        let selectedTrendAbout;
-        let selectedTrendSources;
-        let selectedLinksAbout;
-        let selectedLinksSources;
-        let selectedlinksSecondaryMeasureTime;
-
-        let primaryMeasureMetadata;
-        let secondaryMeasureMetadata;
-
-        let filteredMapData;
-        let filteredTrendData;
-        let filteredLinksData;
-
-        let mapMeasures = [];
-        let trendMeasures = [];
-        let linksMeasures = [];
-
-        let tabTable;
-        let tabMap;
-        let tabTrend;
-        let tabLinks;
-
-        let showTable;
-        let showMap;
-        let showTrend;
-        let showLinks;
-
-        
-        let currentHash;
-        let state;
-
-        
-
-        
-        let tabTrendDropDown = document.querySelector('#tab-trend .dropdown');
-
-        
-        let btnShowDisparities = document.querySelector('.btn-show-disparities');
-
-        const url = new URL(window.location);
-
-        const updateChartPlotSize = () => {
-            setTimeout(() => {
-                window.dispatchEvent(new Event('resize'));
-            }, 200)
-
-        }
-
-        
-
-        let hashchange = new Event('hashchange');
-
-        
-
-        window.onpopstate = function (event) {
-
-            const new_url = new URL(window.location);
-            let new_indicatorId = parseFloat(new_url.searchParams.get('id'));
-
-            if (new_indicatorId != indicatorId) {
-
-                loadIndicator(new_indicatorId, true)
-
-            }
-        };
-
-        window.addEventListener("hashchange", () => {
-
-            const hash = window.location.hash.replace('#', "");
-
-            switch (hash) {
-
-                
-
-                case 'display=summary':
-                case 'tab-table':
-                    currentHash = 'display=summary';
-                    $('#tab-btn-table').tab('show');
-                    showTable();
-                    break;
-
-                case 'display=map':
-                case 'tab-map':
-                    currentHash = 'display=map';
-                    $('#tab-btn-map').tab('show');
-                    showMap();
-                    break;
-
-                case 'display=trend':
-                case 'tab-trend':
-                    currentHash = 'display=trend';
-                    $('#tab-btn-trend').tab('show');
-                    showTrend();
-                    break;
-
-                case 'display=links':
-                case 'tab-links':
-                    currentHash = 'display=links';
-                    $('#tab-btn-links').tab('show');
-                    showLinks();
-                    break;
-
-                default:
-                    currentHash = 'display=summary';
-                    break;
-            }
-
-            state = window.history.state;
-
-
-        });
-
-
-        document.addEventListener("DOMContentLoaded", () => {
-
-            tabTable = document.querySelector('#tab-btn-table');
-            tabMap = document.querySelector('#tab-btn-map');
-            tabTrend = document.querySelector('#tab-btn-trend');
-            tabLinks = document.querySelector('#tab-btn-links');
-
-            aboutMeasures = document.querySelector('.indicator-measures');
-            dataSources = document.querySelector('.indicator-sources');
-
-        });
-
-        function reveal() {
-            document.getElementById('truncate').classList.toggle('hide');
-            document.getElementById('full').classList.toggle('show');
-            document.getElementById('contenttoggle').innerHTML = `Show less... <i class="fas fa-caret-square-up" aria-hidden="true"></i>`;
-        }
-
-
-        
-
-        const assignGeoRank = (GeoType) => {
-            switch (GeoType) {
-                case 'Citywide':
-                    return 0;
-                case 'Borough':
-                    return 1;
-                case 'NYCKIDS':
-                    return 2;
-                case 'UHF34':
-                    return 3;
-                case 'UHF42':
-                    return 4;
-                case 'Subboro':
-                    return 5;
-                case 'CD':
-                    return 6;
-                case 'NTA':
-                    return 7;
-            }
-        }
-
-        
-
-        const geoTypes = [
-            "Citywide",
-            "Borough",
-            "NYCKIDS",
-            "UHF34",
-            "UHF42",
-            "Subboro",
-            "CD",
-            "NTA"
-        ]
-
-
-        
-        
-        
-
-        fetch(data_repo + data_branch + '/indicators/indicators.json')
-            .then(response => response.json())
-            .then(async data => {
-
-                indicators = data;
-
-                const paramId = url.searchParams.get('id') !== null ? parseInt(url.searchParams.get('id')) : false;
-
-                const renderIndicatorDropdown = () => {
-
-                    const indicatorDropdown = document.getElementById("indicator-dropdown");
-                    let this_indicatorName;
-                    let header;
-
-                        header = ``;
-                        indicatorDropdown.innerHTML += header.length ? `<div class="dropdown-title"><strong>${header}</strong></div>`: '';
-
-                        defaultIndicatorId = 2390
-
-                            indicator = indicators.find(indicator => indicator.IndicatorID === 2390);
-                            this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator(2390)" data-indicator-id=2390>${this_indicatorName}</button>`
-
-                            indicator = indicators.find(indicator => indicator.IndicatorID === 2181);
-                            this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator(2181)" data-indicator-id=2181>${this_indicatorName}</button>`
-
-                            indicator = indicators.find(indicator => indicator.IndicatorID === 2158);
-                            this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator(2158)" data-indicator-id=2158>${this_indicatorName}</button>`
-
-                            indicator = indicators.find(indicator => indicator.IndicatorID === 2157);
-                            this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator(2157)" data-indicator-id=2157>${this_indicatorName}</button>`
-
-                            indicator = indicators.find(indicator => indicator.IndicatorID === 2143);
-                            this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator(2143)" data-indicator-id=2143>${this_indicatorName}</button>`
-
-                            indicator = indicators.find(indicator => indicator.IndicatorID === 2388);
-                            this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator(2388)" data-indicator-id=2388>${this_indicatorName}</button>`
-
-                            indicator = indicators.find(indicator => indicator.IndicatorID === 2391);
-                            this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator(2391)" data-indicator-id=2391>${this_indicatorName}</button>`
-
-                            indicator = indicators.find(indicator => indicator.IndicatorID === 2389);
-                            this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator(2389)" data-indicator-id=2389>${this_indicatorName}</button>`
-
-                            indicator = indicators.find(indicator => indicator.IndicatorID === 2133);
-                            this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                            indicatorDropdown.innerHTML += `<button class="indicator-dropdown-item dropdown-item" onclick="loadIndicator(2133)" data-indicator-id=2133>${this_indicatorName}</button>`}
-
-                renderIndicatorDropdown()
-
-                const renderIndicatorButtons = () => {
-
-                    const indicatorButtons = document.getElementById("indicatorButtons");
-                    let this_indicatorName;
-                    let header;
-
-                        header = ``;
-                        indicatorButtons.innerHTML += header.length ? `<div class="pl-1 mt-2 home-label">${header}</div>`: '';
-
-                        defaultIndicatorId = 2390
-
-                            indicator = indicators.find(indicator => indicator.IndicatorID === 2390);
-                            this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                            indicatorButtons.innerHTML += `<button class="btn btn-sm btn-block btn-outline-light text-primary text-left my-0 indicator-dropdown-item text-align-left font-weight-normal" onclick="loadIndicator(2390)" data-indicator-id=2390>${this_indicatorName}</button>`
-
-                            indicator = indicators.find(indicator => indicator.IndicatorID === 2181);
-                            this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                            indicatorButtons.innerHTML += `<button class="btn btn-sm btn-block btn-outline-light text-primary text-left my-0 indicator-dropdown-item text-align-left font-weight-normal" onclick="loadIndicator(2181)" data-indicator-id=2181>${this_indicatorName}</button>`
-
-                            indicator = indicators.find(indicator => indicator.IndicatorID === 2158);
-                            this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                            indicatorButtons.innerHTML += `<button class="btn btn-sm btn-block btn-outline-light text-primary text-left my-0 indicator-dropdown-item text-align-left font-weight-normal" onclick="loadIndicator(2158)" data-indicator-id=2158>${this_indicatorName}</button>`
-
-                            indicator = indicators.find(indicator => indicator.IndicatorID === 2157);
-                            this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                            indicatorButtons.innerHTML += `<button class="btn btn-sm btn-block btn-outline-light text-primary text-left my-0 indicator-dropdown-item text-align-left font-weight-normal" onclick="loadIndicator(2157)" data-indicator-id=2157>${this_indicatorName}</button>`
-
-                            indicator = indicators.find(indicator => indicator.IndicatorID === 2143);
-                            this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                            indicatorButtons.innerHTML += `<button class="btn btn-sm btn-block btn-outline-light text-primary text-left my-0 indicator-dropdown-item text-align-left font-weight-normal" onclick="loadIndicator(2143)" data-indicator-id=2143>${this_indicatorName}</button>`
-
-                            indicator = indicators.find(indicator => indicator.IndicatorID === 2388);
-                            this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                            indicatorButtons.innerHTML += `<button class="btn btn-sm btn-block btn-outline-light text-primary text-left my-0 indicator-dropdown-item text-align-left font-weight-normal" onclick="loadIndicator(2388)" data-indicator-id=2388>${this_indicatorName}</button>`
-
-                            indicator = indicators.find(indicator => indicator.IndicatorID === 2391);
-                            this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                            indicatorButtons.innerHTML += `<button class="btn btn-sm btn-block btn-outline-light text-primary text-left my-0 indicator-dropdown-item text-align-left font-weight-normal" onclick="loadIndicator(2391)" data-indicator-id=2391>${this_indicatorName}</button>`
-
-                            indicator = indicators.find(indicator => indicator.IndicatorID === 2389);
-                            this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                            indicatorButtons.innerHTML += `<button class="btn btn-sm btn-block btn-outline-light text-primary text-left my-0 indicator-dropdown-item text-align-left font-weight-normal" onclick="loadIndicator(2389)" data-indicator-id=2389>${this_indicatorName}</button>`
-
-                            indicator = indicators.find(indicator => indicator.IndicatorID === 2133);
-                            this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
-                            indicatorButtons.innerHTML += `<button class="btn btn-sm btn-block btn-outline-light text-primary text-left my-0 indicator-dropdown-item text-align-left font-weight-normal" onclick="loadIndicator(2133)" data-indicator-id=2133>${this_indicatorName}</button>`}
-                
-                renderIndicatorButtons()
-
-                // calling loadIndicator calls loadData, etc, and eventually renderMeasures. Because all 
-                //  of this depends on the global "indicator" object, we call loadIndicator here
-
-                if (paramId) {
-                    await loadIndicator(paramId)
-                } else {
-                    await loadIndicator()
-                }
-
-            })
-            .catch(error => console.log(error));
-
-
-        // ======================================================================= //
-        // data loading and manipulation functions
-        // ======================================================================= //
-
-        // I reversed the order of these function declarations to make the process
-        //  of data creation easier to understand
-
-        // ----------------------------------------------------------------------- //
-        // function to load indicator metadata
-        // ----------------------------------------------------------------------- //
-
-        const loadIndicator = (this_indicatorId, dont_add_to_history) => {
-
-            console.log("** loadIndicator");
-
-            currentHash = window.location.hash;
-
-            // if indicatorId isn't given, use the first indicator from the dropdown list
-            
-
-            const firstIndicatorId = document.querySelectorAll('#indicator-dropdown button')[0].getAttribute('data-indicator-id');
-
-            indicatorId = this_indicatorId ? parseFloat(this_indicatorId) : parseFloat(firstIndicatorId);
-
-            
-            $(".indicator-dropdown-item").removeClass("active");
-            $(".indicator-dropdown-item").attr('aria-selected', false);
-
-            
-            const thisIndicatorEl = document.querySelector(`button[data-indicator-id='${indicatorId}']`)
-
-            
-            $(thisIndicatorEl).addClass("active");
-            $(thisIndicatorEl).attr('aria-selected', true);
-
-            
-
-            indicator = indicators.find(indicator => indicator.IndicatorID == indicatorId);
-            indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : '';
-            indicatorDesc = indicator?.IndicatorDescription ? indicator.IndicatorDescription : '';
-            indicatorShortName = indicator?.IndicatorShortname ? indicator.IndicatorShortname : indicatorName;
-            indicatorMeasures = indicator?.Measures;
-
-            
-
-            createCitation(); 
-
-            
-
-            document.getElementById('summaryTitle').innerHTML = indicatorName;
-            document.getElementById('mapTitle').innerHTML     = indicatorName;
-            document.getElementById('trendTitle').innerHTML   = indicatorName;
-
-            
-
-            selectedMapMeasure = false;
-            selectedTrendMeasure = false;
-            selectedLinksMeasure = false;
-
-            
-            
-            
-            
-
-            
-            
-
-            url.searchParams.set('id', parseFloat(indicatorId));
-
-            if (!dont_add_to_history && (window.history.state === null || state === null || window.history.state.id != indicatorId)) {
-
-                if (!url.hash) {
-
-                    
-
-                    url.hash = "display=summary";
-                    window.history.replaceState({ id: indicatorId, hash: url.hash}, '', url);
-
-                } else {
-
-                    url.hash = currentHash;
-                    window.history.pushState({ id: indicatorId, hash: url.hash }, '', url);
-
-                }
-
-            } else {
-
-
-            }
-
-            
-
-            const indicatorTitle = document.getElementById('dropdownIndicator')
-
-            indicatorTitle.innerHTML = indicatorName
-
-            loadData(indicatorId)
-        }
-
-        
-        
-        
-
-        const loadData = (this_indicatorId) => {
-
-            fetch(data_repo + data_branch + `/indicators/data/${this_indicatorId}.json`)
-            .then(response => response.json())
-            .then(async data => {
-
-                
-
-                loadGeo();
-
-                ful = aq.from(data)
-                    .derive({ "GeoRank": aq.escape( d => assignGeoRank(d.GeoType))})
-                    .groupby("Time", "GeoType", "GeoID", "GeoRank")
-
-
-                aqData = ful
-                    .groupby("Time", "GeoType", "GeoID")
-                    .orderby(aq.desc('Time'), 'GeoRank')
-            })
-        }
-
-        
-        
-        
-
-        const loadGeo = () => {
-
-            const geoUrl = data_repo + data_branch + `/geography/GeoLookup.csv`; 
-
-            aq.loadCSV(geoUrl)
-                .then(data => {
-
-                    geoTable = data.select(aq.not('Lat', 'Long'));
-
-                    
-
-                    joinData();
-
-            });
-        }
-
-        
-        
-        
-
-        const joinData = () => {
-
-            
-            
-            
-
-            
-
-            let availableTimes = [];
-
-            
-
-            let measurementDisplay = [];
-
-            indicatorMeasures.map(
-
-                measure => {
-
-                    let aqAvailableTimes =
-                        aq.from(measure.AvailableTimes)
-                        .derive({MeasureID: `${measure.MeasureID}`})
-
-                    availableTimes.push(aqAvailableTimes);
-
-                    let aqMeasurementDisplay =
-                        aq.table(
-                        {
-                            MeasureID: [measure.MeasureID],
-                            MeasurementType: [measure.MeasurementType],
-                            DisplayType: [measure.DisplayType]
-                        })
-
-                    measurementDisplay.push(aqMeasurementDisplay);
-
-                }
-            )
-
-            
-
-            let aqMeasureIdTimes     = availableTimes.reduce((a, b) => a.concat(b))
-            let aqMeasurementDisplay = measurementDisplay.reduce((a, b) => a.concat(b))
-
-            
-
-            joinedAqData = aqData
-                .join_left(geoTable, [["GeoID", "GeoType"], ["GeoID", "GeoType"]])
-                .rename({'Name': 'Geography'})
-                .join(aqMeasureIdTimes, [["MeasureID", "Time"], ["MeasureID", "TimeDescription"]])
-                .select(
-                    "GeoID",
-                    "GeoType",
-                    "GeoRank",
-                    "Geography",
-                    "MeasureID",
-                    "Time",
-                    "Value",
-                    "DisplayValue",
-                    "CI",
-                    "start_period",
-                    "end_period"
-                )
-                .orderby(aq.desc('end_period'), aq.desc('GeoRank'))
-                .reify()
-
-            
-
-            fullDataTableObjects = joinedAqData
-                .join_left(aqMeasurementDisplay, "MeasureID")
-                .derive({
-                    MeasurementDisplay: d => op.trim(op.join([d.MeasurementType, d.DisplayType], " ")),
-                    DisplayCI: d => op.trim(op.join([d.DisplayValue, d.CI], " "))
-                })
-                .derive({ DisplayCI: d => op.replace(d.DisplayCI, /^$/, "-") }) 
-                .select(aq.not("start_period", "end_period"))
-                .objects()
-
-            
-
-            fullDataMapObjects = joinedAqData
-                .filter(d => !op.match(d.GeoType, /Citywide|Borough/)) 
-                .impute({ Value: () => NaN })
-                .objects()
-
-            
-
-            fullDataTrendObjects = joinedAqData
-                .filter(d => op.match(d.GeoType, /Citywide|Borough/)) 
-                .objects()
-
-            
-
-            fullDataLinksObjects = joinedAqData
-                .filter(d => !op.match(d.GeoType, /Citywide|Borough/)) 
-                .objects()
-
-            
-
-            renderMeasures();
-
-        }
-
-
-        
-        
-        
-
-        
-
-        const filterSecondaryIndicatorMeasure = async (primaryMeasureId, secondaryMeasureId) => {
-
-            console.log("primaryMeasureId", primaryMeasureId);
-            console.log("secondaryMeasureId", secondaryMeasureId);
-
-            
-            
-            
-
-            
-            
-
-            primaryMeasureMetadata = linksMeasures.filter(
-                measure => measure.MeasureID === primaryMeasureId
-            )
-
-            
-
-            const primaryMeasureGeos = primaryMeasureMetadata[0].AvailableGeographyTypes
-                .map(g => g.GeoType)
-                .filter(g => !/Citywide|Borough/.test(g))
-
-
-            
-            
-            
-
-            
-
-            if (typeof secondaryMeasureId == "undefined") {
-                secondaryMeasureId = primaryMeasureMetadata[0].VisOptions[0].Links[0].MeasureID;
-            }
-
-            
-
-            const secondaryIndicator = indicators.filter(
-                indicator => indicator.Measures.some(
-                    measure => measure.MeasureID === secondaryMeasureId
-                )
-            )
-
-            
-
-            const secondaryIndicatorId = secondaryIndicator[0].IndicatorID
-
-            
-
-            secondaryMeasureMetadata =
-                secondaryIndicator[0].Measures.filter(
-                measure => measure.MeasureID === secondaryMeasureId
-            )
-
-
-            
-
-            
-
-            const secondaryMeasureGeos = secondaryMeasureMetadata[0].AvailableGeographyTypes
-                .map(g => g.GeoType)
-                .filter(g => !/Citywide|Borough/.test(g))
-
-
-            
-
-            const sharedGeos = secondaryMeasureGeos.filter(g => primaryMeasureGeos.includes(g));
-
-            
-
-            
-
-            const secondaryMeasureTimes   = secondaryMeasureMetadata[0].AvailableTimes;
-            const aqSecondaryMeasureTimes = aq.from(secondaryMeasureTimes);
-
-            
-            
-            
-
-            const filteredPrimaryMeasureData = fullDataLinksObjects
-
-                
-                .filter(d => d.MeasureID === primaryMeasureId)
-                
-                
-                .filter(d => sharedGeos.includes(d.GeoType))
-
-
-            
-            
-
-            const mostRecentPrimaryMeasureEndTime = Math.max(...filteredPrimaryMeasureData.map(d => d.end_period));
-
-            
-
-            const filteredPrimaryMeasureTimesData = filteredPrimaryMeasureData
-
-                .filter(d => d.end_period === mostRecentPrimaryMeasureEndTime)
-
-            
-
-            const aqFilteredPrimaryMeasureTimesData = aq.from(filteredPrimaryMeasureTimesData);
-
-
-            
-            
-            
-
-            
-            
-            
-
-            await fetch(`${data_repo}${data_branch}/indicators/data/${secondaryIndicatorId}.json`)
-                .then(response => response.json())
-                .then(async data => {
-
-                    
-
-                    const secondaryMeasureData = data.filter(d => d.MeasureID === secondaryMeasureId)
-
-                    
-
-                    const aqFilteredSecondaryMeasureData = aq.from(secondaryMeasureData)
-                        .join(
-                            geoTable,
-                            [["GeoID", "GeoType"], ["GeoID", "GeoType"]]
-                        )
-
-                        
-                        .filter(aq.escape(d => sharedGeos.includes(d.GeoType)))
-
-                        .derive({ "GeoRank": aq.escape( d => assignGeoRank(d.GeoType))})
-                        .rename({'Name': 'Geography'})
-
-                        
-                        .join(
-                            aqSecondaryMeasureTimes,
-                            ["Time", "TimeDescription"]
-                        )
-                        .select(aq.not("TimeDescription"))
-
-                    
-
-                    const filteredSecondaryMeasureTimesDataObjects = aqFilteredSecondaryMeasureData.objects();
-                    
-
-                    
-
-                    
-
-                    const closestSecondaryTime = filteredSecondaryMeasureTimesDataObjects.reduce((prev, curr) => {
-
-                        return (Math.abs(curr.end_period - mostRecentPrimaryMeasureEndTime) < Math.abs(prev.end_period - mostRecentPrimaryMeasureEndTime) ? curr : prev);
-
-                    });
-
-
-                    
-
-                    const aqClosestSecondaryData = aqFilteredSecondaryMeasureData
-
-                        
-                        .filter(`d => d.end_period === ${closestSecondaryTime.end_period}`)
-
-                        
-                        .filter(d => d.GeoRank === op.max(d.GeoRank))
-
-                        
-                        
-                        .filter(d => d.start_period === op.min(d.start_period))
-                        
-
-                    
-                    
-                    
-                    
-                    const aqJoinedPrimarySecondaryData = aqFilteredPrimaryMeasureTimesData
-                        .join(
-                            aqClosestSecondaryData,
-                            [["GeoID", "GeoType"], ["GeoID", "GeoType"]]
-                        )
-
-                    
-
-                    joinedDataLinksObjects = await aqJoinedPrimarySecondaryData.objects();
-
-                })
-        }
-
-
-        
-        
-        
-
-        const handleYearFilter = (el) => {
-            el.addEventListener('change', (e) => {
-                if (e.target.checked) {
-                    selectedSummaryYears = [e.target.value]
-                }
-                renderTable()
-            })
-        }
-
-        const handleGeoFilter = (el) => {
-
-            el.addEventListener('change', (e) => {
-
-                if (e.target.checked) {
-                    selectedSummaryGeography.push(e.target.value)
-                } else {
-                    selectedSummaryGeography = selectedSummaryGeography.filter(item => item !== e.target.value);
-                }
-
-                
-
-                if (selectedSummaryGeography.length > 0) {
-                    renderTable()
-
-                } else {
-                    document.querySelector("#tableID").innerHTML = '';
-                }
-            })
-        }
-
-        const handleToggle = () => {
-
-            $('body').off('click', '#summary-table tr.group td');
-            $('body').on('click', '#summary-table tr.group td', (e) => {
-
-                const td = $(e.target);
-                const tr = td.parent();
-                const group = td.data('group');
-                const groupLevel = td.data('group-level');
-
-                const handleGroupToggle = () => {
-
-                    const subGroupToggle = $(`td[data-year="${group}"][data-group-level="1"]`);
-                    const subGroupRow = $(`tr[data-year="${group}"]`);
-
-                    if (subGroupToggle.css('display') === 'none') {
-                        subGroupToggle.removeClass('hidden');
-                        subGroupRow.removeClass('hidden');
-                        td.removeClass('hidden');
-                        subGroupToggle.show();
-                        subGroupRow.show();
-                    } else {
-                        subGroupToggle.addClass('hidden');
-                        subGroupRow.addClass('hidden');
-                        td.addClass('hidden');
-                        subGroupToggle.hide();
-                        subGroupRow.hide();
-                    }
-                }
-
-                const handleSubGroupToggle = () => {
-
-                    const subDataGroup = tr.next(`tr`).data(`group`);
-                    const parentDataGroup = subDataGroup.split('-')[0];
-                    const subGroupRow = $(`tr[data-group="${subDataGroup}"]`);
-                    const parentGroupToggle = $(`td[data-group="${parentDataGroup}"]`);
-
-                    if (subGroupRow.css('display') == 'none')  {
-                        subGroupRow.show();
-                        td.removeClass('hidden');
-                        subGroupRow.removeClass('hidden');
-                        parentGroupToggle.removeClass('hidden');
-                    } else {
-                        subGroupRow.hide();
-                        td.addClass('hidden');
-                        subGroupRow.addClass('hidden');
-                    }
-                }
-
-                if (groupLevel === 0) {
-                    handleGroupToggle();
-                } else {
-                    handleSubGroupToggle();
-                }
-
-            });
-        }
-
-
-        
-        
-        
-
-        
-
-        const renderTitleDescription = (title, desc) => {
-
-            const indicatorTitle = document.getElementById('indicatorTitle');
-            const indicatorDescription = document.querySelector('.indicator-description');
-            indicatorTitle.innerHTML = title;
-            indicatorDescription.innerHTML = `${desc}`;
-        }
-
-        
-
-        const renderAboutSources = (about, sources) => {
-
-            aboutMeasures.innerHTML = about;
-            dataSources.innerHTML = sources;
-        }
-
-
-        
-        
-        
-
-        
-
-        const updateMapData = (e) => {
-
-            
-
-            
-
-            const measureId = parseInt(e.target.dataset.measureId);
-
-            
-
-            const time = e.target.dataset.time;
-
-            
-
-            
-            $('.mapbutton').removeClass("active");
-            $('.mapbutton').attr('aria-selected', false);
-
-            
-            $(e.target).addClass("active");
-            $(e.target).attr('aria-selected', true);
-
-
-            
-
-            const measureMetadata = mapMeasures.filter(m => m.MeasureID == measureId);
-            const measurementType = measureMetadata[0].MeasurementType;
-            const about           = measureMetadata[0].how_calculated;
-            const sources         = measureMetadata[0].Sources;
-            const display         = measureMetadata[0].DisplayType;
-
-
-            
-
-            
-
-            selectedMapAbout   =
-                `<h6>${indicatorName} - ${measurementType}</h6>
-                <p>${about}</p>`;
-
-            selectedMapSources =
-                `<h6>${indicatorName} - ${measurementType}</h6>
-                <p>${sources}</p>`;
-
-            
-
-            renderAboutSources(selectedMapAbout, selectedMapSources);
-
-
-            
-
-            
-
-            let mapMeasureData =
-                fullDataMapObjects.filter(
-                    obj => obj.MeasureID === measureId &&
-                    obj.Time === time
-                );
-
-            
-
-            let maxGeoRank = Math.max(mapMeasureData[0].GeoRank);
-            filteredMapData = mapMeasureData.filter(obj => obj.GeoRank === maxGeoRank)
-
-            
-
-            renderMap(filteredMapData, measureMetadata);
-
-            updateChartPlotSize();
-
-            
-
-            selectedMapMeasure = true;
-
-        }
-
-
-        
-
-        const updateTrendData = (e) => {
-
-            console.log("updateTrendData");
-
-            
-
-            
-
-            const measureId = parseInt(e.target.dataset.measureId);
-
-            
-
-            
-            $('.trendbutton').removeClass("active");
-            $('.trendbutton').attr('aria-selected', false);
-
-            
-            $(e.target).addClass("active");
-            $(e.target).attr('aria-selected', true);
-
-            
-
-            
-            const measureMetadata = trendMeasures.filter(m => m.MeasureID == measureId);
-            const measurementType = measureMetadata[0].MeasurementType;
-            const about           = measureMetadata[0].how_calculated;
-            const sources         = measureMetadata[0].Sources;
-            const display         = measureMetadata[0].DisplayType;
-
-
-            
-
-            selectedTrendAbout =
-                `<h6>${indicatorName} - ${measurementType}</h6>
-                <p>${about}</p>`;
-
-            selectedTrendSources =
-                `<h6>${indicatorName} - ${measurementType}</h6>
-                <p>${sources}</p>`;
-
-            
-
-            renderAboutSources(selectedTrendAbout, selectedTrendSources);
-
-
-            
-
-            
-
-            const disparities =
-                measureMetadata[0].VisOptions[0].Trend &&
-                measureMetadata[0].VisOptions[0].Trend[0]?.Disparities;
-
-            
-
-            if (disparities == 0) {
-
-                
-
-                btnShowDisparities.style.display = "none";
-
-                
-
-                $(btnShowDisparities).off()
-
-            } else if (disparities == 1) {
-
-                
-
-                btnShowDisparities.innerText = "Show Disparities";
-                $(btnShowDisparities).off()
-
-                
-
-                btnShowDisparities.style.display = "inline";
-
-                
-
-                $(btnShowDisparities).on("click", () => renderDisparities(measureMetadata, 221));
-
-            }
-
-
-            
-
-            
-
-            filteredTrendData = fullDataTrendObjects.filter(m => m.MeasureID === measureId);
-
-
-            
-
-            
-            
-            
-            
-            
-
-            const measureIdsAnnualAvg = [365, 370, 375, 391];
-
-            
-            
-
-            const measureIdsSummer = [386];
-
-            if (measureIdsAnnualAvg.includes(measureId)) {
-
-                const filteredTrendDataAnnualAvg = filteredTrendData.filter(d => d.Time.startsWith('Annual Average'));
-
-                renderTrendChart(filteredTrendDataAnnualAvg, measureMetadata);
-                updateChartPlotSize();
-
-            } else if (measureIdsSummer.includes(measureId)) {
-
-                const filteredTrendDataSummer = filteredTrendData.filter(d => d.Time.startsWith('Summer'));
-
-                renderTrendChart(filteredTrendDataSummer, measureMetadata);
-                updateChartPlotSize();
-
-            } else {
-
-                renderTrendChart(filteredTrendData, measureMetadata);
-                updateChartPlotSize();
-
-            }
-
-            
-
-            selectedTrendMeasure = true;
-
-        }
-
-
-        
-
-        const updateLinksData = async (e) => {
-
-            
-
-            
-
-            
-            $('.linksbutton').removeClass("active");
-            $('.linksbutton').attr('aria-selected', false);
-
-            
-            $(e.target).addClass("active");
-            $(e.target).attr('aria-selected', true);
-
-            
-
-            const primaryMeasureId = parseInt(e.target.dataset.primaryMeasureId);
-            const secondaryMeasureId = parseInt(e.target.dataset.secondaryMeasureId);
-
-            
-            
-
-            await filterSecondaryIndicatorMeasure(primaryMeasureId, secondaryMeasureId)
-
-
-            
-
-            
-
-            const linksSecondaryIndicator = indicators.filter(
-                indicator => indicator.Measures.some(
-                    m => m.MeasureID === secondaryMeasureId
-                )
-            )
-
-            
-
-            primaryIndicatorName   = indicatorName 
-            secondaryIndicatorName = linksSecondaryIndicator[0].IndicatorName
-
-            
-
-            const primaryMeasurementType = primaryMeasureMetadata[0].MeasurementType;
-            const secondaryMeasurementType = secondaryMeasureMetadata[0].MeasurementType;
-
-            const primaryAbout = primaryMeasureMetadata[0].how_calculated;
-            const secondaryAbout = secondaryMeasureMetadata[0].how_calculated;
-
-            const primarySources = primaryMeasureMetadata[0].Sources;
-            const secondarySources = secondaryMeasureMetadata[0].Sources;
-
-
-            
-
-            selectedLinksAbout =
-                `<h6>${primaryIndicatorName} - ${primaryMeasurementType}</h6>
-                <p>${primaryAbout}</p>
-                <h6>${secondaryIndicatorName} - ${secondaryMeasurementType}</h6>
-                <p>${secondaryAbout}</p>`;
-
-            selectedLinksSources =
-                `<h6>${primaryIndicatorName} - ${primaryMeasurementType}</h6>
-                <p>${primarySources}</p>
-                <h6>${secondaryIndicatorName} - ${secondaryMeasurementType}</h6>
-                <p>${secondarySources}</p>`;
-
-            
-
-            renderAboutSources(selectedLinksAbout, selectedLinksSources);
-
-
-            
-
-            
-
-            
-            
-
-
-            
-
-            renderLinksChart(
-                joinedDataLinksObjects,
-                primaryMeasureMetadata,
-                secondaryMeasureMetadata,
-                primaryIndicatorName,
-                secondaryIndicatorName
-            );
-
-            updateChartPlotSize();
-
-            
-
-            selectedLinksMeasure = true;
-
-        }
-
-
-        
-        
-        
-
-        
-
-        const setDefaultMapMeasure = (visArray) => {
-
-            
-            
-
-            let defaultArray = [];
-
-            const hasAgeAdjustedRate = visArray.filter(measure =>
-                measure.MeasurementType.includes('Age Adjusted Rate')
-            )
-            const hasRate = visArray.filter(measure =>
-                measure.MeasurementType.includes('Rate')
-            )
-            const hasPercent = visArray.filter(measure =>
-                measure.MeasurementType.includes('Percent')
-            )
-
-
-            if (hasAgeAdjustedRate.length) {
-
-                const hasAgeAdjustedRateTotal = hasAgeAdjustedRate.filter(measure =>
-                    measure.MeasurementType.includes('Total')
-                )
-
-                
-                if (hasAgeAdjustedRateTotal.length) {
-                    defaultArray.push(hasAgeAdjustedRateTotal[0]);
-
-                } else {
-                    defaultArray.push(hasAgeAdjustedRate[0]);
-
-                }
-
-            } else if (hasRate.length) {
-                defaultArray.push(hasRate[0]);
-
-            } else if (hasPercent.length) {
-                defaultArray.push(hasPercent[0]);
-
-            } else {
-                defaultArray.push(visArray[0]);
-
-            }
-
-            
-
-            defaultMapMetadata = defaultArray;
-
-        }
-
-
-        
-
-        const setDefaultTrendMeasure = (visArray) => {
-
-            
-            
-
-            let defaultArray = [];
-
-            if (visArray.length > 0) {
-
-                const hasAgeAdjustedRate = visArray.filter(measure =>
-                    measure.MeasurementType.includes('Age Adjusted Rate')
-                )
-                const hasRate = visArray.filter(measure =>
-                    measure.MeasurementType.includes('Rate')
-                )
-                const hasPercent = visArray.filter(measure =>
-                    measure.MeasurementType.includes('Percent')
-                )
-
-
-                if (hasAgeAdjustedRate.length) {
-
-                    const hasAgeAdjustedRateTotal = hasAgeAdjustedRate.filter(measure =>
-                        measure.MeasurementType.includes('Total')
-                    )
-                    
-                    if (hasAgeAdjustedRateTotal.length) {
-                        defaultArray.push(hasAgeAdjustedRateTotal[0]);
-
-                    } else {
-                        defaultArray.push(hasAgeAdjustedRate[0]);
-
-                    }
-
-
-                } else if (hasRate.length) {
-                    defaultArray.push(hasRate[0]);
-
-                } else if (hasPercent.length) {
-                    defaultArray.push(hasPercent[0]);
-
-                } else {
-                    defaultArray.push(visArray[0]);
-
-                }
-            }
-
-            
-
-            defaultTrendMetadata = defaultArray;
-        }
-
-
-        
-
-        const setDefaultLinksMeasure = async (visArray) => {
-
-            
-            
-
-            let defaultArray = [];
-
-            if (visArray.length > 0) {
-
-                const hasAgeAdjustedRate = visArray.filter(measure =>
-                    measure.MeasurementType.includes('Age Adjusted Rate')
-                )
-                const hasRate = visArray.filter(measure =>
-                    measure.MeasurementType.includes('Rate')
-                )
-                const hasPercent = visArray.filter(measure =>
-                    measure.MeasurementType.includes('Percent')
-                )
-
-
-                if (hasAgeAdjustedRate.length) {
-
-                    const hasAgeAdjustedRateTotal = hasAgeAdjustedRate.filter(measure =>
-                        measure.MeasurementType.includes('Total')
-                    )
-                    
-                    if (hasAgeAdjustedRateTotal.length) {
-                        defaultArray.push(hasAgeAdjustedRateTotal[0]);
-
-                    } else {
-                        defaultArray.push(hasAgeAdjustedRate[0]);
-                    }
-
-
-                } else if (hasRate.length) {
-                    defaultArray.push(hasRate[0]);
-
-                } else if (hasPercent.length) {
-                    defaultArray.push(hasPercent[0]);
-
-                } else {
-                    defaultArray.push(visArray[0]);
-
-                }
-
-                defaultLinkMeasureTimes = defaultArray[0].AvailableTime;
-
-                const defaultPrimaryMeasureId = defaultArray[0].MeasureID;
-                const defaultSecondaryMeasureId = defaultArray[0].VisOptions[0].Links[0].MeasureID;
-
-                
-                defaultLinksMetadata = defaultArray;
-
-                
-
-                await filterSecondaryIndicatorMeasure(defaultPrimaryMeasureId, defaultSecondaryMeasureId)
-
-            }
-        }
-
-
-        
-        
-        
-
-        const renderMeasures = async () => {
-
-            console.log("** renderMeasures");
-
-            linksMeasures.length = 0
-
-            const contentSummary = document.querySelector('#tab-table');
-            const contentMap     = document.querySelector('#tab-map')
-            const contentTrend   = document.querySelector('#tab-trend');
-            const contentLinks   = document.querySelector('#tab-links');
-
-            
-
-            const dropdownTableYear = contentSummary.querySelector('div[aria-labelledby="dropdownTableYear"]');
-            const dropdownMapMeasures = document.querySelector('div[aria-labelledby="dropdownMapMeasures"]');
-
-            const dropdownMapYear  = contentMap.querySelector('div[aria-labelledby="dropdownMapYear"]');
-            const dropdownTableGeo = contentSummary.querySelector('div[aria-labelledby="dropdownTableGeo"]');
-            const dropdownTrendMeasures = contentTrend.querySelector('div[aria-labelledby="dropdownTrendMeasures"]');
-            const dropdownLinksMeasures = contentLinks.querySelector('div[aria-labelledby="dropdownLinksMeasures"]');
-
-            
-
-            dropdownTableYear.innerHTML = ``;
-            dropdownTableGeo.innerHTML = ``;
-            dropdownMapMeasures.innerHTML = ``;
-            dropdownTrendMeasures.innerHTML = ``;
-            dropdownLinksMeasures.innerHTML = ``;
-
-            mapMeasures.length = 0;
-            trendMeasures.length = 0;
-
-            
-
-            const tableYears = [...new Set(fullDataTableObjects.map(item => item.Time))];
-
-            tableYears.forEach((year, index) => {
-
-                if (index === 0) {
-
-                    selectedSummaryYears.push(year);
-                    dropdownTableYear.innerHTML +=
-                        `<label class="dropdown-item checkbox-year"><input type="radio" name="year" value="${year}" checked /> ${year}</label>`;
-
-                } else {
-
-                    dropdownTableYear.innerHTML +=
-                        `<label class="dropdown-item checkbox-year"><input type="radio" name="year" value="${year}" /> ${year}</label>`;
-                }
-
-            });
-
-            // create geo dropdown for table (keeping georank order)
-
-            const tableGeoTypes = [...new Set(fullDataTableObjects.map(item => item.GeoType))];
-            const dropdownGeoTypes = geoTypes.filter(g => tableGeoTypes.includes(g))
-
-            dropdownGeoTypes.forEach((geoType, index) => {
-
-                selectedSummaryGeography.push(geoType);
-                dropdownTableGeo.innerHTML += `<label class="dropdown-item checkbox-geo"><input type="checkbox" value="${geoType}" checked /> ${geoType}</label>`;
-
-            });
-
-
-            // ----- handle measures for this indicator ----- 
-
-            const mapYears = [...new Set(fullDataMapObjects.map(item => item.Time))];
-
-            indicatorMeasures.map((measure, index) => {
-
-                const type = measure?.MeasurementType;
-                const displayType = measure?.DisplayType;
-                const years = measure?.AvailableTimes.sort((a, b) => b.start_period - a.start_period);
-                const geography = measure?.AvailableGeographyTypes;
-                const links = measure?.VisOptions[0].Links && measure?.VisOptions[0]?.Links[0];
-                const map = measure?.VisOptions[0].Map && measure?.VisOptions[0].Map[0]?.On;
-                const trend = measure?.VisOptions[0].Trend && measure?.VisOptions[0].Trend[0]?.On;
-                const trendDisparities = measure?.VisOptions[0].Trend && measure?.VisOptions[0].Trend[0]?.Disparities;
-                const about = measure.how_calculated;
-                const sources = measure.Sources;
-                const measureId = measure.MeasureID;
-
-
-                
-
-                if (map === 1) {
-
-                    mapMeasures.push(measure)
-
-                    dropdownMapMeasures.innerHTML += `<div class="dropdown-column-${index}"><div class="dropdown-title"><strong> ${type}</strong></div></div>`;
-
-                    const dropdownMapMeasuresColumn = document.querySelector(`.dropdown-column-${index}`);
-
-                    mapYears.map((time, index) => {
-                        dropdownMapMeasuresColumn.innerHTML += `<button class="dropdown-item link-measure mapbutton"
-                        data-measure-id="${measureId}"
-                        data-time="${time}">
-                        ${time}
-                        </button>`;
-
-                    });
-                }
-
-
-                
-
-                if (trend === 1) {
-
-                    trendMeasures.push(measure)
-
-                    if (fullDataTrendObjects) {
-                        dropdownTrendMeasures.innerHTML += `<button class="dropdown-item link-measure trendbutton"
-                        data-measure-id="${measureId}">
-                        ${type}
-                        </button>`;
-                    }
-                }
-
-
-                // ----- handle links measures ----- 
-
-                if (links) {
-
-                    
-
-                    linksMeasures.push(measure)
-
-                    
-
-                    const secondaryMeasureId = measure.VisOptions[0].Links[0].MeasureID;
-
-
-                    if (fullDataTableObjects) {
-
-                        const linkYears = [...new Set(fullDataTableObjects.map(item => item.Time))];
-
-                        dropdownLinksMeasures.innerHTML +=
-                            `<div class="dropdown-title"><strong> ${type}</strong></div>`;
-
-                        measure.VisOptions[0].Links.map(link => {
-
-                            const linksSecondaryIndicator = indicators.filter(indicator =>
-                                indicator.Measures.some(m =>
-                                    m.MeasureID === link.MeasureID)
-                            );
-
-                            const linksSecondaryMeasure = linksSecondaryIndicator[0].Measures.filter(m =>
-                                m.MeasureID === link.MeasureID
-                            );
-
-                            dropdownLinksMeasures.innerHTML +=
-                                `<button class="dropdown-item link-measure linksbutton"
-                                data-primary-measure-id="${measureId}"
-                                data-measure-id="${measure.MeasureID}"
-                                data-secondary-measure-id="${link.MeasureID}">
-                                ${linksSecondaryMeasure[0].MeasureName}
-                            </button>`;
-
-                        });
-                    }
-                }
-            });
-
-
-            setDefaultMapMeasure(mapMeasures);
-            setDefaultTrendMeasure(trendMeasures);
-
-            // set default measure for links; also calls filterSecondaryIndicatorMeasure, which creates the joined data
-
-            await setDefaultLinksMeasure(linksMeasures);
-
-
-            
-            
-            
-
-            
-
-            
-
-            showTable = (e) => {
-
-                console.log("showTable");
-
-                
-
-                
-
-                if (window.location.hash !== '#display=summary' && window.location.hash !== 'display=summary') {
-                    window.location.hash = 'display=summary';
-                }
-
-                currentHash = 'display=summary'
-
-                
-
-                tabTable.setAttribute('aria-selected', true);
-                tabMap.setAttribute('aria-selected', false);
-                tabTrend.setAttribute('aria-selected', false);
-                tabLinks.setAttribute('aria-selected', false);
-
-
-                
-
-                renderTitleDescription(indicatorShortName, indicatorDesc);
-                renderAboutSources(measureAbout, measureSources);
-
-
-                
-
-                renderTable();
-
-                updateChartPlotSize();
-
-                $($.fn.dataTable.tables(false))
-                    .DataTable()
-                    .columns.adjust().draw();
-
-            };
-
-
-            
-
-            
-
-            showMap = (e) => {
-
-                
-
-                
-
-                window.location.hash = 'display=map'
-                currentHash = 'display=map'
-
-                
-
-                tabTable.setAttribute('aria-selected', false);
-                tabMap.setAttribute('aria-selected', true);
-                tabTrend.setAttribute('aria-selected', false);
-                tabLinks.setAttribute('aria-selected', false);
-
-
-                
-
-                if (!selectedMapMeasure) {
-
-                    
-                    
-                    
-
-                    
-
-                    
-
-                    const defaultMapMeasureId = defaultMapMetadata[0].MeasureID;
-
-                    
-
-                    const about   = defaultMapMetadata[0]?.how_calculated;
-                    const sources = defaultMapMetadata[0].Sources;
-                    const measure = defaultMapMetadata[0].MeasurementType;
-
-
-                    
-
-                    defaultMapAbout   =
-                        `<h6>${indicatorName} - ${measure}</h6>
-                        <p>${about}</p>`;
-
-                    defaultMapSources =
-                        `<h6>${indicatorName} - ${measure}</h6>
-                        <p>${sources}</p>`;
-
-                    
-
-                    renderTitleDescription(indicatorShortName, indicatorDesc);
-                    renderAboutSources(defaultMapAbout, defaultMapSources);
-
-
-                    
-
-                    
-
-                    let mapMeasureData = fullDataMapObjects.filter(
-                            obj => obj.MeasureID === defaultMapMeasureId
-                        );
-
-                    
-
-                    let latest_end_period = Math.max(mapMeasureData[0].end_period);
-
-                    let mapTimeData = mapMeasureData.filter(
-                            obj => obj.end_period === latest_end_period
-                        );
-
-                    let latest_time = mapTimeData[0].Time
-
-                    
-
-                    let maxGeoRank = Math.max(mapTimeData[0].GeoRank);
-
-                    filteredMapData = mapTimeData.filter(
-                            obj => obj.GeoRank === maxGeoRank
-                        );
-
-
-                    
-
-                    renderMap(filteredMapData, defaultMapMetadata);
-
-                    updateChartPlotSize();
-
-                    
-
-                    
-                    $('.mapbutton').removeClass("active");
-                    $('.mapbutton').attr('aria-selected', false);
-
-                    
-
-                    let mapMeasureEl = document.querySelector(`.mapbutton[data-measure-id='${defaultMapMeasureId}'][data-time='${latest_time}']`)
-
-                    $(mapMeasureEl).addClass("active");
-                    $(mapMeasureEl).attr('aria-selected', true);
-
-
-                } else {
-
-                    
-
-                    
-
-                    renderAboutSources(selectedMapAbout, selectedMapSources);
-
-                    
-
-                    renderMap(filteredMapData, defaultMapMetadata);
-
-                    updateChartPlotSize();
-                }
-
-            };
-
-
-            
-
-            
-
-            showTrend = (e) => {
-
-                
-
-                
-
-                window.location.hash = 'display=trend'
-                currentHash = 'display=trend'
-
-                
-
-                tabTable.setAttribute('aria-selected', false);
-                tabMap.setAttribute('aria-selected', false);
-                tabTrend.setAttribute('aria-selected', true);
-                tabLinks.setAttribute('aria-selected', false);
-
-
-                
-
-                if (!selectedTrendMeasure) {
-
-                    
-                    
-                    
-
-
-                    
-
-                    const about   = defaultTrendMetadata[0]?.how_calculated;
-                    const sources = defaultTrendMetadata[0].Sources;
-                    const measure = defaultTrendMetadata[0].MeasurementType;
-
-
-                    
-
-                    defaultTrendAbout =
-                        `<h6>${indicatorName} - ${measure}</h6>
-                        <p>${about}</p>`;
-
-                    defaultTrendSources =
-                        `<h6>${indicatorName} - ${measure}</h6>
-                        <p>${sources}</p>`;
-
-                    renderTitleDescription(indicatorShortName, indicatorDesc);
-                    renderAboutSources(defaultTrendAbout, defaultTrendSources);
-
-
-                    
-
-                    
-
-                    const disparities =
-                        defaultTrendMetadata[0].VisOptions[0].Trend &&
-                        defaultTrendMetadata[0].VisOptions[0].Trend[0]?.Disparities;
-
-                    
-
-                    if (disparities == 0) {
-
-                        
-
-                        btnShowDisparities.style.display = "none";
-
-                        
-
-                        $(btnShowDisparities).off()
-
-                    } else if (disparities == 1) {
-
-                        
-
-                        btnShowDisparities.innerText = "Show Disparities";
-                        $(btnShowDisparities).off()
-
-                        
-
-                        btnShowDisparities.style.display = "inline";
-
-                        
-
-                        $(btnShowDisparities).on("click", () => renderDisparities(defaultTrendMetadata, 221))
-
-                    }
-
-
-                    
-
-                    const defaultTrendMeasureId = defaultTrendMetadata[0].MeasureID;
-                    filteredTrendData = fullDataTrendObjects.filter(m => m.MeasureID === defaultTrendMeasureId);
-
-
-                    
-
-                    
-                    
-                    
-                    
-                    
-
-                    const measureIdsAnnualAvg = [365, 370, 375, 391];
-
-                    
-                    
-
-                    const measureIdsSummer = [386];
-
-                    if (measureIdsAnnualAvg.includes(defaultTrendMeasureId)) {
-
-                        const filteredTrendDataAnnualAvg = filteredTrendData.filter(d => d.Time.startsWith('Annual Average'));
-
-                        renderTrendChart(filteredTrendDataAnnualAvg, defaultTrendMetadata);
-                        updateChartPlotSize();
-
-                    } else if (measureIdsSummer.includes(defaultTrendMeasureId)) {
-
-                        const filteredTrendDataSummer = filteredTrendData.filter(d => d.Time.startsWith('Summer'));
-
-                        renderTrendChart(filteredTrendDataSummer, defaultTrendMetadata);
-                        updateChartPlotSize();
-
-                    } else {
-
-                        renderTrendChart(filteredTrendData, defaultTrendMetadata);
-                        updateChartPlotSize();
-
-                    }
-
-
-                    
-
-                    
-                    $('.trendbutton').removeClass("active");
-                    $('.trendbutton').attr('aria-selected', false);
-
-                    
-
-                    let trendMeasureEl = document.querySelector(`.trendbutton[data-measure-id='${defaultTrendMeasureId}']`)
-
-                    $(trendMeasureEl).addClass("active");
-                    $(trendMeasureEl).attr('aria-selected', true);
-
-
-                } else {
-
-                    
-
-                    
-
-                    renderAboutSources(selectedTrendAbout, selectedTrendSources);
-
-                    
-
-                    renderTrendChart(filteredTrendData, defaultTrendMetadata);
-
-                    updateChartPlotSize();
-                }
-
-            };
-
-
-            
-
-            
-
-            showLinks = (e) => {
-
-                
-
-                
-
-                window.location.hash = 'display=links'
-                currentHash = 'display=links'
-
-                
-
-                tabTable.setAttribute('aria-selected', false);
-                tabMap.setAttribute('aria-selected', false);
-                tabTrend.setAttribute('aria-selected', false);
-                tabLinks.setAttribute('aria-selected', true);
-
-
-                
-
-                if (!selectedLinksMeasure) {
-
-                    
-                    
-                    
-
-                    
-
-                    
-
-                    const secondaryMeasureId = defaultLinksMetadata[0]?.VisOptions[0].Links[0].MeasureID;
-
-                    
-
-                    const linksSecondaryIndicator = indicators.filter(indicator =>
-                        indicator.Measures.some(measure =>
-                            measure.MeasureID === secondaryMeasureId
-                        )
-                    )
-
-                    
-
-                    const linksSecondaryMeasure = linksSecondaryIndicator[0].Measures.filter(m =>
-                        m.MeasureID === secondaryMeasureId
-                    )
-
-                    primaryIndicatorName   = indicatorName;
-                    secondaryIndicatorName = linksSecondaryIndicator[0].IndicatorName;
-
-                    
-
-                    const primaryMeasure         = defaultLinksMetadata[0].MeasurementType;
-                    const primaryAbout           = defaultLinksMetadata[0].how_calculated;
-                    const primarySources         = defaultLinksMetadata[0].Sources;
-
-                    const secondaryMeasure       = linksSecondaryMeasure[0].MeasurementType;
-                    const secondaryAbout         = linksSecondaryMeasure[0].how_calculated;
-                    const secondarySources       = linksSecondaryMeasure[0].Sources;
-
-
-                    
-
-                    
-
-                    defaultLinksAbout =
-                        `<h6>${primaryIndicatorName} - ${primaryMeasure}</h6>
-                        <p>${primaryAbout}</p>
-                        <h6>${secondaryIndicatorName} - ${secondaryMeasure}</h6>
-                        <p>${secondaryAbout}</p>`;
-
-                    defaultLinksSources =
-                        `<h6>${primaryIndicatorName} - ${primaryMeasure}</h6>
-                        <p>${primarySources}</p>
-                        <h6>${secondaryIndicatorName} - ${secondaryMeasure}</h6>
-                        <p>${secondarySources}</p>`;
-
-
-                    
-
-                    
-                    
-
-                    
-                    
-
-                    renderTitleDescription(indicatorShortName, indicatorDesc);
-                    renderAboutSources(defaultLinksAbout, defaultLinksSources);
-
-
-                    
-
-                    
-
-                    renderLinksChart(
-                        joinedDataLinksObjects,
-                        primaryMeasureMetadata,
-                        secondaryMeasureMetadata,
-                        primaryIndicatorName,
-                        secondaryIndicatorName
-                    );
-
-                    updateChartPlotSize();
-
-
-                    
-
-                    
-                    $('.linksbutton').removeClass("active");
-                    $('.linksbutton').attr('aria-selected', false);
-
-                    
-
-                    let linksMeasureEl = document.querySelector(`.linksbutton[data-secondary-measure-id='${secondaryMeasureId}']`)
-
-                    $(linksMeasureEl).addClass("active");
-                    $(linksMeasureEl).attr('aria-selected', true);
-
-
-                } else {
-
-                    
-
-                    
-
-                    renderAboutSources(selectedLinksAbout, selectedLinksSources);
-
-                    
-
-                    renderLinksChart(
-                        joinedDataLinksObjects,
-                        primaryMeasureMetadata,
-                        secondaryMeasureMetadata,
-                        primaryIndicatorName,
-                        secondaryIndicatorName
-                    );
-
-                    updateChartPlotSize();
-                }
-
-            };
-
-
-            
-            
-            
-
-            
-
-            const tabTableSelected = tabTable.getAttribute('aria-selected');
-            const tabMapSelected   = tabMap.getAttribute('aria-selected');
-            const tabTrendSelected = tabTrend.getAttribute('aria-selected');
-            const tabLinksSelected = tabLinks.getAttribute('aria-selected');
-
-            const disableTab = (el) => {
-                el.classList.add('disabled');
-                el.setAttribute('aria-disabled', true);
-            }
-
-            const enableTab = (el) => {
-                el.classList.remove('disabled');
-                el.setAttribute('aria-disabled', false);
-            }
-
-
-            
-            
-
-            if (mapMeasures.length === 0) {
-
-                if (tabMapSelected && window.location.hash === '#display=map') {
-
-                    
-
-                    url.hash = "display=summary";
-                    window.history.replaceState({ id: indicatorId, hash: url.hash}, '', url);
-
-                }
-
-                disableTab(tabMap);
-
-            } else {
-
-                enableTab(tabMap);
-            }
-
-
-            const onlyOneTime = trendMeasures.every(m => m.AvailableTimes.length <= 1)
-
-            if (trendMeasures.length === 0 || onlyOneTime) {
-
-                if (tabTrendSelected && window.location.hash === '#display=trend') {
-
-                    
-
-                    url.hash = "display=summary";
-                    window.history.replaceState({ id: indicatorId, hash: url.hash}, '', url);
-
-                }
-
-                disableTab(tabTrend);
-
-            } else {
-
-                enableTab(tabTrend);
-            }
-
-
-            if (linksMeasures.length === 0) {
-
-                if (tabLinksSelected && window.location.hash === '#display=links') {
-
-                    
-
-                    url.hash = "display=summary";
-                    window.history.replaceState({ id: indicatorId, hash: url.hash}, '', url);
-
-                }
-
-                disableTab(tabLinks);
-
-            } else {
-
-                enableTab(tabLinks);
-            }
-
-
-            
-            
-            
-
-            let hash = window.location.hash.replace('#', "")
-
-            switch (hash) {
-
-                
-
-                case 'display=summary':
-                case 'tab-table':
-                    $('#tab-btn-table').tab('show');
-                    window.dispatchEvent(hashchange);
-                    break;
-
-                case 'display=map':
-                case 'tab-map':
-                    $('#tab-btn-map').tab('show');
-                    window.dispatchEvent(hashchange);
-                    break;
-
-                case 'display=trend':
-                case 'tab-trend':
-                    $('#tab-btn-trend').tab('show');
-                    window.dispatchEvent(hashchange);
-                    break;
-
-                case 'display=links':
-                case 'tab-links':
-                    $('#tab-btn-links').tab('show');
-                    window.dispatchEvent(hashchange);
-                    break;
-
-                default:
-                    window.dispatchEvent(hashchange);
-                    $('#tab-btn-table').tab('show');
-            }
-
-
-            
-            
-            
-            
-
-            
-
-            let mapMeasuresLinks = document.querySelectorAll('.mapbutton');
-            let trendMeasuresLinks = document.querySelectorAll('.trendbutton');
-            let linksMeasuresLinks = document.querySelectorAll('.linksbutton');
-
-            
-            
-
-            mapMeasuresLinks.forEach(link => {
-                link.addEventListener('click', updateMapData);
-            })
-
-            trendMeasuresLinks.forEach(link => {
-                link.addEventListener('click', updateTrendData);
-            })
-
-            linksMeasuresLinks.forEach(link => {
-                link.addEventListener('click', updateLinksData);
-            })
-
-
-            
-            
-            
-
-            const checkboxYear = document.querySelectorAll('.checkbox-year');
-            const checkboxGeo = document.querySelectorAll('.checkbox-geo');
-
-            checkboxYear.forEach(checkbox => {
-                handleYearFilter(checkbox);
-            })
-            checkboxGeo.forEach(checkbox => {
-                handleGeoFilter(checkbox);
-            })
-
-
-            
-            
-            
-
-            measureAbout = '';
-            measureSources = '';
-            indicatorMeasures.map(measure => {
-
-                measureAbout +=
-                    `<h6>${measure.MeasurementType}</h6>
-                    <p>${measure.how_calculated}</p>`;
-
-                measureSources +=
-                    `<h6>${measure.MeasurementType}</h6>
-                    <p>${measure.Sources}</p>`;
-
-            })
-
-            renderAboutSources(measureAbout, measureSources);
-
-        }
-
-
-    
-    
-    
-
-    
-
-    $('#tab-btn-table').on('click', e => {
-        $(e.currentTarget).tab('show');
-        window.location.hash = 'display=summary'
-    })
-
-    
-
-    $('#tab-btn-map').on('click', e => {
-        $(e.currentTarget).tab('show');
-        window.location.hash = 'display=map'
-    })
-
-    
-
-    $('#tab-btn-trend').on('click', e => {
-        $(e.currentTarget).tab('show');
-        window.location.hash = 'display=trend'
-    })
-
-    
-
-    $('#tab-btn-links').on('click', e => {
-        $(e.currentTarget).tab('show');
-        window.location.hash = 'display=links'
-    })
-
-    </script>
-
-
-
 </article>
-
 
 <section class="related-reading">
     <div class="container">
@@ -3905,139 +1591,7 @@
               
         </div>
     </div>
-</section>
-
-  
-
-
-  <script type="text/javascript" src="http://gcappbesp307/IndicatorPublic/beta/js/accessible-autocomplete.min.a28dbcfe4538f42cec64a42e75429f873bd86641fea0b326b3a4800b59917b99b877d3715b07405ff36917ed9e3cc0873f7b58a65905ff508cd42e8c427a5f9a.js" integrity="sha512-oo28/kU49CzsZKQudUKfhzvYZkH&#43;oLMms6SAC1mRe5m4d9NxWwdAX/NpF&#43;2ePMCHP3tYplkF/1CM1C6MQnpfmg=="></script>
-
-  
-
-
-
-
-<script type="text/javascript">
-
-    function createCitation() {
-        
-        let today = new Date();
-        let dd = String(today.getDate()).padStart(2, '0');
-        let mm = String(today.getMonth() + 1).padStart(2, '0'); 
-        let yyyy = today.getFullYear();
-        today = mm + '/' + dd + '/' + yyyy;
-
-        
-        let citation = "New York City Department of Health, Environment & Health Data Portal. "  + `"Active design"` + " data. " + indicatorName + '. Accessed at ' + `"http://gcappbesp307/IndicatorPublic/beta/data-explorer/active-design/"` + ' on ' + today + "."
-
-        
-        document.getElementById('citeText').setAttribute('value',citation);
-
-        
-
-        let btn = document.getElementById('citeButton')
-        btn.innerHTML = `<i class="fas fa-copy mr-1"></i>Copy citation`
-
-    }
-
-    function copyCitation(){
-        let citeText = document.getElementById('citeText')
-        citeText.select()
-        citeText.setSelectionRange(0,99999);
-        navigator.clipboard.writeText(citeText.value)
-        let btn = document.getElementById('citeButton')
-        btn.innerHTML = `<i class="fas fa-copy mr-1"></i>Copied!`
-        
-    }
-
-    createCitation();
-
-    
-
-    $("#thisView").on("click", (e) => {
-
-        let summaryTable = $('#tableID').DataTable();
-        summaryTable.button("thisView:name").trigger();
-
-        gtag('event', 'file_download', {
-            'file_name': 'NYC EH Data Portal - ' + indicatorName + " (filtered)" + '.csv',
-            'file_extension': '.csv',
-            'link_text': 'Current table view'
-        });
-
-        e.stopPropagation();
-
-    });
-
-    
-
-    $("#allData").on("click", (e) => {
-
-        
-
-        let allData = aq.from(fullDataTableObjects)
-            .groupby("Time", "GeoType", "GeoID", "GeoRank", "Geography")
-            .pivot("MeasurementDisplay", "DisplayCI")
-            .relocate(["Time", "GeoType", "GeoID", "GeoRank"], { before: 0 })
-
-        let downloadTableCSV = allData.toCSV();
-
-        
-        let csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(downloadTableCSV);
-        let hiddenElement = document.createElement('a');
-
-        hiddenElement.href = csvData;
-        hiddenElement.target = '_blank';
-        hiddenElement.download = 'NYC EH Data Portal - ' + indicatorName + " (full)" + '.csv';
-        hiddenElement.click();
-
-        gtag('event', 'file_download', {
-            'file_name': hiddenElement.download,
-            'file_extension': '.csv',
-            'link_text': 'Full table for this indicator'
-        });
-
-        e.stopPropagation();
-
-    });
-
-    
-
-    $("#rawData").on("click", (e) => {
-
-        let dataURL = data_repo + data_branch + '/indicators/data/' + indicatorId + '.json'
-
-        
-
-        aq.loadJSON(`${dataURL}`).then(function(data) {
-
-            let downloadTable = data;
-            let downloadTableCSV = downloadTable.toCSV();
-
-            
-            let csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(downloadTableCSV);
-            let hiddenElement = document.createElement('a');
-
-            hiddenElement.href = csvData;
-            hiddenElement.target = '_blank';
-            hiddenElement.download = 'NYC EH Data Portal - ' + indicatorName + " (raw)" + '.csv';
-            hiddenElement.click();
-
-            gtag('event', 'file_download', {
-                'file_name': hiddenElement.download,
-                'file_extension': '.csv',
-                'link_text': 'Raw data for this indicator'
-            });
-
-            e.stopPropagation();
-
-        })
-    });
-
-
-</script>
-
-<ul id="results"></ul>
+</section><ul id="results"></ul>
   </main>
   
   <style>
@@ -4087,7 +1641,7 @@
 
     original_url = original_url ? original_url : "/IndicatorPublic/";
     
-    console.log("original_url", original_url);
+    
     
     
 
@@ -4303,18 +1857,208 @@
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script src="https://unpkg.com/lunr/lunr.js"></script>
 
+<script type="text/javascript" 
+    src="http://gcappbesp307/IndicatorPublic/beta/js/main.552c9e0eb5b9f567a863809d88dfdb9dfc2e5062f1aa7ae313abbdf21a346fd773ae265f5ff618d8322e2b96b95be1b319c681eb0ea7b818a3c6485a84b6ad5a.js" 
+    integrity="sha512-VSyeDrW59WeoY4CdiN/bnfwuUGLxqnrjE6u98ho0b9dzriZfX/YY2DIuK5a5W&#43;GzGcaB6w6nuBijxkhahLatWg=="></script><script type="text/javascript" 
+    src="http://gcappbesp307/IndicatorPublic/beta/js/search.5b925b298016578cc9f10a3f411ee873f4c8d7554670318dec6bc519e3728c23946c07cf29eae5ee2438fabf76ecc71e8fca6896ccf52726d171743633ff2a1a.js" 
+    integrity="sha512-W5JbKYAWV4zJ8Qo/QR7oc/TI11VGcDGN7GvFGeNyjCOUbAfPKerl7iQ4&#43;r927Mcej8polsz1JybRcXQ2M/8qGg=="></script>
 
+
+    <script type="text/javascript" src="http://gcappbesp307/IndicatorPublic/beta/js/accessible-autocomplete.min.a28dbcfe4538f42cec64a42e75429f873bd86641fea0b326b3a4800b59917b99b877d3715b07405ff36917ed9e3cc0873f7b58a65905ff508cd42e8c427a5f9a.js" integrity="sha512-oo28/kU49CzsZKQudUKfhzvYZkH&#43;oLMms6SAC1mRe5m4d9NxWwdAX/NpF&#43;2ePMCHP3tYplkF/1CM1C6MQnpfmg=="></script>
+
+    
+
+    <script type="text/javascript" src="http://gcappbesp307/IndicatorPublic/beta/node_modules/arquero/dist/arquero.min.6520f6e90df9ef5b78b24460f8631ba9eef1cecaf9ac0c7325995f35018f8e3249f22e3da2573be9d6b2eae9fbc045a824de714eb7f7f30381a71c0b61000b68.js" integrity="sha512-ZSD26Q3571t4skRg&#43;GMbqe7xzsr5rAxzJZlfNQGPjjJJ8i49olc76day6un7wEWoJN5xTrf38wOBpxwLYQALaA=="></script>
+
+     
+
+     <link rel="stylesheet" href="http://gcappbesp307/IndicatorPublic/beta/css/dtCSS.css">
+
+    <script type="text/javascript" src="http://gcappbesp307/IndicatorPublic/beta/js/dataTableBundle.05e33b0b1e494e960e40a613a72c797aae7c9efe140b05ee0ea6b43e0b97e329fba55c8f169d0fd077710dd0315111fa56b8ab2c74787618fd81b42fb1c533bd.js" integrity="sha512-BeM7Cx5JTpYOQKYTpyx5eq58nv4UCwXuDqa0PguX4yn7pVyPFp0P0HdxDdAxURH6VrirLHR4dhj9gbQvscUzvQ=="></script>
+
+    
+    
+    
+
+    
+    
+
+    <script type="text/javascript" src="http://gcappbesp307/IndicatorPublic/beta/node_modules/jszip/dist/jszip.min.5cc55ddbc175a07fceef57f3c019d5ec7b9c2f1570b717f6e9757c3f8c0f936e840f1b8667dd4df1bb0eb6d9a7a267020f7092e593112f9d07d0680e1ef7a0b6.js" integrity="sha512-XMVd28F1oH/O71fzwBnV7HucLxVwtxf26XV8P4wPk26EDxuGZ91N8bsOttmnomcCD3CS5ZMRL50H0GgOHvegtg=="></script>
+    
+    
+    
+    
+
+    <script type="text/javascript" src="http://gcappbesp307/IndicatorPublic/beta/js/vegaBundle.cbfa62382f7d2eb3c4c742ca4bd6f2849fc85f87bf69a75d6d0b1f9c96f8ffef3ae325c98f8eb7e4ff70990cf98068946afe06a8527c1beceb3032fca5ec4a86.js" integrity="sha512-y/piOC99LrPEx0LKS9byhJ/IX4e/aaddbQsfnJb4/&#43;864yXJj4635P9wmQz5gGiUav4GqFJ8G&#43;zrMDL8pexKhg=="></script>
+
+    <script type="text/javascript" src="http://gcappbesp307/IndicatorPublic/beta/node_modules/d3/dist/d3.min.31e7cd7c0189fe9132f3dc4b385b3757aa583ece8099485726b465c9d23ff7066e1abab19ab750f34cca1d473269d01ca47ebbb5e0d9701792ea83092cfb53ab.js" integrity="sha512-MefNfAGJ/pEy89xLOFs3V6pYPs6AmUhXJrRlydI/9wZuGrqxmrdQ80zKHUcyadAcpH67teDZcBeS6oMJLPtTqw=="></script>
 
 
     
 
+    
 
-    <script type="text/javascript" 
-        src="http://gcappbesp307/IndicatorPublic/beta/js/main.552c9e0eb5b9f567a863809d88dfdb9dfc2e5062f1aa7ae313abbdf21a346fd773ae265f5ff618d8322e2b96b95be1b319c681eb0ea7b818a3c6485a84b6ad5a.js" 
-        integrity="sha512-VSyeDrW59WeoY4CdiN/bnfwuUGLxqnrjE6u98ho0b9dzriZfX/YY2DIuK5a5W&#43;GzGcaB6w6nuBijxkhahLatWg=="></script>
-    <script type="text/javascript" 
-        src="http://gcappbesp307/IndicatorPublic/beta/js/search.5b925b298016578cc9f10a3f411ee873f4c8d7554670318dec6bc519e3728c23946c07cf29eae5ee2438fabf76ecc71e8fca6896ccf52726d171743633ff2a1a.js" 
-        integrity="sha512-W5JbKYAWV4zJ8Qo/QR7oc/TI11VGcDGN7GvFGeNyjCOUbAfPKerl7iQ4&#43;r927Mcej8polsz1JybRcXQ2M/8qGg=="></script>
+    <script>
 
-</body>
+        
+        
+        
+
+        
+
+        const renderIndicatorDropdown = () => {
+
+            const indicatorDropdown = document.getElementById("indicator-dropdown");
+            let this_indicatorName;
+            let header;
+
+                header = '';
+                indicatorDropdown.innerHTML += header.length ? '<div class="dropdown-title"><strong>' + header + '</strong></div>' : '';
+
+                
+
+                     defaultIndicatorId =  2390  
+
+                    indicator = indicators.find(indicator => indicator.IndicatorID ===  2390 );
+                    this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
+                    indicatorDropdown.innerHTML += "<button class='indicator-dropdown-item dropdown-item' onclick='loadIndicator(2390)' data-indicator-id=2390>" + this_indicatorName + "</button>";
+
+                    
+
+                    indicator = indicators.find(indicator => indicator.IndicatorID ===  2181 );
+                    this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
+                    indicatorDropdown.innerHTML += "<button class='indicator-dropdown-item dropdown-item' onclick='loadIndicator(2181)' data-indicator-id=2181>" + this_indicatorName + "</button>";
+
+                    
+
+                    indicator = indicators.find(indicator => indicator.IndicatorID ===  2158 );
+                    this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
+                    indicatorDropdown.innerHTML += "<button class='indicator-dropdown-item dropdown-item' onclick='loadIndicator(2158)' data-indicator-id=2158>" + this_indicatorName + "</button>";
+
+                    
+
+                    indicator = indicators.find(indicator => indicator.IndicatorID ===  2157 );
+                    this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
+                    indicatorDropdown.innerHTML += "<button class='indicator-dropdown-item dropdown-item' onclick='loadIndicator(2157)' data-indicator-id=2157>" + this_indicatorName + "</button>";
+
+                    
+
+                    indicator = indicators.find(indicator => indicator.IndicatorID ===  2143 );
+                    this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
+                    indicatorDropdown.innerHTML += "<button class='indicator-dropdown-item dropdown-item' onclick='loadIndicator(2143)' data-indicator-id=2143>" + this_indicatorName + "</button>";
+
+                    
+
+                    indicator = indicators.find(indicator => indicator.IndicatorID ===  2388 );
+                    this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
+                    indicatorDropdown.innerHTML += "<button class='indicator-dropdown-item dropdown-item' onclick='loadIndicator(2388)' data-indicator-id=2388>" + this_indicatorName + "</button>";
+
+                    
+
+                    indicator = indicators.find(indicator => indicator.IndicatorID ===  2391 );
+                    this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
+                    indicatorDropdown.innerHTML += "<button class='indicator-dropdown-item dropdown-item' onclick='loadIndicator(2391)' data-indicator-id=2391>" + this_indicatorName + "</button>";
+
+                    
+
+                    indicator = indicators.find(indicator => indicator.IndicatorID ===  2389 );
+                    this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
+                    indicatorDropdown.innerHTML += "<button class='indicator-dropdown-item dropdown-item' onclick='loadIndicator(2389)' data-indicator-id=2389>" + this_indicatorName + "</button>";
+
+                    
+
+                    indicator = indicators.find(indicator => indicator.IndicatorID ===  2133 );
+                    this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
+                    indicatorDropdown.innerHTML += "<button class='indicator-dropdown-item dropdown-item' onclick='loadIndicator(2133)' data-indicator-id=2133>" + this_indicatorName + "</button>";}
+        
+
+        
+
+        const renderIndicatorButtons = () => {
+
+            const indicatorButtons = document.getElementById("indicatorButtons");
+            let this_indicatorName;
+            let header;
+
+                header = '';
+                indicatorButtons.innerHTML += header.length ? '<div class="pl-1 mt-2 home-label">' + header + '</div>': '';
+
+                defaultIndicatorId =  2390 
+
+                    indicator = indicators.find(indicator => indicator.IndicatorID ===  2390 );
+                    this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
+                    indicatorButtons.innerHTML += "<button class='btn btn-sm btn-block btn-outline-light text-primary text-left my-0 indicator-dropdown-item text-align-left font-weight-normal' onclick='loadIndicator(2390)' data-indicator-id=2390>" + this_indicatorName + "</button>";
+
+                    indicator = indicators.find(indicator => indicator.IndicatorID ===  2181 );
+                    this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
+                    indicatorButtons.innerHTML += "<button class='btn btn-sm btn-block btn-outline-light text-primary text-left my-0 indicator-dropdown-item text-align-left font-weight-normal' onclick='loadIndicator(2181)' data-indicator-id=2181>" + this_indicatorName + "</button>";
+
+                    indicator = indicators.find(indicator => indicator.IndicatorID ===  2158 );
+                    this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
+                    indicatorButtons.innerHTML += "<button class='btn btn-sm btn-block btn-outline-light text-primary text-left my-0 indicator-dropdown-item text-align-left font-weight-normal' onclick='loadIndicator(2158)' data-indicator-id=2158>" + this_indicatorName + "</button>";
+
+                    indicator = indicators.find(indicator => indicator.IndicatorID ===  2157 );
+                    this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
+                    indicatorButtons.innerHTML += "<button class='btn btn-sm btn-block btn-outline-light text-primary text-left my-0 indicator-dropdown-item text-align-left font-weight-normal' onclick='loadIndicator(2157)' data-indicator-id=2157>" + this_indicatorName + "</button>";
+
+                    indicator = indicators.find(indicator => indicator.IndicatorID ===  2143 );
+                    this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
+                    indicatorButtons.innerHTML += "<button class='btn btn-sm btn-block btn-outline-light text-primary text-left my-0 indicator-dropdown-item text-align-left font-weight-normal' onclick='loadIndicator(2143)' data-indicator-id=2143>" + this_indicatorName + "</button>";
+
+                    indicator = indicators.find(indicator => indicator.IndicatorID ===  2388 );
+                    this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
+                    indicatorButtons.innerHTML += "<button class='btn btn-sm btn-block btn-outline-light text-primary text-left my-0 indicator-dropdown-item text-align-left font-weight-normal' onclick='loadIndicator(2388)' data-indicator-id=2388>" + this_indicatorName + "</button>";
+
+                    indicator = indicators.find(indicator => indicator.IndicatorID ===  2391 );
+                    this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
+                    indicatorButtons.innerHTML += "<button class='btn btn-sm btn-block btn-outline-light text-primary text-left my-0 indicator-dropdown-item text-align-left font-weight-normal' onclick='loadIndicator(2391)' data-indicator-id=2391>" + this_indicatorName + "</button>";
+
+                    indicator = indicators.find(indicator => indicator.IndicatorID ===  2389 );
+                    this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
+                    indicatorButtons.innerHTML += "<button class='btn btn-sm btn-block btn-outline-light text-primary text-left my-0 indicator-dropdown-item text-align-left font-weight-normal' onclick='loadIndicator(2389)' data-indicator-id=2389>" + this_indicatorName + "</button>";
+
+                    indicator = indicators.find(indicator => indicator.IndicatorID ===  2133 );
+                    this_indicatorName = indicator?.IndicatorName ? indicator.IndicatorName : 'N/A';
+                    indicatorButtons.innerHTML += "<button class='btn btn-sm btn-block btn-outline-light text-primary text-left my-0 indicator-dropdown-item text-align-left font-weight-normal' onclick='loadIndicator(2133)' data-indicator-id=2133>" + this_indicatorName + "</button>";}
+
+
+        
+        
+        
+
+        function createCitation() {
+            
+            let today = new Date();
+            let dd = String(today.getDate()).padStart(2, '0');
+            let mm = String(today.getMonth() + 1).padStart(2, '0'); 
+            let yyyy = today.getFullYear();
+            today = mm + '/' + dd + '/' + yyyy;
+
+            
+            let citation = "New York City Department of Health, Environment & Health Data Portal. "  + `"Active design"` + " data. " + indicatorName + '. Accessed at ' + `"http://gcappbesp307/IndicatorPublic/beta/data-explorer/active-design/"` + ' on ' + today + "."
+
+            
+            document.getElementById('citeText').setAttribute('value', citation);
+
+            
+
+            let btn = document.getElementById('citeButton')
+            btn.innerHTML = `<i class="fas fa-copy mr-1"></i>Copy citation`
+
+        }
+
+        function copyCitation() {
+            let citeText = document.getElementById('citeText')
+            citeText.select()
+            citeText.setSelectionRange(0,99999);
+            navigator.clipboard.writeText(citeText.value)
+            let btn = document.getElementById('citeButton')
+            btn.innerHTML = `<i class="fas fa-copy mr-1"></i>Copied!`
+            
+        }
+            
+    </script>
+
+
+    <script type="text/javascript" src="http://gcappbesp307/IndicatorPublic/beta/js/dataExplorer.ae277c1f47e58345517b8212a093a3301c34b9ae6c386acaa6842e674b8d676df57e2bc3c923e6c37f89372ca546ea7c772d63ac8651d9e76a2589dab5ac4c1e.js" integrity="sha512-rid8H0flg0VRe4ISoJOjMBw0ua5sOGrKpoQuZ0uNZ231fivDySPmw3&#43;JNyylRup8dy1jrIZR2edqJYnataxMHg=="></script></body>
 </html>
