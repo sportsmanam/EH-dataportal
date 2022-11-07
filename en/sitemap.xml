@@ -1,10 +1,38 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml"><url>
-    <loc>/about/</loc>
-    <lastmod>2022-09-30T08:15:58-04:00</lastmod></url><url>
+    <loc>/categories/</loc>
+    <lastmod>2022-11-07T08:49:22-04:00</lastmod><xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/categories/"
+                /><xhtml:link
+                rel="alternate"
+                hreflang="cn"
+                href="/cn/categories/"
+                /><xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/categories/"
+                /></url><url>
+    <loc>/keywords/civic-service-design/</loc>
+    <lastmod>2022-11-07T08:49:22-04:00</lastmod></url><url>
+    <loc>/data-stories/</loc>
+    <lastmod>2022-11-07T08:49:22-04:00</lastmod><xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/data-stories/"
+                /><xhtml:link
+                rel="alternate"
+                hreflang="cn"
+                href="/cn/data-stories/"
+                /><xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/data-stories/"
+                /></url><url>
     <loc>/</loc>
-    <lastmod>2022-09-30T08:15:58-04:00</lastmod><xhtml:link
+    <lastmod>2022-11-07T08:49:22-04:00</lastmod><xhtml:link
                 rel="alternate"
                 hreflang="es"
                 href="/es/"
@@ -17,6 +45,46 @@
                 hreflang="en"
                 href="/"
                 /></url><url>
+    <loc>/keywords/how-we-work/</loc>
+    <lastmod>2022-11-07T08:49:22-04:00</lastmod></url><url>
+    <loc>/categories/internal/</loc>
+    <lastmod>2022-11-07T08:49:22-04:00</lastmod><xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/categories/internal/"
+                /><xhtml:link
+                rel="alternate"
+                hreflang="cn"
+                href="/cn/categories/internal/"
+                /><xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/categories/internal/"
+                /></url><url>
+    <loc>/keywords/</loc>
+    <lastmod>2022-11-07T08:49:22-04:00</lastmod><xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/keywords/"
+                /><xhtml:link
+                rel="alternate"
+                hreflang="cn"
+                href="/cn/keywords/"
+                /><xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/keywords/"
+                /></url><url>
+    <loc>/keywords/redesign/</loc>
+    <lastmod>2022-11-07T08:49:22-04:00</lastmod></url><url>
+    <loc>/data-stories/redesign/</loc>
+    <lastmod>2022-11-07T08:49:22-04:00</lastmod></url><url>
+    <loc>/keywords/usability/</loc>
+    <lastmod>2022-11-07T08:49:22-04:00</lastmod></url><url>
+    <loc>/keywords/user-research/</loc>
+    <lastmod>2022-11-07T08:49:22-04:00</lastmod></url><url>
+    <loc>/about/</loc>
+    <lastmod>2022-09-30T08:15:58-04:00</lastmod></url><url>
     <loc>/about/partner/</loc>
     <lastmod>2022-09-30T08:15:58-04:00</lastmod></url><url>
     <loc>/keywords/air-quality/</loc>
@@ -47,38 +115,10 @@
                 hreflang="en"
                 href="/categories/airquality/"
                 /></url><url>
-    <loc>/categories/</loc>
-    <lastmod>2022-04-20T11:14:56-04:00</lastmod><xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="/es/categories/"
-                /><xhtml:link
-                rel="alternate"
-                hreflang="cn"
-                href="/cn/categories/"
-                /><xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/categories/"
-                /></url><url>
     <loc>/keywords/emissions/</loc>
     <lastmod>2022-04-20T11:14:56-04:00</lastmod></url><url>
     <loc>/keywords/exhaust/</loc>
     <lastmod>2022-04-20T11:14:56-04:00</lastmod></url><url>
-    <loc>/keywords/</loc>
-    <lastmod>2022-04-20T11:14:56-04:00</lastmod><xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="/es/keywords/"
-                /><xhtml:link
-                rel="alternate"
-                hreflang="cn"
-                href="/cn/keywords/"
-                /><xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/keywords/"
-                /></url><url>
     <loc>/keywords/monitoring/</loc>
     <lastmod>2022-04-20T11:14:56-04:00</lastmod></url><url>
     <loc>/keywords/pm2.5/</loc>
@@ -557,20 +597,6 @@
     <lastmod>2021-09-08T11:14:56-04:00</lastmod></url><url>
     <loc>/keywords/temperature/</loc>
     <lastmod>2021-09-08T11:14:56-04:00</lastmod></url><url>
-    <loc>/data-stories/</loc>
-    <lastmod>2021-09-02T08:49:22-04:00</lastmod><xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="/es/data-stories/"
-                /><xhtml:link
-                rel="alternate"
-                hreflang="cn"
-                href="/cn/data-stories/"
-                /><xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/data-stories/"
-                /></url><url>
     <loc>/keywords/ed-visit/</loc>
     <lastmod>2021-08-30T11:51:01-04:00</lastmod></url><url>
     <loc>/keywords/emergency-department/</loc>
@@ -1075,20 +1101,6 @@
                 hreflang="en"
                 href="/keywords/health-data/"
                 /></url><url>
-    <loc>/categories/internal/</loc>
-    <lastmod>2020-08-01T08:33:22-04:00</lastmod><xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="/es/categories/internal/"
-                /><xhtml:link
-                rel="alternate"
-                hreflang="cn"
-                href="/cn/categories/internal/"
-                /><xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/categories/internal/"
-                /></url><url>
     <loc>/keywords/maps/</loc>
     <lastmod>2020-08-01T08:33:22-04:00</lastmod><xhtml:link
                 rel="alternate"
@@ -1149,8 +1161,6 @@
     <lastmod>2020-04-21T13:37:45-04:00</lastmod></url><url>
     <loc>/keywords/environmental-justice/</loc>
     <lastmod>2020-04-21T13:37:45-04:00</lastmod></url><url>
-    <loc>/keywords/civic-service-design/</loc>
-    <lastmod>2020-02-13T08:29:34-04:00</lastmod></url><url>
     <loc>/keywords/design/</loc>
     <lastmod>2020-02-13T08:29:34-04:00</lastmod></url><url>
     <loc>/data-stories/assaults/</loc>
@@ -1169,13 +1179,9 @@
                 hreflang="en"
                 href="/keywords/ed-visits/"
                 /></url><url>
-    <loc>/keywords/how-we-work/</loc>
-    <lastmod>2020-02-13T08:29:34-04:00</lastmod></url><url>
     <loc>/keywords/research/</loc>
     <lastmod>2020-02-13T08:29:34-04:00</lastmod></url><url>
     <loc>/keywords/technology/</loc>
-    <lastmod>2020-02-13T08:29:34-04:00</lastmod></url><url>
-    <loc>/keywords/user-research/</loc>
     <lastmod>2020-02-13T08:29:34-04:00</lastmod></url><url>
     <loc>/data-stories/codesign/</loc>
     <lastmod>2020-02-13T08:29:34-04:00</lastmod></url><url>
