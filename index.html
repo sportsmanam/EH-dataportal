@@ -559,9 +559,27 @@
                 <p class="fs-sm">Passionate about health, environmental justice, and technology? Check out open positions in our bureau.</p><a href="https://a816-dohbesp.nyc.gov/IndicatorPublic/beta/about/jobs/" class="btn btn-outline-gray btn-block btn-sm mt-2">Jobs<i class="fas fa-chevron-circle-right ml-1" aria-hidden="true"></i></a></div>
           </div>
         </div>
-      </div>
-              
-              
+      </div><div class="row my-4">
+          <div class="col-md-4 ">
+            <div class="d-inline-block bg-light p-2">
+              <p class="fs-md">Prefer to use our old site? <b><a id="want_old_site_home" onclick="setCookieHome()">Click here.</a></b></p>
+              </div>
+          </div>
+        </div>
+        
+        <script>
+          
+          
+          
+          const setCookieHome = () => {
+            document.cookie = "want_old_site=true; path=/IndicatorPublic/";
+          }
+          
+          
+          
+          document.querySelector("#want_old_site_home").href = "/IndicatorPublic/";
+          
+        </script>
                     </div>
                     
                   </div>
