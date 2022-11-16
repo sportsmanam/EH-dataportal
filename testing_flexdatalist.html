@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Testing flexdatalist</title>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/jquery-flexdatalist/jquery.flexdatalist.min.js"></script>
+    <link rel='stylesheet' type='text/css' href="node_modules/jquery-flexdatalist/jquery.flexdatalist.css">
+</head>
+<body>
+    
+    <div id="the_input">
+        <input type='text'
+            placeholder='Write the name of a continent, country or capital'
+            class='flexdatalist'
+            data-relatives='#relative'
+            data-url='assets/countries.json'
+            data-search-in='["name","continent","capital", "currency"]'
+            data-visible-properties='["name", "continent", "capital", "capital_timezone"]'
+            data-group-by='continent'
+            data-selection-required='true'
+            data-focus-first-result='true'
+            data-min-length='0'
+            data-value-property='iso2'
+            data-text-property='{capital}, {name}, {continent}'
+            data-search-contain='false'
+            id='chained_relative'
+            name='chained_relative'>
+        <input type="button" value="Submit" onclick="update()" />
+        </div>
+
+        <div>
+            
+            <p>return value:</p>
+            <p class="input-value text-muted"><span></span></p>
+        </div>
+
+        <script>
+
+            const update = () => {
+
+                var $input = $('.flexdatalist');
+                // Update value view
+                var updateValueView = $target => {
+                
+                    $target.each(function () {
+
+                        console.log("$(this).val()", $(this).val());
+                        document.querySelector(".input-value span").innerText = $(this).val()
+
+                    });
+                };
+                updateValueView($input);
+            }
+
+
+            {{/*  $('.flexdatalist').flexdatalist({
+                searchContain: false,
+                textProperty: '{capital}, {name}, {continent}',
+                valueProperty: 'iso2',
+                minLength: 0,
+                focusFirstResult: true,
+                selectionRequired: true,
+                groupBy: 'continent',
+                visibleProperties: ["name","continent","capital","capital_timezone"],
+                searchIn: ["name","continent","capital"],
+                url: 'assets/countries.json',
+                relatives: '#relative'
+            });  */}}
+
+        </script>
+    
+</body>
+</html>
