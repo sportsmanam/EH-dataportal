@@ -270,19 +270,64 @@
     </div>
 
 </header>
-<main id="skip-header-target" role="main"><div class="d-flex flex-column report-header">
+<main id="skip-header-target" role="main"><script>
+    var subtopicIndicators;
+    var sti;
+    var thisInd;
+
     
+    function getJSON() {
+        d3.json("https://raw.githubusercontent.com/nychealth/EH-dataportal/prod-deploy/IndicatorData/subtopic_indicators.json").then(data => {
+            subtopicIndicators = data
+        });
+    }
+
+    getJSON();
+
+    
+    const getURL = async (x) => {
+        const result = await getJSON(); 
+
+        var thisTopic = '';
+        var topicArray = [];
+        var ind = Number(x)
+        var URL;
+        console.log('getURL running for ' + x)
+
+        for (let y in subtopicIndicators) {
+            topicArray = subtopicIndicators[y].IndicatorID
+            if (topicArray.includes(ind)) {
+                thisTopic = y
+                console.log('topic is: ' + ind + ": " + thisTopic)
+                URL = baseURL + 'data-explorer/' + thisTopic + "/?id=" + ind; 
+                document.getElementById(ind).style.display = "block";
+                document.getElementById(ind).href = URL; 
+                return
+            } else {
+                
+                
+            }
+        }
+    }
+
+
+
+</script>
+
+<div class="d-flex flex-column report-header">
+
     
     <div class="container-fluid p-0 d-lg-none">
         <div>
             <div class="btn-toggle">
-                <button class="btn btn-block btn-lg btn-primary shadow" data-toggle="collapse" data-target="#sidebar-nav" aria-expanded="false" aria-controls="sidebar-nav">
+                <button class="btn btn-block btn-lg btn-primary shadow" data-toggle="collapse"
+                        data-target="#sidebar-nav" aria-expanded="false" aria-controls="sidebar-nav">
                     <span class="title">Reports</span>
                 </button>
             </div>
         </div>
     </div>
-    
+
 </div>
 
 <script>
@@ -293,23 +338,24 @@
 
 <section class="container-fluid pl-lg-6" id="skip-header-target">
     <div class="row">
-        
+
         <div class="col-lg-3 collapse d-lg-block sidebar-report d-print-none" id="sidebar-nav">
             <div class="mt-5">
                 <a class="sr-only sr-only-focusable skip-menu" href="#primary-content">Skip Nav</a>
-                
+
                 <h2>Change Report</h2>
                 <nav role="navigation">
                     <div class="list-group custom-active">
 <a href="http://gcappbesp307/dev-test/beta/neighborhood-reports/coney_island_sheepshead_bay/active_design_physical_activity_and_health/" class="list-group-item list-group-item-action" aria-current="page">Active Design Physical Activity and Health</a><a href="http://gcappbesp307/dev-test/beta/neighborhood-reports/coney_island_sheepshead_bay/asthma_and_the_environment/" class="list-group-item list-group-item-action" aria-current="page">Asthma and the Environment</a><a href="http://gcappbesp307/dev-test/beta/neighborhood-reports/coney_island_sheepshead_bay/climate_and_health/" class="list-group-item list-group-item-action" aria-current="page">Climate and Health</a><a href="http://gcappbesp307/dev-test/beta/neighborhood-reports/coney_island_sheepshead_bay/housing_and_health/" class="list-group-item list-group-item-action active" aria-current="page">Housing and Health</a><a href="http://gcappbesp307/dev-test/beta/neighborhood-reports/coney_island_sheepshead_bay/outdoor_air_and_health/" class="list-group-item list-group-item-action" aria-current="page">Outdoor Air and Health</a></div>
                 </nav>
-                
+
                 <hr class="mt-2">
-                
+
                 <h2 class="mt-4">Change Neighborhood</h2>
                 <form action="http://gcappbesp307/dev-test/beta/neighborhood-reports" method="get" class="autocomplete-form">
                     <div class="row no-gutters">
-                        <label for="last-neighborhood" class="block col-sm-12 font-weight-bold h4 mb-3 sr-only">What NYC neighborhood are you interested in?</label>
+                        <label for="last-neighborhood" class="block col-sm-12 font-weight-bold h4 mb-3 sr-only">What NYC
+                            neighborhood are you interested in?</label>
                         <div class="col-9">
                             <div class="autocomplete-wrapper">
                                 <select name="last-neighborhood" id="last-neighborhood">
@@ -323,20 +369,22 @@
                     </div>
                 </form>
                 <hr class="mt-4 mb-1">
-                
-                <button onclick="getData()" class="btn btn-sm btn-block btn-report" target="_blank"><i class="fa fa-download mr-1"></i>Download Report Data <span class="sr-only">(opens in a new tab)</span></button>
+
+                <button onclick="getData()" class="btn btn-sm btn-block btn-report" target="_blank"><i
+                       class="fa fa-download mr-1"></i>Download Report Data <span class="sr-only">(opens in a new
+                        tab)</span></button>
             </div>
             
-            
+
         </div>
         
-        
+
         <script>
             
             var downloadLoc = "https://raw.githubusercontent.com/nychealth/EHDP-data/" + "staging" + "/neighborhood-reports/data/" + data_download_loc
             var reportData;
             var download
-            
+
             
             function getData() {
                 d3.csv(downloadLoc).then(data => {
@@ -346,12 +394,12 @@
                     downloadData()
                 });
             };
-            
+
             
             function downloadData() {
                 let data = aq.from(reportData); 
-                download = data.select(aq.not('report_id','indicator_id','data_field_name','start_date','end_date',)) 
-                
+                download = data.select(aq.not('report_id', 'indicator_id', 'data_field_name', 'start_date', 'end_date',)) 
+
                 let downloadTableCSV = download.toCSV(); 
                 
                 let csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(downloadTableCSV);
@@ -359,17 +407,17 @@
                 hiddenElement.href = csvData;
                 hiddenElement.target = '_blank';
                 hiddenElement.download = 'NYC EH Data Portal - Neighborhood Report - ' + report_name + " - " + "Coney Island - Sheepshead Bay" + '.csv';
-                hiddenElement.click();
-                
-                gtag('event', 'file_download', {
-                    'file_name': hiddenElement.download,
-                    'file_extension': '.csv',
-                    'link_text': 'Download Report Data'
-                });
+            hiddenElement.click();
+
+            gtag('event', 'file_download', {
+                'file_name': hiddenElement.download,
+                'file_extension': '.csv',
+                'link_text': 'Download Report Data'
+            });
             };
-            
+
         </script>
-        
+
         <div class="col-12 col-lg-9 overflow-hidden" id="primary-content">
             <div class="my-5">
                 <div class="px-lg-6 my-4">
@@ -377,37 +425,44 @@
                         <span class="sub-title">Coney Island - Sheepshead Bay</span>
                     </h1>
                     <p class="report-description">This report provides a neighborhood summary of housing conditions and related health outcomes. It also describes population characteristics that can increase vulnerability to housing hazards.</p>
-                    
-                    <p><strong style="color:#00923E">Coney Island - Sheepshead Bay</strong> includes ZIP Codes: <span class="home-label">11223,11224,11229,11235</span>.</p>
-                    
+
+                    <p><strong style="color:#00923E">Coney Island - Sheepshead Bay</strong> includes ZIP Codes: <span
+                              class="home-label">11223,11224,11229,11235</span>.</p>
+
                     <hr class="mt-4">
-                    
+
                     <div><div class="report-topic">
-                            
+
                             <div class="topic-header">
                                 <h2>Health Outcomes</h2>
                                 <p>These indicators describe health outcomes that can be affected by conditions in the home or neighborhood.</p>
                             </div>
-                            
+
                             <div class="container-fluid px-0 mb-4">
                                 <div class="row indicator-headings mb-2">
                                     <div class="col-6 col-md-5 pl-3">
                                         Topic
                                     </div>
                                     <div class="col-6 col-md-4">
-                                        
+
                                         <div class="position-relative">
                                             Comparison<br>
                                             <span class="meta"> to NYC average</span></a>
-                                            <a href="#" data-toggle="modal" data-target="#modal-rank" class="info-modal"><i class="fas fa-question-circle fs-rg"></i></a>
+                                            <a href="#" data-toggle="modal" data-target="#modal-rank"
+                                               class="info-modal"><i class="fas fa-question-circle fs-rg"></i></a>
                                         </div>
-                                        
+
                                     </div>
                                     <div class="d-none d-md-inline col-md-3">
                                         Rank<br>
                                         <span class="meta"> out of the 42 neighborhoods</span>
                                     </div>
-                                </div><button data-toggle="modal" data-target="#modal-Asth1204-1" class="indicator-anchor">
+                                </div>
+
+
+
+<button data-toggle="modal" data-target="#modal-Asth1204-1" onclick="getURL( 2382 );" class="indicator-anchor">
+    
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
             <span class="indicator-short-name">Asthma hospitalizations (adults)</span>
@@ -465,8 +520,11 @@
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-Asth1204-1"></div>
                 
             </div>
+
             
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            <div class="flex-column p-2"><a id="2382" href="http://gcappbesp307/dev-test/beta/data-explorer/TOPIC/?id=2382" style="display:none">
+                <button type="button" class="btn btn-inline btn-outline-secondary px-4 float-left">Get the dataset</button></a>
+                <button type="button" class="btn btn-primary px-4 float-right" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -604,7 +662,12 @@
     });
         
     </script>
-    <button data-toggle="modal" data-target="#modal-Asth1201-1" class="indicator-anchor">
+    
+
+
+
+<button data-toggle="modal" data-target="#modal-Asth1201-1" onclick="getURL( 2381 );" class="indicator-anchor">
+    
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
             <span class="indicator-short-name">Asthma hospitalizations (age 5 to 17)</span>
@@ -662,8 +725,11 @@
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-Asth1201-1"></div>
                 
             </div>
+
             
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            <div class="flex-column p-2"><a id="2381" href="http://gcappbesp307/dev-test/beta/data-explorer/TOPIC/?id=2381" style="display:none">
+                <button type="button" class="btn btn-inline btn-outline-secondary px-4 float-left">Get the dataset</button></a>
+                <button type="button" class="btn btn-primary px-4 float-right" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -803,231 +869,40 @@
     </script>
     </div>
                             
-                            
+
                         </div>
                         <div class="report-topic">
-                            
+
                             <div class="topic-header">
                                 <h2>Home Safety and Maintenance</h2>
                                 <p>These indicators describe housing conditions that can affect health.</p>
                             </div>
-                            
+
                             <div class="container-fluid px-0 mb-4">
                                 <div class="row indicator-headings mb-2">
                                     <div class="col-6 col-md-5 pl-3">
                                         Topic
                                     </div>
                                     <div class="col-6 col-md-4">
-                                        
+
                                         <div class="position-relative">
                                             Comparison<br>
                                             <span class="meta"> to NYC average</span></a>
-                                            <a href="#" data-toggle="modal" data-target="#modal-rank" class="info-modal"><i class="fas fa-question-circle fs-rg"></i></a>
+                                            <a href="#" data-toggle="modal" data-target="#modal-rank"
+                                               class="info-modal"><i class="fas fa-question-circle fs-rg"></i></a>
                                         </div>
-                                        
+
                                     </div>
                                     <div class="d-none d-md-inline col-md-3">
                                         Rank<br>
                                         <span class="meta"> out of the 42 neighborhoods</span>
                                     </div>
-                                </div><button data-toggle="modal" data-target="#modal-Home76-2" class="indicator-anchor">
-    <div class="row align-items-center">
-        <div class="col-6 col-md-5">
-            <span class="indicator-short-name">Cracks</span>
-        </div>
-        <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/Home76_210.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
-        <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/Home76_210.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
-        </div>
-    </div>
-</button>
-
-
-<div class="modal fade report-modal" id="modal-Home76-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header text-left">
-                <h2 class="modal-title fs-xl" id="exampleModalLabel">Cracks</h2>
-                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
-                    <span class="fas fa-times-circle"></span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h2 class="fs-xl">Homes with cracks or holes (percent) 2017</h2>
-                <p>In <strong>Coney Island - Sheepshead Bay</strong>, the homes with cracks or holes (percent) 2017 is <span class="better">Better</span>compared to the NYC average.</p>Cracks or holes are a maintenance deficiency linked to the presence of mice, rats, and cockroaches - which can harm residents' health.</div>
-            <hr>
-            <div class="modal-body">
-                <h3>Neighborhood Comparison</h3>
-                <div class="row comparison">
-                    <div class="col-sm-4 text-primary">Coney Island - Sheepshead Bay <span class="indicator-value">5.9*</span></div>
-                    <div class="col-sm-4">Brooklyn <span class="indicator-value">13.7</span></div>
-                    <div class="col-sm-4">New York City <span class="indicator-value">12.3</span></div>
-                </div>
-                <p><em>Percent </em></p><div class="data-note">*Estimate is based on small numbers so should be interpreted with caution.</div></div>
-            <hr>
-            <div class="modal-body">
-                <h3>Homes with cracks or holes (percent) 2017</h3>
-                <p>  <em>Percent</em></p>
-                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Home76-2"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>Trends Over Time</h3>
-                <p><em>Percent </em></p>
-                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Home76-2"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>By Neighborhood</h3>
-                <p><em>Percent </em></p>
-                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Home76-2"></div>
-                
-            </div>
-            
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
+                                </div>
 
 
 
-<script type="text/javascript">
-
-    $( "#modal-Home76-2" ).on('shown.bs.modal', function() {
-        
-        var opt = {"renderer": "svg"};
-
-        
-        
-        aq.loadCSV(
-
-            
-            
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/data/" + data_download_loc
-        
-        ).then(data => {
-            
-            arqTable = data;
-
-
-            
-
-            
-            
-            var summaryData = 
-                arqTable
-                .filter(d => d.data_field_name == "Home76")
-                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
-                .dedupe()
-                .groupby("neighborhood")
-                .orderby("neighborhood", aq.desc("end_date"))
-                .slice(0,1) 
-                .ungroup()
-                .derive({data_value: d => op.parse_float(d.data_value)})
-                .orderby("data_value") 
-                .select(aq.not("end_date"))
-                .objects()
-                
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
-                
-                summarySpec = data;
-
-                
-
-                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#summary-Home76-2", 
-                    summarySpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("summaryData", summaryData).run()
-
-                }).catch(console.error);;
-                
-            });
-            
-
-            
-
-            
-
-            var mapData = summaryData;
-
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
-                
-                mapSpec = data;
-
-                
-
-                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#map-Home76-2", 
-                    mapSpec,
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("mapData", mapData).run()
-                    
-                }).catch(console.error);
-                
-            });
-
-            
-            
-
-            
-            
-            var trendData = 
-                arqTable
-                .filter(d => d.data_field_name == "Home76")
-                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
-                .dedupe()
-                .objects()
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/trendSpec.json").then(data => {
-                
-                
-                
-                trendSpec = data;
-                
-                
-
-                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#trend-Home76-2", 
-                    trendSpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("trendData", trendData).run()
-                    
-                }).catch(console.error);;
-                
-            });
-            
-        });
-            
-    });
-        
-    </script>
-    <button data-toggle="modal" data-target="#modal-Home90-2" class="indicator-anchor">
+<button data-toggle="modal" data-target="#modal-Home90-2" onclick="getURL( 47 );" class="indicator-anchor">
+    
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
             <span class="indicator-short-name">Supplemental heat</span>
@@ -1085,8 +960,11 @@
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-Home90-2"></div>
                 
             </div>
+
             
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            <div class="flex-column p-2"><a id="47" href="http://gcappbesp307/dev-test/beta/data-explorer/TOPIC/?id=47" style="display:none">
+                <button type="button" class="btn btn-inline btn-outline-secondary px-4 float-left">Get the dataset</button></a>
+                <button type="button" class="btn btn-primary px-4 float-right" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -1224,7 +1102,217 @@
     });
         
     </script>
-    <button data-toggle="modal" data-target="#modal-Home80-2" class="indicator-anchor">
+    
+
+
+
+<button data-toggle="modal" data-target="#modal-Home76-2" onclick="getURL( 40 );" class="indicator-anchor">
+    
+    <div class="row align-items-center">
+        <div class="col-6 col-md-5">
+            <span class="indicator-short-name">Cracks</span>
+        </div>
+        <div class="col-6 col-md-4 topic-list">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/Home76_210.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
+        <div class="d-none d-md-inline col-md-3">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/Home76_210.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+        </div>
+    </div>
+</button>
+
+
+<div class="modal fade report-modal" id="modal-Home76-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-left">
+                <h2 class="modal-title fs-xl" id="exampleModalLabel">Cracks</h2>
+                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
+                    <span class="fas fa-times-circle"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2 class="fs-xl">Homes with cracks or holes (percent) 2017</h2>
+                <p>In <strong>Coney Island - Sheepshead Bay</strong>, the homes with cracks or holes (percent) 2017 is <span class="better">Better</span>compared to the NYC average.</p>Cracks or holes are a maintenance deficiency linked to the presence of mice, rats, and cockroaches - which can harm residents' health.</div>
+            <hr>
+            <div class="modal-body">
+                <h3>Neighborhood Comparison</h3>
+                <div class="row comparison">
+                    <div class="col-sm-4 text-primary">Coney Island - Sheepshead Bay <span class="indicator-value">5.9*</span></div>
+                    <div class="col-sm-4">Brooklyn <span class="indicator-value">13.7</span></div>
+                    <div class="col-sm-4">New York City <span class="indicator-value">12.3</span></div>
+                </div>
+                <p><em>Percent </em></p><div class="data-note">*Estimate is based on small numbers so should be interpreted with caution.</div></div>
+            <hr>
+            <div class="modal-body">
+                <h3>Homes with cracks or holes (percent) 2017</h3>
+                <p>  <em>Percent</em></p>
+                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Home76-2"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>Trends Over Time</h3>
+                <p><em>Percent </em></p>
+                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Home76-2"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>By Neighborhood</h3>
+                <p><em>Percent </em></p>
+                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Home76-2"></div>
+                
+            </div>
+
+            
+            <div class="flex-column p-2"><a id="40" href="http://gcappbesp307/dev-test/beta/data-explorer/TOPIC/?id=40" style="display:none">
+                <button type="button" class="btn btn-inline btn-outline-secondary px-4 float-left">Get the dataset</button></a>
+                <button type="button" class="btn btn-primary px-4 float-right" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    $( "#modal-Home76-2" ).on('shown.bs.modal', function() {
+        
+        var opt = {"renderer": "svg"};
+
+        
+        
+        aq.loadCSV(
+
+            
+            
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/data/" + data_download_loc
+        
+        ).then(data => {
+            
+            arqTable = data;
+
+
+            
+
+            
+            
+            var summaryData = 
+                arqTable
+                .filter(d => d.data_field_name == "Home76")
+                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
+                .dedupe()
+                .groupby("neighborhood")
+                .orderby("neighborhood", aq.desc("end_date"))
+                .slice(0,1) 
+                .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
+                .orderby("data_value") 
+                .select(aq.not("end_date"))
+                .objects()
+                
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
+                
+                summarySpec = data;
+
+                
+
+                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#summary-Home76-2", 
+                    summarySpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("summaryData", summaryData).run()
+
+                }).catch(console.error);;
+                
+            });
+            
+
+            
+
+            
+
+            var mapData = summaryData;
+
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
+                
+                mapSpec = data;
+
+                
+
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#map-Home76-2", 
+                    mapSpec,
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("mapData", mapData).run()
+                    
+                }).catch(console.error);
+                
+            });
+
+            
+            
+
+            
+            
+            var trendData = 
+                arqTable
+                .filter(d => d.data_field_name == "Home76")
+                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
+                .dedupe()
+                .objects()
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/trendSpec.json").then(data => {
+                
+                
+                
+                trendSpec = data;
+                
+                
+
+                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#trend-Home76-2", 
+                    trendSpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("trendData", trendData).run()
+                    
+                }).catch(console.error);;
+                
+            });
+            
+        });
+            
+    });
+        
+    </script>
+    
+
+
+
+<button data-toggle="modal" data-target="#modal-Home80-2" onclick="getURL( 42 );" class="indicator-anchor">
+    
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
             <span class="indicator-short-name">Leaks</span>
@@ -1282,8 +1370,11 @@
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-Home80-2"></div>
                 
             </div>
+
             
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            <div class="flex-column p-2"><a id="42" href="http://gcappbesp307/dev-test/beta/data-explorer/TOPIC/?id=42" style="display:none">
+                <button type="button" class="btn btn-inline btn-outline-secondary px-4 float-left">Get the dataset</button></a>
+                <button type="button" class="btn btn-primary px-4 float-right" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -1421,7 +1512,12 @@
     });
         
     </script>
-    <button data-toggle="modal" data-target="#modal-Carb716-2" class="indicator-anchor">
+    
+
+
+
+<button data-toggle="modal" data-target="#modal-Carb716-2" onclick="getURL( 2168 );" class="indicator-anchor">
+    
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
             <span class="indicator-short-name">Carbon monoxide</span>
@@ -1479,8 +1575,11 @@
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-Carb716-2"></div>
                 
             </div>
+
             
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            <div class="flex-column p-2"><a id="2168" href="http://gcappbesp307/dev-test/beta/data-explorer/TOPIC/?id=2168" style="display:none">
+                <button type="button" class="btn btn-inline btn-outline-secondary px-4 float-left">Get the dataset</button></a>
+                <button type="button" class="btn btn-primary px-4 float-right" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -1618,7 +1717,12 @@
     });
         
     </script>
-    <button data-toggle="modal" data-target="#modal-Pre-78-2" class="indicator-anchor">
+    
+
+
+
+<button data-toggle="modal" data-target="#modal-Pre-78-2" onclick="getURL( 41 );" class="indicator-anchor">
+    
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
             <span class="indicator-short-name">Peeling paint</span>
@@ -1676,8 +1780,11 @@
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-Pre-78-2"></div>
                 
             </div>
+
             
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            <div class="flex-column p-2"><a id="41" href="http://gcappbesp307/dev-test/beta/data-explorer/TOPIC/?id=41" style="display:none">
+                <button type="button" class="btn btn-inline btn-outline-secondary px-4 float-left">Get the dataset</button></a>
+                <button type="button" class="btn btn-primary px-4 float-right" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -1815,7 +1922,12 @@
     });
         
     </script>
-    <button data-toggle="modal" data-target="#modal-Rent1248-2" class="indicator-anchor">
+    
+
+
+
+<button data-toggle="modal" data-target="#modal-Rent1248-2" onclick="getURL( 2399 );" class="indicator-anchor">
+    
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
             <span class="indicator-short-name">Maintenance problems</span>
@@ -1873,8 +1985,11 @@
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-Rent1248-2"></div>
                 
             </div>
+
             
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            <div class="flex-column p-2"><a id="2399" href="http://gcappbesp307/dev-test/beta/data-explorer/TOPIC/?id=2399" style="display:none">
+                <button type="button" class="btn btn-inline btn-outline-secondary px-4 float-left">Get the dataset</button></a>
+                <button type="button" class="btn btn-primary px-4 float-right" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -2012,7 +2127,12 @@
     });
         
     </script>
-    <button data-toggle="modal" data-target="#modal-Hous781-2" class="indicator-anchor">
+    
+
+
+
+<button data-toggle="modal" data-target="#modal-Hous781-2" onclick="getURL( 2185 );" class="indicator-anchor">
+    
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
             <span class="indicator-short-name">Households with AC</span>
@@ -2070,8 +2190,11 @@
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-Hous781-2"></div>
                 
             </div>
+
             
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            <div class="flex-column p-2"><a id="2185" href="http://gcappbesp307/dev-test/beta/data-explorer/TOPIC/?id=2185" style="display:none">
+                <button type="button" class="btn btn-inline btn-outline-secondary px-4 float-left">Get the dataset</button></a>
+                <button type="button" class="btn btn-primary px-4 float-right" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -2211,34 +2334,40 @@
     </script>
     </div>
                             
-                            
+
                         </div>
                         <div class="report-topic">
-                            
+
                             <div class="topic-header">
                                 <h2>Indoor Air Quality</h2>
                                 <p>These indicators describe potential sources of allergens and pollutants that can worsen asthma and other health conditions.</p>
                             </div>
-                            
+
                             <div class="container-fluid px-0 mb-4">
                                 <div class="row indicator-headings mb-2">
                                     <div class="col-6 col-md-5 pl-3">
                                         Topic
                                     </div>
                                     <div class="col-6 col-md-4">
-                                        
+
                                         <div class="position-relative">
                                             Comparison<br>
                                             <span class="meta"> to NYC average</span></a>
-                                            <a href="#" data-toggle="modal" data-target="#modal-rank" class="info-modal"><i class="fas fa-question-circle fs-rg"></i></a>
+                                            <a href="#" data-toggle="modal" data-target="#modal-rank"
+                                               class="info-modal"><i class="fas fa-question-circle fs-rg"></i></a>
                                         </div>
-                                        
+
                                     </div>
                                     <div class="d-none d-md-inline col-md-3">
                                         Rank<br>
                                         <span class="meta"> out of the 42 neighborhoods</span>
                                     </div>
-                                </div><button data-toggle="modal" data-target="#modal-Home94-3" class="indicator-anchor">
+                                </div>
+
+
+
+<button data-toggle="modal" data-target="#modal-Home94-3" onclick="getURL( 48 );" class="indicator-anchor">
+    
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
             <span class="indicator-short-name">Mice or rats (in the building)</span>
@@ -2296,8 +2425,11 @@
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-Home94-3"></div>
                 
             </div>
+
             
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            <div class="flex-column p-2"><a id="48" href="http://gcappbesp307/dev-test/beta/data-explorer/TOPIC/?id=48" style="display:none">
+                <button type="button" class="btn btn-inline btn-outline-secondary px-4 float-left">Get the dataset</button></a>
+                <button type="button" class="btn btn-primary px-4 float-right" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -2435,7 +2567,12 @@
     });
         
     </script>
-    <button data-toggle="modal" data-target="#modal-Home245-3" class="indicator-anchor">
+    
+
+
+
+<button data-toggle="modal" data-target="#modal-Home245-3" onclick="getURL( 107 );" class="indicator-anchor">
+    
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
             <span class="indicator-short-name">Cockroaches</span>
@@ -2493,8 +2630,11 @@
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-Home245-3"></div>
                 
             </div>
+
             
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            <div class="flex-column p-2"><a id="107" href="http://gcappbesp307/dev-test/beta/data-explorer/TOPIC/?id=107" style="display:none">
+                <button type="button" class="btn btn-inline btn-outline-secondary px-4 float-left">Get the dataset</button></a>
+                <button type="button" class="btn btn-primary px-4 float-right" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -2632,7 +2772,12 @@
     });
         
     </script>
-    <button data-toggle="modal" data-target="#modal-Adul625-3" class="indicator-anchor">
+    
+
+
+
+<button data-toggle="modal" data-target="#modal-Adul625-3" onclick="getURL( 2101 );" class="indicator-anchor">
+    
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
             <span class="indicator-short-name">Mold</span>
@@ -2690,8 +2835,11 @@
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-Adul625-3"></div>
                 
             </div>
+
             
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            <div class="flex-column p-2"><a id="2101" href="http://gcappbesp307/dev-test/beta/data-explorer/TOPIC/?id=2101" style="display:none">
+                <button type="button" class="btn btn-inline btn-outline-secondary px-4 float-left">Get the dataset</button></a>
+                <button type="button" class="btn btn-primary px-4 float-right" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -2829,7 +2977,12 @@
     });
         
     </script>
-    <button data-toggle="modal" data-target="#modal-Adul292-3" class="indicator-anchor">
+    
+
+
+
+<button data-toggle="modal" data-target="#modal-Adul292-3" onclick="getURL( 2017 );" class="indicator-anchor">
+    
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
             <span class="indicator-short-name">Smoke-free homes</span>
@@ -2887,8 +3040,11 @@
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-Adul292-3"></div>
                 
             </div>
+
             
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            <div class="flex-column p-2"><a id="2017" href="http://gcappbesp307/dev-test/beta/data-explorer/TOPIC/?id=2017" style="display:none">
+                <button type="button" class="btn btn-inline btn-outline-secondary px-4 float-left">Get the dataset</button></a>
+                <button type="button" class="btn btn-primary px-4 float-right" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -3028,34 +3184,40 @@
     </script>
     </div>
                             
-                            
+
                         </div>
                         <div class="report-topic">
-                            
+
                             <div class="topic-header">
                                 <h2>Social and Economic Risk Factors</h2>
                                 <p>These indicators describe conditions that make a neighborhood more at-risk for housing hazards.</p>
                             </div>
-                            
+
                             <div class="container-fluid px-0 mb-4">
                                 <div class="row indicator-headings mb-2">
                                     <div class="col-6 col-md-5 pl-3">
                                         Topic
                                     </div>
                                     <div class="col-6 col-md-4">
-                                        
+
                                         <div class="position-relative">
                                             Comparison<br>
                                             <span class="meta"> to NYC average</span></a>
-                                            <a href="#" data-toggle="modal" data-target="#modal-rank" class="info-modal"><i class="fas fa-question-circle fs-rg"></i></a>
+                                            <a href="#" data-toggle="modal" data-target="#modal-rank"
+                                               class="info-modal"><i class="fas fa-question-circle fs-rg"></i></a>
                                         </div>
-                                        
+
                                     </div>
                                     <div class="d-none d-md-inline col-md-3">
                                         Rank<br>
                                         <span class="meta"> out of the 42 neighborhoods</span>
                                     </div>
-                                </div><button data-toggle="modal" data-target="#modal-Chil755-4" class="indicator-anchor">
+                                </div>
+
+
+
+<button data-toggle="modal" data-target="#modal-Chil755-4" onclick="getURL( 2176 );" class="indicator-anchor">
+    
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
             <span class="indicator-short-name">Child poverty</span>
@@ -3113,8 +3275,11 @@
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-Chil755-4"></div>
                 
             </div>
+
             
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            <div class="flex-column p-2"><a id="2176" href="http://gcappbesp307/dev-test/beta/data-explorer/TOPIC/?id=2176" style="display:none">
+                <button type="button" class="btn btn-inline btn-outline-secondary px-4 float-left">Get the dataset</button></a>
+                <button type="button" class="btn btn-primary px-4 float-right" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -3252,7 +3417,12 @@
     });
         
     </script>
-    <button data-toggle="modal" data-target="#modal-Crow25-4" class="indicator-anchor">
+    
+
+
+
+<button data-toggle="modal" data-target="#modal-Crow25-4" onclick="getURL( 15 );" class="indicator-anchor">
+    
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
             <span class="indicator-short-name">Crowding</span>
@@ -3310,8 +3480,11 @@
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-Crow25-4"></div>
                 
             </div>
+
             
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            <div class="flex-column p-2"><a id="15" href="http://gcappbesp307/dev-test/beta/data-explorer/TOPIC/?id=15" style="display:none">
+                <button type="button" class="btn btn-inline btn-outline-secondary px-4 float-left">Get the dataset</button></a>
+                <button type="button" class="btn btn-primary px-4 float-right" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -3451,7 +3624,7 @@
     </script>
     </div>
                             
-                            
+
                         </div>
                         </div>
                 </div>
@@ -3460,49 +3633,59 @@
         </div>
     </div>
     
-    
+
 </section>
 <section class="related-reading">
     <div class="container">
         <div class="row">
-            
+
             <div class="col-lg">
                 <div class="card bg-white text-black mb-2">
                     <div class="card-header">What the city is doing?</div>
                     <div class="card-body">
-                        <ul class="list-group list-group-flush"><li class="list-group-item border-0 py-1 bg-transparent"><a href="https://www1.nyc.gov/assets/doh/downloads/pdf/asthma/local-law-55.pdf">Enforces tenant and housing laws: landlords must keep homes free of pests and mold</a></li><li class="list-group-item border-0 py-1 bg-transparent"><a href="https://www1.nyc.gov/site/doh/health/health-topics/healthy-home-workshops.page">Offers free Healthy Homes Community Workshops</a></li><li class="list-group-item border-0 py-1 bg-transparent"><a href="https://www1.nyc.gov/site/doh/data/data-sets/air-quality-nyc-community-air-survey.page">Monitors air quality across neighborhoods through the NYC Community Air Survey</a></li><li class="list-group-item border-0 py-1 bg-transparent"><a href="https://onenyc.cityofnewyork.us/">Follows a plan called OneNYC to create a more sustainable and equitable City</a></li></ul>
+                        <ul class="list-group list-group-flush"><li class="list-group-item border-0 py-1 bg-transparent"><a
+                                   href="https://www1.nyc.gov/assets/doh/downloads/pdf/asthma/local-law-55.pdf">Enforces tenant and housing laws: landlords must keep homes free of pests and mold</a></li><li class="list-group-item border-0 py-1 bg-transparent"><a
+                                   href="https://www1.nyc.gov/site/doh/health/health-topics/healthy-home-workshops.page">Offers free Healthy Homes Community Workshops</a></li><li class="list-group-item border-0 py-1 bg-transparent"><a
+                                   href="https://www1.nyc.gov/site/doh/data/data-sets/air-quality-nyc-community-air-survey.page">Monitors air quality across neighborhoods through the NYC Community Air Survey</a></li><li class="list-group-item border-0 py-1 bg-transparent"><a
+                                   href="https://onenyc.cityofnewyork.us/">Follows a plan called OneNYC to create a more sustainable and equitable City</a></li></ul>
                     </div>
                 </div>
             </div>
             
-            
+
             <div class="col-lg">
                 <div class="card bg-white text-black mb-2">
                     <div class="card-header">What can you do?</div>
                     <div class="card-body">
-                        <ul class="list-group list-group-flush"><li class="list-group-item border-0 py-1 bg-transparent"><a href="http://www.nyc.gov/health/asthma">Work with your healthcare provider to create an asthma action plan</a></li><li class="list-group-item border-0 py-1 bg-transparent"><a href="http://www.weather.gov/">Check the weather report for the air quality index and pollen counts</a></li><li class="list-group-item border-0 py-1 bg-transparent"><a href="https://www1.nyc.gov/site/doh/health/health-topics/smoking-smoke-free-housing.page">If you smoke, quit. Don’t allow smoking in your home or car</a></li><li class="list-group-item border-0 py-1 bg-transparent">Reduce dust levels in your home. Removing clutter and cleaning regularly can help.</li><li class="list-group-item border-0 py-1 bg-transparent"><a href="https://www1.nyc.gov/site/doh/health/health-topics/healthy-home.page">Fix leaks in your home to prevent mold. Notify your landlord. If they do not fix leaks promptly, call 311.</a></li></ul>
+                        <ul class="list-group list-group-flush"><li class="list-group-item border-0 py-1 bg-transparent"><a
+                                   href="http://www.nyc.gov/health/asthma">Work with your healthcare provider to create an asthma action plan</a></li><li class="list-group-item border-0 py-1 bg-transparent"><a
+                                   href="http://www.weather.gov/">Check the weather report for the air quality index and pollen counts</a></li><li class="list-group-item border-0 py-1 bg-transparent"><a
+                                   href="https://www1.nyc.gov/site/doh/health/health-topics/smoking-smoke-free-housing.page">If you smoke, quit. Don’t allow smoking in your home or car</a></li><li class="list-group-item border-0 py-1 bg-transparent">Reduce dust levels in your home. Removing clutter and cleaning regularly can help.</li><li class="list-group-item border-0 py-1 bg-transparent"><a
+                                   href="https://www1.nyc.gov/site/doh/health/health-topics/healthy-home.page">Fix leaks in your home to prevent mold. Notify your landlord. If they do not fix leaks promptly, call 311.</a></li></ul>
                     </div>
                 </div>
             </div>
             
-            
+
             <div class="col-lg">
                 <div class="card bg-white text-black">
                     <div class="card-header">More NYC neighborhood data</div>
                     <div class="card-body">
-                        <ul class="list-group list-group-flush"><li class="list-group-item border-0 py-1 bg-transparent"><a href="https://www1.nyc.gov/site/doh/data/data-publications/profiles.page">NYC Community Health Profiles</a></li></ul>
+                        <ul class="list-group list-group-flush"><li class="list-group-item border-0 py-1 bg-transparent"><a
+                                   href="https://www1.nyc.gov/site/doh/data/data-publications/profiles.page">NYC Community Health Profiles</a></li></ul>
                     </div>
                 </div>
             </div>
             
-            
+
             
         </div>
     </div>
 </section>
 
 
-<div class="modal fade report-modal" id="modal-rank" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade report-modal" id="modal-rank" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -3518,14 +3701,17 @@
                     <li class="mb-2"><span class="middle">Middle</span></li>
                     <li><span class="worse">Worse</span></li>
                 </ul>
-                <p>This shows us how the neighborhood compares to other NYC neighborhoods, if you ranked all of the NYC neighborhoods based on this indicator.</p>
+                <p>This shows us how the neighborhood compares to other NYC neighborhoods, if you ranked all of the NYC
+                    neighborhoods based on this indicator.</p>
                 <ul>
                     <li><strong>Better:</strong> in the top 1/3rd of all NYC neighorhoods.</li>
-                    <li><strong>Middle:</strong> it's close to the NYC median - ranking somewhere in the middle third of all neighborhoods.</li>
+                    <li><strong>Middle:</strong> it's close to the NYC median - ranking somewhere in the middle third of
+                        all neighborhoods.</li>
                     <li><strong>Worse:</strong> in the bottom 1/3rd of NYC neighborhoods.</li>
                 </ul>
-                <p>These are only based on the distribution of data values, not the range. The absolute values of indicators in different categoeis may not be all that different.</p>
-                
+                <p>These are only based on the distribution of data values, not the range. The absolute values of
+                    indicators in different categoeis may not be all that different.</p>
+
             </div>
             
             <div class="modal-footer">
@@ -3534,10 +3720,10 @@
         </div>
     </div>
 </div>
-  <script type="text/javascript" src="http://gcappbesp307/dev-test/beta/js/accessible-autocomplete.min.a28dbcfe4538f42cec64a42e75429f873bd86641fea0b326b3a4800b59917b99b877d3715b07405ff36917ed9e3cc0873f7b58a65905ff508cd42e8c427a5f9a.js" integrity="sha512-oo28/kU49CzsZKQudUKfhzvYZkH&#43;oLMms6SAC1mRe5m4d9NxWwdAX/NpF&#43;2ePMCHP3tYplkF/1CM1C6MQnpfmg=="></script>
+<script type="text/javascript" src="http://gcappbesp307/dev-test/beta/js/accessible-autocomplete.min.a28dbcfe4538f42cec64a42e75429f873bd86641fea0b326b3a4800b59917b99b877d3715b07405ff36917ed9e3cc0873f7b58a65905ff508cd42e8c427a5f9a.js" integrity="sha512-oo28/kU49CzsZKQudUKfhzvYZkH&#43;oLMms6SAC1mRe5m4d9NxWwdAX/NpF&#43;2ePMCHP3tYplkF/1CM1C6MQnpfmg=="></script>
 
-  
-  <script type="text/javascript" src="http://gcappbesp307/dev-test/beta/js/uhflist.10c2b591a4750dc88b44ccdfb848243cc23dfabde6f7b76834729f8120ce5a1f4e5bb395583d4aad36022534cda12434e555651518d29a93187c9953b391f8f4.js" integrity="sha512-EMK1kaR1DciLRMzfuEgkPMI9&#43;r3m97doNHKfgSDOWh9OW7OVWD1KrTYCJTTNoSQ05VVlFRjSmpMYfJlTs5H49A=="></script>
+
+<script type="text/javascript" src="http://gcappbesp307/dev-test/beta/js/uhflist.10c2b591a4750dc88b44ccdfb848243cc23dfabde6f7b76834729f8120ce5a1f4e5bb395583d4aad36022534cda12434e555651518d29a93187c9953b391f8f4.js" integrity="sha512-EMK1kaR1DciLRMzfuEgkPMI9&#43;r3m97doNHKfgSDOWh9OW7OVWD1KrTYCJTTNoSQ05VVlFRjSmpMYfJlTs5H49A=="></script>
 
 
 <script type="text/javascript">
@@ -3545,19 +3731,19 @@
     function PopulateDropDownList() {
         
         
-        
+
         var ddlNeighborhoods = document.getElementById("last-neighborhood");
-        
+
         
         for (var i = 0; i < neighborhoods.length; i++) {
             var option = document.createElement("OPTION");
-            
+
             
             option.innerHTML = neighborhoods[i].namezip;
-            
+
             
             option.value = neighborhoods[i].page_name;
-            
+
             
             ddlNeighborhoods.options.add(option);
         }
@@ -3574,13 +3760,13 @@
         minLength: 2,
         selectElement: selectEl
     })
-    
+
     
     var thisURL = window.location.pathname.match(/neighborhood-reports.*/)
     var report = thisURL[0].split("/")[2];
 
     
-    
+
     
     var searchForm = document.getElementById('last-neighborhood-select') 
 
@@ -3589,9 +3775,9 @@
         var locVal = searchForm.options[searchForm.selectedIndex].value;
         console.log("locVal", locVal);
         
-        window.location = 'http:\/\/gcappbesp307\/dev-test\/beta\/neighborhood-reports/'+ DOMPurify.sanitize(locVal) + "/" + report;
+        window.location = 'http:\/\/gcappbesp307\/dev-test\/beta\/neighborhood-reports/' + DOMPurify.sanitize(locVal) + "/" + report;
     });
-    
+
 </script><ul id="results"></ul>
   </main>
   
