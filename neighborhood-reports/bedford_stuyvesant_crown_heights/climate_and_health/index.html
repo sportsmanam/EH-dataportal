@@ -615,203 +615,6 @@
     });
         
     </script>
-    <button data-toggle="modal" data-target="#modal-Dayt688-1" class="indicator-anchor">
-    <div class="row align-items-center">
-        <div class="col-6 col-md-5">
-            <span class="indicator-short-name">Surface temperature</span>
-        </div>
-        <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/Dayt688_203.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="middle">Middle</span></div>
-        <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/Dayt688_203.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
-        </div>
-    </div>
-</button>
-
-
-<div class="modal fade report-modal" id="modal-Dayt688-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header text-left">
-                <h2 class="modal-title fs-xl" id="exampleModalLabel">Surface temperature</h2>
-                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
-                    <span class="fas fa-times-circle"></span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h2 class="fs-xl">Spatial average of surface temperature (Degrees Fahrenheit), 11:22 AM, July 17, 2018</h2>
-                <p>In <strong>Bedford Stuyvesant - Crown Heights</strong>, the spatial average of surface temperature (degrees fahrenheit), 11:22 am, july 17, 2018 is <span class="middle">Middle</span>compared to the NYC average.</p>Surface temperatures vary based on vegetative cover (which promotes cooling), as well as by materials that retain heat (like paved roads, sidewalks, and buildings). Hotter neighborhoods tend to have more heat-exacerbated deaths associated with extreme heat events.</div>
-            <hr>
-            <div class="modal-body">
-                <h3>Neighborhood Comparison</h3>
-                <div class="row comparison">
-                    <div class="col-sm-4 text-primary">Bedford Stuyvesant - Crown Heights <span class="indicator-value">98.5</span></div>
-                    <div class="col-sm-4">Brooklyn <span class="indicator-value">98.6</span></div>
-                    <div class="col-sm-4">New York City <span class="indicator-value">98.6</span></div>
-                </div>
-                <p><em>Degrees Fahrenheit degrees Fahrenheit</em></p><div class="data-note"></div></div>
-            <hr>
-            <div class="modal-body">
-                <h3>Spatial average of surface temperature (Degrees Fahrenheit), 11:22 AM, July 17, 2018</h3>
-                <p>  <em>Degrees Fahrenheitdegrees Fahrenheit</em></p>
-                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Dayt688-1"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>Trends Over Time</h3>
-                <p><em>Degrees Fahrenheit degrees Fahrenheit</em></p>
-                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Dayt688-1"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>By Neighborhood</h3>
-                <p><em>Degrees Fahrenheit degrees Fahrenheit</em></p>
-                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Dayt688-1"></div>
-                
-            </div>
-            
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-<script type="text/javascript">
-
-    $( "#modal-Dayt688-1" ).on('shown.bs.modal', function() {
-        
-        var opt = {"renderer": "svg"};
-
-        
-        
-        aq.loadCSV(
-
-            
-            
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/production/neighborhood-reports/data/" + data_download_loc
-        
-        ).then(data => {
-            
-            arqTable = data;
-
-
-            
-
-            
-            
-            var summaryData = 
-                arqTable
-                .filter(d => d.data_field_name == "Dayt688")
-                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
-                .dedupe()
-                .groupby("neighborhood")
-                .orderby("neighborhood", aq.desc("end_date"))
-                .slice(0,1) 
-                .ungroup()
-                .derive({data_value: d => op.parse_float(d.data_value)})
-                .orderby("data_value") 
-                .select(aq.not("end_date"))
-                .objects()
-                
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/production/neighborhood-reports/spec/summarySpec.json").then(data => {
-                
-                summarySpec = data;
-
-                
-
-                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#summary-Dayt688-1", 
-                    summarySpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("summaryData", summaryData).run()
-
-                }).catch(console.error);;
-                
-            });
-            
-
-            
-
-            
-
-            var mapData = summaryData;
-
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/production/neighborhood-reports/spec/mapSpec.json").then(data => {
-                
-                mapSpec = data;
-
-                
-
-                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#map-Dayt688-1", 
-                    mapSpec,
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("mapData", mapData).run()
-                    
-                }).catch(console.error);
-                
-            });
-
-            
-            
-
-            
-            
-            var trendData = 
-                arqTable
-                .filter(d => d.data_field_name == "Dayt688")
-                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
-                .dedupe()
-                .objects()
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/production/neighborhood-reports/spec/trendSpec.json").then(data => {
-                
-                
-                
-                trendSpec = data;
-                
-                
-
-                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#trend-Dayt688-1", 
-                    trendSpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("trendData", trendData).run()
-                    
-                }).catch(console.error);;
-                
-            });
-            
-        });
-            
-    });
-        
-    </script>
     <button data-toggle="modal" data-target="#modal-Ozon386-1" class="indicator-anchor">
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
@@ -1009,6 +812,203 @@
     });
         
     </script>
+    <button data-toggle="modal" data-target="#modal-Dayt688-1" class="indicator-anchor">
+    <div class="row align-items-center">
+        <div class="col-6 col-md-5">
+            <span class="indicator-short-name">Surface temperature</span>
+        </div>
+        <div class="col-6 col-md-4 topic-list">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/Dayt688_203.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="middle">Middle</span></div>
+        <div class="d-none d-md-inline col-md-3">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/Dayt688_203.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+        </div>
+    </div>
+</button>
+
+
+<div class="modal fade report-modal" id="modal-Dayt688-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-left">
+                <h2 class="modal-title fs-xl" id="exampleModalLabel">Surface temperature</h2>
+                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
+                    <span class="fas fa-times-circle"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2 class="fs-xl">Spatial average of surface temperature (Degrees Fahrenheit), 11:22 AM, July 17, 2018</h2>
+                <p>In <strong>Bedford Stuyvesant - Crown Heights</strong>, the spatial average of surface temperature (degrees fahrenheit), 11:22 am, july 17, 2018 is <span class="middle">Middle</span>compared to the NYC average.</p>Surface temperatures vary based on vegetative cover (which promotes cooling), as well as by materials that retain heat (like paved roads, sidewalks, and buildings). Hotter neighborhoods tend to have more heat-exacerbated deaths associated with extreme heat events.</div>
+            <hr>
+            <div class="modal-body">
+                <h3>Neighborhood Comparison</h3>
+                <div class="row comparison">
+                    <div class="col-sm-4 text-primary">Bedford Stuyvesant - Crown Heights <span class="indicator-value">98.5</span></div>
+                    <div class="col-sm-4">Brooklyn <span class="indicator-value">98.6</span></div>
+                    <div class="col-sm-4">New York City <span class="indicator-value">98.6</span></div>
+                </div>
+                <p><em>Degrees Fahrenheit degrees Fahrenheit</em></p><div class="data-note"></div></div>
+            <hr>
+            <div class="modal-body">
+                <h3>Spatial average of surface temperature (Degrees Fahrenheit), 11:22 AM, July 17, 2018</h3>
+                <p>  <em>Degrees Fahrenheitdegrees Fahrenheit</em></p>
+                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Dayt688-1"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>Trends Over Time</h3>
+                <p><em>Degrees Fahrenheit degrees Fahrenheit</em></p>
+                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Dayt688-1"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>By Neighborhood</h3>
+                <p><em>Degrees Fahrenheit degrees Fahrenheit</em></p>
+                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Dayt688-1"></div>
+                
+            </div>
+            
+            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    $( "#modal-Dayt688-1" ).on('shown.bs.modal', function() {
+        
+        var opt = {"renderer": "svg"};
+
+        
+        
+        aq.loadCSV(
+
+            
+            
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/production/neighborhood-reports/data/" + data_download_loc
+        
+        ).then(data => {
+            
+            arqTable = data;
+
+
+            
+
+            
+            
+            var summaryData = 
+                arqTable
+                .filter(d => d.data_field_name == "Dayt688")
+                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
+                .dedupe()
+                .groupby("neighborhood")
+                .orderby("neighborhood", aq.desc("end_date"))
+                .slice(0,1) 
+                .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
+                .orderby("data_value") 
+                .select(aq.not("end_date"))
+                .objects()
+                
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/production/neighborhood-reports/spec/summarySpec.json").then(data => {
+                
+                summarySpec = data;
+
+                
+
+                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#summary-Dayt688-1", 
+                    summarySpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("summaryData", summaryData).run()
+
+                }).catch(console.error);;
+                
+            });
+            
+
+            
+
+            
+
+            var mapData = summaryData;
+
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/production/neighborhood-reports/spec/mapSpec.json").then(data => {
+                
+                mapSpec = data;
+
+                
+
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#map-Dayt688-1", 
+                    mapSpec,
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("mapData", mapData).run()
+                    
+                }).catch(console.error);
+                
+            });
+
+            
+            
+
+            
+            
+            var trendData = 
+                arqTable
+                .filter(d => d.data_field_name == "Dayt688")
+                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
+                .dedupe()
+                .objects()
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/production/neighborhood-reports/spec/trendSpec.json").then(data => {
+                
+                
+                
+                trendSpec = data;
+                
+                
+
+                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#trend-Dayt688-1", 
+                    trendSpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("trendData", trendData).run()
+                    
+                }).catch(console.error);;
+                
+            });
+            
+        });
+            
+    });
+        
+    </script>
     </div>
                             
                             
@@ -1038,204 +1038,7 @@
                                         Rank<br>
                                         <span class="meta"> out of the 42 neighborhoods</span>
                                     </div>
-                                </div><button data-toggle="modal" data-target="#modal-Asth1196-2" class="indicator-anchor">
-    <div class="row align-items-center">
-        <div class="col-6 col-md-5">
-            <span class="indicator-short-name">Asthma ED visits (age 5 to 17)</span>
-        </div>
-        <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/Asth1196_203.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="worse">Worse</span></div>
-        <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/Asth1196_203.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
-        </div>
-    </div>
-</button>
-
-
-<div class="modal fade report-modal" id="modal-Asth1196-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header text-left">
-                <h2 class="modal-title fs-xl" id="exampleModalLabel">Asthma ED visits (age 5 to 17)</h2>
-                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
-                    <span class="fas fa-times-circle"></span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h2 class="fs-xl">Asthma emergency department visits among children ages 5 to 17 years (per 10,000) 2018</h2>
-                <p>In <strong>Bedford Stuyvesant - Crown Heights</strong>, the asthma emergency department visits among children ages 5 to 17 years (per 10,000) 2018 is <span class="worse">Worse</span>compared to the NYC average.</p>Severe asthma attacks can result in a visit to the ED. Things like smoke, air pollution, dust mites, cockroaches, mold, pollen and pet dander can trigger asthma.</div>
-            <hr>
-            <div class="modal-body">
-                <h3>Neighborhood Comparison</h3>
-                <div class="row comparison">
-                    <div class="col-sm-4 text-primary">Bedford Stuyvesant - Crown Heights <span class="indicator-value">324.1</span></div>
-                    <div class="col-sm-4">Brooklyn <span class="indicator-value">161.2</span></div>
-                    <div class="col-sm-4">New York City <span class="indicator-value">183.3</span></div>
-                </div>
-                <p><em>Estimated annual rate per 10,000</em></p><div class="data-note"></div></div>
-            <hr>
-            <div class="modal-body">
-                <h3>Asthma emergency department visits among children ages 5 to 17 years (per 10,000) 2018</h3>
-                <p>  <em>Estimated annual rateper 10,000</em></p>
-                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Asth1196-2"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>Trends Over Time</h3>
-                <p><em>Estimated annual rate per 10,000</em></p>
-                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Asth1196-2"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>By Neighborhood</h3>
-                <p><em>Estimated annual rate per 10,000</em></p>
-                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Asth1196-2"></div>
-                
-            </div>
-            
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-<script type="text/javascript">
-
-    $( "#modal-Asth1196-2" ).on('shown.bs.modal', function() {
-        
-        var opt = {"renderer": "svg"};
-
-        
-        
-        aq.loadCSV(
-
-            
-            
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/production/neighborhood-reports/data/" + data_download_loc
-        
-        ).then(data => {
-            
-            arqTable = data;
-
-
-            
-
-            
-            
-            var summaryData = 
-                arqTable
-                .filter(d => d.data_field_name == "Asth1196")
-                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
-                .dedupe()
-                .groupby("neighborhood")
-                .orderby("neighborhood", aq.desc("end_date"))
-                .slice(0,1) 
-                .ungroup()
-                .derive({data_value: d => op.parse_float(d.data_value)})
-                .orderby("data_value") 
-                .select(aq.not("end_date"))
-                .objects()
-                
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/production/neighborhood-reports/spec/summarySpec.json").then(data => {
-                
-                summarySpec = data;
-
-                
-
-                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#summary-Asth1196-2", 
-                    summarySpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("summaryData", summaryData).run()
-
-                }).catch(console.error);;
-                
-            });
-            
-
-            
-
-            
-
-            var mapData = summaryData;
-
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/production/neighborhood-reports/spec/mapSpec.json").then(data => {
-                
-                mapSpec = data;
-
-                
-
-                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#map-Asth1196-2", 
-                    mapSpec,
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("mapData", mapData).run()
-                    
-                }).catch(console.error);
-                
-            });
-
-            
-            
-
-            
-            
-            var trendData = 
-                arqTable
-                .filter(d => d.data_field_name == "Asth1196")
-                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
-                .dedupe()
-                .objects()
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/production/neighborhood-reports/spec/trendSpec.json").then(data => {
-                
-                
-                
-                trendSpec = data;
-                
-                
-
-                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#trend-Asth1196-2", 
-                    trendSpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("trendData", trendData).run()
-                    
-                }).catch(console.error);;
-                
-            });
-            
-        });
-            
-    });
-        
-    </script>
-    <button data-toggle="modal" data-target="#modal-Heat536-2" class="indicator-anchor">
+                                </div><button data-toggle="modal" data-target="#modal-Heat536-2" class="indicator-anchor">
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
             <span class="indicator-short-name">Heat ED visits</span>
@@ -1417,6 +1220,203 @@
                 
                 vegaEmbed(
                     "#trend-Heat536-2", 
+                    trendSpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("trendData", trendData).run()
+                    
+                }).catch(console.error);;
+                
+            });
+            
+        });
+            
+    });
+        
+    </script>
+    <button data-toggle="modal" data-target="#modal-Asth1196-2" class="indicator-anchor">
+    <div class="row align-items-center">
+        <div class="col-6 col-md-5">
+            <span class="indicator-short-name">Asthma ED visits (age 5 to 17)</span>
+        </div>
+        <div class="col-6 col-md-4 topic-list">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/Asth1196_203.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="worse">Worse</span></div>
+        <div class="d-none d-md-inline col-md-3">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/Asth1196_203.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+        </div>
+    </div>
+</button>
+
+
+<div class="modal fade report-modal" id="modal-Asth1196-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-left">
+                <h2 class="modal-title fs-xl" id="exampleModalLabel">Asthma ED visits (age 5 to 17)</h2>
+                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
+                    <span class="fas fa-times-circle"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2 class="fs-xl">Asthma emergency department visits among children ages 5 to 17 years (per 10,000) 2018</h2>
+                <p>In <strong>Bedford Stuyvesant - Crown Heights</strong>, the asthma emergency department visits among children ages 5 to 17 years (per 10,000) 2018 is <span class="worse">Worse</span>compared to the NYC average.</p>Severe asthma attacks can result in a visit to the ED. Things like smoke, air pollution, dust mites, cockroaches, mold, pollen and pet dander can trigger asthma.</div>
+            <hr>
+            <div class="modal-body">
+                <h3>Neighborhood Comparison</h3>
+                <div class="row comparison">
+                    <div class="col-sm-4 text-primary">Bedford Stuyvesant - Crown Heights <span class="indicator-value">324.1</span></div>
+                    <div class="col-sm-4">Brooklyn <span class="indicator-value">161.2</span></div>
+                    <div class="col-sm-4">New York City <span class="indicator-value">183.3</span></div>
+                </div>
+                <p><em>Estimated annual rate per 10,000</em></p><div class="data-note"></div></div>
+            <hr>
+            <div class="modal-body">
+                <h3>Asthma emergency department visits among children ages 5 to 17 years (per 10,000) 2018</h3>
+                <p>  <em>Estimated annual rateper 10,000</em></p>
+                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Asth1196-2"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>Trends Over Time</h3>
+                <p><em>Estimated annual rate per 10,000</em></p>
+                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Asth1196-2"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>By Neighborhood</h3>
+                <p><em>Estimated annual rate per 10,000</em></p>
+                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Asth1196-2"></div>
+                
+            </div>
+            
+            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    $( "#modal-Asth1196-2" ).on('shown.bs.modal', function() {
+        
+        var opt = {"renderer": "svg"};
+
+        
+        
+        aq.loadCSV(
+
+            
+            
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/production/neighborhood-reports/data/" + data_download_loc
+        
+        ).then(data => {
+            
+            arqTable = data;
+
+
+            
+
+            
+            
+            var summaryData = 
+                arqTable
+                .filter(d => d.data_field_name == "Asth1196")
+                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
+                .dedupe()
+                .groupby("neighborhood")
+                .orderby("neighborhood", aq.desc("end_date"))
+                .slice(0,1) 
+                .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
+                .orderby("data_value") 
+                .select(aq.not("end_date"))
+                .objects()
+                
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/production/neighborhood-reports/spec/summarySpec.json").then(data => {
+                
+                summarySpec = data;
+
+                
+
+                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#summary-Asth1196-2", 
+                    summarySpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("summaryData", summaryData).run()
+
+                }).catch(console.error);;
+                
+            });
+            
+
+            
+
+            
+
+            var mapData = summaryData;
+
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/production/neighborhood-reports/spec/mapSpec.json").then(data => {
+                
+                mapSpec = data;
+
+                
+
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#map-Asth1196-2", 
+                    mapSpec,
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("mapData", mapData).run()
+                    
+                }).catch(console.error);
+                
+            });
+
+            
+            
+
+            
+            
+            var trendData = 
+                arqTable
+                .filter(d => d.data_field_name == "Asth1196")
+                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
+                .dedupe()
+                .objects()
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/production/neighborhood-reports/spec/trendSpec.json").then(data => {
+                
+                
+                
+                trendSpec = data;
+                
+                
+
+                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#trend-Asth1196-2", 
                     trendSpec, 
                     opt
                 ).then((res) => {

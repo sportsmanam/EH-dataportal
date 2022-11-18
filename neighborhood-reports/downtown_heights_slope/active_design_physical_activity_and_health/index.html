@@ -841,7 +841,204 @@
                                         Rank<br>
                                         <span class="meta"> out of the 42 neighborhoods</span>
                                     </div>
-                                </div><button data-toggle="modal" data-target="#modal-subDistP-2" class="indicator-anchor">
+                                </div><button data-toggle="modal" data-target="#modal-parkDisP-2" class="indicator-anchor">
+    <div class="row align-items-center">
+        <div class="col-6 col-md-5">
+            <span class="indicator-short-name">Park access</span>
+        </div>
+        <div class="col-6 col-md-4 topic-list">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/parkDisP_202.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
+        <div class="d-none d-md-inline col-md-3">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/parkDisP_202.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+        </div>
+    </div>
+</button>
+
+
+<div class="modal fade report-modal" id="modal-parkDisP-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-left">
+                <h2 class="modal-title fs-xl" id="exampleModalLabel">Park access</h2>
+                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
+                    <span class="fas fa-times-circle"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2 class="fs-xl">People living in walking distance to a park (percent), 2017</h2>
+                <p>In <strong>Downtown - Heights - Slope</strong>, the people living in walking distance to a park (percent), 2017 is <span class="better">Better</span>compared to the NYC average.</p>The percentage of the population who live within walking distance to a park: a quarter-mile or less to entrances of smaller sites, such as sitting areas and playgrounds, and half-mile or less to entrances of larger parks. Increased access to green space and open space can contribute to increased levels of physical activity.</div>
+            <hr>
+            <div class="modal-body">
+                <h3>Neighborhood Comparison</h3>
+                <div class="row comparison">
+                    <div class="col-sm-4 text-primary">Downtown - Heights - Slope <span class="indicator-value">94.0</span></div>
+                    <div class="col-sm-4">Brooklyn <span class="indicator-value">82</span></div>
+                    <div class="col-sm-4">New York City <span class="indicator-value">81</span></div>
+                </div>
+                <p><em>Percent </em></p><div class="data-note"></div></div>
+            <hr>
+            <div class="modal-body">
+                <h3>People living in walking distance to a park (percent), 2017</h3>
+                <p>  <em>Percent</em></p>
+                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-parkDisP-2"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>Trends Over Time</h3>
+                <p><em>Percent </em></p>
+                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-parkDisP-2"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>By Neighborhood</h3>
+                <p><em>Percent </em></p>
+                <div style="width:100%; height:60vmin; z-index:10000;" id="map-parkDisP-2"></div>
+                
+            </div>
+            
+            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    $( "#modal-parkDisP-2" ).on('shown.bs.modal', function() {
+        
+        var opt = {"renderer": "svg"};
+
+        
+        
+        aq.loadCSV(
+
+            
+            
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/production/neighborhood-reports/data/" + data_download_loc
+        
+        ).then(data => {
+            
+            arqTable = data;
+
+
+            
+
+            
+            
+            var summaryData = 
+                arqTable
+                .filter(d => d.data_field_name == "parkDisP")
+                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
+                .dedupe()
+                .groupby("neighborhood")
+                .orderby("neighborhood", aq.desc("end_date"))
+                .slice(0,1) 
+                .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
+                .orderby("data_value") 
+                .select(aq.not("end_date"))
+                .objects()
+                
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/production/neighborhood-reports/spec/summarySpec.json").then(data => {
+                
+                summarySpec = data;
+
+                
+
+                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#summary-parkDisP-2", 
+                    summarySpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("summaryData", summaryData).run()
+
+                }).catch(console.error);;
+                
+            });
+            
+
+            
+
+            
+
+            var mapData = summaryData;
+
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/production/neighborhood-reports/spec/mapSpec.json").then(data => {
+                
+                mapSpec = data;
+
+                
+
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#map-parkDisP-2", 
+                    mapSpec,
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("mapData", mapData).run()
+                    
+                }).catch(console.error);
+                
+            });
+
+            
+            
+
+            
+            
+            var trendData = 
+                arqTable
+                .filter(d => d.data_field_name == "parkDisP")
+                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
+                .dedupe()
+                .objects()
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/production/neighborhood-reports/spec/trendSpec.json").then(data => {
+                
+                
+                
+                trendSpec = data;
+                
+                
+
+                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#trend-parkDisP-2", 
+                    trendSpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("trendData", trendData).run()
+                    
+                }).catch(console.error);;
+                
+            });
+            
+        });
+            
+    });
+        
+    </script>
+    <button data-toggle="modal" data-target="#modal-subDistP-2" class="indicator-anchor">
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
             <span class="indicator-short-name">Subway access</span>
@@ -1235,62 +1432,62 @@
     });
         
     </script>
-    <button data-toggle="modal" data-target="#modal-parkDisP-2" class="indicator-anchor">
+    <button data-toggle="modal" data-target="#modal-sidwalkP-2" class="indicator-anchor">
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
-            <span class="indicator-short-name">Park access</span>
+            <span class="indicator-short-name">Sidewalk area</span>
         </div>
         <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/parkDisP_202.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="middle">Middle</span></div>
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/sidwalkP_202.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="middle">Middle</span></div>
         <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/parkDisP_202.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/sidwalkP_202.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
         </div>
     </div>
 </button>
 
 
-<div class="modal fade report-modal" id="modal-parkDisP-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade report-modal" id="modal-sidwalkP-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header text-left">
-                <h2 class="modal-title fs-xl" id="exampleModalLabel">Park access</h2>
+                <h2 class="modal-title fs-xl" id="exampleModalLabel">Sidewalk area</h2>
                 <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
                     <span class="fas fa-times-circle"></span>
                 </button>
             </div>
             <div class="modal-body">
-                <h2 class="fs-xl">People living in walking distance to a park (percent), 2017</h2>
-                <p>In <strong>Downtown - Heights - Slope</strong>, the people living in walking distance to a park (percent), 2017 is <span class="middle">Middle</span>compared to the NYC average.</p>The percentage of the population who live within walking distance to a park: a quarter-mile or less to entrances of smaller sites, such as sitting areas and playgrounds, and half-mile or less to entrances of larger parks. Increased access to green space and open space can contribute to increased levels of physical activity.</div>
+                <h2 class="fs-xl">Sidewalk area (percent of land area), 2014</h2>
+                <p>In <strong>Downtown - Heights - Slope</strong>, the sidewalk area (percent of land area), 2014 is <span class="middle">Middle</span>compared to the NYC average.</p>Sidewalks are important for commuting, businesses, and physical activity. Greater sidewalk area can contribute to a safer pedestrian environment, support vibrant business districts and can foster social interaction among residents.</div>
             <hr>
             <div class="modal-body">
                 <h3>Neighborhood Comparison</h3>
                 <div class="row comparison">
-                    <div class="col-sm-4 text-primary">Downtown - Heights - Slope <span class="indicator-value">94.0</span></div>
-                    <div class="col-sm-4">Brooklyn <span class="indicator-value">82</span></div>
-                    <div class="col-sm-4">New York City <span class="indicator-value">81</span></div>
+                    <div class="col-sm-4 text-primary">Downtown - Heights - Slope <span class="indicator-value">8.8</span></div>
+                    <div class="col-sm-4">Brooklyn <span class="indicator-value">7.8</span></div>
+                    <div class="col-sm-4">New York City <span class="indicator-value">6.6</span></div>
                 </div>
-                <p><em>Percent </em></p><div class="data-note"></div></div>
+                <p><em>Percent of land area</em></p><div class="data-note"></div></div>
             <hr>
             <div class="modal-body">
-                <h3>People living in walking distance to a park (percent), 2017</h3>
-                <p>  <em>Percent</em></p>
-                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-parkDisP-2"></div> 
+                <h3>Sidewalk area (percent of land area), 2014</h3>
+                <p>  <em>Percentof land area</em></p>
+                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-sidwalkP-2"></div> 
                 
             </div>
             <hr>
             <div class="modal-body">
                 
                 <h3>Trends Over Time</h3>
-                <p><em>Percent </em></p>
-                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-parkDisP-2"></div> 
+                <p><em>Percent of land area</em></p>
+                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-sidwalkP-2"></div> 
                 
             </div>
             <hr>
             <div class="modal-body">
                 
                 <h3>By Neighborhood</h3>
-                <p><em>Percent </em></p>
-                <div style="width:100%; height:60vmin; z-index:10000;" id="map-parkDisP-2"></div>
+                <p><em>Percent of land area</em></p>
+                <div style="width:100%; height:60vmin; z-index:10000;" id="map-sidwalkP-2"></div>
                 
             </div>
             
@@ -1304,7 +1501,7 @@
 
 <script type="text/javascript">
 
-    $( "#modal-parkDisP-2" ).on('shown.bs.modal', function() {
+    $( "#modal-sidwalkP-2" ).on('shown.bs.modal', function() {
         
         var opt = {"renderer": "svg"};
 
@@ -1327,7 +1524,7 @@
             
             var summaryData = 
                 arqTable
-                .filter(d => d.data_field_name == "parkDisP")
+                .filter(d => d.data_field_name == "sidwalkP")
                 .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
                 .dedupe()
                 .groupby("neighborhood")
@@ -1351,7 +1548,7 @@
             }).then(() => {
                 
                 vegaEmbed(
-                    "#summary-parkDisP-2", 
+                    "#summary-sidwalkP-2", 
                     summarySpec, 
                     opt
                 ).then((res) => {
@@ -1380,7 +1577,7 @@
             }).then(() => {
                 
                 vegaEmbed(
-                    "#map-parkDisP-2", 
+                    "#map-sidwalkP-2", 
                     mapSpec,
                     opt
                 ).then((res) => {
@@ -1398,7 +1595,7 @@
             
             var trendData = 
                 arqTable
-                .filter(d => d.data_field_name == "parkDisP")
+                .filter(d => d.data_field_name == "sidwalkP")
                 .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
                 .dedupe()
                 .objects()
@@ -1416,7 +1613,7 @@
             }).then(() => {
                 
                 vegaEmbed(
-                    "#trend-parkDisP-2", 
+                    "#trend-sidwalkP-2", 
                     trendSpec, 
                     opt
                 ).then((res) => {
@@ -1614,203 +1811,6 @@
                 
                 vegaEmbed(
                     "#trend-treeCovP-2", 
-                    trendSpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("trendData", trendData).run()
-                    
-                }).catch(console.error);;
-                
-            });
-            
-        });
-            
-    });
-        
-    </script>
-    <button data-toggle="modal" data-target="#modal-sidwalkP-2" class="indicator-anchor">
-    <div class="row align-items-center">
-        <div class="col-6 col-md-5">
-            <span class="indicator-short-name">Sidewalk area</span>
-        </div>
-        <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/sidwalkP_202.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="middle">Middle</span></div>
-        <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/production/neighborhood-reports/images/sidwalkP_202.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
-        </div>
-    </div>
-</button>
-
-
-<div class="modal fade report-modal" id="modal-sidwalkP-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header text-left">
-                <h2 class="modal-title fs-xl" id="exampleModalLabel">Sidewalk area</h2>
-                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
-                    <span class="fas fa-times-circle"></span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h2 class="fs-xl">Sidewalk area (percent of land area), 2014</h2>
-                <p>In <strong>Downtown - Heights - Slope</strong>, the sidewalk area (percent of land area), 2014 is <span class="middle">Middle</span>compared to the NYC average.</p>Sidewalks are important for commuting, businesses, and physical activity. Greater sidewalk area can contribute to a safer pedestrian environment, support vibrant business districts and can foster social interaction among residents.</div>
-            <hr>
-            <div class="modal-body">
-                <h3>Neighborhood Comparison</h3>
-                <div class="row comparison">
-                    <div class="col-sm-4 text-primary">Downtown - Heights - Slope <span class="indicator-value">8.8</span></div>
-                    <div class="col-sm-4">Brooklyn <span class="indicator-value">7.8</span></div>
-                    <div class="col-sm-4">New York City <span class="indicator-value">6.6</span></div>
-                </div>
-                <p><em>Percent of land area</em></p><div class="data-note"></div></div>
-            <hr>
-            <div class="modal-body">
-                <h3>Sidewalk area (percent of land area), 2014</h3>
-                <p>  <em>Percentof land area</em></p>
-                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-sidwalkP-2"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>Trends Over Time</h3>
-                <p><em>Percent of land area</em></p>
-                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-sidwalkP-2"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>By Neighborhood</h3>
-                <p><em>Percent of land area</em></p>
-                <div style="width:100%; height:60vmin; z-index:10000;" id="map-sidwalkP-2"></div>
-                
-            </div>
-            
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-<script type="text/javascript">
-
-    $( "#modal-sidwalkP-2" ).on('shown.bs.modal', function() {
-        
-        var opt = {"renderer": "svg"};
-
-        
-        
-        aq.loadCSV(
-
-            
-            
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/production/neighborhood-reports/data/" + data_download_loc
-        
-        ).then(data => {
-            
-            arqTable = data;
-
-
-            
-
-            
-            
-            var summaryData = 
-                arqTable
-                .filter(d => d.data_field_name == "sidwalkP")
-                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
-                .dedupe()
-                .groupby("neighborhood")
-                .orderby("neighborhood", aq.desc("end_date"))
-                .slice(0,1) 
-                .ungroup()
-                .derive({data_value: d => op.parse_float(d.data_value)})
-                .orderby("data_value") 
-                .select(aq.not("end_date"))
-                .objects()
-                
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/production/neighborhood-reports/spec/summarySpec.json").then(data => {
-                
-                summarySpec = data;
-
-                
-
-                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#summary-sidwalkP-2", 
-                    summarySpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("summaryData", summaryData).run()
-
-                }).catch(console.error);;
-                
-            });
-            
-
-            
-
-            
-
-            var mapData = summaryData;
-
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/production/neighborhood-reports/spec/mapSpec.json").then(data => {
-                
-                mapSpec = data;
-
-                
-
-                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#map-sidwalkP-2", 
-                    mapSpec,
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("mapData", mapData).run()
-                    
-                }).catch(console.error);
-                
-            });
-
-            
-            
-
-            
-            
-            var trendData = 
-                arqTable
-                .filter(d => d.data_field_name == "sidwalkP")
-                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
-                .dedupe()
-                .objects()
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/production/neighborhood-reports/spec/trendSpec.json").then(data => {
-                
-                
-                
-                trendSpec = data;
-                
-                
-
-                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#trend-sidwalkP-2", 
                     trendSpec, 
                     opt
                 ).then((res) => {
