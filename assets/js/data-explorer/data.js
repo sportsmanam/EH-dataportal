@@ -233,10 +233,11 @@ const joinData = () => {
             "MeasureID",
             "Time",
             "Value",
-            "DisplayValue",
+            "flag",
             "CI",
             "start_period",
-            "end_period"
+            "end_period",
+            "Note"
         )
         .orderby(aq.desc('end_period'), aq.desc('GeoRank'))
         .reify()
