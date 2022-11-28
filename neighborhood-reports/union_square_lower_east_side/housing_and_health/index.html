@@ -407,204 +407,7 @@
                                         Rank<br>
                                         <span class="meta"> out of the 42 neighborhoods</span>
                                     </div>
-                                </div><button data-toggle="modal" data-target="#modal-Asth1201-1" class="indicator-anchor">
-    <div class="row align-items-center">
-        <div class="col-6 col-md-5">
-            <span class="indicator-short-name">Asthma hospitalizations (children)</span>
-        </div>
-        <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/Asth1201_309.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
-        <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/Asth1201_309.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
-        </div>
-    </div>
-</button>
-
-
-<div class="modal fade report-modal" id="modal-Asth1201-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header text-left">
-                <h2 class="modal-title fs-xl" id="exampleModalLabel">Asthma hospitalizations (children)</h2>
-                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
-                    <span class="fas fa-times-circle"></span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h2 class="fs-xl">Asthma Hospitalizations among Children 5 to 17 Yrs Old (Rate per 10,000 residents) 2018</h2>
-                <p>In <strong>Union Square - Lower East Side</strong>, the asthma hospitalizations among children 5 to 17 yrs old (rate per 10,000 residents) 2018 is <span class="better">Better</span>compared to the NYC average.</p>Asthma hospitalizations are more severe asthma outcomes. They're often clustered in high-poverty neighborhoods, where disinvestment and poor housing conditions expose residents to triggers.</div>
-            <hr>
-            <div class="modal-body">
-                <h3>Neighborhood Comparison</h3>
-                <div class="row comparison">
-                    <div class="col-sm-4 text-primary">Union Square - Lower East Side <span class="indicator-value">12.6</span></div>
-                    <div class="col-sm-4">Manhattan <span class="indicator-value">26.5</span></div>
-                    <div class="col-sm-4">New York City <span class="indicator-value">25.1</span></div>
-                </div>
-                <p><em>Estimated Annual Rate per 10,000 residents</em></p><div class="data-note"></div></div>
-            <hr>
-            <div class="modal-body">
-                <h3>Asthma Hospitalizations among Children 5 to 17 Yrs Old (Rate per 10,000 residents) 2018</h3>
-                <p>  <em>Estimated Annual Rateper 10,000 residents</em></p>
-                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Asth1201-1"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>Trends Over Time</h3>
-                <p><em>Estimated Annual Rate per 10,000 residents</em></p>
-                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Asth1201-1"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>By Neighborhood</h3>
-                <p><em>Estimated Annual Rate per 10,000 residents</em></p>
-                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Asth1201-1"></div>
-                
-            </div>
-            
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-<script type="text/javascript">
-
-    $( "#modal-Asth1201-1" ).on('shown.bs.modal', function() {
-        
-        var opt = {"renderer": "svg"};
-
-        
-        
-        aq.loadCSV(
-
-            
-            
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/data/" + data_download_loc
-        
-        ).then(data => {
-            
-            arqTable = data;
-
-
-            
-
-            
-            
-            var summaryData = 
-                arqTable
-                .filter(d => d.data_field_name == "Asth1201")
-                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
-                .dedupe()
-                .groupby("neighborhood")
-                .orderby("neighborhood", aq.desc("end_date"))
-                .slice(0,1) 
-                .ungroup()
-                .derive({data_value: d => op.parse_float(d.data_value)})
-                .orderby("data_value") 
-                .select(aq.not("end_date"))
-                .objects()
-                
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
-                
-                summarySpec = data;
-
-                
-
-                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#summary-Asth1201-1", 
-                    summarySpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("summaryData", summaryData).run()
-
-                }).catch(console.error);;
-                
-            });
-            
-
-            
-
-            
-
-            var mapData = summaryData;
-
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
-                
-                mapSpec = data;
-
-                
-
-                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#map-Asth1201-1", 
-                    mapSpec,
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("mapData", mapData).run()
-                    
-                }).catch(console.error);
-                
-            });
-
-            
-            
-
-            
-            
-            var trendData = 
-                arqTable
-                .filter(d => d.data_field_name == "Asth1201")
-                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
-                .dedupe()
-                .objects()
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/trendSpec.json").then(data => {
-                
-                
-                
-                trendSpec = data;
-                
-                
-
-                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#trend-Asth1201-1", 
-                    trendSpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("trendData", trendData).run()
-                    
-                }).catch(console.error);;
-                
-            });
-            
-        });
-            
-    });
-        
-    </script>
-    <button data-toggle="modal" data-target="#modal-Asth1204-1" class="indicator-anchor">
+                                </div><button data-toggle="modal" data-target="#modal-Asth1204-1" class="indicator-anchor">
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
             <span class="indicator-short-name">Asthma hospitalizations (adults)</span>
@@ -638,11 +441,11 @@
                     <div class="col-sm-4">Manhattan <span class="indicator-value">6.9</span></div>
                     <div class="col-sm-4">New York City <span class="indicator-value">10.3</span></div>
                 </div>
-                <p><em>Age-Adjusted Rate per 10,000 residents</em></p><div class="data-note"></div></div>
+                <p><em>Age-adjusted rate per 10,000</em></p><div class="data-note"></div></div>
             <hr>
             <div class="modal-body">
                 <h3>Asthma Hospitalizations among Adults (Age-Adjusted Rate per 10,000 residents) 2018</h3>
-                <p>  <em>Age-Adjusted Rateper 10,000 residents</em></p>
+                <p>  <em>Age-adjusted rateper 10,000</em></p>
                 <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Asth1204-1"></div> 
                 
             </div>
@@ -650,7 +453,7 @@
             <div class="modal-body">
                 
                 <h3>Trends Over Time</h3>
-                <p><em>Age-Adjusted Rate per 10,000 residents</em></p>
+                <p><em>Age-adjusted rate per 10,000</em></p>
                 <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Asth1204-1"></div> 
                 
             </div>
@@ -658,7 +461,7 @@
             <div class="modal-body">
                 
                 <h3>By Neighborhood</h3>
-                <p><em>Age-Adjusted Rate per 10,000 residents</em></p>
+                <p><em>Age-adjusted rate per 10,000</em></p>
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-Asth1204-1"></div>
                 
             </div>
@@ -801,6 +604,203 @@
     });
         
     </script>
+    <button data-toggle="modal" data-target="#modal-Asth1201-1" class="indicator-anchor">
+    <div class="row align-items-center">
+        <div class="col-6 col-md-5">
+            <span class="indicator-short-name">Asthma hospitalizations (age 5 to 17)</span>
+        </div>
+        <div class="col-6 col-md-4 topic-list">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/Asth1201_309.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
+        <div class="d-none d-md-inline col-md-3">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/Asth1201_309.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+        </div>
+    </div>
+</button>
+
+
+<div class="modal fade report-modal" id="modal-Asth1201-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-left">
+                <h2 class="modal-title fs-xl" id="exampleModalLabel">Asthma hospitalizations (age 5 to 17)</h2>
+                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
+                    <span class="fas fa-times-circle"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2 class="fs-xl">Asthma Hospitalizations among Children 5 to 17 Yrs Old (Rate per 10,000 residents) 2018</h2>
+                <p>In <strong>Union Square - Lower East Side</strong>, the asthma hospitalizations among children 5 to 17 yrs old (rate per 10,000 residents) 2018 is <span class="better">Better</span>compared to the NYC average.</p>Asthma hospitalizations are more severe asthma outcomes. They're often clustered in high-poverty neighborhoods, where disinvestment and poor housing conditions expose residents to triggers.</div>
+            <hr>
+            <div class="modal-body">
+                <h3>Neighborhood Comparison</h3>
+                <div class="row comparison">
+                    <div class="col-sm-4 text-primary">Union Square - Lower East Side <span class="indicator-value">12.6</span></div>
+                    <div class="col-sm-4">Manhattan <span class="indicator-value">26.5</span></div>
+                    <div class="col-sm-4">New York City <span class="indicator-value">25.1</span></div>
+                </div>
+                <p><em>Estimated annual rate per 10,000</em></p><div class="data-note"></div></div>
+            <hr>
+            <div class="modal-body">
+                <h3>Asthma Hospitalizations among Children 5 to 17 Yrs Old (Rate per 10,000 residents) 2018</h3>
+                <p>  <em>Estimated annual rateper 10,000</em></p>
+                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Asth1201-1"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>Trends Over Time</h3>
+                <p><em>Estimated annual rate per 10,000</em></p>
+                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Asth1201-1"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>By Neighborhood</h3>
+                <p><em>Estimated annual rate per 10,000</em></p>
+                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Asth1201-1"></div>
+                
+            </div>
+            
+            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    $( "#modal-Asth1201-1" ).on('shown.bs.modal', function() {
+        
+        var opt = {"renderer": "svg"};
+
+        
+        
+        aq.loadCSV(
+
+            
+            
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/data/" + data_download_loc
+        
+        ).then(data => {
+            
+            arqTable = data;
+
+
+            
+
+            
+            
+            var summaryData = 
+                arqTable
+                .filter(d => d.data_field_name == "Asth1201")
+                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
+                .dedupe()
+                .groupby("neighborhood")
+                .orderby("neighborhood", aq.desc("end_date"))
+                .slice(0,1) 
+                .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
+                .orderby("data_value") 
+                .select(aq.not("end_date"))
+                .objects()
+                
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
+                
+                summarySpec = data;
+
+                
+
+                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#summary-Asth1201-1", 
+                    summarySpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("summaryData", summaryData).run()
+
+                }).catch(console.error);;
+                
+            });
+            
+
+            
+
+            
+
+            var mapData = summaryData;
+
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
+                
+                mapSpec = data;
+
+                
+
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#map-Asth1201-1", 
+                    mapSpec,
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("mapData", mapData).run()
+                    
+                }).catch(console.error);
+                
+            });
+
+            
+            
+
+            
+            
+            var trendData = 
+                arqTable
+                .filter(d => d.data_field_name == "Asth1201")
+                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
+                .dedupe()
+                .objects()
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/trendSpec.json").then(data => {
+                
+                
+                
+                trendSpec = data;
+                
+                
+
+                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#trend-Asth1201-1", 
+                    trendSpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("trendData", trendData).run()
+                    
+                }).catch(console.error);;
+                
+            });
+            
+        });
+            
+    });
+        
+    </script>
     </div>
                             
                             
@@ -855,7 +855,7 @@
             </div>
             <div class="modal-body">
                 <h2 class="fs-xl">Renter-occupied homes with any health-related maintenance problems (percent) 2017</h2>
-                <p>In <strong>Union Square - Lower East Side</strong>, the renter-occupied homes with any health-related maintenance problems (percent) 2017 is <span class="middle">Middle</span>compared to the NYC average.</p>Housing without health-threatening maintenance deficiencies is an important environmental component of health.</div>
+                <p>In <strong>Union Square - Lower East Side</strong>, the renter-occupied homes with any health-related maintenance problems (percent) 2017 is <span class="middle">Middle</span>compared to the NYC average.</p>Homes with maintenance deficiencies can threaten the health of the people who live there.</div>
             <hr>
             <div class="modal-body">
                 <h3>Neighborhood Comparison</h3>
@@ -864,11 +864,11 @@
                     <div class="col-sm-4">Manhattan <span class="indicator-value">56.6</span></div>
                     <div class="col-sm-4">New York City <span class="indicator-value">61.5</span></div>
                 </div>
-                <p><em>Percent of Households </em></p><div class="data-note"></div></div>
+                <p><em>Percent </em></p><div class="data-note"></div></div>
             <hr>
             <div class="modal-body">
                 <h3>Renter-occupied homes with any health-related maintenance problems (percent) 2017</h3>
-                <p>  <em>Percent of Households</em></p>
+                <p>  <em>Percent</em></p>
                 <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Rent1248-2"></div> 
                 
             </div>
@@ -876,7 +876,7 @@
             <div class="modal-body">
                 
                 <h3>Trends Over Time</h3>
-                <p><em>Percent of Households </em></p>
+                <p><em>Percent </em></p>
                 <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Rent1248-2"></div> 
                 
             </div>
@@ -884,7 +884,7 @@
             <div class="modal-body">
                 
                 <h3>By Neighborhood</h3>
-                <p><em>Percent of Households </em></p>
+                <p><em>Percent </em></p>
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-Rent1248-2"></div>
                 
             </div>
@@ -1061,11 +1061,11 @@
                     <div class="col-sm-4">Manhattan <span class="indicator-value">92.6</span></div>
                     <div class="col-sm-4">New York City <span class="indicator-value">91</span></div>
                 </div>
-                <p><em>Percent of Households </em></p><div class="data-note">*Estimate is based on small numbers so should be interpreted with caution.</div></div>
+                <p><em>Percent (with AC) </em></p><div class="data-note">*Estimate is based on small numbers so should be interpreted with caution.</div></div>
             <hr>
             <div class="modal-body">
                 <h3>Homes reporting air conditioning (percent) 2017</h3>
-                <p>  <em>Percent of Households</em></p>
+                <p>  <em>Percent (with AC)</em></p>
                 <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Hous781-2"></div> 
                 
             </div>
@@ -1073,7 +1073,7 @@
             <div class="modal-body">
                 
                 <h3>Trends Over Time</h3>
-                <p><em>Percent of Households </em></p>
+                <p><em>Percent (with AC) </em></p>
                 <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Hous781-2"></div> 
                 
             </div>
@@ -1081,7 +1081,7 @@
             <div class="modal-body">
                 
                 <h3>By Neighborhood</h3>
-                <p><em>Percent of Households </em></p>
+                <p><em>Percent (with AC) </em></p>
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-Hous781-2"></div>
                 
             </div>
@@ -1258,11 +1258,11 @@
                     <div class="col-sm-4">Manhattan <span class="indicator-value">12.3</span></div>
                     <div class="col-sm-4">New York City <span class="indicator-value">12.3</span></div>
                 </div>
-                <p><em>Percent of Households </em></p><div class="data-note">*Estimate is based on small numbers so should be interpreted with caution.</div></div>
+                <p><em>Percent </em></p><div class="data-note">*Estimate is based on small numbers so should be interpreted with caution.</div></div>
             <hr>
             <div class="modal-body">
                 <h3>Homes with cracks or holes (percent) 2017</h3>
-                <p>  <em>Percent of Households</em></p>
+                <p>  <em>Percent</em></p>
                 <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Home76-2"></div> 
                 
             </div>
@@ -1270,7 +1270,7 @@
             <div class="modal-body">
                 
                 <h3>Trends Over Time</h3>
-                <p><em>Percent of Households </em></p>
+                <p><em>Percent </em></p>
                 <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Home76-2"></div> 
                 
             </div>
@@ -1278,7 +1278,7 @@
             <div class="modal-body">
                 
                 <h3>By Neighborhood</h3>
-                <p><em>Percent of Households </em></p>
+                <p><em>Percent </em></p>
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-Home76-2"></div>
                 
             </div>
@@ -1446,7 +1446,7 @@
             </div>
             <div class="modal-body">
                 <h2 class="fs-xl">Pre-1960 homes with peeling paint (percent)  2017</h2>
-                <p>In <strong>Union Square - Lower East Side</strong>, the pre-1960 homes with peeling paint (percent)  2017 is <span class="worse">Worse</span>compared to the NYC average.</p>Older housing and peeling paint can put residents at risk of lead poisoning, due to lead paint - which was banned from household paints in the USA in 1978.</div>
+                <p>In <strong>Union Square - Lower East Side</strong>, the pre-1960 homes with peeling paint (percent)  2017 is <span class="worse">Worse</span>compared to the NYC average.</p>Older housing (built before 1960) that has peeling paint can put residents at risk of lead poisoning, due to lead paint. Lead paint was banned from household paints in New York City in 1960 and in the USA in 1978.</div>
             <hr>
             <div class="modal-body">
                 <h3>Neighborhood Comparison</h3>
@@ -1455,11 +1455,11 @@
                     <div class="col-sm-4">Manhattan <span class="indicator-value">4.7</span></div>
                     <div class="col-sm-4">New York City <span class="indicator-value">3.9</span></div>
                 </div>
-                <p><em>Percent of Households </em></p><div class="data-note">*Estimate is based on small numbers so should be interpreted with caution.</div></div>
+                <p><em>Percent </em></p><div class="data-note">*Estimate is based on small numbers so should be interpreted with caution.</div></div>
             <hr>
             <div class="modal-body">
                 <h3>Pre-1960 homes with peeling paint (percent)  2017</h3>
-                <p>  <em>Percent of Households</em></p>
+                <p>  <em>Percent</em></p>
                 <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Pre-78-2"></div> 
                 
             </div>
@@ -1467,7 +1467,7 @@
             <div class="modal-body">
                 
                 <h3>Trends Over Time</h3>
-                <p><em>Percent of Households </em></p>
+                <p><em>Percent </em></p>
                 <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Pre-78-2"></div> 
                 
             </div>
@@ -1475,7 +1475,7 @@
             <div class="modal-body">
                 
                 <h3>By Neighborhood</h3>
-                <p><em>Percent of Households </em></p>
+                <p><em>Percent </em></p>
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-Pre-78-2"></div>
                 
             </div>
@@ -1643,7 +1643,7 @@
             </div>
             <div class="modal-body">
                 <h2 class="fs-xl">Homes using supplemental heat (percent)  2017</h2>
-                <p>In <strong>Union Square - Lower East Side</strong>, the homes using supplemental heat (percent)  2017 is <span class="worse">Worse</span>compared to the NYC average.</p>The need for supplemental heat may mean a building's main heat source doesn't work - and can indicate the presence of other health-threatening maintenance deficiencies</div>
+                <p>In <strong>Union Square - Lower East Side</strong>, the homes using supplemental heat (percent)  2017 is <span class="worse">Worse</span>compared to the NYC average.</p>The need for supplemental heat may mean a building's main heat source doesn't work - and can indicate the presence of other health-threatening maintenance deficiencies.</div>
             <hr>
             <div class="modal-body">
                 <h3>Neighborhood Comparison</h3>
@@ -1849,11 +1849,11 @@
                     <div class="col-sm-4">Manhattan <span class="indicator-value">14.4</span></div>
                     <div class="col-sm-4">New York City <span class="indicator-value">13.4</span></div>
                 </div>
-                <p><em>Percent of Households </em></p><div class="data-note"></div></div>
+                <p><em>Percent </em></p><div class="data-note"></div></div>
             <hr>
             <div class="modal-body">
                 <h3>Homes with leaks (percent) 2017</h3>
-                <p>  <em>Percent of Households</em></p>
+                <p>  <em>Percent</em></p>
                 <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Home80-2"></div> 
                 
             </div>
@@ -1861,7 +1861,7 @@
             <div class="modal-body">
                 
                 <h3>Trends Over Time</h3>
-                <p><em>Percent of Households </em></p>
+                <p><em>Percent </em></p>
                 <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Home80-2"></div> 
                 
             </div>
@@ -1869,7 +1869,7 @@
             <div class="modal-body">
                 
                 <h3>By Neighborhood</h3>
-                <p><em>Percent of Households </em></p>
+                <p><em>Percent </em></p>
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-Home80-2"></div>
                 
             </div>
@@ -2037,7 +2037,7 @@
             </div>
             <div class="modal-body">
                 <h2 class="fs-xl">Carbon monoxide incidents without a detector (average annual rate per 10,000 buildings) 2014-2016</h2>
-                <p>In <strong>Union Square - Lower East Side</strong>, the carbon monoxide incidents without a detector (average annual rate per 10,000 buildings) 2014-2016 is <span class="worse">Worse</span>compared to the NYC average.</p>Carbon monoxide detectors are required in NYC homes by law. Failure to provide or maintain a detector can put residents at risk for carbon monoxide poisoning and death.</div>
+                <p>In <strong>Union Square - Lower East Side</strong>, the carbon monoxide incidents without a detector (average annual rate per 10,000 buildings) 2014-2016 is <span class="worse">Worse</span>compared to the NYC average.</p>Carbon monoxide detectors are required in NYC homes by law. Failure to provide or maintain a detector can put people at risk for carbon monoxide poisoning and death.</div>
             <hr>
             <div class="modal-body">
                 <h3>Neighborhood Comparison</h3>
@@ -2046,11 +2046,11 @@
                     <div class="col-sm-4">Manhattan <span class="indicator-value">6.4</span></div>
                     <div class="col-sm-4">New York City <span class="indicator-value">0.9</span></div>
                 </div>
-                <p><em>Average Annual Rate per 10,000 buildings</em></p><div class="data-note">*Estimate is based on small numbers so should be interpreted with caution.</div></div>
+                <p><em>Average annual rate per 10,000 buildings</em></p><div class="data-note">*Estimate is based on small numbers so should be interpreted with caution.</div></div>
             <hr>
             <div class="modal-body">
                 <h3>Carbon monoxide incidents without a detector (average annual rate per 10,000 buildings) 2014-2016</h3>
-                <p>  <em>Average Annual Rateper 10,000 buildings</em></p>
+                <p>  <em>Average annual rateper 10,000 buildings</em></p>
                 <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Carb716-2"></div> 
                 
             </div>
@@ -2058,7 +2058,7 @@
             <div class="modal-body">
                 
                 <h3>Trends Over Time</h3>
-                <p><em>Average Annual Rate per 10,000 buildings</em></p>
+                <p><em>Average annual rate per 10,000 buildings</em></p>
                 <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Carb716-2"></div> 
                 
             </div>
@@ -2066,7 +2066,7 @@
             <div class="modal-body">
                 
                 <h3>By Neighborhood</h3>
-                <p><em>Average Annual Rate per 10,000 buildings</em></p>
+                <p><em>Average annual rate per 10,000 buildings</em></p>
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-Carb716-2"></div>
                 
             </div>
@@ -2263,7 +2263,7 @@
             </div>
             <div class="modal-body">
                 <h2 class="fs-xl">Adults reporting mold in the home (percent) 2012</h2>
-                <p>In <strong>Union Square - Lower East Side</strong>, the adults reporting mold in the home (percent) 2012 is <span class="better">Better</span>compared to the NYC average.</p>Mold can worsen respiratory conditions like asthma, and indicate maintenance deficiencies in a building.</div>
+                <p>In <strong>Union Square - Lower East Side</strong>, the adults reporting mold in the home (percent) 2012 is <span class="better">Better</span>compared to the NYC average.</p>Adults reporting mold in the home. Mold can worsen respiratory conditions like asthma, and indicate maintenance deficiencies in a building.</div>
             <hr>
             <div class="modal-body">
                 <h3>Neighborhood Comparison</h3>
@@ -2435,203 +2435,6 @@
     });
         
     </script>
-    <button data-toggle="modal" data-target="#modal-Home94-3" class="indicator-anchor">
-    <div class="row align-items-center">
-        <div class="col-6 col-md-5">
-            <span class="indicator-short-name">Mice or rats (inside)</span>
-        </div>
-        <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/Home94_309.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="middle">Middle</span></div>
-        <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/Home94_309.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
-        </div>
-    </div>
-</button>
-
-
-<div class="modal fade report-modal" id="modal-Home94-3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header text-left">
-                <h2 class="modal-title fs-xl" id="exampleModalLabel">Mice or rats (inside)</h2>
-                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
-                    <span class="fas fa-times-circle"></span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h2 class="fs-xl">Homes with mice or rats in the building (percent)  2017</h2>
-                <p>In <strong>Union Square - Lower East Side</strong>, the homes with mice or rats in the building (percent)  2017 is <span class="middle">Middle</span>compared to the NYC average.</p>The presence of mice or rats in the home is often associated with poor housing maintenance. These pests can contaminate food and contribute to the development and exacerbation of asthma and its symptoms.</div>
-            <hr>
-            <div class="modal-body">
-                <h3>Neighborhood Comparison</h3>
-                <div class="row comparison">
-                    <div class="col-sm-4 text-primary">Union Square - Lower East Side <span class="indicator-value">20.9</span></div>
-                    <div class="col-sm-4">Manhattan <span class="indicator-value">15.7</span></div>
-                    <div class="col-sm-4">New York City <span class="indicator-value">18.8</span></div>
-                </div>
-                <p><em>Percent of Households </em></p><div class="data-note"></div></div>
-            <hr>
-            <div class="modal-body">
-                <h3>Homes with mice or rats in the building (percent)  2017</h3>
-                <p>  <em>Percent of Households</em></p>
-                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Home94-3"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>Trends Over Time</h3>
-                <p><em>Percent of Households </em></p>
-                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Home94-3"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>By Neighborhood</h3>
-                <p><em>Percent of Households </em></p>
-                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Home94-3"></div>
-                
-            </div>
-            
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-<script type="text/javascript">
-
-    $( "#modal-Home94-3" ).on('shown.bs.modal', function() {
-        
-        var opt = {"renderer": "svg"};
-
-        
-        
-        aq.loadCSV(
-
-            
-            
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/data/" + data_download_loc
-        
-        ).then(data => {
-            
-            arqTable = data;
-
-
-            
-
-            
-            
-            var summaryData = 
-                arqTable
-                .filter(d => d.data_field_name == "Home94")
-                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
-                .dedupe()
-                .groupby("neighborhood")
-                .orderby("neighborhood", aq.desc("end_date"))
-                .slice(0,1) 
-                .ungroup()
-                .derive({data_value: d => op.parse_float(d.data_value)})
-                .orderby("data_value") 
-                .select(aq.not("end_date"))
-                .objects()
-                
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
-                
-                summarySpec = data;
-
-                
-
-                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#summary-Home94-3", 
-                    summarySpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("summaryData", summaryData).run()
-
-                }).catch(console.error);;
-                
-            });
-            
-
-            
-
-            
-
-            var mapData = summaryData;
-
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
-                
-                mapSpec = data;
-
-                
-
-                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#map-Home94-3", 
-                    mapSpec,
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("mapData", mapData).run()
-                    
-                }).catch(console.error);
-                
-            });
-
-            
-            
-
-            
-            
-            var trendData = 
-                arqTable
-                .filter(d => d.data_field_name == "Home94")
-                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
-                .dedupe()
-                .objects()
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/trendSpec.json").then(data => {
-                
-                
-                
-                trendSpec = data;
-                
-                
-
-                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#trend-Home94-3", 
-                    trendSpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("trendData", trendData).run()
-                    
-                }).catch(console.error);;
-                
-            });
-            
-        });
-            
-    });
-        
-    </script>
     <button data-toggle="modal" data-target="#modal-Home245-3" class="indicator-anchor">
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
@@ -2657,7 +2460,7 @@
             </div>
             <div class="modal-body">
                 <h2 class="fs-xl">Homes with cockroaches (percent)  2017</h2>
-                <p>In <strong>Union Square - Lower East Side</strong>, the homes with cockroaches (percent)  2017 is <span class="middle">Middle</span>compared to the NYC average.</p>The saliva, feces, and shedding body parts of cockroaches are an allergen and can trigger asthma.</div>
+                <p>In <strong>Union Square - Lower East Side</strong>, the homes with cockroaches (percent)  2017 is <span class="middle">Middle</span>compared to the NYC average.</p>The presence of cockroaches in the home is often associated with poor housing maintenance. Cockroaches in the home can contaminate food and worsen asthma.</div>
             <hr>
             <div class="modal-body">
                 <h3>Neighborhood Comparison</h3>
@@ -2666,11 +2469,11 @@
                     <div class="col-sm-4">Manhattan <span class="indicator-value">20</span></div>
                     <div class="col-sm-4">New York City <span class="indicator-value">24.1</span></div>
                 </div>
-                <p><em>Percent of Households </em></p><div class="data-note"></div></div>
+                <p><em>Percent </em></p><div class="data-note"></div></div>
             <hr>
             <div class="modal-body">
                 <h3>Homes with cockroaches (percent)  2017</h3>
-                <p>  <em>Percent of Households</em></p>
+                <p>  <em>Percent</em></p>
                 <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Home245-3"></div> 
                 
             </div>
@@ -2678,7 +2481,7 @@
             <div class="modal-body">
                 
                 <h3>Trends Over Time</h3>
-                <p><em>Percent of Households </em></p>
+                <p><em>Percent </em></p>
                 <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Home245-3"></div> 
                 
             </div>
@@ -2686,7 +2489,7 @@
             <div class="modal-body">
                 
                 <h3>By Neighborhood</h3>
-                <p><em>Percent of Households </em></p>
+                <p><em>Percent </em></p>
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-Home245-3"></div>
                 
             </div>
@@ -2829,6 +2632,203 @@
     });
         
     </script>
+    <button data-toggle="modal" data-target="#modal-Home94-3" class="indicator-anchor">
+    <div class="row align-items-center">
+        <div class="col-6 col-md-5">
+            <span class="indicator-short-name">Mice or rats (in the building)</span>
+        </div>
+        <div class="col-6 col-md-4 topic-list">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/Home94_309.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="middle">Middle</span></div>
+        <div class="d-none d-md-inline col-md-3">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/Home94_309.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+        </div>
+    </div>
+</button>
+
+
+<div class="modal fade report-modal" id="modal-Home94-3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-left">
+                <h2 class="modal-title fs-xl" id="exampleModalLabel">Mice or rats (in the building)</h2>
+                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
+                    <span class="fas fa-times-circle"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2 class="fs-xl">Homes with mice or rats in the building (percent)  2017</h2>
+                <p>In <strong>Union Square - Lower East Side</strong>, the homes with mice or rats in the building (percent)  2017 is <span class="middle">Middle</span>compared to the NYC average.</p>The presence of mice or rats in the home is often associated with poor housing maintenance. These pests can contaminate food and worsen asthma.</div>
+            <hr>
+            <div class="modal-body">
+                <h3>Neighborhood Comparison</h3>
+                <div class="row comparison">
+                    <div class="col-sm-4 text-primary">Union Square - Lower East Side <span class="indicator-value">20.9</span></div>
+                    <div class="col-sm-4">Manhattan <span class="indicator-value">15.7</span></div>
+                    <div class="col-sm-4">New York City <span class="indicator-value">18.8</span></div>
+                </div>
+                <p><em>Percent </em></p><div class="data-note"></div></div>
+            <hr>
+            <div class="modal-body">
+                <h3>Homes with mice or rats in the building (percent)  2017</h3>
+                <p>  <em>Percent</em></p>
+                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Home94-3"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>Trends Over Time</h3>
+                <p><em>Percent </em></p>
+                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Home94-3"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>By Neighborhood</h3>
+                <p><em>Percent </em></p>
+                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Home94-3"></div>
+                
+            </div>
+            
+            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    $( "#modal-Home94-3" ).on('shown.bs.modal', function() {
+        
+        var opt = {"renderer": "svg"};
+
+        
+        
+        aq.loadCSV(
+
+            
+            
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/data/" + data_download_loc
+        
+        ).then(data => {
+            
+            arqTable = data;
+
+
+            
+
+            
+            
+            var summaryData = 
+                arqTable
+                .filter(d => d.data_field_name == "Home94")
+                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
+                .dedupe()
+                .groupby("neighborhood")
+                .orderby("neighborhood", aq.desc("end_date"))
+                .slice(0,1) 
+                .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
+                .orderby("data_value") 
+                .select(aq.not("end_date"))
+                .objects()
+                
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
+                
+                summarySpec = data;
+
+                
+
+                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#summary-Home94-3", 
+                    summarySpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("summaryData", summaryData).run()
+
+                }).catch(console.error);;
+                
+            });
+            
+
+            
+
+            
+
+            var mapData = summaryData;
+
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
+                
+                mapSpec = data;
+
+                
+
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#map-Home94-3", 
+                    mapSpec,
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("mapData", mapData).run()
+                    
+                }).catch(console.error);
+                
+            });
+
+            
+            
+
+            
+            
+            var trendData = 
+                arqTable
+                .filter(d => d.data_field_name == "Home94")
+                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
+                .dedupe()
+                .objects()
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/trendSpec.json").then(data => {
+                
+                
+                
+                trendSpec = data;
+                
+                
+
+                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#trend-Home94-3", 
+                    trendSpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("trendData", trendData).run()
+                    
+                }).catch(console.error);;
+                
+            });
+            
+        });
+            
+    });
+        
+    </script>
     <button data-toggle="modal" data-target="#modal-Adul292-3" class="indicator-anchor">
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
@@ -2854,7 +2854,7 @@
             </div>
             <div class="modal-body">
                 <h2 class="fs-xl">Adults who allow smoking in the home (percent)  2013</h2>
-                <p>In <strong>Union Square - Lower East Side</strong>, the adults who allow smoking in the home (percent)  2013 is <span class="worse">Worse</span>compared to the NYC average.</p>A smoke-free home policy can limit people's exposure to secondhand smoke, which is especially dangerous to children.</div>
+                <p>In <strong>Union Square - Lower East Side</strong>, the adults who allow smoking in the home (percent)  2013 is <span class="worse">Worse</span>compared to the NYC average.</p>Adults without a smoke-free home policy. A smoke-free home policy can limit people's exposure to secondhand smoke, which is especially dangerous to children.</div>
             <hr>
             <div class="modal-body">
                 <h3>Neighborhood Comparison</h3>
@@ -3080,7 +3080,7 @@
             </div>
             <div class="modal-body">
                 <h2 class="fs-xl">Crowding (percent of homes with &gt; 1 person per room), 2015-19</h2>
-                <p>In <strong>Union Square - Lower East Side</strong>, the crowding (percent of homes with &gt; 1 person per room), 2015-19 is <span class="better">Better</span>compared to the NYC average.</p> Occupied housing units with more than one person per room are considered crowded.</div>
+                <p>In <strong>Union Square - Lower East Side</strong>, the crowding (percent of homes with &gt; 1 person per room), 2015-19 is <span class="better">Better</span>compared to the NYC average.</p>Households with more than one person per room are considered crowded.</div>
             <hr>
             <div class="modal-body">
                 <h3>Neighborhood Comparison</h3>
@@ -3089,11 +3089,11 @@
                     <div class="col-sm-4">Manhattan <span class="indicator-value">5.9</span></div>
                     <div class="col-sm-4">New York City <span class="indicator-value">9</span></div>
                 </div>
-                <p><em>Percent of Households </em></p><div class="data-note"></div></div>
+                <p><em>Percent </em></p><div class="data-note"></div></div>
             <hr>
             <div class="modal-body">
                 <h3>Crowding (percent of homes with &gt; 1 person per room), 2015-19</h3>
-                <p>  <em>Percent of Households</em></p>
+                <p>  <em>Percent</em></p>
                 <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Crow25-4"></div> 
                 
             </div>
@@ -3101,7 +3101,7 @@
             <div class="modal-body">
                 
                 <h3>Trends Over Time</h3>
-                <p><em>Percent of Households </em></p>
+                <p><em>Percent </em></p>
                 <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Crow25-4"></div> 
                 
             </div>
@@ -3109,7 +3109,7 @@
             <div class="modal-body">
                 
                 <h3>By Neighborhood</h3>
-                <p><em>Percent of Households </em></p>
+                <p><em>Percent </em></p>
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-Crow25-4"></div>
                 
             </div>

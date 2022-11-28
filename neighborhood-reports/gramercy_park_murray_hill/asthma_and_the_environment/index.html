@@ -407,204 +407,7 @@
                                         Rank<br>
                                         <span class="meta"> out of the 42 neighborhoods</span>
                                     </div>
-                                </div><button data-toggle="modal" data-target="#modal-Adul31-1" class="indicator-anchor">
-    <div class="row align-items-center">
-        <div class="col-6 col-md-5">
-            <span class="indicator-short-name">Asthma (adults)</span>
-        </div>
-        <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/Adul31_307.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
-        <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/Adul31_307.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
-        </div>
-    </div>
-</button>
-
-
-<div class="modal fade report-modal" id="modal-Adul31-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header text-left">
-                <h2 class="modal-title fs-xl" id="exampleModalLabel">Asthma (adults)</h2>
-                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
-                    <span class="fas fa-times-circle"></span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h2 class="fs-xl">Adults ages 18 years and older with asthma in the past 12 months (age-adjusted percent), 2020</h2>
-                <p>In <strong>Gramercy Park - Murray Hill</strong>, the adults ages 18 years and older with asthma in the past 12 months (age-adjusted percent), 2020 is <span class="better">Better</span>compared to the NYC average.</p><p>Asthma is a common disease characterized by breathing difficulty. Environmental exposures resulting from poor air quality and housing maintenance are known to increase risk of asthma development and trigger asthma symptoms. <strong style="color: red;"> Beginning in 2017, indicator includes data imputed for missing responses.</strong></p></div>
-            <hr>
-            <div class="modal-body">
-                <h3>Neighborhood Comparison</h3>
-                <div class="row comparison">
-                    <div class="col-sm-4 text-primary">Gramercy Park - Murray Hill <span class="indicator-value">2.3*</span></div>
-                    <div class="col-sm-4">Manhattan <span class="indicator-value">4.3</span></div>
-                    <div class="col-sm-4">New York City <span class="indicator-value">3.8</span></div>
-                </div>
-                <p><em>Age-Adjusted Percent </em></p><div class="data-note">*Estimate is based on small numbers so should be interpreted with caution.</div></div>
-            <hr>
-            <div class="modal-body">
-                <h3>Adults ages 18 years and older with asthma in the past 12 months (age-adjusted percent), 2020</h3>
-                <p>  <em>Age-Adjusted Percent</em></p>
-                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Adul31-1"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>Trends Over Time</h3>
-                <p><em>Age-Adjusted Percent </em></p>
-                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Adul31-1"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>By Neighborhood</h3>
-                <p><em>Age-Adjusted Percent </em></p>
-                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Adul31-1"></div>
-                
-            </div>
-            
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-<script type="text/javascript">
-
-    $( "#modal-Adul31-1" ).on('shown.bs.modal', function() {
-        
-        var opt = {"renderer": "svg"};
-
-        
-        
-        aq.loadCSV(
-
-            
-            
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/data/" + data_download_loc
-        
-        ).then(data => {
-            
-            arqTable = data;
-
-
-            
-
-            
-            
-            var summaryData = 
-                arqTable
-                .filter(d => d.data_field_name == "Adul31")
-                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
-                .dedupe()
-                .groupby("neighborhood")
-                .orderby("neighborhood", aq.desc("end_date"))
-                .slice(0,1) 
-                .ungroup()
-                .derive({data_value: d => op.parse_float(d.data_value)})
-                .orderby("data_value") 
-                .select(aq.not("end_date"))
-                .objects()
-                
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
-                
-                summarySpec = data;
-
-                
-
-                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#summary-Adul31-1", 
-                    summarySpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("summaryData", summaryData).run()
-
-                }).catch(console.error);;
-                
-            });
-            
-
-            
-
-            
-
-            var mapData = summaryData;
-
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
-                
-                mapSpec = data;
-
-                
-
-                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#map-Adul31-1", 
-                    mapSpec,
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("mapData", mapData).run()
-                    
-                }).catch(console.error);
-                
-            });
-
-            
-            
-
-            
-            
-            var trendData = 
-                arqTable
-                .filter(d => d.data_field_name == "Adul31")
-                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
-                .dedupe()
-                .objects()
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/trendSpec.json").then(data => {
-                
-                
-                
-                trendSpec = data;
-                
-                
-
-                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#trend-Adul31-1", 
-                    trendSpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("trendData", trendData).run()
-                    
-                }).catch(console.error);;
-                
-            });
-            
-        });
-            
-    });
-        
-    </script>
-    <button data-toggle="modal" data-target="#modal-Asth1199-1" class="indicator-anchor">
+                                </div><button data-toggle="modal" data-target="#modal-Asth1199-1" class="indicator-anchor">
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
             <span class="indicator-short-name">Asthma ED visits (adults)</span>
@@ -629,7 +432,7 @@
             </div>
             <div class="modal-body">
                 <h2 class="fs-xl">Asthma emergency department visits among adults ages 18 years and older, 2018</h2>
-                <p>In <strong>Gramercy Park - Murray Hill</strong>, the asthma emergency department visits among adults ages 18 years and older, 2018 is <span class="better">Better</span>compared to the NYC average.</p>Severe asthma attacks can result in a visit to the ED. Certain exposures can trigger asthma symptoms, including smoke, air pollution, dust mites, cockroaches, mold, pollen and pet dander, among others.</div>
+                <p>In <strong>Gramercy Park - Murray Hill</strong>, the asthma emergency department visits among adults ages 18 years and older, 2018 is <span class="better">Better</span>compared to the NYC average.</p>Severe asthma attacks can result in a visit to the ED. Things like smoke, air pollution, dust mites, cockroaches, mold, pollen and pet dander can trigger asthma.</div>
             <hr>
             <div class="modal-body">
                 <h3>Neighborhood Comparison</h3>
@@ -638,11 +441,11 @@
                     <div class="col-sm-4">Manhattan <span class="indicator-value">86.8</span></div>
                     <div class="col-sm-4">New York City <span class="indicator-value">89.9</span></div>
                 </div>
-                <p><em>Age-Adjusted Rate per 10,000 residents</em></p><div class="data-note"></div></div>
+                <p><em>Age-adjusted rate per 10,000</em></p><div class="data-note"></div></div>
             <hr>
             <div class="modal-body">
                 <h3>Asthma emergency department visits among adults ages 18 years and older, 2018</h3>
-                <p>  <em>Age-Adjusted Rateper 10,000 residents</em></p>
+                <p>  <em>Age-adjusted rateper 10,000</em></p>
                 <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Asth1199-1"></div> 
                 
             </div>
@@ -650,7 +453,7 @@
             <div class="modal-body">
                 
                 <h3>Trends Over Time</h3>
-                <p><em>Age-Adjusted Rate per 10,000 residents</em></p>
+                <p><em>Age-adjusted rate per 10,000</em></p>
                 <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Asth1199-1"></div> 
                 
             </div>
@@ -658,7 +461,7 @@
             <div class="modal-body">
                 
                 <h3>By Neighborhood</h3>
-                <p><em>Age-Adjusted Rate per 10,000 residents</em></p>
+                <p><em>Age-adjusted rate per 10,000</em></p>
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-Asth1199-1"></div>
                 
             </div>
@@ -835,11 +638,11 @@
                     <div class="col-sm-4">Manhattan <span class="indicator-value">6.9</span></div>
                     <div class="col-sm-4">New York City <span class="indicator-value">10.3</span></div>
                 </div>
-                <p><em>Age-Adjusted Rate per 10,000 residents</em></p><div class="data-note"></div></div>
+                <p><em>Age-adjusted rate per 10,000</em></p><div class="data-note"></div></div>
             <hr>
             <div class="modal-body">
                 <h3>Asthma hospitalizations among adults ages 18 years and older, 2018</h3>
-                <p>  <em>Age-Adjusted Rateper 10,000 residents</em></p>
+                <p>  <em>Age-adjusted rateper 10,000</em></p>
                 <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Asth1204-1"></div> 
                 
             </div>
@@ -847,7 +650,7 @@
             <div class="modal-body">
                 
                 <h3>Trends Over Time</h3>
-                <p><em>Age-Adjusted Rate per 10,000 residents</em></p>
+                <p><em>Age-adjusted rate per 10,000</em></p>
                 <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Asth1204-1"></div> 
                 
             </div>
@@ -855,7 +658,7 @@
             <div class="modal-body">
                 
                 <h3>By Neighborhood</h3>
-                <p><em>Age-Adjusted Rate per 10,000 residents</em></p>
+                <p><em>Age-adjusted rate per 10,000</em></p>
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-Asth1204-1"></div>
                 
             </div>
@@ -998,6 +801,203 @@
     });
         
     </script>
+    <button data-toggle="modal" data-target="#modal-Adul31-1" class="indicator-anchor">
+    <div class="row align-items-center">
+        <div class="col-6 col-md-5">
+            <span class="indicator-short-name">Asthma (adults)</span>
+        </div>
+        <div class="col-6 col-md-4 topic-list">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/Adul31_307.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
+        <div class="d-none d-md-inline col-md-3">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/Adul31_307.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+        </div>
+    </div>
+</button>
+
+
+<div class="modal fade report-modal" id="modal-Adul31-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-left">
+                <h2 class="modal-title fs-xl" id="exampleModalLabel">Asthma (adults)</h2>
+                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
+                    <span class="fas fa-times-circle"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2 class="fs-xl">Adults ages 18 years and older with asthma in the past 12 months (age-adjusted percent), 2020</h2>
+                <p>In <strong>Gramercy Park - Murray Hill</strong>, the adults ages 18 years and older with asthma in the past 12 months (age-adjusted percent), 2020 is <span class="better">Better</span>compared to the NYC average.</p>Asthma is a common disease characterized by breathing difficulty. Poor air quality and housing issues increase risk of developing and triggering asthma.</div>
+            <hr>
+            <div class="modal-body">
+                <h3>Neighborhood Comparison</h3>
+                <div class="row comparison">
+                    <div class="col-sm-4 text-primary">Gramercy Park - Murray Hill <span class="indicator-value">2.3*</span></div>
+                    <div class="col-sm-4">Manhattan <span class="indicator-value">4.3</span></div>
+                    <div class="col-sm-4">New York City <span class="indicator-value">3.8</span></div>
+                </div>
+                <p><em>Age-adjusted percent </em></p><div class="data-note">*Estimate is based on small numbers so should be interpreted with caution.</div></div>
+            <hr>
+            <div class="modal-body">
+                <h3>Adults ages 18 years and older with asthma in the past 12 months (age-adjusted percent), 2020</h3>
+                <p>  <em>Age-adjusted percent</em></p>
+                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Adul31-1"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>Trends Over Time</h3>
+                <p><em>Age-adjusted percent </em></p>
+                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Adul31-1"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>By Neighborhood</h3>
+                <p><em>Age-adjusted percent </em></p>
+                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Adul31-1"></div>
+                
+            </div>
+            
+            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    $( "#modal-Adul31-1" ).on('shown.bs.modal', function() {
+        
+        var opt = {"renderer": "svg"};
+
+        
+        
+        aq.loadCSV(
+
+            
+            
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/data/" + data_download_loc
+        
+        ).then(data => {
+            
+            arqTable = data;
+
+
+            
+
+            
+            
+            var summaryData = 
+                arqTable
+                .filter(d => d.data_field_name == "Adul31")
+                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
+                .dedupe()
+                .groupby("neighborhood")
+                .orderby("neighborhood", aq.desc("end_date"))
+                .slice(0,1) 
+                .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
+                .orderby("data_value") 
+                .select(aq.not("end_date"))
+                .objects()
+                
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
+                
+                summarySpec = data;
+
+                
+
+                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#summary-Adul31-1", 
+                    summarySpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("summaryData", summaryData).run()
+
+                }).catch(console.error);;
+                
+            });
+            
+
+            
+
+            
+
+            var mapData = summaryData;
+
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
+                
+                mapSpec = data;
+
+                
+
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#map-Adul31-1", 
+                    mapSpec,
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("mapData", mapData).run()
+                    
+                }).catch(console.error);
+                
+            });
+
+            
+            
+
+            
+            
+            var trendData = 
+                arqTable
+                .filter(d => d.data_field_name == "Adul31")
+                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
+                .dedupe()
+                .objects()
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/trendSpec.json").then(data => {
+                
+                
+                
+                trendSpec = data;
+                
+                
+
+                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#trend-Adul31-1", 
+                    trendSpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("trendData", trendData).run()
+                    
+                }).catch(console.error);;
+                
+            });
+            
+        });
+            
+    });
+        
+    </script>
     </div>
                             
                             
@@ -1027,204 +1027,7 @@
                                         Rank<br>
                                         <span class="meta"> out of the 42 neighborhoods</span>
                                     </div>
-                                </div><button data-toggle="modal" data-target="#modal-Asth1201-2" class="indicator-anchor">
-    <div class="row align-items-center">
-        <div class="col-6 col-md-5">
-            <span class="indicator-short-name">Asthma hospitalizations (children)</span>
-        </div>
-        <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/Asth1201_307.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
-        <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/Asth1201_307.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
-        </div>
-    </div>
-</button>
-
-
-<div class="modal fade report-modal" id="modal-Asth1201-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header text-left">
-                <h2 class="modal-title fs-xl" id="exampleModalLabel">Asthma hospitalizations (children)</h2>
-                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
-                    <span class="fas fa-times-circle"></span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h2 class="fs-xl">Asthma hospitalizations among children ages 5 to 17 years old, 2018</h2>
-                <p>In <strong>Gramercy Park - Murray Hill</strong>, the asthma hospitalizations among children ages 5 to 17 years old, 2018 is <span class="better">Better</span>compared to the NYC average.</p>Asthma hospitalizations are more severe asthma outcomes. They're often clustered in high-poverty neighborhoods, where disinvestment and poor housing conditions expose residents to triggers.</div>
-            <hr>
-            <div class="modal-body">
-                <h3>Neighborhood Comparison</h3>
-                <div class="row comparison">
-                    <div class="col-sm-4 text-primary">Gramercy Park - Murray Hill <span class="indicator-value">10.3*</span></div>
-                    <div class="col-sm-4">Manhattan <span class="indicator-value">26.5</span></div>
-                    <div class="col-sm-4">New York City <span class="indicator-value">25.1</span></div>
-                </div>
-                <p><em>Estimated Annual Rate per 10,000 residents</em></p><div class="data-note">*Estimate is based on small numbers so should be interpreted with caution.</div></div>
-            <hr>
-            <div class="modal-body">
-                <h3>Asthma hospitalizations among children ages 5 to 17 years old, 2018</h3>
-                <p>  <em>Estimated Annual Rateper 10,000 residents</em></p>
-                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Asth1201-2"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>Trends Over Time</h3>
-                <p><em>Estimated Annual Rate per 10,000 residents</em></p>
-                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Asth1201-2"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>By Neighborhood</h3>
-                <p><em>Estimated Annual Rate per 10,000 residents</em></p>
-                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Asth1201-2"></div>
-                
-            </div>
-            
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-<script type="text/javascript">
-
-    $( "#modal-Asth1201-2" ).on('shown.bs.modal', function() {
-        
-        var opt = {"renderer": "svg"};
-
-        
-        
-        aq.loadCSV(
-
-            
-            
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/data/" + data_download_loc
-        
-        ).then(data => {
-            
-            arqTable = data;
-
-
-            
-
-            
-            
-            var summaryData = 
-                arqTable
-                .filter(d => d.data_field_name == "Asth1201")
-                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
-                .dedupe()
-                .groupby("neighborhood")
-                .orderby("neighborhood", aq.desc("end_date"))
-                .slice(0,1) 
-                .ungroup()
-                .derive({data_value: d => op.parse_float(d.data_value)})
-                .orderby("data_value") 
-                .select(aq.not("end_date"))
-                .objects()
-                
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
-                
-                summarySpec = data;
-
-                
-
-                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#summary-Asth1201-2", 
-                    summarySpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("summaryData", summaryData).run()
-
-                }).catch(console.error);;
-                
-            });
-            
-
-            
-
-            
-
-            var mapData = summaryData;
-
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
-                
-                mapSpec = data;
-
-                
-
-                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#map-Asth1201-2", 
-                    mapSpec,
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("mapData", mapData).run()
-                    
-                }).catch(console.error);
-                
-            });
-
-            
-            
-
-            
-            
-            var trendData = 
-                arqTable
-                .filter(d => d.data_field_name == "Asth1201")
-                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
-                .dedupe()
-                .objects()
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/trendSpec.json").then(data => {
-                
-                
-                
-                trendSpec = data;
-                
-                
-
-                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#trend-Asth1201-2", 
-                    trendSpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("trendData", trendData).run()
-                    
-                }).catch(console.error);;
-                
-            });
-            
-        });
-            
-    });
-        
-    </script>
-    <button data-toggle="modal" data-target="#modal-Publ696-2" class="indicator-anchor">
+                                </div><button data-toggle="modal" data-target="#modal-Publ696-2" class="indicator-anchor">
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
             <span class="indicator-short-name">Asthma (public school children)</span>
@@ -1249,7 +1052,7 @@
             </div>
             <div class="modal-body">
                 <h2 class="fs-xl">Asthma among public school children ages 5 to 14 years old  (per 1,000 children), 2013-2014</h2>
-                <p>In <strong>Gramercy Park - Murray Hill</strong>, the asthma among public school children ages 5 to 14 years old  (per 1,000 children), 2013-2014 is <span class="better">Better</span>compared to the NYC average.</p>Asthma is a common disease characterized by breathing difficulty. Environmental exposures resulting from poor air quality and housing maintenance are known to increase risk of asthma development and trigger asthma symptoms.</div>
+                <p>In <strong>Gramercy Park - Murray Hill</strong>, the asthma among public school children ages 5 to 14 years old  (per 1,000 children), 2013-2014 is <span class="better">Better</span>compared to the NYC average.</p>Asthma is a common disease characterized by breathing difficulty. Poor air quality and housing issues increase risk of developing and triggering asthma.</div>
             <hr>
             <div class="modal-body">
                 <h3>Neighborhood Comparison</h3>
@@ -1258,11 +1061,11 @@
                     <div class="col-sm-4">Manhattan <span class="indicator-value">68.4</span></div>
                     <div class="col-sm-4">New York City <span class="indicator-value">73.8</span></div>
                 </div>
-                <p><em>Estimated Annual Rate per 1,000</em></p><div class="data-note"></div></div>
+                <p><em>Estimated annual rate per 1,000</em></p><div class="data-note"></div></div>
             <hr>
             <div class="modal-body">
                 <h3>Asthma among public school children ages 5 to 14 years old  (per 1,000 children), 2013-2014</h3>
-                <p>  <em>Estimated Annual Rateper 1,000</em></p>
+                <p>  <em>Estimated annual rateper 1,000</em></p>
                 <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Publ696-2"></div> 
                 
             </div>
@@ -1270,7 +1073,7 @@
             <div class="modal-body">
                 
                 <h3>Trends Over Time</h3>
-                <p><em>Estimated Annual Rate per 1,000</em></p>
+                <p><em>Estimated annual rate per 1,000</em></p>
                 <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Publ696-2"></div> 
                 
             </div>
@@ -1278,7 +1081,7 @@
             <div class="modal-body">
                 
                 <h3>By Neighborhood</h3>
-                <p><em>Estimated Annual Rate per 1,000</em></p>
+                <p><em>Estimated annual rate per 1,000</em></p>
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-Publ696-2"></div>
                 
             </div>
@@ -1424,7 +1227,7 @@
     <button data-toggle="modal" data-target="#modal-Asth1196-2" class="indicator-anchor">
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
-            <span class="indicator-short-name">Asthma ED visits (children)</span>
+            <span class="indicator-short-name">Asthma ED visits (age 5 to 17)</span>
         </div>
         <div class="col-6 col-md-4 topic-list">
             <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/Asth1196_307.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
@@ -1439,14 +1242,14 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header text-left">
-                <h2 class="modal-title fs-xl" id="exampleModalLabel">Asthma ED visits (children)</h2>
+                <h2 class="modal-title fs-xl" id="exampleModalLabel">Asthma ED visits (age 5 to 17)</h2>
                 <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
                     <span class="fas fa-times-circle"></span>
                 </button>
             </div>
             <div class="modal-body">
                 <h2 class="fs-xl">Asthma emergency department visits among children ages 5 to 17 years old, 2018</h2>
-                <p>In <strong>Gramercy Park - Murray Hill</strong>, the asthma emergency department visits among children ages 5 to 17 years old, 2018 is <span class="better">Better</span>compared to the NYC average.</p>Severe asthma attacks can result in a visit to the ED. Certain exposures can trigger asthma symptoms, including smoke, air pollution, dust mites, cockroaches, mold, pollen and pet dander, among others.</div>
+                <p>In <strong>Gramercy Park - Murray Hill</strong>, the asthma emergency department visits among children ages 5 to 17 years old, 2018 is <span class="better">Better</span>compared to the NYC average.</p>Severe asthma attacks can result in a visit to the ED. Things like smoke, air pollution, dust mites, cockroaches, mold, pollen and pet dander can trigger asthma.</div>
             <hr>
             <div class="modal-body">
                 <h3>Neighborhood Comparison</h3>
@@ -1455,11 +1258,11 @@
                     <div class="col-sm-4">Manhattan <span class="indicator-value">225.1</span></div>
                     <div class="col-sm-4">New York City <span class="indicator-value">183.3</span></div>
                 </div>
-                <p><em>Estimated Annual Rate per 10,000 residents</em></p><div class="data-note"></div></div>
+                <p><em>Estimated annual rate per 10,000</em></p><div class="data-note"></div></div>
             <hr>
             <div class="modal-body">
                 <h3>Asthma emergency department visits among children ages 5 to 17 years old, 2018</h3>
-                <p>  <em>Estimated Annual Rateper 10,000 residents</em></p>
+                <p>  <em>Estimated annual rateper 10,000</em></p>
                 <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Asth1196-2"></div> 
                 
             </div>
@@ -1467,7 +1270,7 @@
             <div class="modal-body">
                 
                 <h3>Trends Over Time</h3>
-                <p><em>Estimated Annual Rate per 10,000 residents</em></p>
+                <p><em>Estimated annual rate per 10,000</em></p>
                 <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Asth1196-2"></div> 
                 
             </div>
@@ -1475,7 +1278,7 @@
             <div class="modal-body">
                 
                 <h3>By Neighborhood</h3>
-                <p><em>Estimated Annual Rate per 10,000 residents</em></p>
+                <p><em>Estimated annual rate per 10,000</em></p>
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-Asth1196-2"></div>
                 
             </div>
@@ -1618,6 +1421,203 @@
     });
         
     </script>
+    <button data-toggle="modal" data-target="#modal-Asth1201-2" class="indicator-anchor">
+    <div class="row align-items-center">
+        <div class="col-6 col-md-5">
+            <span class="indicator-short-name">Asthma hospitalizations (age 5 to 17)</span>
+        </div>
+        <div class="col-6 col-md-4 topic-list">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/Asth1201_307.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
+        <div class="d-none d-md-inline col-md-3">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/Asth1201_307.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+        </div>
+    </div>
+</button>
+
+
+<div class="modal fade report-modal" id="modal-Asth1201-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-left">
+                <h2 class="modal-title fs-xl" id="exampleModalLabel">Asthma hospitalizations (age 5 to 17)</h2>
+                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
+                    <span class="fas fa-times-circle"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2 class="fs-xl">Asthma hospitalizations among children ages 5 to 17 years old, 2018</h2>
+                <p>In <strong>Gramercy Park - Murray Hill</strong>, the asthma hospitalizations among children ages 5 to 17 years old, 2018 is <span class="better">Better</span>compared to the NYC average.</p>Asthma hospitalizations are more severe asthma outcomes. They're often clustered in high-poverty neighborhoods, where disinvestment and poor housing conditions expose residents to triggers.</div>
+            <hr>
+            <div class="modal-body">
+                <h3>Neighborhood Comparison</h3>
+                <div class="row comparison">
+                    <div class="col-sm-4 text-primary">Gramercy Park - Murray Hill <span class="indicator-value">10.3*</span></div>
+                    <div class="col-sm-4">Manhattan <span class="indicator-value">26.5</span></div>
+                    <div class="col-sm-4">New York City <span class="indicator-value">25.1</span></div>
+                </div>
+                <p><em>Estimated annual rate per 10,000</em></p><div class="data-note">*Estimate is based on small numbers so should be interpreted with caution.</div></div>
+            <hr>
+            <div class="modal-body">
+                <h3>Asthma hospitalizations among children ages 5 to 17 years old, 2018</h3>
+                <p>  <em>Estimated annual rateper 10,000</em></p>
+                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Asth1201-2"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>Trends Over Time</h3>
+                <p><em>Estimated annual rate per 10,000</em></p>
+                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Asth1201-2"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>By Neighborhood</h3>
+                <p><em>Estimated annual rate per 10,000</em></p>
+                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Asth1201-2"></div>
+                
+            </div>
+            
+            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    $( "#modal-Asth1201-2" ).on('shown.bs.modal', function() {
+        
+        var opt = {"renderer": "svg"};
+
+        
+        
+        aq.loadCSV(
+
+            
+            
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/data/" + data_download_loc
+        
+        ).then(data => {
+            
+            arqTable = data;
+
+
+            
+
+            
+            
+            var summaryData = 
+                arqTable
+                .filter(d => d.data_field_name == "Asth1201")
+                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
+                .dedupe()
+                .groupby("neighborhood")
+                .orderby("neighborhood", aq.desc("end_date"))
+                .slice(0,1) 
+                .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
+                .orderby("data_value") 
+                .select(aq.not("end_date"))
+                .objects()
+                
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
+                
+                summarySpec = data;
+
+                
+
+                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#summary-Asth1201-2", 
+                    summarySpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("summaryData", summaryData).run()
+
+                }).catch(console.error);;
+                
+            });
+            
+
+            
+
+            
+
+            var mapData = summaryData;
+
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
+                
+                mapSpec = data;
+
+                
+
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#map-Asth1201-2", 
+                    mapSpec,
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("mapData", mapData).run()
+                    
+                }).catch(console.error);
+                
+            });
+
+            
+            
+
+            
+            
+            var trendData = 
+                arqTable
+                .filter(d => d.data_field_name == "Asth1201")
+                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
+                .dedupe()
+                .objects()
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/trendSpec.json").then(data => {
+                
+                
+                
+                trendSpec = data;
+                
+                
+
+                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#trend-Asth1201-2", 
+                    trendSpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("trendData", trendData).run()
+                    
+                }).catch(console.error);;
+                
+            });
+            
+        });
+            
+    });
+        
+    </script>
     </div>
                             
                             
@@ -1672,7 +1672,7 @@
             </div>
             <div class="modal-body">
                 <h2 class="fs-xl">Attributable asthma emergency department visits among adults ages 18 and older, 2015-2017</h2>
-                <p>In <strong>Gramercy Park - Murray Hill</strong>, the attributable asthma emergency department visits among adults ages 18 and older, 2015-2017 is <span class="better">Better</span>compared to the NYC average.</p><p>PM2.5-attributable asthma ED visits represent part of the health burden imposed by fine particle air pollution.</p></div>
+                <p>In <strong>Gramercy Park - Murray Hill</strong>, the attributable asthma emergency department visits among adults ages 18 and older, 2015-2017 is <span class="better">Better</span>compared to the NYC average.</p>PM2.5 can cause asthma ED visits, which represent part of the health burden of fine particle air pollution.</div>
             <hr>
             <div class="modal-body">
                 <h3>Neighborhood Comparison</h3>
@@ -1681,11 +1681,11 @@
                     <div class="col-sm-4">Manhattan <span class="indicator-value">34.8</span></div>
                     <div class="col-sm-4">New York City <span class="indicator-value">34.6</span></div>
                 </div>
-                <p><em>Estimated Annual Rate- 18 Yrs and Older per 100,000 adults</em></p><div class="data-note"></div></div>
+                <p><em>Estimated annual rate (age 18&#43;) per 100,000 adults</em></p><div class="data-note"></div></div>
             <hr>
             <div class="modal-body">
                 <h3>Attributable asthma emergency department visits among adults ages 18 and older, 2015-2017</h3>
-                <p>  <em>Estimated Annual Rate- 18 Yrs and Olderper 100,000 adults</em></p>
+                <p>  <em>Estimated annual rate (age 18&#43;)per 100,000 adults</em></p>
                 <div style="width:100%; height:30vmin; z-index:10000;" id="summary-PM2-657-3"></div> 
                 
             </div>
@@ -1693,7 +1693,7 @@
             <div class="modal-body">
                 
                 <h3>Trends Over Time</h3>
-                <p><em>Estimated Annual Rate- 18 Yrs and Older per 100,000 adults</em></p>
+                <p><em>Estimated annual rate (age 18&#43;) per 100,000 adults</em></p>
                 <div style="width:100%; height:50vmin; z-index:10000;" id="trend-PM2-657-3"></div> 
                 
             </div>
@@ -1701,7 +1701,7 @@
             <div class="modal-body">
                 
                 <h3>By Neighborhood</h3>
-                <p><em>Estimated Annual Rate- 18 Yrs and Older per 100,000 adults</em></p>
+                <p><em>Estimated annual rate (age 18&#43;) per 100,000 adults</em></p>
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-PM2-657-3"></div>
                 
             </div>
@@ -1869,7 +1869,7 @@
             </div>
             <div class="modal-body">
                 <h2 class="fs-xl">Attributable asthma emergency department visits among children under 18 years of age, 2015-2017</h2>
-                <p>In <strong>Gramercy Park - Murray Hill</strong>, the attributable asthma emergency department visits among children under 18 years of age, 2015-2017 is <span class="middle">Middle</span>compared to the NYC average.</p><p>PM2.5-attributable asthma ED visits represent part of the health burden imposed by fine particle air pollution.</p></div>
+                <p>In <strong>Gramercy Park - Murray Hill</strong>, the attributable asthma emergency department visits among children under 18 years of age, 2015-2017 is <span class="middle">Middle</span>compared to the NYC average.</p>PM2.5 can cause asthma ED visits, which represent part of the health burden of fine particle air pollution.</div>
             <hr>
             <div class="modal-body">
                 <h3>Neighborhood Comparison</h3>
@@ -1878,11 +1878,11 @@
                     <div class="col-sm-4">Manhattan <span class="indicator-value">93.5</span></div>
                     <div class="col-sm-4">New York City <span class="indicator-value">78.2</span></div>
                 </div>
-                <p><em>Estimated Annual Rate- Children 0 to 17 Yrs Old per 100,000 children</em></p><div class="data-note"></div></div>
+                <p><em>Estimated annual rate (under age 18) per 100,000 children</em></p><div class="data-note"></div></div>
             <hr>
             <div class="modal-body">
                 <h3>Attributable asthma emergency department visits among children under 18 years of age, 2015-2017</h3>
-                <p>  <em>Estimated Annual Rate- Children 0 to 17 Yrs Oldper 100,000 children</em></p>
+                <p>  <em>Estimated annual rate (under age 18)per 100,000 children</em></p>
                 <div style="width:100%; height:30vmin; z-index:10000;" id="summary-PM2-648-3"></div> 
                 
             </div>
@@ -1890,7 +1890,7 @@
             <div class="modal-body">
                 
                 <h3>Trends Over Time</h3>
-                <p><em>Estimated Annual Rate- Children 0 to 17 Yrs Old per 100,000 children</em></p>
+                <p><em>Estimated annual rate (under age 18) per 100,000 children</em></p>
                 <div style="width:100%; height:50vmin; z-index:10000;" id="trend-PM2-648-3"></div> 
                 
             </div>
@@ -1898,7 +1898,7 @@
             <div class="modal-body">
                 
                 <h3>By Neighborhood</h3>
-                <p><em>Estimated Annual Rate- Children 0 to 17 Yrs Old per 100,000 children</em></p>
+                <p><em>Estimated annual rate (under age 18) per 100,000 children</em></p>
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-PM2-648-3"></div>
                 
             </div>
@@ -2070,204 +2070,7 @@
                                         Rank<br>
                                         <span class="meta"> out of the 42 neighborhoods</span>
                                     </div>
-                                </div><button data-toggle="modal" data-target="#modal-O3-A659-4" class="indicator-anchor">
-    <div class="row align-items-center">
-        <div class="col-6 col-md-5">
-            <span class="indicator-short-name">Ozone asthma ED visits (adults)</span>
-        </div>
-        <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/O3-A659_307.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
-        <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/O3-A659_307.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
-        </div>
-    </div>
-</button>
-
-
-<div class="modal fade report-modal" id="modal-O3-A659-4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header text-left">
-                <h2 class="modal-title fs-xl" id="exampleModalLabel">Ozone asthma ED visits (adults)</h2>
-                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
-                    <span class="fas fa-times-circle"></span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h2 class="fs-xl">Attributable asthma emergency department visits among adults ages 18 years and older, 2015-2017</h2>
-                <p>In <strong>Gramercy Park - Murray Hill</strong>, the attributable asthma emergency department visits among adults ages 18 years and older, 2015-2017 is <span class="better">Better</span>compared to the NYC average.</p>Ozone-attributable asthma ED visits represent part of the health burden of ozone air pollution.</div>
-            <hr>
-            <div class="modal-body">
-                <h3>Neighborhood Comparison</h3>
-                <div class="row comparison">
-                    <div class="col-sm-4 text-primary">Gramercy Park - Murray Hill <span class="indicator-value">21.5</span></div>
-                    <div class="col-sm-4">Manhattan <span class="indicator-value">45</span></div>
-                    <div class="col-sm-4">New York City <span class="indicator-value">48.3</span></div>
-                </div>
-                <p><em>Estimated Annual Rate- 18 Yrs and Older per 100,000 adults</em></p><div class="data-note"></div></div>
-            <hr>
-            <div class="modal-body">
-                <h3>Attributable asthma emergency department visits among adults ages 18 years and older, 2015-2017</h3>
-                <p>  <em>Estimated Annual Rate- 18 Yrs and Olderper 100,000 adults</em></p>
-                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-O3-A659-4"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>Trends Over Time</h3>
-                <p><em>Estimated Annual Rate- 18 Yrs and Older per 100,000 adults</em></p>
-                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-O3-A659-4"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>By Neighborhood</h3>
-                <p><em>Estimated Annual Rate- 18 Yrs and Older per 100,000 adults</em></p>
-                <div style="width:100%; height:60vmin; z-index:10000;" id="map-O3-A659-4"></div>
-                
-            </div>
-            
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-<script type="text/javascript">
-
-    $( "#modal-O3-A659-4" ).on('shown.bs.modal', function() {
-        
-        var opt = {"renderer": "svg"};
-
-        
-        
-        aq.loadCSV(
-
-            
-            
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/data/" + data_download_loc
-        
-        ).then(data => {
-            
-            arqTable = data;
-
-
-            
-
-            
-            
-            var summaryData = 
-                arqTable
-                .filter(d => d.data_field_name == "O3-A659")
-                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
-                .dedupe()
-                .groupby("neighborhood")
-                .orderby("neighborhood", aq.desc("end_date"))
-                .slice(0,1) 
-                .ungroup()
-                .derive({data_value: d => op.parse_float(d.data_value)})
-                .orderby("data_value") 
-                .select(aq.not("end_date"))
-                .objects()
-                
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
-                
-                summarySpec = data;
-
-                
-
-                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#summary-O3-A659-4", 
-                    summarySpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("summaryData", summaryData).run()
-
-                }).catch(console.error);;
-                
-            });
-            
-
-            
-
-            
-
-            var mapData = summaryData;
-
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
-                
-                mapSpec = data;
-
-                
-
-                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#map-O3-A659-4", 
-                    mapSpec,
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("mapData", mapData).run()
-                    
-                }).catch(console.error);
-                
-            });
-
-            
-            
-
-            
-            
-            var trendData = 
-                arqTable
-                .filter(d => d.data_field_name == "O3-A659")
-                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
-                .dedupe()
-                .objects()
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/trendSpec.json").then(data => {
-                
-                
-                
-                trendSpec = data;
-                
-                
-
-                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#trend-O3-A659-4", 
-                    trendSpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("trendData", trendData).run()
-                    
-                }).catch(console.error);;
-                
-            });
-            
-        });
-            
-    });
-        
-    </script>
-    <button data-toggle="modal" data-target="#modal-O3-A661-4" class="indicator-anchor">
+                                </div><button data-toggle="modal" data-target="#modal-O3-A661-4" class="indicator-anchor">
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
             <span class="indicator-short-name">Ozone asthma hospitalizations (adults)</span>
@@ -2292,7 +2095,7 @@
             </div>
             <div class="modal-body">
                 <h2 class="fs-xl">Attributable asthma hospitalizations among adults ages 18 years and older, 2015-2017</h2>
-                <p>In <strong>Gramercy Park - Murray Hill</strong>, the attributable asthma hospitalizations among adults ages 18 years and older, 2015-2017 is <span class="better">Better</span>compared to the NYC average.</p><p>Ozone-attributable asthma hospitalizations represent part of the health burden of ozone air pollution.</p></div>
+                <p>In <strong>Gramercy Park - Murray Hill</strong>, the attributable asthma hospitalizations among adults ages 18 years and older, 2015-2017 is <span class="better">Better</span>compared to the NYC average.</p>Ozone can cause hospitalizations for asthma, which are part of the health burden of air pollution.</div>
             <hr>
             <div class="modal-body">
                 <h3>Neighborhood Comparison</h3>
@@ -2301,11 +2104,11 @@
                     <div class="col-sm-4">Manhattan <span class="indicator-value">2.8</span></div>
                     <div class="col-sm-4">New York City <span class="indicator-value">3.9</span></div>
                 </div>
-                <p><em>Estimated Annual Rate- 18 Yrs and Older per 100,000 adults</em></p><div class="data-note"></div></div>
+                <p><em>Estimated annual rate (age 18&#43;) per 100,000 adults</em></p><div class="data-note"></div></div>
             <hr>
             <div class="modal-body">
                 <h3>Attributable asthma hospitalizations among adults ages 18 years and older, 2015-2017</h3>
-                <p>  <em>Estimated Annual Rate- 18 Yrs and Olderper 100,000 adults</em></p>
+                <p>  <em>Estimated annual rate (age 18&#43;)per 100,000 adults</em></p>
                 <div style="width:100%; height:30vmin; z-index:10000;" id="summary-O3-A661-4"></div> 
                 
             </div>
@@ -2313,7 +2116,7 @@
             <div class="modal-body">
                 
                 <h3>Trends Over Time</h3>
-                <p><em>Estimated Annual Rate- 18 Yrs and Older per 100,000 adults</em></p>
+                <p><em>Estimated annual rate (age 18&#43;) per 100,000 adults</em></p>
                 <div style="width:100%; height:50vmin; z-index:10000;" id="trend-O3-A661-4"></div> 
                 
             </div>
@@ -2321,7 +2124,7 @@
             <div class="modal-body">
                 
                 <h3>By Neighborhood</h3>
-                <p><em>Estimated Annual Rate- 18 Yrs and Older per 100,000 adults</em></p>
+                <p><em>Estimated annual rate (age 18&#43;) per 100,000 adults</em></p>
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-O3-A661-4"></div>
                 
             </div>
@@ -2464,6 +2267,203 @@
     });
         
     </script>
+    <button data-toggle="modal" data-target="#modal-O3-A659-4" class="indicator-anchor">
+    <div class="row align-items-center">
+        <div class="col-6 col-md-5">
+            <span class="indicator-short-name">Ozone asthma ED visits (adults)</span>
+        </div>
+        <div class="col-6 col-md-4 topic-list">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/O3-A659_307.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
+        <div class="d-none d-md-inline col-md-3">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/O3-A659_307.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+        </div>
+    </div>
+</button>
+
+
+<div class="modal fade report-modal" id="modal-O3-A659-4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-left">
+                <h2 class="modal-title fs-xl" id="exampleModalLabel">Ozone asthma ED visits (adults)</h2>
+                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
+                    <span class="fas fa-times-circle"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2 class="fs-xl">Attributable asthma emergency department visits among adults ages 18 years and older, 2015-2017</h2>
+                <p>In <strong>Gramercy Park - Murray Hill</strong>, the attributable asthma emergency department visits among adults ages 18 years and older, 2015-2017 is <span class="better">Better</span>compared to the NYC average.</p>Ozone can cause asthma ED visits, which are part of the health burden of air pollution.</div>
+            <hr>
+            <div class="modal-body">
+                <h3>Neighborhood Comparison</h3>
+                <div class="row comparison">
+                    <div class="col-sm-4 text-primary">Gramercy Park - Murray Hill <span class="indicator-value">21.5</span></div>
+                    <div class="col-sm-4">Manhattan <span class="indicator-value">45</span></div>
+                    <div class="col-sm-4">New York City <span class="indicator-value">48.3</span></div>
+                </div>
+                <p><em>Estimated annual rate (age 18&#43;) per 100,000 adults</em></p><div class="data-note"></div></div>
+            <hr>
+            <div class="modal-body">
+                <h3>Attributable asthma emergency department visits among adults ages 18 years and older, 2015-2017</h3>
+                <p>  <em>Estimated annual rate (age 18&#43;)per 100,000 adults</em></p>
+                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-O3-A659-4"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>Trends Over Time</h3>
+                <p><em>Estimated annual rate (age 18&#43;) per 100,000 adults</em></p>
+                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-O3-A659-4"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>By Neighborhood</h3>
+                <p><em>Estimated annual rate (age 18&#43;) per 100,000 adults</em></p>
+                <div style="width:100%; height:60vmin; z-index:10000;" id="map-O3-A659-4"></div>
+                
+            </div>
+            
+            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    $( "#modal-O3-A659-4" ).on('shown.bs.modal', function() {
+        
+        var opt = {"renderer": "svg"};
+
+        
+        
+        aq.loadCSV(
+
+            
+            
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/data/" + data_download_loc
+        
+        ).then(data => {
+            
+            arqTable = data;
+
+
+            
+
+            
+            
+            var summaryData = 
+                arqTable
+                .filter(d => d.data_field_name == "O3-A659")
+                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
+                .dedupe()
+                .groupby("neighborhood")
+                .orderby("neighborhood", aq.desc("end_date"))
+                .slice(0,1) 
+                .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
+                .orderby("data_value") 
+                .select(aq.not("end_date"))
+                .objects()
+                
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
+                
+                summarySpec = data;
+
+                
+
+                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#summary-O3-A659-4", 
+                    summarySpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("summaryData", summaryData).run()
+
+                }).catch(console.error);;
+                
+            });
+            
+
+            
+
+            
+
+            var mapData = summaryData;
+
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
+                
+                mapSpec = data;
+
+                
+
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#map-O3-A659-4", 
+                    mapSpec,
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("mapData", mapData).run()
+                    
+                }).catch(console.error);
+                
+            });
+
+            
+            
+
+            
+            
+            var trendData = 
+                arqTable
+                .filter(d => d.data_field_name == "O3-A659")
+                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
+                .dedupe()
+                .objects()
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/trendSpec.json").then(data => {
+                
+                
+                
+                trendSpec = data;
+                
+                
+
+                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#trend-O3-A659-4", 
+                    trendSpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("trendData", trendData).run()
+                    
+                }).catch(console.error);;
+                
+            });
+            
+        });
+            
+    });
+        
+    </script>
     <button data-toggle="modal" data-target="#modal-O3-A653-4" class="indicator-anchor">
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
@@ -2489,7 +2489,7 @@
             </div>
             <div class="modal-body">
                 <h2 class="fs-xl">Attributable asthma emergency department visits among children under 18 years of age, 2015-2017</h2>
-                <p>In <strong>Gramercy Park - Murray Hill</strong>, the attributable asthma emergency department visits among children under 18 years of age, 2015-2017 is <span class="middle">Middle</span>compared to the NYC average.</p>Ozone-attributable asthma ED visits represent part of the health burden of ozone air pollution.</div>
+                <p>In <strong>Gramercy Park - Murray Hill</strong>, the attributable asthma emergency department visits among children under 18 years of age, 2015-2017 is <span class="middle">Middle</span>compared to the NYC average.</p>Ozone can cause asthma ED visits, which are part of the health burden of air pollution.</div>
             <hr>
             <div class="modal-body">
                 <h3>Neighborhood Comparison</h3>
@@ -2498,11 +2498,11 @@
                     <div class="col-sm-4">Manhattan <span class="indicator-value">113.3</span></div>
                     <div class="col-sm-4">New York City <span class="indicator-value">101.9</span></div>
                 </div>
-                <p><em>Estimated Annual Rate- Children 0 to 17 Yrs Old per 100,000 children</em></p><div class="data-note"></div></div>
+                <p><em>Estimated annual rate (under age 18) per 100,000 children</em></p><div class="data-note"></div></div>
             <hr>
             <div class="modal-body">
                 <h3>Attributable asthma emergency department visits among children under 18 years of age, 2015-2017</h3>
-                <p>  <em>Estimated Annual Rate- Children 0 to 17 Yrs Oldper 100,000 children</em></p>
+                <p>  <em>Estimated annual rate (under age 18)per 100,000 children</em></p>
                 <div style="width:100%; height:30vmin; z-index:10000;" id="summary-O3-A653-4"></div> 
                 
             </div>
@@ -2510,7 +2510,7 @@
             <div class="modal-body">
                 
                 <h3>Trends Over Time</h3>
-                <p><em>Estimated Annual Rate- Children 0 to 17 Yrs Old per 100,000 children</em></p>
+                <p><em>Estimated annual rate (under age 18) per 100,000 children</em></p>
                 <div style="width:100%; height:50vmin; z-index:10000;" id="trend-O3-A653-4"></div> 
                 
             </div>
@@ -2518,7 +2518,7 @@
             <div class="modal-body">
                 
                 <h3>By Neighborhood</h3>
-                <p><em>Estimated Annual Rate- Children 0 to 17 Yrs Old per 100,000 children</em></p>
+                <p><em>Estimated annual rate (under age 18) per 100,000 children</em></p>
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-O3-A653-4"></div>
                 
             </div>
@@ -2686,7 +2686,7 @@
             </div>
             <div class="modal-body">
                 <h2 class="fs-xl">Attributable asthma hospitalizations among children under 18 years of age, 2015-2017</h2>
-                <p>In <strong>Gramercy Park - Murray Hill</strong>, the attributable asthma hospitalizations among children under 18 years of age, 2015-2017 is <span class="middle">Middle</span>compared to the NYC average.</p><p>Ozone-attributable asthma hospitalizations represent part of the health burden of ozone air pollution.</p></div>
+                <p>In <strong>Gramercy Park - Murray Hill</strong>, the attributable asthma hospitalizations among children under 18 years of age, 2015-2017 is <span class="middle">Middle</span>compared to the NYC average.</p>Ozone can cause hospitalizations for asthma, which are part of the health burden of air pollution.</div>
             <hr>
             <div class="modal-body">
                 <h3>Neighborhood Comparison</h3>
@@ -2695,11 +2695,11 @@
                     <div class="col-sm-4">Manhattan <span class="indicator-value">18</span></div>
                     <div class="col-sm-4">New York City <span class="indicator-value">18.7</span></div>
                 </div>
-                <p><em>Estimated Annual Rate- Children 0 to 17 Yrs Old per 100,000 children</em></p><div class="data-note"></div></div>
+                <p><em>Estimated annual rate (under age 18) per 100,000 children</em></p><div class="data-note"></div></div>
             <hr>
             <div class="modal-body">
                 <h3>Attributable asthma hospitalizations among children under 18 years of age, 2015-2017</h3>
-                <p>  <em>Estimated Annual Rate- Children 0 to 17 Yrs Oldper 100,000 children</em></p>
+                <p>  <em>Estimated annual rate (under age 18)per 100,000 children</em></p>
                 <div style="width:100%; height:30vmin; z-index:10000;" id="summary-O3-A655-4"></div> 
                 
             </div>
@@ -2707,7 +2707,7 @@
             <div class="modal-body">
                 
                 <h3>Trends Over Time</h3>
-                <p><em>Estimated Annual Rate- Children 0 to 17 Yrs Old per 100,000 children</em></p>
+                <p><em>Estimated annual rate (under age 18) per 100,000 children</em></p>
                 <div style="width:100%; height:50vmin; z-index:10000;" id="trend-O3-A655-4"></div> 
                 
             </div>
@@ -2715,7 +2715,7 @@
             <div class="modal-body">
                 
                 <h3>By Neighborhood</h3>
-                <p><em>Estimated Annual Rate- Children 0 to 17 Yrs Old per 100,000 children</em></p>
+                <p><em>Estimated annual rate (under age 18) per 100,000 children</em></p>
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-O3-A655-4"></div>
                 
             </div>
@@ -2921,11 +2921,11 @@
                     <div class="col-sm-4">Manhattan <span class="indicator-value">12.3</span></div>
                     <div class="col-sm-4">New York City <span class="indicator-value">12.3</span></div>
                 </div>
-                <p><em>Percent of Households </em></p><div class="data-note">*Estimate is based on small numbers so should be interpreted with caution.</div></div>
+                <p><em>Percent </em></p><div class="data-note">*Estimate is based on small numbers so should be interpreted with caution.</div></div>
             <hr>
             <div class="modal-body">
                 <h3>Homes with cracks or holes, 2017</h3>
-                <p>  <em>Percent of Households</em></p>
+                <p>  <em>Percent</em></p>
                 <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Home76-5"></div> 
                 
             </div>
@@ -2933,7 +2933,7 @@
             <div class="modal-body">
                 
                 <h3>Trends Over Time</h3>
-                <p><em>Percent of Households </em></p>
+                <p><em>Percent </em></p>
                 <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Home76-5"></div> 
                 
             </div>
@@ -2941,7 +2941,7 @@
             <div class="modal-body">
                 
                 <h3>By Neighborhood</h3>
-                <p><em>Percent of Households </em></p>
+                <p><em>Percent </em></p>
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-Home76-5"></div>
                 
             </div>
@@ -3084,203 +3084,6 @@
     });
         
     </script>
-    <button data-toggle="modal" data-target="#modal-Home80-5" class="indicator-anchor">
-    <div class="row align-items-center">
-        <div class="col-6 col-md-5">
-            <span class="indicator-short-name">Leaks</span>
-        </div>
-        <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/Home80_307.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
-        <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/Home80_307.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
-        </div>
-    </div>
-</button>
-
-
-<div class="modal fade report-modal" id="modal-Home80-5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header text-left">
-                <h2 class="modal-title fs-xl" id="exampleModalLabel">Leaks</h2>
-                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
-                    <span class="fas fa-times-circle"></span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h2 class="fs-xl">Homes with leaks, 2017</h2>
-                <p>In <strong>Gramercy Park - Murray Hill</strong>, the homes with leaks, 2017 is <span class="better">Better</span>compared to the NYC average.</p>Leaks are a maintenance deficiency that can harm health by introducing mold, which can worsen respiratory conditions like asthma.</div>
-            <hr>
-            <div class="modal-body">
-                <h3>Neighborhood Comparison</h3>
-                <div class="row comparison">
-                    <div class="col-sm-4 text-primary">Gramercy Park - Murray Hill <span class="indicator-value">6.9</span></div>
-                    <div class="col-sm-4">Manhattan <span class="indicator-value">14.4</span></div>
-                    <div class="col-sm-4">New York City <span class="indicator-value">13.4</span></div>
-                </div>
-                <p><em>Percent of Households </em></p><div class="data-note"></div></div>
-            <hr>
-            <div class="modal-body">
-                <h3>Homes with leaks, 2017</h3>
-                <p>  <em>Percent of Households</em></p>
-                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Home80-5"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>Trends Over Time</h3>
-                <p><em>Percent of Households </em></p>
-                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Home80-5"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>By Neighborhood</h3>
-                <p><em>Percent of Households </em></p>
-                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Home80-5"></div>
-                
-            </div>
-            
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-<script type="text/javascript">
-
-    $( "#modal-Home80-5" ).on('shown.bs.modal', function() {
-        
-        var opt = {"renderer": "svg"};
-
-        
-        
-        aq.loadCSV(
-
-            
-            
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/data/" + data_download_loc
-        
-        ).then(data => {
-            
-            arqTable = data;
-
-
-            
-
-            
-            
-            var summaryData = 
-                arqTable
-                .filter(d => d.data_field_name == "Home80")
-                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
-                .dedupe()
-                .groupby("neighborhood")
-                .orderby("neighborhood", aq.desc("end_date"))
-                .slice(0,1) 
-                .ungroup()
-                .derive({data_value: d => op.parse_float(d.data_value)})
-                .orderby("data_value") 
-                .select(aq.not("end_date"))
-                .objects()
-                
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
-                
-                summarySpec = data;
-
-                
-
-                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#summary-Home80-5", 
-                    summarySpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("summaryData", summaryData).run()
-
-                }).catch(console.error);;
-                
-            });
-            
-
-            
-
-            
-
-            var mapData = summaryData;
-
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
-                
-                mapSpec = data;
-
-                
-
-                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#map-Home80-5", 
-                    mapSpec,
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("mapData", mapData).run()
-                    
-                }).catch(console.error);
-                
-            });
-
-            
-            
-
-            
-            
-            var trendData = 
-                arqTable
-                .filter(d => d.data_field_name == "Home80")
-                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
-                .dedupe()
-                .objects()
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/trendSpec.json").then(data => {
-                
-                
-                
-                trendSpec = data;
-                
-                
-
-                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#trend-Home80-5", 
-                    trendSpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("trendData", trendData).run()
-                    
-                }).catch(console.error);;
-                
-            });
-            
-        });
-            
-    });
-        
-    </script>
     <button data-toggle="modal" data-target="#modal-Rent1248-5" class="indicator-anchor">
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
@@ -3306,7 +3109,7 @@
             </div>
             <div class="modal-body">
                 <h2 class="fs-xl">Renter-occupied homes with any health-related maintenance problems (percent) 2017</h2>
-                <p>In <strong>Gramercy Park - Murray Hill</strong>, the renter-occupied homes with any health-related maintenance problems (percent) 2017 is <span class="better">Better</span>compared to the NYC average.</p>Housing without health-threatening maintenance deficiencies is an important environmental component of health.</div>
+                <p>In <strong>Gramercy Park - Murray Hill</strong>, the renter-occupied homes with any health-related maintenance problems (percent) 2017 is <span class="better">Better</span>compared to the NYC average.</p>Homes with maintenance deficiencies can threaten the health of the people who live there.</div>
             <hr>
             <div class="modal-body">
                 <h3>Neighborhood Comparison</h3>
@@ -3315,11 +3118,11 @@
                     <div class="col-sm-4">Manhattan <span class="indicator-value">56.6</span></div>
                     <div class="col-sm-4">New York City <span class="indicator-value">61.5</span></div>
                 </div>
-                <p><em>Percent of Households </em></p><div class="data-note"></div></div>
+                <p><em>Percent </em></p><div class="data-note"></div></div>
             <hr>
             <div class="modal-body">
                 <h3>Renter-occupied homes with any health-related maintenance problems (percent) 2017</h3>
-                <p>  <em>Percent of Households</em></p>
+                <p>  <em>Percent</em></p>
                 <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Rent1248-5"></div> 
                 
             </div>
@@ -3327,7 +3130,7 @@
             <div class="modal-body">
                 
                 <h3>Trends Over Time</h3>
-                <p><em>Percent of Households </em></p>
+                <p><em>Percent </em></p>
                 <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Rent1248-5"></div> 
                 
             </div>
@@ -3335,7 +3138,7 @@
             <div class="modal-body">
                 
                 <h3>By Neighborhood</h3>
-                <p><em>Percent of Households </em></p>
+                <p><em>Percent </em></p>
                 <div style="width:100%; height:60vmin; z-index:10000;" id="map-Rent1248-5"></div>
                 
             </div>
@@ -3478,6 +3281,203 @@
     });
         
     </script>
+    <button data-toggle="modal" data-target="#modal-Home80-5" class="indicator-anchor">
+    <div class="row align-items-center">
+        <div class="col-6 col-md-5">
+            <span class="indicator-short-name">Leaks</span>
+        </div>
+        <div class="col-6 col-md-4 topic-list">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/Home80_307.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
+        <div class="d-none d-md-inline col-md-3">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/Home80_307.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+        </div>
+    </div>
+</button>
+
+
+<div class="modal fade report-modal" id="modal-Home80-5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-left">
+                <h2 class="modal-title fs-xl" id="exampleModalLabel">Leaks</h2>
+                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
+                    <span class="fas fa-times-circle"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2 class="fs-xl">Homes with leaks, 2017</h2>
+                <p>In <strong>Gramercy Park - Murray Hill</strong>, the homes with leaks, 2017 is <span class="better">Better</span>compared to the NYC average.</p>Leaks are a maintenance deficiency that can harm health by introducing mold, which can worsen respiratory conditions like asthma.</div>
+            <hr>
+            <div class="modal-body">
+                <h3>Neighborhood Comparison</h3>
+                <div class="row comparison">
+                    <div class="col-sm-4 text-primary">Gramercy Park - Murray Hill <span class="indicator-value">6.9</span></div>
+                    <div class="col-sm-4">Manhattan <span class="indicator-value">14.4</span></div>
+                    <div class="col-sm-4">New York City <span class="indicator-value">13.4</span></div>
+                </div>
+                <p><em>Percent </em></p><div class="data-note"></div></div>
+            <hr>
+            <div class="modal-body">
+                <h3>Homes with leaks, 2017</h3>
+                <p>  <em>Percent</em></p>
+                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Home80-5"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>Trends Over Time</h3>
+                <p><em>Percent </em></p>
+                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Home80-5"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>By Neighborhood</h3>
+                <p><em>Percent </em></p>
+                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Home80-5"></div>
+                
+            </div>
+            
+            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    $( "#modal-Home80-5" ).on('shown.bs.modal', function() {
+        
+        var opt = {"renderer": "svg"};
+
+        
+        
+        aq.loadCSV(
+
+            
+            
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/data/" + data_download_loc
+        
+        ).then(data => {
+            
+            arqTable = data;
+
+
+            
+
+            
+            
+            var summaryData = 
+                arqTable
+                .filter(d => d.data_field_name == "Home80")
+                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
+                .dedupe()
+                .groupby("neighborhood")
+                .orderby("neighborhood", aq.desc("end_date"))
+                .slice(0,1) 
+                .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
+                .orderby("data_value") 
+                .select(aq.not("end_date"))
+                .objects()
+                
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
+                
+                summarySpec = data;
+
+                
+
+                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#summary-Home80-5", 
+                    summarySpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("summaryData", summaryData).run()
+
+                }).catch(console.error);;
+                
+            });
+            
+
+            
+
+            
+
+            var mapData = summaryData;
+
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
+                
+                mapSpec = data;
+
+                
+
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#map-Home80-5", 
+                    mapSpec,
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("mapData", mapData).run()
+                    
+                }).catch(console.error);
+                
+            });
+
+            
+            
+
+            
+            
+            var trendData = 
+                arqTable
+                .filter(d => d.data_field_name == "Home80")
+                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
+                .dedupe()
+                .objects()
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/trendSpec.json").then(data => {
+                
+                
+                
+                trendSpec = data;
+                
+                
+
+                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#trend-Home80-5", 
+                    trendSpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("trendData", trendData).run()
+                    
+                }).catch(console.error);;
+                
+            });
+            
+        });
+            
+    });
+        
+    </script>
     </div>
                             
                             
@@ -3507,7 +3507,204 @@
                                         Rank<br>
                                         <span class="meta"> out of the 42 neighborhoods</span>
                                     </div>
-                                </div><button data-toggle="modal" data-target="#modal-Adul47-6" class="indicator-anchor">
+                                </div><button data-toggle="modal" data-target="#modal-Home245-6" class="indicator-anchor">
+    <div class="row align-items-center">
+        <div class="col-6 col-md-5">
+            <span class="indicator-short-name">Cockroaches</span>
+        </div>
+        <div class="col-6 col-md-4 topic-list">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/Home245_307.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
+        <div class="d-none d-md-inline col-md-3">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/Home245_307.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+        </div>
+    </div>
+</button>
+
+
+<div class="modal fade report-modal" id="modal-Home245-6" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-left">
+                <h2 class="modal-title fs-xl" id="exampleModalLabel">Cockroaches</h2>
+                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
+                    <span class="fas fa-times-circle"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2 class="fs-xl">Homes with cockroaches, 2017</h2>
+                <p>In <strong>Gramercy Park - Murray Hill</strong>, the homes with cockroaches, 2017 is <span class="better">Better</span>compared to the NYC average.</p>The presence of cockroaches in the home is often associated with poor housing maintenance. Cockroaches in the home can contaminate food and worsen asthma.</div>
+            <hr>
+            <div class="modal-body">
+                <h3>Neighborhood Comparison</h3>
+                <div class="row comparison">
+                    <div class="col-sm-4 text-primary">Gramercy Park - Murray Hill <span class="indicator-value">10.1</span></div>
+                    <div class="col-sm-4">Manhattan <span class="indicator-value">20</span></div>
+                    <div class="col-sm-4">New York City <span class="indicator-value">24.1</span></div>
+                </div>
+                <p><em>Percent </em></p><div class="data-note"></div></div>
+            <hr>
+            <div class="modal-body">
+                <h3>Homes with cockroaches, 2017</h3>
+                <p>  <em>Percent</em></p>
+                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Home245-6"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>Trends Over Time</h3>
+                <p><em>Percent </em></p>
+                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Home245-6"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>By Neighborhood</h3>
+                <p><em>Percent </em></p>
+                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Home245-6"></div>
+                
+            </div>
+            
+            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    $( "#modal-Home245-6" ).on('shown.bs.modal', function() {
+        
+        var opt = {"renderer": "svg"};
+
+        
+        
+        aq.loadCSV(
+
+            
+            
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/data/" + data_download_loc
+        
+        ).then(data => {
+            
+            arqTable = data;
+
+
+            
+
+            
+            
+            var summaryData = 
+                arqTable
+                .filter(d => d.data_field_name == "Home245")
+                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
+                .dedupe()
+                .groupby("neighborhood")
+                .orderby("neighborhood", aq.desc("end_date"))
+                .slice(0,1) 
+                .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
+                .orderby("data_value") 
+                .select(aq.not("end_date"))
+                .objects()
+                
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
+                
+                summarySpec = data;
+
+                
+
+                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#summary-Home245-6", 
+                    summarySpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("summaryData", summaryData).run()
+
+                }).catch(console.error);;
+                
+            });
+            
+
+            
+
+            
+
+            var mapData = summaryData;
+
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
+                
+                mapSpec = data;
+
+                
+
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#map-Home245-6", 
+                    mapSpec,
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("mapData", mapData).run()
+                    
+                }).catch(console.error);
+                
+            });
+
+            
+            
+
+            
+            
+            var trendData = 
+                arqTable
+                .filter(d => d.data_field_name == "Home245")
+                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
+                .dedupe()
+                .objects()
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/trendSpec.json").then(data => {
+                
+                
+                
+                trendSpec = data;
+                
+                
+
+                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#trend-Home245-6", 
+                    trendSpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("trendData", trendData).run()
+                    
+                }).catch(console.error);;
+                
+            });
+            
+        });
+            
+    });
+        
+    </script>
+    <button data-toggle="modal" data-target="#modal-Adul47-6" class="indicator-anchor">
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
             <span class="indicator-short-name">Secondhand smoke</span>
@@ -3532,7 +3729,7 @@
             </div>
             <div class="modal-body">
                 <h2 class="fs-xl">Adults reporting secondhand smoke at home, 2012</h2>
-                <p>In <strong>Gramercy Park - Murray Hill</strong>, the adults reporting secondhand smoke at home, 2012 is <span class="better">Better</span>compared to the NYC average.</p>Secondhand smoke, especially indoors, is bad for health - especially for the health of children.</div>
+                <p>In <strong>Gramercy Park - Murray Hill</strong>, the adults reporting secondhand smoke at home, 2012 is <span class="better">Better</span>compared to the NYC average.</p>Adults reporting secondhand smoke at home. Secondhand smoke, especially indoors, is bad for health - particularly for the health of children.</div>
             <hr>
             <div class="modal-body">
                 <h3>Neighborhood Comparison</h3>
@@ -3704,400 +3901,6 @@
     });
         
     </script>
-    <button data-toggle="modal" data-target="#modal-Home245-6" class="indicator-anchor">
-    <div class="row align-items-center">
-        <div class="col-6 col-md-5">
-            <span class="indicator-short-name">Cockroaches</span>
-        </div>
-        <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/Home245_307.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
-        <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/Home245_307.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
-        </div>
-    </div>
-</button>
-
-
-<div class="modal fade report-modal" id="modal-Home245-6" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header text-left">
-                <h2 class="modal-title fs-xl" id="exampleModalLabel">Cockroaches</h2>
-                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
-                    <span class="fas fa-times-circle"></span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h2 class="fs-xl">Homes with cockroaches, 2017</h2>
-                <p>In <strong>Gramercy Park - Murray Hill</strong>, the homes with cockroaches, 2017 is <span class="better">Better</span>compared to the NYC average.</p>The saliva, feces, and shedding body parts of cockroaches are an allergen and can trigger asthma.</div>
-            <hr>
-            <div class="modal-body">
-                <h3>Neighborhood Comparison</h3>
-                <div class="row comparison">
-                    <div class="col-sm-4 text-primary">Gramercy Park - Murray Hill <span class="indicator-value">10.1</span></div>
-                    <div class="col-sm-4">Manhattan <span class="indicator-value">20</span></div>
-                    <div class="col-sm-4">New York City <span class="indicator-value">24.1</span></div>
-                </div>
-                <p><em>Percent of Households </em></p><div class="data-note"></div></div>
-            <hr>
-            <div class="modal-body">
-                <h3>Homes with cockroaches, 2017</h3>
-                <p>  <em>Percent of Households</em></p>
-                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Home245-6"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>Trends Over Time</h3>
-                <p><em>Percent of Households </em></p>
-                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Home245-6"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>By Neighborhood</h3>
-                <p><em>Percent of Households </em></p>
-                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Home245-6"></div>
-                
-            </div>
-            
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-<script type="text/javascript">
-
-    $( "#modal-Home245-6" ).on('shown.bs.modal', function() {
-        
-        var opt = {"renderer": "svg"};
-
-        
-        
-        aq.loadCSV(
-
-            
-            
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/data/" + data_download_loc
-        
-        ).then(data => {
-            
-            arqTable = data;
-
-
-            
-
-            
-            
-            var summaryData = 
-                arqTable
-                .filter(d => d.data_field_name == "Home245")
-                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
-                .dedupe()
-                .groupby("neighborhood")
-                .orderby("neighborhood", aq.desc("end_date"))
-                .slice(0,1) 
-                .ungroup()
-                .derive({data_value: d => op.parse_float(d.data_value)})
-                .orderby("data_value") 
-                .select(aq.not("end_date"))
-                .objects()
-                
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
-                
-                summarySpec = data;
-
-                
-
-                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#summary-Home245-6", 
-                    summarySpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("summaryData", summaryData).run()
-
-                }).catch(console.error);;
-                
-            });
-            
-
-            
-
-            
-
-            var mapData = summaryData;
-
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
-                
-                mapSpec = data;
-
-                
-
-                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#map-Home245-6", 
-                    mapSpec,
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("mapData", mapData).run()
-                    
-                }).catch(console.error);
-                
-            });
-
-            
-            
-
-            
-            
-            var trendData = 
-                arqTable
-                .filter(d => d.data_field_name == "Home245")
-                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
-                .dedupe()
-                .objects()
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/trendSpec.json").then(data => {
-                
-                
-                
-                trendSpec = data;
-                
-                
-
-                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#trend-Home245-6", 
-                    trendSpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("trendData", trendData).run()
-                    
-                }).catch(console.error);;
-                
-            });
-            
-        });
-            
-    });
-        
-    </script>
-    <button data-toggle="modal" data-target="#modal-Adul625-6" class="indicator-anchor">
-    <div class="row align-items-center">
-        <div class="col-6 col-md-5">
-            <span class="indicator-short-name">Mold</span>
-        </div>
-        <div class="col-6 col-md-4 topic-list">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/Adul625_307.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
-        <div class="d-none d-md-inline col-md-3">
-            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/Adul625_307.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
-        </div>
-    </div>
-</button>
-
-
-<div class="modal fade report-modal" id="modal-Adul625-6" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header text-left">
-                <h2 class="modal-title fs-xl" id="exampleModalLabel">Mold</h2>
-                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
-                    <span class="fas fa-times-circle"></span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h2 class="fs-xl">Adults reporting mold in the home (percent), 2012</h2>
-                <p>In <strong>Gramercy Park - Murray Hill</strong>, the adults reporting mold in the home (percent), 2012 is <span class="better">Better</span>compared to the NYC average.</p>Mold can worsen respiratory conditions like asthma, and indicate maintenance deficiencies in a building.</div>
-            <hr>
-            <div class="modal-body">
-                <h3>Neighborhood Comparison</h3>
-                <div class="row comparison">
-                    <div class="col-sm-4 text-primary">Gramercy Park - Murray Hill <span class="indicator-value">5.8</span></div>
-                    <div class="col-sm-4">Manhattan <span class="indicator-value">8</span></div>
-                    <div class="col-sm-4">New York City <span class="indicator-value">9.5</span></div>
-                </div>
-                <p><em>Percent </em></p><div class="data-note"></div></div>
-            <hr>
-            <div class="modal-body">
-                <h3>Adults reporting mold in the home (percent), 2012</h3>
-                <p>  <em>Percent</em></p>
-                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Adul625-6"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>Trends Over Time</h3>
-                <p><em>Percent </em></p>
-                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Adul625-6"></div> 
-                
-            </div>
-            <hr>
-            <div class="modal-body">
-                
-                <h3>By Neighborhood</h3>
-                <p><em>Percent </em></p>
-                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Adul625-6"></div>
-                
-            </div>
-            
-            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-<script type="text/javascript">
-
-    $( "#modal-Adul625-6" ).on('shown.bs.modal', function() {
-        
-        var opt = {"renderer": "svg"};
-
-        
-        
-        aq.loadCSV(
-
-            
-            
-            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/data/" + data_download_loc
-        
-        ).then(data => {
-            
-            arqTable = data;
-
-
-            
-
-            
-            
-            var summaryData = 
-                arqTable
-                .filter(d => d.data_field_name == "Adul625")
-                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
-                .dedupe()
-                .groupby("neighborhood")
-                .orderby("neighborhood", aq.desc("end_date"))
-                .slice(0,1) 
-                .ungroup()
-                .derive({data_value: d => op.parse_float(d.data_value)})
-                .orderby("data_value") 
-                .select(aq.not("end_date"))
-                .objects()
-                
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
-                
-                summarySpec = data;
-
-                
-
-                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#summary-Adul625-6", 
-                    summarySpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("summaryData", summaryData).run()
-
-                }).catch(console.error);;
-                
-            });
-            
-
-            
-
-            
-
-            var mapData = summaryData;
-
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
-                
-                mapSpec = data;
-
-                
-
-                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#map-Adul625-6", 
-                    mapSpec,
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("mapData", mapData).run()
-                    
-                }).catch(console.error);
-                
-            });
-
-            
-            
-
-            
-            
-            var trendData = 
-                arqTable
-                .filter(d => d.data_field_name == "Adul625")
-                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
-                .dedupe()
-                .objects()
-            
-            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/trendSpec.json").then(data => {
-                
-                
-                
-                trendSpec = data;
-                
-                
-
-                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
-                
-            }).then(() => {
-                
-                vegaEmbed(
-                    "#trend-Adul625-6", 
-                    trendSpec, 
-                    opt
-                ).then((res) => {
-                    
-                    res.view.insert("trendData", trendData).run()
-                    
-                }).catch(console.error);;
-                
-            });
-            
-        });
-            
-    });
-        
-    </script>
     <button data-toggle="modal" data-target="#modal-Adul634-6" class="indicator-anchor">
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
@@ -4123,7 +3926,7 @@
             </div>
             <div class="modal-body">
                 <h2 class="fs-xl">Adults reporting mice in the home, 2012</h2>
-                <p>In <strong>Gramercy Park - Murray Hill</strong>, the adults reporting mice in the home, 2012 is <span class="better">Better</span>compared to the NYC average.</p>Mice or rats in the home are a source of household allergens connected to the developement of asthma and exacerbation of asthma symptoms. They may also indicate other health-threatening maintenance deficiencies.</div>
+                <p>In <strong>Gramercy Park - Murray Hill</strong>, the adults reporting mice in the home, 2012 is <span class="better">Better</span>compared to the NYC average.</p>Mice and rats are a source of household allergens connected to developing or worsening asthma.</div>
             <hr>
             <div class="modal-body">
                 <h3>Neighborhood Comparison</h3>
@@ -4295,6 +4098,203 @@
     });
         
     </script>
+    <button data-toggle="modal" data-target="#modal-Adul625-6" class="indicator-anchor">
+    <div class="row align-items-center">
+        <div class="col-6 col-md-5">
+            <span class="indicator-short-name">Mold</span>
+        </div>
+        <div class="col-6 col-md-4 topic-list">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/Adul625_307.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="better">Better</span></div>
+        <div class="d-none d-md-inline col-md-3">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/Adul625_307.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+        </div>
+    </div>
+</button>
+
+
+<div class="modal fade report-modal" id="modal-Adul625-6" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-left">
+                <h2 class="modal-title fs-xl" id="exampleModalLabel">Mold</h2>
+                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
+                    <span class="fas fa-times-circle"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2 class="fs-xl">Adults reporting mold in the home (percent), 2012</h2>
+                <p>In <strong>Gramercy Park - Murray Hill</strong>, the adults reporting mold in the home (percent), 2012 is <span class="better">Better</span>compared to the NYC average.</p>Adults reporting mold in the home. Mold can worsen respiratory conditions like asthma, and indicate maintenance deficiencies in a building.</div>
+            <hr>
+            <div class="modal-body">
+                <h3>Neighborhood Comparison</h3>
+                <div class="row comparison">
+                    <div class="col-sm-4 text-primary">Gramercy Park - Murray Hill <span class="indicator-value">5.8</span></div>
+                    <div class="col-sm-4">Manhattan <span class="indicator-value">8</span></div>
+                    <div class="col-sm-4">New York City <span class="indicator-value">9.5</span></div>
+                </div>
+                <p><em>Percent </em></p><div class="data-note"></div></div>
+            <hr>
+            <div class="modal-body">
+                <h3>Adults reporting mold in the home (percent), 2012</h3>
+                <p>  <em>Percent</em></p>
+                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Adul625-6"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>Trends Over Time</h3>
+                <p><em>Percent </em></p>
+                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Adul625-6"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>By Neighborhood</h3>
+                <p><em>Percent </em></p>
+                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Adul625-6"></div>
+                
+            </div>
+            
+            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    $( "#modal-Adul625-6" ).on('shown.bs.modal', function() {
+        
+        var opt = {"renderer": "svg"};
+
+        
+        
+        aq.loadCSV(
+
+            
+            
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/data/" + data_download_loc
+        
+        ).then(data => {
+            
+            arqTable = data;
+
+
+            
+
+            
+            
+            var summaryData = 
+                arqTable
+                .filter(d => d.data_field_name == "Adul625")
+                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
+                .dedupe()
+                .groupby("neighborhood")
+                .orderby("neighborhood", aq.desc("end_date"))
+                .slice(0,1) 
+                .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
+                .orderby("data_value") 
+                .select(aq.not("end_date"))
+                .objects()
+                
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
+                
+                summarySpec = data;
+
+                
+
+                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#summary-Adul625-6", 
+                    summarySpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("summaryData", summaryData).run()
+
+                }).catch(console.error);;
+                
+            });
+            
+
+            
+
+            
+
+            var mapData = summaryData;
+
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
+                
+                mapSpec = data;
+
+                
+
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#map-Adul625-6", 
+                    mapSpec,
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("mapData", mapData).run()
+                    
+                }).catch(console.error);
+                
+            });
+
+            
+            
+
+            
+            
+            var trendData = 
+                arqTable
+                .filter(d => d.data_field_name == "Adul625")
+                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
+                .dedupe()
+                .objects()
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/trendSpec.json").then(data => {
+                
+                
+                
+                trendSpec = data;
+                
+                
+
+                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#trend-Adul625-6", 
+                    trendSpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("trendData", trendData).run()
+                    
+                }).catch(console.error);;
+                
+            });
+            
+        });
+            
+    });
+        
+    </script>
     <button data-toggle="modal" data-target="#modal-Adul292-6" class="indicator-anchor">
     <div class="row align-items-center">
         <div class="col-6 col-md-5">
@@ -4320,7 +4320,7 @@
             </div>
             <div class="modal-body">
                 <h2 class="fs-xl">Adults who allow smoking in the home (percent), 2013</h2>
-                <p>In <strong>Gramercy Park - Murray Hill</strong>, the adults who allow smoking in the home (percent), 2013 is <span class="worse">Worse</span>compared to the NYC average.</p>A smoke-free home policy can limit people's exposure to secondhand smoke, which is especially dangerous to children.</div>
+                <p>In <strong>Gramercy Park - Murray Hill</strong>, the adults who allow smoking in the home (percent), 2013 is <span class="worse">Worse</span>compared to the NYC average.</p>Adults without a smoke-free home policy. A smoke-free home policy can limit people's exposure to secondhand smoke, which is especially dangerous to children.</div>
             <hr>
             <div class="modal-body">
                 <h3>Neighborhood Comparison</h3>
@@ -4545,20 +4545,20 @@
                 </button>
             </div>
             <div class="modal-body">
-                <h2 class="fs-xl">Ozone (O3) (mean ppb), Summer 2020</h2>
-                <p>In <strong>Gramercy Park - Murray Hill</strong>, the ozone (o3) (mean ppb), summer 2020 is <span class="better">Better</span>compared to the NYC average.</p>Ozone is a common air pollutant that can harm breathing and worsen asthma and other respiratory conditions.</div>
+                <h2 class="fs-xl">Ozone (O3) (mean ppb), Summer 2021</h2>
+                <p>In <strong>Gramercy Park - Murray Hill</strong>, the ozone (o3) (mean ppb), summer 2021 is <span class="better">Better</span>compared to the NYC average.</p>Ozone is a common air pollutant that can harm breathing and worsen asthma and other respiratory conditions.</div>
             <hr>
             <div class="modal-body">
                 <h3>Neighborhood Comparison</h3>
                 <div class="row comparison">
-                    <div class="col-sm-4 text-primary">Gramercy Park - Murray Hill <span class="indicator-value">27.6</span></div>
-                    <div class="col-sm-4">Manhattan <span class="indicator-value">28.8</span></div>
-                    <div class="col-sm-4">New York City <span class="indicator-value">29.8</span></div>
+                    <div class="col-sm-4 text-primary">Gramercy Park - Murray Hill <span class="indicator-value">26.9</span></div>
+                    <div class="col-sm-4">Manhattan <span class="indicator-value">27.9</span></div>
+                    <div class="col-sm-4">New York City <span class="indicator-value">30.2</span></div>
                 </div>
                 <p><em>Mean ppb</em></p><div class="data-note"></div></div>
             <hr>
             <div class="modal-body">
-                <h3>Ozone (O3) (mean ppb), Summer 2020</h3>
+                <h3>Ozone (O3) (mean ppb), Summer 2021</h3>
                 <p>  <em>Meanppb</em></p>
                 <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Ozon386-7"></div> 
                 
@@ -4718,6 +4718,203 @@
     });
         
     </script>
+    <button data-toggle="modal" data-target="#modal-Fine365-7" class="indicator-anchor">
+    <div class="row align-items-center">
+        <div class="col-6 col-md-5">
+            <span class="indicator-short-name">PM2.5 (Fine particles)</span>
+        </div>
+        <div class="col-6 col-md-4 topic-list">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/Fine365_307.svg" alt="Visualization showing neighborhood rank of 4 out of 42." width="100%" class="viz d-md-none mb-1"><span class="worse">Worse</span></div>
+        <div class="d-none d-md-inline col-md-3">
+            <img src="https://raw.githubusercontent.com/nychealth/EHDP-data/staging/neighborhood-reports/images/Fine365_307.svg" alt="Visualization showing neighborhood rank of 4 out of 42." class="viz">
+        </div>
+    </div>
+</button>
+
+
+<div class="modal fade report-modal" id="modal-Fine365-7" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-left">
+                <h2 class="modal-title fs-xl" id="exampleModalLabel">PM2.5 (Fine particles)</h2>
+                <button type="button" class="close no-btn-style" data-dismiss="modal" aria-label="Close">
+                    <span class="fas fa-times-circle"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2 class="fs-xl">Fine particulate matter (PM2.5) (mean mcg per cubic meter), Annual Average 2021</h2>
+                <p>In <strong>Gramercy Park - Murray Hill</strong>, the fine particulate matter (pm2.5) (mean mcg per cubic meter), annual average 2021 is <span class="worse">Worse</span>compared to the NYC average.</p>Fine particles are emitted by vehicles, building boilers, and other combustion - and are a major form of air pollution that harms health.</div>
+            <hr>
+            <div class="modal-body">
+                <h3>Neighborhood Comparison</h3>
+                <div class="row comparison">
+                    <div class="col-sm-4 text-primary">Gramercy Park - Murray Hill <span class="indicator-value">8.2</span></div>
+                    <div class="col-sm-4">Manhattan <span class="indicator-value">7.4</span></div>
+                    <div class="col-sm-4">New York City <span class="indicator-value">6.5</span></div>
+                </div>
+                <p><em>Mean mcg/m3</em></p><div class="data-note"></div></div>
+            <hr>
+            <div class="modal-body">
+                <h3>Fine particulate matter (PM2.5) (mean mcg per cubic meter), Annual Average 2021</h3>
+                <p>  <em>Meanmcg/m3</em></p>
+                <div style="width:100%; height:30vmin; z-index:10000;" id="summary-Fine365-7"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>Trends Over Time</h3>
+                <p><em>Mean mcg/m3</em></p>
+                <div style="width:100%; height:50vmin; z-index:10000;" id="trend-Fine365-7"></div> 
+                
+            </div>
+            <hr>
+            <div class="modal-body">
+                
+                <h3>By Neighborhood</h3>
+                <p><em>Mean mcg/m3</em></p>
+                <div style="width:100%; height:60vmin; z-index:10000;" id="map-Fine365-7"></div>
+                
+            </div>
+            
+            <div class="modal-footer flex-column"><button type="button" class="btn btn-primary px-6" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    $( "#modal-Fine365-7" ).on('shown.bs.modal', function() {
+        
+        var opt = {"renderer": "svg"};
+
+        
+        
+        aq.loadCSV(
+
+            
+            
+            "https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/data/" + data_download_loc
+        
+        ).then(data => {
+            
+            arqTable = data;
+
+
+            
+
+            
+            
+            var summaryData = 
+                arqTable
+                .filter(d => d.data_field_name == "Fine365")
+                .select("geo_join_id", "neighborhood", "data_value", "message", "end_date")
+                .dedupe()
+                .groupby("neighborhood")
+                .orderby("neighborhood", aq.desc("end_date"))
+                .slice(0,1) 
+                .ungroup()
+                .derive({data_value: d => op.parse_float(d.data_value)})
+                .orderby("data_value") 
+                .select(aq.not("end_date"))
+                .objects()
+                
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/summarySpec.json").then(data => {
+                
+                summarySpec = data;
+
+                
+
+                summarySpec.encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#summary-Fine365-7", 
+                    summarySpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("summaryData", summaryData).run()
+
+                }).catch(console.error);;
+                
+            });
+            
+
+            
+
+            
+
+            var mapData = summaryData;
+
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/mapSpec.json").then(data => {
+                
+                mapSpec = data;
+
+                
+
+                mapSpec.layer[2].encoding.stroke.condition.test = "datum.neighborhood == '" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#map-Fine365-7", 
+                    mapSpec,
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("mapData", mapData).run()
+                    
+                }).catch(console.error);
+                
+            });
+
+            
+            
+
+            
+            
+            var trendData = 
+                arqTable
+                .filter(d => d.data_field_name == "Fine365")
+                .select("start_date", "time", "geo_join_id", "neighborhood", "data_value", "message")
+                .dedupe()
+                .objects()
+            
+            d3.json("https:\/\/raw.githubusercontent.com\/nychealth\/EHDP-data\/staging/neighborhood-reports/spec/trendSpec.json").then(data => {
+                
+                
+                
+                trendSpec = data;
+                
+                
+
+                trendSpec.layer[1].encoding.color.condition.test = "datum.neighborhood=='" + NeighborhoodName + "'";
+                
+            }).then(() => {
+                
+                vegaEmbed(
+                    "#trend-Fine365-7", 
+                    trendSpec, 
+                    opt
+                ).then((res) => {
+                    
+                    res.view.insert("trendData", trendData).run()
+                    
+                }).catch(console.error);;
+                
+            });
+            
+        });
+            
+    });
+        
+    </script>
     </div>
                             
                             
@@ -4772,7 +4969,7 @@
             </div>
             <div class="modal-body">
                 <h2 class="fs-xl">Living in poverty, 2015-19</h2>
-                <p>In <strong>Gramercy Park - Murray Hill</strong>, the living in poverty, 2015-19 is <span class="better">Better</span>compared to the NYC average.</p>Neighborhood poverty is a major determinant of health, since poverty deprives people of access to health and safety resources.</div>
+                <p>In <strong>Gramercy Park - Murray Hill</strong>, the living in poverty, 2015-19 is <span class="better">Better</span>compared to the NYC average.</p>The percent of households with incomes below the federal poverty level. Households without sufficient resources are often deprived of access to items such as health care and good quality housing that are needed to maintain good health.</div>
             <hr>
             <div class="modal-body">
                 <h3>Neighborhood Comparison</h3>
@@ -4969,7 +5166,7 @@
             </div>
             <div class="modal-body">
                 <h2 class="fs-xl">Adults with health insurance, 2020</h2>
-                <p>In <strong>Gramercy Park - Murray Hill</strong>, the adults with health insurance, 2020 is <span class="better">Better</span>compared to the NYC average.</p><p>Health insurance coverage is associated with numerous beneficial health effects. Those with health insurance are more likely to have a regular doctor, receive preventive care services, better manage chronic health conditions, have longer life expectancy, and more.</p></div>
+                <p>In <strong>Gramercy Park - Murray Hill</strong>, the adults with health insurance, 2020 is <span class="better">Better</span>compared to the NYC average.</p>Health insurance coverage is associated with numerous beneficial health effects. Those with health insurance are more likely to have a regular doctor, receive preventive care services, better manage chronic health conditions, have longer life expectancy, and more.</div>
             <hr>
             <div class="modal-body">
                 <h3>Neighborhood Comparison</h3>
